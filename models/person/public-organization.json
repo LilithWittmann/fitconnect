@@ -1,0 +1,12 @@
+{
+  "title": "Public Organization",
+  "description": "Behörde",
+  "allOf": [
+    {
+      "$ref": "./organization.json"
+    },
+    {
+      "type": "object"
+    }
+  ]
+}

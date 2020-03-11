@@ -1,0 +1,59 @@
+{
+  "title": "Identifier",
+  "type": "object",
+  "description": "Identifiers are keys that are owned by either the sender, receiver or a third party. If the keys used are owned by either sender or receiver, no meta data has to be specified by means of attributes. The table below specifies the use of attributes for the identifier types when they are owned by a third party.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "A character string to identify and distinguish uniquely, one instance of an object in an identification scheme from all other objects in the same scheme together with relevant supplementary information."
+    },
+    "schemeURI": {
+      "type": "string",
+      "format": "uri",
+      "description": "Link to the location of the list scheme"
+    },
+    "schemeDataURI": {
+      "type": "string",
+      "format": "uri",
+      "description": "Link to the location of the list"
+    },
+    "schemeVersionID": {
+      "type": "string",
+      "description": "Version of the scheme"
+    },
+    "schemeAgencyName": {
+      "type": "string",
+      "description": "Specifies the name of the ID issuer"
+    },
+    "schemeAgencyID": {
+      "type": "string",
+      "description": "Specifies the ID of the ID issuer"
+    },
+    "schemeName": {
+      "type": "string",
+      "description": "Name of the scheme"
+    },
+    "schemeID": {
+      "type": "string",
+      "description": "Identifices the ID type"
+    }
+  },
+  "required": [
+    "id"
+  ],
+  "x-examples": {
+    "example-1": {
+      "id": "978-1-894049-23-8",
+      "schemeID": "ISBN"
+    },
+    "example-2": {
+      "id": "99050012104000",
+      "schemeURI": "https://www.xrepository.de/details/urn:de:gkleika:leika:leistung",
+      "schemeDataURI": "https://www.xrepository.de/details/urn:de:gkleika:leika:leistung_20180705#version",
+      "schemeVersionID": "urn:de:gkleika:leika:leistung_20180705",
+      "schemeAgencyName": "Geschäfts- und Koordinierungsstelle LeiKa beim Ministerium der Finanzen des Landes Sachsen-Anhalt (GK_LEIKA)",
+      "schemeName": "Leistungen des LeiKa",
+      "schemeID": "urn:de:gkleika:leika:leistung"
+    }
+  }
+}

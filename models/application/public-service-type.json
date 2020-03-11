@@ -1,0 +1,54 @@
+{
+  "type": "object",
+  "title": "Public Service Type",
+  "description": "Leistung\n\nThis represents the Type of a Public Service. For the indicating the Type, we are referring to the functions of government to indicate the purpose of a government activity, which the public service is intended for.",
+  "additionalProperties": false,
+  "x-examples": {
+    "example-1": {
+      "name": "Gewerbeanmeldung",
+      "leika-id": "99050012104000"
+    },
+    "example-2": {
+      "name": "Gewerbeanmeldung",
+      "description": "Eine Gewerbeanmeldung ist immer dann notwendig, wenn Sie einen stehenden Gewerbebetrieb beginnen.",
+      "leika-id": "99050012104000",
+      "other-identifiers": [
+        {
+          "id": "8664844",
+          "schemeURI": "service.niedersachsen.de",
+          "schemeName": "Serviceportal Niedersachsen"
+        },
+        {
+          "id": "354824",
+          "schemeURI": "buerger.thueringen.de",
+          "schemeName": "Zuständigkeitsfinder Thüringen"
+        }
+      ]
+    }
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name/Bezeichnung der behördlichen Leistung"
+    },
+    "description": {
+      "type": "string",
+      "description": "(Kurz-)Beschreibung der behördlichen Leistung"
+    },
+    "leika-id": {
+      "type": "string",
+      "pattern": "^[0-9]{2}([0-9]{3}){1,4}$",
+      "description": "ID aus dem Leistungskatalog (Leika)"
+    },
+    "other-identifiers": {
+      "type": "array",
+      "description": "Weitere Identifikatioren. Die ID wird in `content` abgelegt, zusätzlich sollten die Schema-Attribute zur Spezifikation des Gültigkeitsraumes verwendet werden.",
+      "items": {
+        "$ref": "../common/identifier.json"
+      }
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

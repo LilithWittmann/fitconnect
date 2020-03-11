@@ -1,0 +1,63 @@
+{
+  "title": "Destination without ID",
+  "type": "object",
+  "description": "Daten eines technischen Übergabepunkts (Ziel der Übertragung - z.B. ein Fachverfahren) noch ohne ID, zum Anlegen eines neuen Übergabepunkts. Nach dem Zuweisen der `destination-id` wird das Modell [Destination](destination.json) verwendet.",
+  "x-examples": {
+    "example-1": {
+      "organization": {
+        "organization-name": "Gewerbeamt Musterhausen"
+      },
+      "technical-contact": [
+        {
+          "first-name": "Werner",
+          "last-name": "Mustermann",
+          "contact": {
+            "telephone": [
+              {
+                "number": "+49 89 32168-42",
+                "mobile": false,
+                "type": "work"
+              }
+            ]
+          }
+        }
+      ],
+      "callback": {
+        "callback-url": "https://www.example.com/callback"
+      }
+    }
+  },
+  "properties": {
+    "organization": {
+      "$ref": "./person/public-organization.json"
+    },
+    "technical-contact": {
+      "type": "array",
+      "description": "Technischer Ansprechpartner",
+      "items": {
+        "$ref": "./person/individual.json"
+      }
+    },
+    "schemas": {
+      "type": "array",
+      "description": "Zulässige Schemas, die zu diesem Ziel übertragen werden können. Sofern leer dürfen Anträge (Application) keinen Datensatz (ApplicationData) enthalten.",
+      "items": {
+        "$ref": "./application/schema.json"
+      }
+    },
+    "callback": {
+      "type": "object",
+      "description": "Callback zur Benachrichtigung bei neuen Anträgen",
+      "properties": {
+        "callback-url": {
+          "type": "string",
+          "description": "URL auf die der Callback als POST durchgeführt wird",
+          "format": "uri"
+        }
+      },
+      "required": [
+        "callback-url"
+      ]
+    }
+  }
+}

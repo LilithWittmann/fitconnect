@@ -1,0 +1,165 @@
+{
+  "title": "Application Metadata without ID",
+  "type": "object",
+  "description": "Metadaten eines Antrags noch ohne ID, zum Anlegen eines neuen Antrags. Nach dem Zuweisen der `application-id` wird das Modell [Application Metadata](metadata.json) verwendet.",
+  "properties": {
+    "additional-reference-info": {
+      "type": "object",
+      "properties": {
+        "subject": {
+          "type": "string"
+        },
+        "case-id": {
+          "type": "string"
+        }
+      }
+    },
+    "content-structure": {
+      "type": "object",
+      "required": [
+        "data",
+        "docs"
+      ],
+      "properties": {
+        "data": {
+          "type": "object",
+          "required": [
+            "schema-id"
+          ],
+          "properties": {
+            "schema-id": {
+              "type": "string",
+              "pattern": {
+                "$ref": "../common/id-string.json#/pattern"
+              }
+            },
+            "mime-type": {
+              "type": "string",
+              "enum": [
+                "json",
+                "xml"
+              ]
+            }
+          }
+        },
+        "docs": {
+          "type": "array",
+          "items": {
+            "$ref": "./document.json"
+          }
+        }
+      }
+    },
+    "public-service-type": {
+      "$ref": "./public-service-type.json"
+    },
+    "applicants": {
+      "type": "array",
+      "items": {
+        "$ref": "./applicant.json"
+      }
+    },
+    "payment-info": {
+      "$ref": "./payment-info.json"
+    }
+  },
+  "required": [
+    "content-structure"
+  ],
+  "x-examples": {
+    "example-1": {
+      "additional-reference-info": {
+        "subject": "Anmeldung eines Gewerbes in Musterstadt",
+        "case-id": "DF/8923"
+      },
+      "content-structure": {
+        "data": {
+          "schema-id": "742",
+          "mime-type": "json"
+        },
+        "docs": [
+          {
+            "doc-id": "1",
+            "purpose": "form",
+            "size": 39273,
+            "mime": "application/pdf",
+            "filename": "antrag.pdf",
+            "description": "Das Antragsformular",
+            "lang": {
+              "lang": "de",
+              "region": "DE"
+            },
+            "hash": {
+              "algorithm": "SHA-256",
+              "digest": "03ba204e50d126e4674c005e04d82e84c21366780af1f43bd54a37816b6ab340"
+            }
+          },
+          {
+            "doc-id": "2",
+            "purpose": "attachment",
+            "size": 894834874,
+            "mime": "image/jpeg",
+            "filename": "scan.jpg",
+            "description": "Scan der Bescheinigung",
+            "hash": {
+              "algorithm": "SHA-256",
+              "digest": "e1762f14d9924e37b32f1c81dfd256410af462f5136415c96877efa8c80345d0"
+            }
+          }
+        ]
+      },
+      "public-service-type": {
+        "name": "Gewerbeanmeldung",
+        "description": "Eine Gewerbeanmeldung ist immer dann notwendig, wenn Sie einen stehenden Gewerbebetrieb beginnen.",
+        "leika-id": "99050012104000",
+        "other-identifiers": [
+          {
+            "id": "8664844",
+            "schemeURI": "service.niedersachsen.de",
+            "schemeName": "Serviceportal Niedersachsen"
+          },
+          {
+            "id": "354824",
+            "schemeURI": "buerger.thueringen.de",
+            "schemeName": "Zuständigkeitsfinder Thüringen"
+          }
+        ]
+      },
+      "applicants": [
+        {
+          "person": {
+            "form-of-address": "Herr",
+            "academic-title": "Dr.",
+            "first-name": "Werner",
+            "last-name": "Mustermann"
+          },
+          "identification": {
+            "authentication": {
+              "assurance-level": "high",
+              "authentification-method": "eID",
+              "timestamp": "2020-03-03T12:38:23Z"
+            },
+            "authenticated-data": {
+              "family-name": "MUSTERMANN",
+              "given-name": "WERNER",
+              "date-of-birth": "13091970",
+              "place-of-resicence": {
+                "street": "KURZER WEG 7",
+                "postal-code": "12345",
+                "city": "ANKH-MORPORK"
+              }
+            }
+          }
+        }
+      ],
+      "payment-info": {
+        "reference": "TP/93/GDP",
+        "usage": "Gewerbeanmeldung",
+        "amount": 17.3,
+        "timestamp": "2020-03-03T12:38:23Z",
+        "status": "success",
+        "transaction": "1f77c5f9b759db9cdce59988b24974d465c7be5e462a6185485559ff6e2dea82"
+      }
+    }
+  }
+}

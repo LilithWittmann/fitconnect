@@ -1,0 +1,8 @@
+{
+  "type": "string",
+  "title": "base64url",
+  "description": "Base 64 Encoding with URL and Filename Safe Alphabet (RFC 4648 section 5)",
+  "example": "SGVsbG8gV29ybGQhCg==",
+  "pattern": "^[a-zA-Z0-9-_=]+$",
+  "x-examples": {}
+}

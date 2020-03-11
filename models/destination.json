@@ -1,0 +1,50 @@
+{
+  "title": "Destination",
+  "allOf": [
+    {
+      "type": "object",
+      "properties": {
+        "destination-id": {
+          "description": "Vom Zustelldienst für dieses Ziel vergebene ID. Wird beim Anlegen eines neuen Ziels leer gelassen.",
+          "pattern": {
+            "$ref": "./common/id-string.json#/pattern"
+          },
+          "type": "string"
+        }
+      },
+      "required": [
+        "destination-id"
+      ]
+    },
+    {
+      "$ref": "./destination-no-id.json"
+    }
+  ],
+  "description": "Beschreibung eines technischen Übergabepunkts",
+  "x-examples": {
+    "example-1": {
+      "destination-id": "83578",
+      "organization": {
+        "organization-name": "Gewerbeamt Musterhausen"
+      },
+      "technical-contact": [
+        {
+          "first-name": "Werner",
+          "last-name": "Mustermann",
+          "contact": {
+            "telephone": [
+              {
+                "number": "+49 89 32168-42",
+                "mobile": false,
+                "type": "work"
+              }
+            ]
+          }
+        }
+      ],
+      "callback": {
+        "callback-url": "https://www.example.com/callback"
+      }
+    }
+  }
+}

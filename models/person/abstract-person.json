@@ -1,0 +1,74 @@
+{
+  "title": "Abstract Person",
+  "type": "object",
+  "description": "Abstrakte Klasse für natürliche Person (Individual) und Organisation (Organization)",
+  "properties": {
+    "address": {
+      "description": "Adresse als Alternative (Choice) von nationaler und internationaler Adresse.",
+      "oneOf": [
+        {
+          "$ref": "../common/address-national.json"
+        },
+        {
+          "$ref": "../common/address-international.json"
+        }
+      ]
+    },
+    "identifiers": {
+      "type": "array",
+      "description": "Externe Identifikatoren der Person",
+      "items": {
+        "$ref": "../common/identifier.json"
+      }
+    },
+    "contact": {
+      "description": "Kontaktmöglichkeiten einer Person (natürliche Person oder Organisation)",
+      "type": "object",
+      "properties": {
+        "telephone": {
+          "type": "array",
+          "description": "Liste der Telefonnummern, außer Fax",
+          "items": {
+            "type": "object",
+            "description": "Telefonnumer mit Zusatzinformationen",
+            "properties": {
+              "number": {
+                "$ref": "../common/phonenr.json"
+              },
+              "mobile": {
+                "type": "boolean",
+                "description": "Zeigt an, ob es sich um eine Mobilfunknummer handelt."
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "work",
+                  "home",
+                  "other"
+                ],
+                "description": "Art der Telefonnummer: work=dienstlich, home=privat oder other=sonstige"
+              }
+            },
+            "required": [
+              "number",
+              "type"
+            ]
+          }
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "E-Mail-Adresse"
+        },
+        "www": {
+          "type": "string",
+          "format": "uri",
+          "description": "Webadresse"
+        },
+        "telefax": {
+          "$ref": "../common/phonenr.json"
+        }
+      }
+    }
+  }
+}

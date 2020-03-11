@@ -1,0 +1,28 @@
+{
+  "title": "Organization",
+  "allOf": [
+    {
+      "type": "object",
+      "properties": {
+        "organization-name": {
+          "type": "string",
+          "description": "Name der Organisation"
+        },
+        "agents": {
+          "type": "array",
+          "description": "Ansprechpartner der Organisation",
+          "items": {
+            "$ref": "./individual.json"
+          }
+        }
+      },
+      "required": [
+        "organization-name"
+      ]
+    },
+    {
+      "$ref": "./abstract-person.json"
+    }
+  ],
+  "description": "Eine Organisation, z.B. ein Unternehmen; für Behörden gibt es den Untertyp \"PublicOrganization\""
+}

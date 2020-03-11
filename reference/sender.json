@@ -1,0 +1,653 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Application Sender API",
+    "version": "1.0",
+    "description": "API vom Onlineantragsdienst zum Zustelldienst",
+    "contact": {
+      "name": "FITKO",
+      "url": "https://www.fitko.de/"
+    },
+    "license": {
+      "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "name": "Creative Commons Attribution Share Alike 4.0 (CC BY-SA 4.0)"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/{source-id}/{destination-id}/{application-id}/data": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "source-id",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "destination-id",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "application-id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "put": {
+        "summary": "Add Application Data",
+        "operationId": "add-application-data",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "406": {
+            "description": "Not Acceptable - Kein Schema zugeordnet oder Schemafehler",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error.json"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Gone - Transfer-ID ungültig/Transfer-Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error.json"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Request Entity Too Large - Übertragung zu groß",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Datensatz übertragen",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          },
+          "description": "JSON oder XML Daten"
+        },
+        "tags": [
+          "transfer"
+        ]
+      }
+    },
+    "/{source-id}/{destination-id}/{application-id}/docs/{doc-id}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "source-id",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "destination-id",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "application-id",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "doc-id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "put": {
+        "summary": "Add Application Document",
+        "operationId": "add-application-doc",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "400": {
+            "description": "Bad Request - Signaturprüfung nicht erfolgreich - Signatur passt nicht zum Dokument",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Acceptable - Falsche doc-id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error.json"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Gone - Transfer-ID ungültig/Transfer-Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error.json"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Request Entity Too Large - Attachment zu groß oder Gesamtübertragung zu groß",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error.json"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type - Nicht unterstützter oder falscher Datentyp",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Lädt ein Antragsformuar oder einen Anhang hoch, um ihn dem Antrag hinzuzufügen.",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "tags": [
+          "transfer"
+        ]
+      }
+    },
+    "/{source-id}/{application-id}/status": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "source-id",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "application-id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get Status",
+        "tags": [
+          "status"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "current": {
+                      "$ref": "../models/status.json"
+                    },
+                    "history": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "../models/status.json"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error.json"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-application-status",
+        "description": "Ruft den aktuellen Status der Übermittlung ab."
+      }
+    },
+    "/{source-id}/{application-id}/status/{status-nr}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "source-id",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "application-id",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "status-nr",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get Status Entry",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/status.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error.json"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-application-status-entry",
+        "description": "Ruft einen spezifischen Statuswechsel aus der Historie des Status ab.",
+        "tags": [
+          "status"
+        ]
+      }
+    },
+    "/{source-id}/{destination-id}/{application-id}/upload-status": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "source-id",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "destination-id",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "application-id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get Application Upload Status",
+        "tags": [
+          "transfer"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "missing",
+                            "partial",
+                            "complete"
+                          ]
+                        },
+                        "length": {
+                          "type": "integer",
+                          "minimum": 0
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "length"
+                      ]
+                    },
+                    "docs": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "missing",
+                              "partial",
+                              "complete"
+                            ]
+                          },
+                          "length": {
+                            "type": "integer",
+                            "minimum": 0
+                          }
+                        },
+                        "required": [
+                          "status",
+                          "length"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Gone",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error.json"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-application-upload-status",
+        "description": "Abfrage des Übermittlungsstatus. Listet alle Unterresourcen (data und docs) mit Übermittlungsstatus auf."
+      }
+    },
+    "/{source-id}/{destination-id}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "source-id",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "destination-id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "post": {
+        "summary": "Create Application",
+        "operationId": "create-transfer",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "application-id": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error.json"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Request Entity Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error.json"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "transfer"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/application/metadata-no-id.json"
+              }
+            }
+          },
+          "description": "Transfer"
+        },
+        "description": "Übertragung initiieren"
+      },
+      "get": {
+        "summary": "Get Destination",
+        "operationId": "get-destination-info",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/destination.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Ruft die Information über eine Destination ab",
+        "tags": [
+          "destination"
+        ]
+      }
+    },
+    "/{source-id}/{destination-id}/{application-id}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "source-id",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "destination-id",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "application-id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "post": {
+        "summary": "Commit Application",
+        "operationId": "commit-transfer",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/status.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Unvollständig",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error.json"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Gone - Transfer-ID ungültig/Transfer-Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error.json"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Request Entity Too Large - Gesamtübertragung zu groß",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Übertragung abschließen",
+        "parameters": [],
+        "tags": [
+          "transfer"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          },
+          "description": ""
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "transfer"
+    },
+    {
+      "name": "status"
+    },
+    {
+      "name": "destination"
+    },
+    {
+      "name": "source"
+    }
+  ]
+}

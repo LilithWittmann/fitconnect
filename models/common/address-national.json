@@ -1,0 +1,31 @@
+{
+  "title": "National Address",
+  "type": "object",
+  "description": "Eine nationale (deutsche) Adresse, bestehend aus Straße, Hausnummer, PLZ und Ort.",
+  "properties": {
+    "street": {
+      "type": "string",
+      "description": "Straße"
+    },
+    "house-number": {
+      "type": "string",
+      "description": "Hausnummer"
+    },
+    "postal-code": {
+      "type": "string",
+      "description": "PLZ"
+    },
+    "city": {
+      "type": "string",
+      "description": "Ort"
+    }
+  },
+  "x-examples": {
+    "example-1": {
+      "street": "Kurzer Weg",
+      "house-number": "7",
+      "postal-code": "12345",
+      "city": "Ankh-Morpork"
+    }
+  }
+}

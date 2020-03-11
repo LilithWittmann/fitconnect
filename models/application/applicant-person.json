@@ -1,0 +1,26 @@
+{
+  "title": "Applicant Person",
+  "type": "object",
+  "description": "Antragstellerdaten für eine natürliche Person",
+  "properties": {
+    "role": {
+      "type": "string"
+    },
+    "identifier": {
+      "type": "array",
+      "description": "IDs der natürlichen Person",
+      "items": {
+        "$ref": "../common/identifier.json"
+      }
+    },
+    "authentification-info": {
+      "$ref": "../common/authentification-info.json"
+    },
+    "identity-info": {
+      "$ref": "../common/eID-natural-person.json"
+    },
+    "contact-info": {
+      "$ref": "./applicant-contact-info.json"
+    }
+  }
+}

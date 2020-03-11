@@ -1,0 +1,49 @@
+{
+  "title": "Identity Information for Organization Acting Person",
+  "type": "object",
+  "properties": {
+    "place-of-birth": {
+      "type": "string",
+      "description": "Geburtsort"
+    },
+    "date-of-birth": {
+      "type": "string",
+      "format": "date",
+      "description": "Geburtsdatum"
+    },
+    "gender": {
+      "type": "string",
+      "enum": [
+        "m",
+        "w",
+        "x",
+        "d"
+      ],
+      "description": "Geschlecht (m=männlich, w=weiblich, x=keine Angabe, d=divers)"
+    },
+    "nationality": {
+      "type": "string",
+      "description": "Nationalität"
+    },
+    "artictic-name": {
+      "type": "string",
+      "description": "Künstler- oder Ordensname"
+    },
+    "academic-title": {
+      "type": "string",
+      "description": "Akademischer Titel, z.B. \"Dr.\" oder \"Prof.\""
+    },
+    "birth-name": {
+      "type": "string",
+      "description": "Geburtsname"
+    },
+    "given-name": {
+      "type": "string",
+      "description": "Vorname(n)"
+    },
+    "family-name": {
+      "type": "string",
+      "description": "Familienname"
+    }
+  }
+}

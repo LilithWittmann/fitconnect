@@ -1,0 +1,91 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Notification Callback",
+    "version": "1.0",
+    "contact": {
+      "name": "FITKO",
+      "url": "https://www.fitko.de/"
+    },
+    "license": {
+      "name": "Creative Commons Attribution Share Alike 4.0 (CC BY-SA 4.0)",
+      "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    "description": "Pseudo API um den Callback zu modellieren."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/{path}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "path",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "post": {
+        "summary": "Callback",
+        "operationId": "callback",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Beschreibt den Callback, mit dem der Zustelldienst den Subscriber benachrichtigt.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "destination-id": {
+                    "type": "string"
+                  },
+                  "applications": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "application-id": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "destination-id": "821",
+                    "applications": [
+                      {
+                        "application-id": "98472"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "description": "Information zu den wartenden Anträgen"
+        },
+        "tags": [
+          "callback"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "callback"
+    }
+  ]
+}

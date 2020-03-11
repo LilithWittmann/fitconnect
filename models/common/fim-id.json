@@ -1,0 +1,32 @@
+{
+  "type": "object",
+  "title": "FIM ID",
+  "description": "ID eines FIM Elements, zusammengesetzt aus ID und Version.",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "ID des FIM Elements, z.B. \"S00000001\"",
+      "example": "S00000001",
+      "pattern": "^[DFGS]\\d{8}$"
+    },
+    "version": {
+      "type": "string",
+      "description": "Optionale Version des FIM Elements, z.B. \"1.0\"",
+      "example": "1.0",
+      "pattern": "^\\d+\\.\\d+$"
+    }
+  },
+  "required": [
+    "id"
+  ],
+  "x-examples": {
+    "example-1": {
+      "id": "S00000001",
+      "version": "1.0"
+    },
+    "example-2": {
+      "id": "F99000042"
+    }
+  }
+}

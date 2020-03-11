@@ -1,0 +1,46 @@
+{
+  "type": "object",
+  "title": "Language",
+  "description": "Angaben zur Sprache basierend auf dem IETF language tag. Es wird jedoch nur ein Subset unterstützt:\n- `lang`: Die Primary Language darf nur aus zwei oder drei Kleinbuchstaben bestehen (gemäß  ISO 639-1 (2002), ISO 639-2 (1998), ISO 639-3 (2007) oder ISO 639-5 (2008))\n- `region`: Die Region muss aus zwei Großbuchstaben bestehen (gemäß ISO 3166-1 alpha-2)\n- `variant`: Sprachvariante (gemäß IANA Registry), derzeit wird nur `simple` unterstützt.",
+  "additionalProperties": false,
+  "properties": {
+    "lang": {
+      "type": "string",
+      "description": "primary language based on a two-letter language code from ISO 639-1 (2002) or a three-letter code from ISO 639-2 (1998), ISO 639-3 (2007) or ISO 639-5 (2008)",
+      "minLength": 2,
+      "maxLength": 3,
+      "pattern": "[a-z]{2,3}"
+    },
+    "region": {
+      "type": "string",
+      "description": "region based on a two-letter country code from ISO 3166-1 alpha-2",
+      "minLength": 2,
+      "maxLength": 2,
+      "pattern": "[A-Z]{2}"
+    },
+    "variant": {
+      "type": "string",
+      "enum": [
+        "simple"
+      ],
+      "description": "Subset der IANA language variant subtags\n- `simple`: Simplified form"
+    }
+  },
+  "required": [
+    "lang"
+  ],
+  "x-examples": {
+    "example-1": {
+      "lang": "de"
+    },
+    "example-2": {
+      "lang": "en",
+      "region": "GB"
+    },
+    "example-3": {
+      "lang": "de",
+      "region": "DE",
+      "variant": "simple"
+    }
+  }
+}

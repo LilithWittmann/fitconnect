@@ -1,0 +1,32 @@
+{
+  "title": "Application Schema",
+  "type": "object",
+  "description": "Strukturinformationen zu übertragbaren oder übertragenen Daten.",
+  "properties": {
+    "schema-id": {
+      "description": "Vom Zustelldienst vergebene ID für dieses Schema. Wird beim Anlegen eines neuen Schemas weggelassen.",
+      "pattern": {
+        "$ref": "../common/id-string.json#/pattern"
+      },
+      "type": "string"
+    },
+    "fim-schema": {
+      "$ref": "../common/fim-id.json"
+    }
+  },
+  "x-examples": {
+    "example-1": {
+      "fim-schema": {
+        "id": "S00000001",
+        "version": "1.0"
+      }
+    },
+    "example-2": {
+      "schema-id": "8438",
+      "fim-schema": {
+        "id": "S00000001",
+        "version": "1.0"
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "title": "Error",
+  "type": "object",
+  "description": "Rückmeldung zu einer nicht erfolgreichen Operation",
+  "properties": {
+    "code": {
+      "type": "integer",
+      "description": "Fehlercode"
+    },
+    "msg": {
+      "type": "string",
+      "description": "Fehlermeldung"
+    },
+    "ref": {
+      "type": "string",
+      "description": "Referenz auf die Stelle, an der der Fehler aufgetreten ist. Dies könnte z.B. eine Zeilennummer oder der Pfad eines JSON oder XML Elements sein."
+    }
+  },
+  "required": [
+    "code",
+    "msg"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "type": "object",
+  "title": "Payment Info",
+  "description": "Informationen über eine im Antragsprozess erfolgte Bezahlung.",
+  "additionalProperties": false,
+  "properties": {
+    "reference": {
+      "type": "string",
+      "description": "Bezahlreferenz, z.B. ein Kassenzeichen"
+    },
+    "usage": {
+      "type": "string",
+      "description": "Verwendungszweck",
+      "maxLength": 27
+    },
+    "amount": {
+      "type": "number",
+      "minimum": 0.01,
+      "multipleOf": 0.01,
+      "description": "Geldbetrag"
+    },
+    "timestamp": {
+      "type": "string",
+      "description": "Zeitpunkt der Bezahlung",
+      "format": "date-time"
+    },
+    "status": {
+      "type": "string",
+      "description": "Status der Bezahlung",
+      "enum": [
+        "success",
+        "failed",
+        "open"
+      ]
+    },
+    "transaction": {
+      "type": "string",
+      "description": "Informationen zur Bezahltransaktion, z.B. eine Transaktions-ID"
+    }
+  },
+  "required": [
+    "usage",
+    "amount",
+    "status"
+  ],
+  "x-examples": {
+    "example-1": {
+      "reference": "TP/93/GDP",
+      "usage": "Gewerbeanmeldung",
+      "amount": 17.3,
+      "timestamp": "2020-03-03T12:38:23Z",
+      "status": "success",
+      "transaction": "1f77c5f9b759db9cdce59988b24974d465c7be5e462a6185485559ff6e2dea82"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "title": "authentification-info",
+  "type": "object",
+  "properties": {
+    "assurance-level": {
+      "type": "string",
+      "enum": [
+        "low",
+        "substantial",
+        "high"
+      ]
+    },
+    "authentification-method": {
+      "type": "string"
+    },
+    "authentification-token": {
+      "type": "object"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "assurance-level",
+    "authentification-method"
+  ]
+}

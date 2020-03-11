@@ -1,0 +1,49 @@
+{
+  "title": "Applicant Contact Info",
+  "type": "object",
+  "description": "Kontaktdaten des Antragstellers",
+  "properties": {
+    "electronic-adresses": {
+      "type": "array",
+      "description": "Elektronische Kontaktmöglkichkeiten, z.B. E-Mail",
+      "items": {
+        "type": "object",
+        "description": "",
+        "properties": {
+          "channel-type": {
+            "type": "string",
+            "enum": [
+              "Service-Account-Mailbox",
+              "De-Mail",
+              "E-Mail",
+              "Fax"
+            ],
+            "description": "Art der Kommunikationsmöglichkeit"
+          },
+          "address": {
+            "type": "string",
+            "description": "Kommunikationsadresse"
+          }
+        }
+      }
+    },
+    "physical-adress": {
+      "oneOf": [
+        {
+          "$ref": "../common/address-national.json"
+        },
+        {
+          "$ref": "../common/address-international.json"
+        }
+      ],
+      "description": "Physikalische (Post-)Adresse"
+    },
+    "telephone": {
+      "type": "array",
+      "description": "Liste der Telefonnummern, außer Fax",
+      "items": {
+        "$ref": "../common/phone.json"
+      }
+    }
+  }
+}

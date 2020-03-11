@@ -1,0 +1,29 @@
+{
+  "title": "International Address",
+  "type": "object",
+  "description": "Eine internationale Adresse, bestehend aus ein bis fünf Adresszeilen.",
+  "x-examples": {
+    "example-1": {
+      "lines": [
+        "760 United Nations Plaza",
+        "Manhattan, New York City, New York 10017"
+      ]
+    },
+    "example-2": {
+      "lines": [
+        "Threadneedle Street",
+        "London EC2R 8AH"
+      ]
+    }
+  },
+  "properties": {
+    "lines": {
+      "type": "array",
+      "maxItems": 5,
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

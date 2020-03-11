@@ -1,0 +1,17 @@
+{
+  "title": "Identity Information for Persons",
+  "description": "",
+  "allOf": [
+    {
+      "$ref": "./eID-org-acting-person.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "place-of-residence": {
+          "$ref": "./address-national.json"
+        }
+      }
+    }
+  ]
+}

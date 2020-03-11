@@ -1,0 +1,7 @@
+{
+  "type": "string",
+  "title": "MIME Type",
+  "description": "Internet Media Type gemäß RFC 2045, z.B. application/pdf.",
+  "example": "application/xml",
+  "pattern": "^[-\\w.]+/[-\\w.+]+$"
+}
