@@ -2,70 +2,6 @@
   "title": "Application Metadata without ID",
   "type": "object",
   "description": "Metadaten eines Antrags noch ohne ID, zum Anlegen eines neuen Antrags. Nach dem Zuweisen der `application-id` wird das Modell [Application Metadata](metadata.json) verwendet.",
-  "properties": {
-    "additional-reference-info": {
-      "type": "object",
-      "properties": {
-        "subject": {
-          "type": "string"
-        },
-        "case-id": {
-          "type": "string"
-        }
-      }
-    },
-    "content-structure": {
-      "type": "object",
-      "required": [
-        "data",
-        "docs"
-      ],
-      "properties": {
-        "data": {
-          "type": "object",
-          "required": [
-            "schema-id"
-          ],
-          "properties": {
-            "schema-id": {
-              "type": "string",
-              "pattern": {
-                "$ref": "../common/id-string.json#/pattern"
-              }
-            },
-            "mime-type": {
-              "type": "string",
-              "enum": [
-                "json",
-                "xml"
-              ]
-            }
-          }
-        },
-        "docs": {
-          "type": "array",
-          "items": {
-            "$ref": "./document.json"
-          }
-        }
-      }
-    },
-    "public-service-type": {
-      "$ref": "./public-service-type.json"
-    },
-    "applicants": {
-      "type": "array",
-      "items": {
-        "$ref": "./applicant.json"
-      }
-    },
-    "payment-info": {
-      "$ref": "./payment-info.json"
-    }
-  },
-  "required": [
-    "content-structure"
-  ],
   "x-examples": {
     "example-1": {
       "additional-reference-info": {
@@ -161,5 +97,70 @@
         "transaction": "1f77c5f9b759db9cdce59988b24974d465c7be5e462a6185485559ff6e2dea82"
       }
     }
-  }
+  },
+  "properties": {
+    "additional-reference-info": {
+      "type": "object",
+      "properties": {
+        "subject": {
+          "type": "string"
+        },
+        "case-id": {
+          "type": "string"
+        }
+      }
+    },
+    "content-structure": {
+      "type": "object",
+      "required": [
+        "data",
+        "docs"
+      ],
+      "properties": {
+        "data": {
+          "type": "object",
+          "required": [
+            "schema-id",
+            "mime-type"
+          ],
+          "properties": {
+            "schema-id": {
+              "type": "string",
+              "pattern": {
+                "$ref": "../common/id-string.json#/pattern"
+              }
+            },
+            "mime-type": {
+              "type": "string",
+              "enum": [
+                "json",
+                "xml"
+              ]
+            }
+          }
+        },
+        "docs": {
+          "type": "array",
+          "items": {
+            "$ref": "./document.json"
+          }
+        }
+      }
+    },
+    "public-service-type": {
+      "$ref": "./public-service-type.json"
+    },
+    "applicants": {
+      "type": "array",
+      "items": {
+        "$ref": "./applicant.json"
+      }
+    },
+    "payment-info": {
+      "$ref": "./payment-info.json"
+    }
+  },
+  "required": [
+    "content-structure"
+  ]
 }

@@ -75,21 +75,27 @@ Fügt dem Antrag strukturierte Daten hinzu.
 Beendet die Übertragung des Antrags und löst seinen Versand aus.
 
 #### Request
-- Body: 
+- Body: (leer)
 
 #### Response
-- Body: 
+- Body: [Status](../models/status.json)
 
-#### Falls 
-- HTTP
+#### Falls die Übertragung unvollständig ist
+- HTTP 400 Bad Request
+- Body: [Error](../models/error.json)
+
+#### Falls die Application-ID ungültig ist
+- HTTP 410 Gone
+- Body: [Error](../models/error.json)
+
+#### Falls die Gesamtübertragung zu groß ist
+- HTTP 413 Request Entity Too Large
 - Body: [Error](../models/error.json)
 
 
 
-### [Get Application Metadata](../reference/sender.json/paths/~1{source-id}~1{destination-id}~1{application-id}/get)
-
-FIXME
-
 ### [Get Application Upload Status](../reference/sender.json/paths/~1{source-id}~1{destination-id}~1{application-id}~1upload-status/get)
-
-FIXME
+Ruft den Status der Uploads der Teile der Übertragung ab. Für die Fachdaten und Dokumente wird jeweils der Status und die auf dem Server vorliegende Länge in Bytes zurückgegegben. Der Status kann folgende Werte haben:
+- `missing`: Es wurden noch keine Daten hochgeladen (`length` = 0).
+- `partial`: Es wurden bereits Daten hochgeladen, jedoch weniger als in den Metadaten angegeben (0 < `length` < `size` aus Metadaten).
+- `complete`: Die Übertragung ist vollständig (`length` = `size` aus Metadaten).

@@ -56,20 +56,6 @@ Der Status beschreibt den Fortschritt der Übertragung. Hierzu sind folgende Wer
 > **Hinweis:** Bei diesem Status handelt es sich um den Übermittlungsstatus vom Sender an den Subscriber. Die Statusmeldungen der Zuständigen Stelle an den Antragsteller sind davon unabhängig.
 
 ## Modelle
-
-<!-- theme: warning -->
-> ### Hinweis!
->
-> Die Modelle werden derzeit überarbeitet.
-
-### Addresse
-#### [AddressNational](../models/xfall/address-national.json)
-
-#### [AddressInternational](../models/xfall/address-international.json)
-
-#### [Address](../models/xfall/address.json)
-Die Klasse "Address" ist eine Choice (oneOf) zwischen nationaler und internationaler Adresse.
-
 ### [Error](../models/error.json)
 Die Klasse "Error" dient der Rückmeldung zu einer nicht erfolgreichen Operation.
 Sie enthält drei Propertys:
@@ -88,13 +74,4 @@ Beispiel für Stammdatenschema "S99000001V1.0":
 - Regex für "version": `^\d+\.\d+$`
 
 ### [Identifier](../models/common/identifier.json)
-
-### Person
-- [AbstractPerson](../models/xfall/abstract-person.json)
-- [Individual](../models/xfall/individual.json)
-- [Organization](../models/xfall/organization.json)
-- [PublicOrganization](../models/xfall/public-organization.json)
-
-### Public Service Type
-- [PublicServiceType](../models/application/public-service-type.json)
-
+Der Identifier ist nach dem "IdentifierType" aus der "Universal Business Language" der OASIS nachempfunden. Die eigentliche ID ist im Unterelement "id" enthalten. Die weiteren Elemente dienen der Definition des Namensraums, aus dem die ID kommt. Hier ind vor allem die `schemeID` und `schemeVersionID` interessant.

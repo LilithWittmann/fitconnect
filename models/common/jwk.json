@@ -1,0 +1,70 @@
+{
+  "title": "JSON Web Key (JWK)",
+  "type": "object",
+  "properties": {
+    "kty": {
+      "type": "string",
+      "description": "Key Type",
+      "enum": [
+        "EC",
+        "RSA",
+        "oct",
+        "OKP"
+      ]
+    },
+    "use": {
+      "type": "string",
+      "description": "Public Key Use",
+      "enum": [
+        "sig",
+        "enc"
+      ]
+    },
+    "key_ops": {
+      "type": "array",
+      "enum": [
+        "sign",
+        "verify",
+        "encrypt",
+        "decrypt",
+        "wrapKey",
+        "unwrapKey",
+        "deriveKey",
+        "deriveBits"
+      ],
+      "description": "Key Operations",
+      "items": {
+        "type": "string"
+      }
+    },
+    "alg": {
+      "type": "string",
+      "description": "Algorithm"
+    },
+    "kid": {
+      "description": "Key ID"
+    },
+    "x5u": {
+      "type": "string",
+      "description": "X.509 URL",
+      "format": "uri"
+    },
+    "x5c": {
+      "description": "X.509 Certificate Chain",
+      "type": "array",
+      "items": {
+        "$ref": "./base64.json"
+      }
+    },
+    "x5t": {
+      "$ref": "./base64url.json"
+    },
+    "x5t#S256": {
+      "$ref": "./base64url.json"
+    }
+  },
+  "required": [
+    "kty"
+  ],
+  "description": "JSON Web Key - RFC 7517"
+}

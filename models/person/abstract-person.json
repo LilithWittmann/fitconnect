@@ -29,30 +29,7 @@
           "type": "array",
           "description": "Liste der Telefonnummern, außer Fax",
           "items": {
-            "type": "object",
-            "description": "Telefonnumer mit Zusatzinformationen",
-            "properties": {
-              "number": {
-                "$ref": "../common/phonenr.json"
-              },
-              "mobile": {
-                "type": "boolean",
-                "description": "Zeigt an, ob es sich um eine Mobilfunknummer handelt."
-              },
-              "type": {
-                "type": "string",
-                "enum": [
-                  "work",
-                  "home",
-                  "other"
-                ],
-                "description": "Art der Telefonnummer: work=dienstlich, home=privat oder other=sonstige"
-              }
-            },
-            "required": [
-              "number",
-              "type"
-            ]
+            "$ref": "../common/phone.json"
           }
         },
         "email": {
@@ -66,7 +43,7 @@
           "description": "Webadresse"
         },
         "telefax": {
-          "$ref": "../common/phonenr.json"
+          "$ref": "../common/phone.json#/properties/number"
         }
       }
     }

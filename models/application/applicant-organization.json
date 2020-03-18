@@ -3,9 +3,6 @@
   "type": "object",
   "description": "Antragsteller in Form von einer Organisation, z.B. einem Unternehmen",
   "properties": {
-    "role": {
-      "type": "string"
-    },
     "identifier": {
       "type": "array",
       "description": "IDs für diese Organisation",
@@ -17,17 +14,12 @@
       "type": "object",
       "description": "Informationen, ob diese Organisation vom sendenden System identifiziert wurde",
       "properties": {
-        "validated": {
-          "type": "boolean",
-          "description": "Wurde die Organisation identifiziert?"
-        },
         "method": {
           "type": "string",
           "description": "Identifizierungsmethode"
         }
       },
       "required": [
-        "validated",
         "method"
       ]
     },
@@ -37,7 +29,7 @@
       "properties": {
         "legal-name": {
           "type": "string",
-          "description": "Name von rechtswegen, z.B. der Firmenname mit Rechtsform bei Unternehmen"
+          "description": "Name oder Bezeichnung - Der rechtliche Name einer Organisation. Der Name ist nicht zwingend eindeutig, um die Organisation zu identifizieren."
         },
         "organization-type": {
           "type": "string",
@@ -48,7 +40,8 @@
           "description": "Registergericht"
         },
         "registry-type": {
-          "type": "string"
+          "type": "string",
+          "description": "Registerart - Die Registerart macht die Registernummer zur Identifizierung der Organisation innerhalb des Registergerichts eindeutig (z. B. HRA und HRB als Registerarten für das Handelsregister)."
         },
         "registry-number": {
           "type": "string",
@@ -67,8 +60,9 @@
         },
         "legal-representatives": {
           "type": "array",
+          "description": "Namen der Mitglieder des Vertretungsorgans oder der gesetzlichen Vertreter",
           "items": {
-            "type": "object"
+            "$ref": "../person/individual.json"
           }
         }
       }

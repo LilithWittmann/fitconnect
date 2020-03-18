@@ -3,9 +3,6 @@
   "type": "object",
   "description": "Antragstellerdaten für eine natürliche Person",
   "properties": {
-    "role": {
-      "type": "string"
-    },
     "identifier": {
       "type": "array",
       "description": "IDs der natürlichen Person",

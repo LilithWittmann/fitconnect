@@ -401,6 +401,13 @@
                       "items": {
                         "type": "object",
                         "properties": {
+                          "doc-id": {
+                            "type": "string",
+                            "pattern": {
+                              "$ref": "../models/common/id-string.json#/pattern"
+                            },
+                            "description": "ID des Dokuments. Diese muss nur innerhalb des Antrags (Application) eindeutig sein. Es wird daher empfohlen, die IDs fortlaufend (1, 2 etc.) zu vergeben."
+                          },
                           "status": {
                             "type": "string",
                             "enum": [
@@ -415,6 +422,7 @@
                           }
                         },
                         "required": [
+                          "doc-id",
                           "status",
                           "length"
                         ]
@@ -460,7 +468,7 @@
         }
       ],
       "post": {
-        "summary": "Create Application",
+        "summary": "Create Transfer",
         "operationId": "create-transfer",
         "responses": {
           "201": {
@@ -573,7 +581,7 @@
         }
       ],
       "post": {
-        "summary": "Commit Application",
+        "summary": "Commit Transfer",
         "operationId": "commit-transfer",
         "responses": {
           "200": {
