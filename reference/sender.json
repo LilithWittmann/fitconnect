@@ -15,7 +15,12 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000"
+      "url": "https://xfall-sender-api.production.fiep-poc.de",
+      "description": "Produktionsumgebung der API."
+    },
+    {
+      "description": "Testumgebung der API.",
+      "url": "https://xfall-sender.sandbox.fiep-poc.de"
     }
   ],
   "paths": {
@@ -104,6 +109,16 @@
         },
         "tags": [
           "transfer"
+        ],
+        "security": [
+          {
+            "Production API Key": [
+              "application:apply"
+            ]
+          },
+          {
+            "Sandbox API Key": []
+          }
         ]
       }
     },
@@ -213,6 +228,16 @@
         },
         "tags": [
           "transfer"
+        ],
+        "security": [
+          {
+            "Production API Key": [
+              "application:apply"
+            ]
+          },
+          {
+            "Sandbox API Key": []
+          }
         ]
       }
     },
@@ -274,7 +299,17 @@
           }
         },
         "operationId": "get-application-status",
-        "description": "Ruft den aktuellen Status der Übermittlung ab."
+        "description": "Ruft den aktuellen Status der Übermittlung ab.",
+        "security": [
+          {
+            "Production API Key": [
+              "status:read"
+            ]
+          },
+          {
+            "Sandbox API Key": []
+          }
+        ]
       }
     },
     "/{source-id}/{application-id}/status/{status-nr}": {
@@ -332,6 +367,16 @@
         "description": "Ruft einen spezifischen Statuswechsel aus der Historie des Status ab.",
         "tags": [
           "status"
+        ],
+        "security": [
+          {
+            "Production API Key": [
+              "status:read"
+            ]
+          },
+          {
+            "Sandbox API Key": []
+          }
         ]
       }
     },
@@ -550,6 +595,11 @@
         "description": "Ruft die Information über eine Destination ab",
         "tags": [
           "destination"
+        ],
+        "security": [
+          {
+            "Production API Key": []
+          }
         ]
       }
     },
@@ -665,11 +715,22 @@
         "flows": {
           "clientCredentials": {
             "tokenUrl": "beispieltokenURL.de",
-            "scopes": {},
+            "scopes": {
+              "application:apply": "Dieser Zugriffsbereich erlaubt es Anträge anzulegen, diesen zu aktualisieren und abzusenden.",
+              "status:read": "Dieser Zufriffsbereich erlaubt es auf Statusmitteilungen zu einem übersendeten Antrag abzurufen.",
+              "destination-info:read": "Dieser Zufriffsbereich erlaubt es Informationen von existierenden Destinationsabzurufen",
+              "source:manage": "Dieser Zufriffsbereich erlaubt es alle Endpunkte einer "
+            },
             "refreshUrl": "beispielrefreshURL.de"
           }
         },
         "description": "Dieses Authentifizierungsmethode wird genutzt, um den Zugriff auf die Produktiv API zu autorisieren. "
+      },
+      "Sandbox API Key": {
+        "name": "API Key",
+        "type": "apiKey",
+        "in": "header",
+        "description": "Der API wird als Authentifizierungsmittel für die Sandbox API benutzt."
       }
     }
   }
