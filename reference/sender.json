@@ -401,13 +401,6 @@
                       "items": {
                         "type": "object",
                         "properties": {
-                          "doc-id": {
-                            "type": "string",
-                            "pattern": {
-                              "$ref": "../models/common/id-string.json#/pattern"
-                            },
-                            "description": "ID des Dokuments. Diese muss nur innerhalb des Antrags (Application) eindeutig sein. Es wird daher empfohlen, die IDs fortlaufend (1, 2 etc.) zu vergeben."
-                          },
                           "status": {
                             "type": "string",
                             "enum": [
@@ -419,6 +412,13 @@
                           "length": {
                             "type": "integer",
                             "minimum": 0
+                          },
+                          "doc-id": {
+                            "type": "string",
+                            "pattern": {
+                              "$ref": "../models/common/id-string.json#/pattern"
+                            },
+                            "description": "ID des Dokuments. Diese muss nur innerhalb des Antrags (Application) eindeutig sein. Es wird daher empfohlen, die IDs fortlaufend (1, 2 etc.) zu vergeben."
                           }
                         },
                         "required": [
@@ -657,5 +657,19 @@
     {
       "name": "source"
     }
-  ]
+  ],
+  "components": {
+    "securitySchemes": {
+      "Production API Key": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "",
+            "scopes": {}
+          }
+        },
+        "description": "Dieses Authentifizierungsmethode wird genutzt, um den Zugriff auf die Produktiv API zu autorisieren. "
+      }
+    }
+  }
 }
