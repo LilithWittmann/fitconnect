@@ -76,7 +76,19 @@
           }
         },
         "operationId": "get-application-document",
-        "description": "Ruf ein Dokument (Formular oder Anlage) der Application ab."
+        "description": "Ruf ein Dokument (Formular oder Anlage) der Application ab.",
+        "security": [
+          {
+            "Production API Key": [
+              "{subscriber-id}:application:read",
+              "{subscriber-id}:{destination-id}:application:read",
+              "{subscriber-id}:manage"
+            ]
+          },
+          {
+            "Sandbox API Key": []
+          }
+        ]
       }
     },
     "/{subscriber-id}/destinations/{destination-id}/applications/{application-id}/data": {
@@ -134,7 +146,19 @@
           }
         },
         "operationId": "get-application-data",
-        "description": "Ruft die Fachdaten der Application ab."
+        "description": "Ruft die Fachdaten der Application ab.",
+        "security": [
+          {
+            "Production API Key": [
+              "{subscriber-id}:application:read",
+              "{subscriber-id}:{destination-id}:application:read",
+              "{subscriber-id}:manage"
+            ]
+          },
+          {
+            "Sandbox API Key": []
+          }
+        ]
       }
     },
     "/{subscriber-id}/destinations/{destination-id}/applications/{application-id}": {
@@ -291,7 +315,19 @@
           }
         },
         "operationId": "get-application",
-        "description": "Ruft eine wartende Application ab."
+        "description": "Ruft eine wartende Application ab.",
+        "security": [
+          {
+            "Production API Key": [
+              "{subscriber-id}:application:read",
+              "{subscriber-id}:{destination-id}:application:read",
+              "{subscriber-id}:manage"
+            ]
+          },
+          {
+            "Sandbox API Key": []
+          }
+        ]
       },
       "post": {
         "summary": "Commit Application",
@@ -333,7 +369,19 @@
             }
           },
           "description": "Details der Quittung"
-        }
+        },
+        "security": [
+          {
+            "Production API Key": [
+              "{subscriber-id}:application:read",
+              "{subscriber-id}:{destination-id}:application:read",
+              "{subscriber-id}:manage"
+            ]
+          },
+          {
+            "Sandbox API Key": []
+          }
+        ]
       }
     },
     "/{subscriber-id}/destinations/{destination-id}/applications": {
@@ -490,7 +538,19 @@
             }
           }
         },
-        "description": "Ruft die Liste der wartenden Applications ab."
+        "description": "Ruft die Liste der wartenden Applications ab.",
+        "security": [
+          {
+            "Production API Key": [
+              "{subscriber-id}:application:read",
+              "{subscriber-id}:{destination-id}:application:read",
+              "{subscriber-id}:manage"
+            ]
+          },
+          {
+            "Sandbox API Key": []
+          }
+        ]
       }
     },
     "/{subscriber-id}/destinations/{destination-id}": {
@@ -577,7 +637,20 @@
           }
         },
         "operationId": "get-destination",
-        "description": "Übertragungsziel abfragen"
+        "description": "Übertragungsziel abfragen",
+        "requestBody": {},
+        "security": [
+          {
+            "Production API Key": [
+              "{subscriber-id}:destination:read",
+              "{subscriber-id}:destination:manage",
+              "{subscriber-id}:{destination-id}:read"
+            ]
+          },
+          {
+            "Sandbox API Key": []
+          }
+        ]
       },
       "put": {
         "summary": "Update Destination",
@@ -725,7 +798,17 @@
           }
         },
         "operationId": "list-destinations",
-        "description": "Ruft die Liste aller Destinations dieses Accounts auf."
+        "description": "Ruft die Liste aller Destinations dieses Accounts auf.",
+        "security": [
+          {
+            "Production API Key": [
+              "{subscriber-id}:destination:read"
+            ]
+          },
+          {
+            "Sandbox API Key": []
+          }
+        ]
       },
       "post": {
         "summary": "Create Destination",
@@ -812,5 +895,36 @@
     {
       "name": "transfer"
     }
-  ]
+  ],
+  "components": {
+    "securitySchemes": {
+      "Production API Key": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "",
+            "refreshUrl": "",
+            "scopes": {
+              "{subscriber-id}:destination:read": "Dieser Zugriffsbereich erlaubt bei allen Destination-Informationen ein lesender Zugriff.",
+              "{subscriber-id}:destination:create": "Der Zugriffsbereich erlaubt Destinations neu anzulegen und zu verändern.",
+              "{subscriber-id}:destination:update": "Dieser Zugriffsbereich erlaubt es, bestehende Destinations zu verändern.",
+              "{subscriber-id}:destination:manage": "Dieser Zugriffsbereich alle Destination Endpunkte eines Subscriber genutzt werden.",
+              "{subscriber-id}:{destination-id}:read": "Mit diesem Zugriffsbereich wird ein lesender Zugriff auf eine spezifische Destination ermöglicht.",
+              "{subscriber-id}:{destination-id}:update": "Mit diesem Zugriffsbereich wird ein lesender Zugriff auf eine spezifische Destination ermöglicht.",
+              "{subscriber-id}:application:read": "Dieser Zugriffsbereich erlaubt einen lesenden Zugriff auf Anträge in allen Destinations",
+              "{subscriber-id}:{destination-id}:application:read": "Dieser Zugriffsbereich erlaubt einen lesenden Zugriff auf Anträge in spezifischen Destinations",
+              "{subscriber-id}:manage": "Dieser Zugriffsbereich die vollständige Nutzung aller Endpunkte eines Subscribers"
+            }
+          }
+        },
+        "description": "Dieses Authentifizierungsmethode wird genutzt, um den Zugriff auf die Produktiv API zu autorisieren. "
+      },
+      "Sandbox API Key": {
+        "name": "API Key",
+        "type": "apiKey",
+        "in": "header",
+        "description": "Der API wird als Authentifizierungsmittel für die Sandbox API benutzt."
+      }
+    }
+  }
 }

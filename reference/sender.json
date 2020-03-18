@@ -113,7 +113,8 @@
         "security": [
           {
             "Production API Key": [
-              "application:apply"
+              "application:apply",
+              "source:manage"
             ]
           },
           {
@@ -232,7 +233,8 @@
         "security": [
           {
             "Production API Key": [
-              "application:apply"
+              "application:apply",
+              "source:manage"
             ]
           },
           {
@@ -303,7 +305,8 @@
         "security": [
           {
             "Production API Key": [
-              "status:read"
+              "status:read",
+              "source:manage"
             ]
           },
           {
@@ -371,7 +374,8 @@
         "security": [
           {
             "Production API Key": [
-              "status:read"
+              "status:read",
+              "source:manage"
             ]
           },
           {
@@ -490,7 +494,18 @@
           }
         },
         "operationId": "get-application-upload-status",
-        "description": "Abfrage des Übermittlungsstatus. Listet alle Unterresourcen (data und docs) mit Übermittlungsstatus auf."
+        "description": "Abfrage des Übermittlungsstatus. Listet alle Unterresourcen (data und docs) mit Übermittlungsstatus auf.",
+        "security": [
+          {
+            "Production API Key": [
+              "application:apply",
+              "source:manage"
+            ]
+          },
+          {
+            "Sandbox API Key": []
+          }
+        ]
       }
     },
     "/{source-id}/{destination-id}": {
@@ -598,7 +613,10 @@
         ],
         "security": [
           {
-            "Production API Key": []
+            "Production API Key": [
+              "destination-info:read",
+              "source:manage"
+            ]
           }
         ]
       }
@@ -690,7 +708,18 @@
             }
           },
           "description": ""
-        }
+        },
+        "security": [
+          {
+            "Production API Key": [
+              "application:apply",
+              "source:manage"
+            ]
+          },
+          {
+            "Sandbox API Key": []
+          }
+        ]
       }
     }
   },
@@ -716,10 +745,10 @@
           "clientCredentials": {
             "tokenUrl": "beispieltokenURL.de",
             "scopes": {
-              "application:apply": "Dieser Zugriffsbereich erlaubt es Anträge anzulegen, diesen zu aktualisieren und abzusenden.",
-              "status:read": "Dieser Zufriffsbereich erlaubt es auf Statusmitteilungen zu einem übersendeten Antrag abzurufen.",
-              "destination-info:read": "Dieser Zufriffsbereich erlaubt es Informationen von existierenden Destinationsabzurufen",
-              "source:manage": "Dieser Zufriffsbereich erlaubt es alle Endpunkte einer "
+              "{source-id}:application:apply": "Dieser Zugriffsbereich erlaubt es Anträge anzulegen, diesen zu aktualisieren und abzusenden.",
+              "{source-id}:status:read": "Dieser Zufriffsbereich erlaubt es auf Statusmitteilungen zu einem übersendeten Antrag abzurufen.",
+              "{source-id}:destination-info:read": "Dieser Zufriffsbereich erlaubt es Informationen von existierenden Destinationsabzurufen",
+              "{source-id}:source:manage": "Dieser Zufriffsbereich erlaubt es alle Endpunkte einer "
             },
             "refreshUrl": "beispielrefreshURL.de"
           }
