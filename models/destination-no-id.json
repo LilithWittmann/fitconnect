@@ -4,7 +4,7 @@
   "description": "Daten eines technischen Übergabepunkts (Ziel der Übertragung - z.B. ein Fachverfahren) noch ohne ID, zum Anlegen eines neuen Übergabepunkts. Nach dem Zuweisen der `destination-id` wird das Modell [Destination](destination.json) verwendet.",
   "x-examples": {
     "example-1": {
-      "organization": {
+      "public-organization": {
         "organization-name": "Gewerbeamt Musterhausen"
       },
       "technical-contact": [
@@ -28,14 +28,63 @@
     }
   },
   "properties": {
-    "organization": {
-      "$ref": "./person/public-organization.json"
+    "public-organization": {
+      "type": "object",
+      "properties": {
+        "organization-name": {
+          "type": ",string"
+        },
+        "address": {
+          "description": "Adresse als Alternative (Choice) von nationaler und internationaler Adresse.",
+          "oneOf": [
+            {
+              "$ref": "./common/address-national.json"
+            },
+            {
+              "$ref": "./common/address-international.json"
+            }
+          ]
+        },
+        "identifiers": {
+          "type": "array",
+          "description": "Externe Identifikatoren der Person",
+          "items": {
+            "$ref": "./common/identifier.json"
+          }
+        },
+        "contact": {
+          "description": "Kontaktmöglichkeiten der Behörde",
+          "type": "object",
+          "properties": {
+            "telephone": {
+              "type": "array",
+              "description": "Liste der Telefonnummern, außer Fax",
+              "items": {
+                "$ref": "./common/phone.json"
+              }
+            },
+            "email": {
+              "type": "string",
+              "format": "email",
+              "description": "E-Mail-Adresse"
+            },
+            "www": {
+              "type": "string",
+              "format": "uri",
+              "description": "Webadresse"
+            },
+            "telefax": {
+              "$ref": "./common/phone.json#/properties/number"
+            }
+          }
+        }
+      }
     },
     "technical-contact": {
       "type": "array",
       "description": "Technischer Ansprechpartner",
       "items": {
-        "$ref": "./person/individual.json"
+        "$ref": "./common/individual.json"
       }
     },
     "schemas": {
