@@ -20,7 +20,7 @@
     },
     {
       "description": "Testumgebung der API.",
-      "url": "https://xfall-sender.sandbox.fiep-poc.de"
+      "url": "https://xfall-sender-api.sandbox.fiep-poc.de"
     }
   ],
   "paths": {
@@ -580,7 +580,18 @@
           },
           "description": "Transfer"
         },
-        "description": "Übertragung initiieren"
+        "description": "Übertragung initiieren",
+        "security": [
+          {
+            "Production API Key": [
+              "{source-id}:application:apply",
+              "{source-id}:source:manage"
+            ]
+          },
+          {
+            "Sandbox API Key": []
+          }
+        ]
       },
       "get": {
         "summary": "Get Destination",
