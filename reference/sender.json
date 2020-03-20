@@ -103,7 +103,7 @@
           "description": "JSON oder XML Daten"
         },
         "tags": [
-          "transfer"
+          "Application Transfer"
         ]
       }
     },
@@ -212,7 +212,7 @@
           }
         },
         "tags": [
-          "transfer"
+          "Application Transfer"
         ]
       }
     },
@@ -237,9 +237,6 @@
       ],
       "get": {
         "summary": "Get Status",
-        "tags": [
-          "status"
-        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -249,12 +246,12 @@
                   "type": "object",
                   "properties": {
                     "current": {
-                      "$ref": "../models/status.json"
+                      "$ref": "../models/status-overview.json"
                     },
                     "history": {
                       "type": "array",
                       "items": {
-                        "$ref": "../models/status.json"
+                        "$ref": "../models/status-overview.json"
                       }
                     }
                   }
@@ -274,7 +271,11 @@
           }
         },
         "operationId": "get-application-status",
-        "description": "Ruft den aktuellen Status der Übermittlung ab."
+        "description": "Ruft den aktuellen Status der Übermittlung sowie einer Übersicht der bisherigen Übertragungshistorie ab.",
+        "parameters": [],
+        "tags": [
+          "Transfer related Information"
+        ]
       }
     },
     "/{source-id}/{application-id}/status/{status-nr}": {
@@ -303,37 +304,7 @@
           "in": "path",
           "required": true
         }
-      ],
-      "get": {
-        "summary": "Get Status Entry",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/status.json"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error.json"
-                }
-              }
-            }
-          }
-        },
-        "operationId": "get-application-status-entry",
-        "description": "Ruft einen spezifischen Statuswechsel aus der Historie des Status ab.",
-        "tags": [
-          "status"
-        ]
-      }
+      ]
     },
     "/{source-id}/{destination-id}/{application-id}/upload-status": {
       "parameters": [
@@ -364,9 +335,6 @@
       ],
       "get": {
         "summary": "Get Application Upload Status",
-        "tags": [
-          "transfer"
-        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -445,7 +413,10 @@
           }
         },
         "operationId": "get-application-upload-status",
-        "description": "Abfrage des Übermittlungsstatus. Listet alle Unterresourcen (data und docs) mit Übermittlungsstatus auf."
+        "description": "Abfrage des Übermittlungsstatus. Listet alle Unterresourcen (data und docs) mit Übermittlungsstatus auf.",
+        "tags": [
+          "Transfer related Information"
+        ]
       }
     },
     "/{source-id}/{destination-id}": {
@@ -507,9 +478,6 @@
             }
           }
         },
-        "tags": [
-          "transfer"
-        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -520,7 +488,10 @@
           },
           "description": "Metadaten des Antrags"
         },
-        "description": "Übertragung initiieren"
+        "description": "Übertragung initiieren",
+        "tags": [
+          "Application Transfer"
+        ]
       },
       "get": {
         "summary": "Get Destination",
@@ -549,7 +520,7 @@
         },
         "description": "Ruft die Information über eine Destination ab",
         "tags": [
-          "destination"
+          "Transfer related Information"
         ]
       }
     },
@@ -627,9 +598,6 @@
         },
         "description": "Übertragung abschließen, Antrag absenden",
         "parameters": [],
-        "tags": [
-          "transfer"
-        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -640,22 +608,19 @@
             }
           },
           "description": ""
-        }
+        },
+        "tags": [
+          "Application Transfer"
+        ]
       }
     }
   },
   "tags": [
     {
-      "name": "transfer"
+      "name": "Application Transfer"
     },
     {
-      "name": "status"
-    },
-    {
-      "name": "destination"
-    },
-    {
-      "name": "source"
+      "name": "Transfer related Infos"
     }
   ]
 }
