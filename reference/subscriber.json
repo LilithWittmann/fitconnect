@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Application Subscriber API",
-    "version": "1.0",
+    "version": "0.2",
     "description": "API vom Fachverfahren zum Zustelldienst",
     "contact": {
       "name": "FITKO",
@@ -56,6 +56,9 @@
       ],
       "get": {
         "summary": "Get Application Document",
+        "tags": [
+          "Application Retrieval"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -73,10 +76,7 @@
           }
         },
         "operationId": "get-application-document",
-        "description": "Ruf ein Dokument (Formular oder Anlage) der Application ab.",
-        "tags": [
-          "Application Retrieval"
-        ]
+        "description": "Ruf ein Dokument (Formular oder Anlage) der Application ab."
       }
     },
     "/{subscriber-id}/destinations/{destination-id}/applications/{application-id}/data": {
@@ -108,6 +108,9 @@
       ],
       "get": {
         "summary": "Get Application Data",
+        "tags": [
+          "Application Retrieval"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -143,10 +146,7 @@
           }
         },
         "operationId": "get-application-data",
-        "description": "Ruft die Fachdaten der Application ab.\n\nBeispiele:\n#### JSON\n```json\n{\n    \"F99000001\": \"Eins\",\n    \"G99000001\": {\n        \"F99000002\": \"Zwei\",\n        \"F99000003\": \"Drei\"\n    }\n}\n```\n\n#### XML\n```xml\n<S99000001>\n  <F99000001>Eins</F99000001>\n  <G99000001>\n    <F99000002>Zwei</F99000002>\n    <F99000003>Drei</F99000003>\n  </G99000001>\n</S99000001>\n```",
-        "tags": [
-          "Application Retrieval"
-        ]
+        "description": "Ruft die Fachdaten der Application ab.\n\nBeispiele:\n#### JSON\n```json\n{\n    \"F99000001\": \"Eins\",\n    \"G99000001\": {\n        \"F99000002\": \"Zwei\",\n        \"F99000003\": \"Drei\"\n    }\n}\n```\n\n#### XML\n```xml\n<S99000001>\n  <F99000001>Eins</F99000001>\n  <G99000001>\n    <F99000002>Zwei</F99000002>\n    <F99000003>Drei</F99000003>\n  </G99000001>\n</S99000001>\n```"
       }
     },
     "/{subscriber-id}/destinations/{destination-id}/applications/{application-id}": {
@@ -178,6 +178,9 @@
       ],
       "get": {
         "summary": "Get Application Metadata",
+        "tags": [
+          "Application Retrieval"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -300,10 +303,7 @@
           }
         },
         "operationId": "get-application",
-        "description": "Ruft eine wartende Application ab.",
-        "tags": [
-          "Application Retrieval"
-        ]
+        "description": "Ruft eine wartende Application ab."
       },
       "post": {
         "summary": "Acknowledge Application",
@@ -326,6 +326,9 @@
             "description": "Expectation Failed - Status passt nicht"
           }
         },
+        "tags": [
+          "Application Retrieval"
+        ],
         "description": "Bestätigt die Abholung der Application. Über den Parameter `final-delivery` im Body wird gesteuert, wie der Folgestatus aussieht:\n\n| final-delivery | status      |\n| -------------- | ----------- |\n| `false`        | \"forwarded\" |\n| `true`         | \"delivered\" |\n\nDer Parameter `final-delivery` zeigt an, ob der Antrag noch weitergesendet wird (`false`) oder das finale Ziel erreicht hat (`true`).\n\nSofern der Wert `false` übergeben wurde, muss zu einem späteren Zeitpunkt, wenn der Antrag final zugestellt wurde, ein weiterer Aufruf mit dem Wert `true` erfolgen.",
         "requestBody": {
           "content": {
@@ -342,10 +345,7 @@
             }
           },
           "description": "Details der Quittung"
-        },
-        "tags": [
-          "Application Retrieval"
-        ]
+        }
       }
     },
     "/{subscriber-id}/destinations/{destination-id}/applications": {
@@ -369,6 +369,9 @@
       ],
       "get": {
         "summary": "List Applications",
+        "tags": [
+          "Application Retrieval"
+        ],
         "operationId": "list-applications",
         "responses": {
           "200": {
@@ -499,10 +502,7 @@
             }
           }
         },
-        "description": "Ruft die Liste der wartenden Applications ab.",
-        "tags": [
-          "Application Retrieval"
-        ]
+        "description": "Ruft die Liste der wartenden Applications ab."
       }
     },
     "/{subscriber-id}/destinations/{destination-id}": {
@@ -526,6 +526,9 @@
       ],
       "get": {
         "summary": "Get Destination",
+        "tags": [
+          "Destination Management"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -586,10 +589,7 @@
           }
         },
         "operationId": "get-destination",
-        "description": "Übertragungsziel abfragen",
-        "tags": [
-          "Destination Management"
-        ]
+        "description": "Übertragungsziel abfragen"
       },
       "put": {
         "summary": "Update Destination",
@@ -609,6 +609,9 @@
             }
           }
         },
+        "tags": [
+          "Destination Management"
+        ],
         "description": "Übertragungsziel aktualisieren",
         "requestBody": {
           "content": {
@@ -646,10 +649,7 @@
               }
             }
           }
-        },
-        "tags": [
-          "Destination Management"
-        ]
+        }
       },
       "delete": {
         "summary": "Delete Destination",
@@ -669,10 +669,10 @@
             }
           }
         },
-        "description": "Übertragungsziel löschen",
         "tags": [
           "Destination Management"
-        ]
+        ],
+        "description": "Übertragungsziel löschen"
       }
     },
     "/{subscriber-id}/destinations": {
@@ -688,6 +688,9 @@
       ],
       "get": {
         "summary": "List Destinations",
+        "tags": [
+          "Destination Management"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -734,10 +737,7 @@
           }
         },
         "operationId": "list-destinations",
-        "description": "Ruft die Liste aller Destinations dieses Accounts auf.",
-        "tags": [
-          "Destination Management"
-        ]
+        "description": "Ruft die Liste aller Destinations dieses Accounts auf."
       },
       "post": {
         "summary": "Create Destination",

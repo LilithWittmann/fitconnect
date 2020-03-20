@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Application Sender API",
-    "version": "1.0",
+    "version": "0.2",
     "description": "API vom Onlineantragsdienst zum Zustelldienst",
     "contact": {
       "name": "FITKO",
@@ -237,6 +237,9 @@
       ],
       "get": {
         "summary": "Get Status",
+        "tags": [
+          "Transfer related Information"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -272,10 +275,7 @@
         },
         "operationId": "get-application-status",
         "description": "Ruft den aktuellen Status der Übermittlung sowie einer Übersicht der bisherigen Übertragungshistorie ab.",
-        "parameters": [],
-        "tags": [
-          "Transfer related Information"
-        ]
+        "parameters": []
       }
     },
     "/{source-id}/{application-id}/status/{status-nr}": {
@@ -335,6 +335,9 @@
       ],
       "get": {
         "summary": "Get Application Upload Status",
+        "tags": [
+          "Transfer related Information"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -413,10 +416,7 @@
           }
         },
         "operationId": "get-application-upload-status",
-        "description": "Abfrage des Übermittlungsstatus. Listet alle Unterresourcen (data und docs) mit Übermittlungsstatus auf.",
-        "tags": [
-          "Transfer related Information"
-        ]
+        "description": "Abfrage des Übermittlungsstatus. Listet alle Unterresourcen (data und docs) mit Übermittlungsstatus auf."
       }
     },
     "/{source-id}/{destination-id}": {
@@ -478,6 +478,9 @@
             }
           }
         },
+        "tags": [
+          "Application Transfer"
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -488,10 +491,7 @@
           },
           "description": "Metadaten des Antrags"
         },
-        "description": "Übertragung initiieren",
-        "tags": [
-          "Application Transfer"
-        ]
+        "description": "Übertragung initiieren"
       },
       "get": {
         "summary": "Get Destination",
@@ -598,6 +598,9 @@
         },
         "description": "Übertragung abschließen, Antrag absenden",
         "parameters": [],
+        "tags": [
+          "Application Transfer"
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -608,10 +611,7 @@
             }
           },
           "description": ""
-        },
-        "tags": [
-          "Application Transfer"
-        ]
+        }
       }
     }
   },
