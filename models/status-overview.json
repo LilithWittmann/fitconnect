@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "title": "Status",
+  "title": "Statusübersicht",
   "description": "Status der Zustellung eines Antrags:\n- `incomplete`: Die Einlieferung von der Source hat begonnen\n- `queued`: Die Übertragung wurde vollständig eingeliefert und akzeptiert\n- `sending`: Die Weitergabe wurde begonnen\n- `forwarded`: Die Übertragung an die direkt angebundene Destination wurde abgeschlossen\n- `delivered`: Die Übertragung hat den vorgesehen Endpunkt erreicht",
   "additionalProperties": false,
   "properties": {
@@ -15,14 +15,20 @@
       ],
       "description": "Code für den Status (incomplete, queued, sending, forwarded, delivered)"
     },
-    "since": {
+    "status-date": {
       "type": "string",
       "format": "date-time",
       "description": "Zeitpunkt, zu dem der Status sich geändert hat"
+    },
+    "status-nr": {
+      "type": "number",
+      "description": "Chonologische Nummierung der Statusmeldungen für einen Antrag.",
+      "minimum": 1
     }
   },
   "required": [
     "code",
-    "since"
+    "status-date",
+    "status-nr"
   ]
 }
