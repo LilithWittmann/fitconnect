@@ -61,9 +61,6 @@
       ],
       "get": {
         "summary": "Get Application Document",
-        "tags": [
-          "transfer"
-        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -82,6 +79,9 @@
         },
         "operationId": "get-application-document",
         "description": "Ruf ein Dokument (Formular oder Anlage) der Application ab.",
+        "tags": [
+          "transfer"
+        ],
         "security": [
           {
             "Production API Key": [
@@ -125,9 +125,6 @@
       ],
       "get": {
         "summary": "Get Application Data",
-        "tags": [
-          "transfer"
-        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -152,6 +149,9 @@
         },
         "operationId": "get-application-data",
         "description": "Ruft die Fachdaten der Application ab.",
+        "tags": [
+          "transfer"
+        ],
         "security": [
           {
             "Production API Key": [
@@ -195,9 +195,6 @@
       ],
       "get": {
         "summary": "Get Application Metadata",
-        "tags": [
-          "transfer"
-        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -321,6 +318,9 @@
         },
         "operationId": "get-application",
         "description": "Ruft eine wartende Application ab.",
+        "tags": [
+          "transfer"
+        ],
         "security": [
           {
             "Production API Key": [
@@ -355,9 +355,6 @@
             "description": "Expectation Failed - Status passt nicht"
           }
         },
-        "tags": [
-          "transfer"
-        ],
         "description": "Bestätigt die Abholung der Application. Über den Parameter `final-delivery` im Body wird gesteuert, wie der Folgestatus aussieht:\n\n| final-delivery | status      |\n| -------------- | ----------- |\n| `false`        | \"forwarded\" |\n| `true`         | \"delivered\" |\n\nDer Parameter `final-delivery` zeigt an, ob der Antrag noch weitergesendet wird (`false`) oder das finale Ziel erreicht hat (`true`).\n\nSofern der Wert `false` übergeben wurde, muss zu einem späteren Zeitpunkt, wenn der Antrag final zugestellt wurde, ein weiterer Aufruf mit dem Wert `true` erfolgen.",
         "requestBody": {
           "content": {
@@ -375,6 +372,9 @@
           },
           "description": "Details der Quittung"
         },
+        "tags": [
+          "transfer"
+        ],
         "security": [
           {
             "Production API Key": [
@@ -410,9 +410,6 @@
       ],
       "get": {
         "summary": "List Applications",
-        "tags": [
-          "transfer"
-        ],
         "operationId": "list-applications",
         "responses": {
           "200": {
@@ -544,6 +541,9 @@
           }
         },
         "description": "Ruft die Liste der wartenden Applications ab.",
+        "tags": [
+          "transfer"
+        ],
         "security": [
           {
             "Production API Key": [
@@ -579,9 +579,6 @@
       ],
       "get": {
         "summary": "Get Destination",
-        "tags": [
-          "destination"
-        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -643,6 +640,9 @@
         },
         "operationId": "get-destination",
         "description": "Übertragungsziel abfragen",
+        "tags": [
+          "destination"
+        ],
         "security": [
           {
             "Production API Key": [
@@ -674,9 +674,6 @@
             }
           }
         },
-        "tags": [
-          "destination"
-        ],
         "description": "Übertragungsziel aktualisieren",
         "requestBody": {
           "content": {
@@ -714,7 +711,23 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "destination"
+        ],
+        "security": [
+          {
+            "Production API Key": [
+              "{subscriber-id}:manage",
+              "{subscriber-id}:{destination-id}:update",
+              "{subscriber-id}:destination:update",
+              "{subscriber-id}:destination:manage"
+            ]
+          },
+          {
+            "Sandbox API Key": []
+          }
+        ]
       },
       "delete": {
         "summary": "Delete Destination",
@@ -734,10 +747,22 @@
             }
           }
         },
+        "description": "Übertragungsziel löschen",
         "tags": [
           "destination"
         ],
-        "description": "Übertragungsziel löschen"
+        "security": [
+          {
+            "Production API Key": [
+              "{subscriber-id}:manage",
+              "{subscriber-id}:destination:manage",
+              "{subscriber-id}:destination:delete"
+            ]
+          },
+          {
+            "Sandbox API Key": []
+          }
+        ]
       }
     },
     "/{subscriber-id}/destinations": {
@@ -753,9 +778,6 @@
       ],
       "get": {
         "summary": "List Destinations",
-        "tags": [
-          "destination"
-        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -803,10 +825,14 @@
         },
         "operationId": "list-destinations",
         "description": "Ruft die Liste aller Destinations dieses Accounts auf.",
+        "tags": [
+          "destination"
+        ],
         "security": [
           {
             "Production API Key": [
-              "{subscriber-id}:destination:read"
+              "{subscriber-id}:destination:read",
+              "{subscriber-id}:manage"
             ]
           },
           {
@@ -917,7 +943,8 @@
               "{subscriber-id}:{destination-id}:update": "Mit diesem Zugriffsbereich wird ein lesender Zugriff auf eine spezifische Destination ermöglicht.",
               "{subscriber-id}:application:read": "Dieser Zugriffsbereich erlaubt einen lesenden Zugriff auf Anträge in allen Destinations",
               "{subscriber-id}:{destination-id}:application:read": "Dieser Zugriffsbereich erlaubt einen lesenden Zugriff auf Anträge in spezifischen Destinations",
-              "{subscriber-id}:manage": "Dieser Zugriffsbereich die vollständige Nutzung aller Endpunkte eines Subscribers"
+              "{subscriber-id}:manage": "Dieser Zugriffsbereich die vollständige Nutzung aller Endpunkte eines Subscribers",
+              "{subscriber-id}:destination:delete": "Dieser Zugriffsbereich erlaubt die Löschung von Destinations eines Accounts"
             }
           }
         },
