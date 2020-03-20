@@ -119,13 +119,25 @@
                 "schema": {
                   "type": "object",
                   "properties": {}
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "F99000001": "Eins",
+                      "G99000001": {
+                        "F99000002": "Zwei",
+                        "F99000003": "Drei"
+                      }
+                    }
+                  }
                 }
               },
               "application/xml": {
                 "schema": {
                   "type": "object",
                   "properties": {}
-                }
+                },
+                "examples": {}
               }
             }
           },
@@ -134,7 +146,7 @@
           }
         },
         "operationId": "get-application-data",
-        "description": "Ruft die Fachdaten der Application ab."
+        "description": "Ruft die Fachdaten der Application ab.\n\nBeispiele:\n#### JSON\n```json\n{\n    \"F99000001\": \"Eins\",\n    \"G99000001\": {\n        \"F99000002\": \"Zwei\",\n        \"F99000003\": \"Drei\"\n    }\n}\n```\n\n#### XML\n```xml\n<S99000001>\n  <F99000001>Eins</F99000001>\n  <G99000001>\n    <F99000002>Zwei</F99000002>\n    <F99000003>Drei</F99000003>\n  </G99000001>\n</S99000001>\n```"
       }
     },
     "/{subscriber-id}/destinations/{destination-id}/applications/{application-id}": {
@@ -294,8 +306,8 @@
         "description": "Ruft eine wartende Application ab."
       },
       "post": {
-        "summary": "Commit Application",
-        "operationId": "commit-application",
+        "summary": "Acknowledge Application",
+        "operationId": "ack-application",
         "responses": {
           "200": {
             "description": "OK"

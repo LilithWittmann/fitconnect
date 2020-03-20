@@ -64,7 +64,7 @@
             }
           },
           "410": {
-            "description": "Gone - Transfer-ID ungültig/Transfer-Timeout",
+            "description": "Gone - Application-ID ungültig/Transfer-Timeout",
             "content": {
               "application/json": {
                 "schema": {
@@ -170,7 +170,7 @@
             }
           },
           "410": {
-            "description": "Gone - Transfer-ID ungültig/Transfer-Timeout",
+            "description": "Gone - Application-ID ungültig/Transfer-Timeout",
             "content": {
               "application/json": {
                 "schema": {
@@ -468,8 +468,8 @@
         }
       ],
       "post": {
-        "summary": "Create Transfer",
-        "operationId": "create-transfer",
+        "summary": "Create Application",
+        "operationId": "create-application",
         "responses": {
           "201": {
             "description": "Created",
@@ -518,7 +518,7 @@
               }
             }
           },
-          "description": "Transfer"
+          "description": "Metadaten des Antrags"
         },
         "description": "Übertragung initiieren"
       },
@@ -581,8 +581,8 @@
         }
       ],
       "post": {
-        "summary": "Commit Transfer",
-        "operationId": "commit-transfer",
+        "summary": "Send Application",
+        "operationId": "commit-application",
         "responses": {
           "200": {
             "description": "OK",
@@ -605,7 +605,7 @@
             }
           },
           "410": {
-            "description": "Gone - Transfer-ID ungültig/Transfer-Timeout",
+            "description": "Gone - Application-ID ungültig/Transfer-Timeout",
             "content": {
               "application/json": {
                 "schema": {
@@ -625,7 +625,7 @@
             }
           }
         },
-        "description": "Übertragung abschließen",
+        "description": "Übertragung abschließen, Antrag absenden",
         "parameters": [],
         "tags": [
           "transfer"
