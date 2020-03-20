@@ -6,29 +6,28 @@
   "properties": {
     "code": {
       "type": "string",
+      "description": "Code für den Status (incomplete, queued, sending, forwarded, delivered)",
       "enum": [
         "incomplete",
         "queued",
-        "sending",
         "forwarded",
         "delivered"
-      ],
-      "description": "Code für den Status (incomplete, queued, sending, forwarded, delivered)"
+      ]
     },
-    "status-date": {
+    "timestamp": {
       "type": "string",
       "format": "date-time",
       "description": "Zeitpunkt, zu dem der Status sich geändert hat"
     },
-    "status-nr": {
-      "type": "number",
+    "number": {
+      "type": "integer",
       "description": "Chonologische Nummierung der Statusmeldungen für einen Antrag.",
       "minimum": 1
     }
   },
   "required": [
     "code",
-    "status-date",
-    "status-nr"
+    "timestamp",
+    "number"
   ]
 }
