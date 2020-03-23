@@ -1,35 +1,23 @@
 {
-  "title": "encryption-envelope",
-  "type": "object",
-  "properties": {
-    "content-structure": {
+  "title": "Encryption Envelope",
+  "allOf": [
+    {
       "type": "object",
       "properties": {
-        "data": {
-          "type": "object",
-          "required": [
-            "size"
-          ],
-          "properties": {
-            "size": {
-              "type": "integer"
-            }
-          }
-        },
-        "docs": {
-          "type": "array",
-          "items": {
-            "$ref": "./encrypted-document.json"
-          }
+        "application-id": {
+          "type": "string",
+          "pattern": {
+            "$ref": "../common/id-string.json#/pattern"
+          },
+          "description": "ID des Antrags"
         }
       },
       "required": [
-        "data",
-        "docs"
+        "application-id"
       ]
     },
-    "public-service-type": {
-      "$ref": "./public-service-type.json"
+    {
+      "$ref": "./encryption-envelope-no-id.json"
     }
-  }
+  ]
 }

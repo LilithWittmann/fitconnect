@@ -1,0 +1,36 @@
+{
+  "title": "Encryption Envelope without ID",
+  "type": "object",
+  "properties": {
+    "content-structure": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "required": [
+            "size"
+          ],
+          "properties": {
+            "size": {
+              "type": "integer"
+            }
+          }
+        },
+        "docs": {
+          "type": "array",
+          "items": {
+            "$ref": "./encrypted-document.json"
+          }
+        }
+      },
+      "required": [
+        "data",
+        "docs"
+      ]
+    },
+    "public-service-type": {
+      "$ref": "./public-service-type.json"
+    }
+  },
+  "description": ""
+}

@@ -138,6 +138,12 @@
                   "properties": {}
                 },
                 "examples": {}
+              },
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
               }
             }
           },
@@ -187,7 +193,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/application/metadata.json"
+                  "oneOf": [
+                    {
+                      "$ref": "../models/application/metadata.json"
+                    },
+                    {
+                      "$ref": "../models/application/encryption-envelope.json"
+                    }
+                  ]
                 },
                 "examples": {
                   "example-1": {
@@ -381,7 +394,16 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "../models/application/metadata.json"
+                    "type": "object",
+                    "properties": {
+                      "application-id": {
+                        "type": "string",
+                        "pattern": {
+                          "$ref": "../common/id-string.json#/pattern"
+                        },
+                        "description": "ID des Antrags"
+                      }
+                    }
                   }
                 },
                 "examples": {

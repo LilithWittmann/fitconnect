@@ -98,9 +98,15 @@
                 "type": "object",
                 "properties": {}
               }
+            },
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
             }
           },
-          "description": "JSON oder XML Daten"
+          "description": "JSON, XML oder verschlüsselte Daten"
         },
         "tags": [
           "Application Transfer"
@@ -485,7 +491,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "../models/application/metadata-no-id.json"
+                "oneOf": [
+                  {
+                    "$ref": "../models/application/metadata-no-id.json"
+                  },
+                  {
+                    "$ref": "../models/application/encryption-envelope-no-id.json"
+                  }
+                ]
               }
             }
           },
