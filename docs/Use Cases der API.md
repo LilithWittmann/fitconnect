@@ -28,3 +28,12 @@ Ein Entscheidungspunkt innerhalb des Prozessablaufs im Sinne einer ODER Entschei
 (Platzhalter Grafik)
 
 Parallelisierungspunkt innerhalb des Prozessablauf. Prozessflüsse nach dem parallelen Gateway parallel durchgeführt.
+
+## Anwendungsfälle für Subscriber
+
+### Antrag bei einem Zustellpunkt abgeben
+
+Ziel: 
+
+![Application_Tranfer](../assets/images/use_case_documentation/application_transfer.svg "Ablaufbeschreibung zur Uebertragung eines Antrags")
+
