@@ -1,79 +1,6 @@
 {
   "title": "Application Document",
-  "type": "object",
   "description": "Ein im Antrag (Application) enthaltenes Dokument (z.B. Antragsformular oder hochgeladene Anlage)",
-  "properties": {
-    "doc-id": {
-      "type": "string",
-      "pattern": {
-        "$ref": "../common/id-string.json#/pattern"
-      },
-      "description": "ID des Dokuments. Diese muss nur innerhalb des Antrags (Application) eindeutig sein. Es wird daher empfohlen, die IDs fortlaufend (1, 2 etc.) zu vergeben."
-    },
-    "purpose": {
-      "type": "string",
-      "enum": [
-        "form",
-        "attachment",
-        "report"
-      ],
-      "description": "Zweck/Art des Dokuments\n- form: Antragsformular\n- attachment: Anlage (Upload)\n- report: Vom System erzeugte Unterlage"
-    },
-    "size": {
-      "type": "integer",
-      "description": "Größe des Dokuments in Bytes"
-    },
-    "mime": {
-      "$ref": "../common/mime-type.json"
-    },
-    "filename": {
-      "type": "string",
-      "description": "Ursprünglicher Dateiname bei Erzeugung oder Upload"
-    },
-    "description": {
-      "type": "string",
-      "description": "Optionale Beschreibung des Dokuments"
-    },
-    "lang": {
-      "$ref": "../common/language.json"
-    },
-    "hash": {
-      "type": "object",
-      "description": "Prüfsumme über den Inhalt des Dokuments zur Absicherung auf dem Transportweg",
-      "additionalProperties": false,
-      "properties": {
-        "algorithm": {
-          "type": "string",
-          "description": "Verwendeter Algorithmus",
-          "enum": [
-            "SHA-256",
-            "SHA-512"
-          ]
-        },
-        "digest": {
-          "type": "string",
-          "description": "Prüfsumme, hexadezimal codiert",
-          "pattern": "[0-9A-F]{64,128}"
-        }
-      },
-      "required": [
-        "algorithm",
-        "digest"
-      ]
-    },
-    "signature": {
-      "pattern": {
-        "$ref": "../common/base64url.json#/pattern"
-      },
-      "type": "string",
-      "description": "Sofern der Antragstellers dieses Dokument signiert hat, wird die Signatur hier base64url-encoded eingebettet"
-    }
-  },
-  "required": [
-    "purpose",
-    "size",
-    "mime"
-  ],
   "x-examples": {
     "example-1": {
       "doc-id": "1",
@@ -103,5 +30,49 @@
         "digest": "e1762f14d9924e37b32f1c81dfd256410af462f5136415c96877efa8c80345d0"
       }
     }
-  }
+  },
+  "allOf": [
+    {
+      "$ref": "./encrypted-document.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "form",
+            "attachment",
+            "report"
+          ],
+          "description": "Zweck/Art des Dokuments\n- form: Antragsformular\n- attachment: Anlage (Upload)\n- report: Vom System erzeugte Unterlage"
+        },
+        "mime": {
+          "$ref": "../common/mime-type.json"
+        },
+        "filename": {
+          "type": "string",
+          "description": "Ursprünglicher Dateiname bei Erzeugung oder Upload"
+        },
+        "description": {
+          "type": "string",
+          "description": "Optionale Beschreibung des Dokuments"
+        },
+        "lang": {
+          "$ref": "../common/language.json"
+        },
+        "signature": {
+          "pattern": {
+            "$ref": "../common/base64url.json#/pattern"
+          },
+          "type": "string",
+          "description": "Sofern der Antragstellers dieses Dokument signiert hat, wird die Signatur hier base64url-encoded eingebettet"
+        }
+      },
+      "required": [
+        "purpose",
+        "mime"
+      ]
+    }
+  ]
 }

@@ -44,23 +44,6 @@
           }
         ]
       },
-      "public-service-type": {
-        "name": "Gewerbeanmeldung",
-        "description": "Eine Gewerbeanmeldung ist immer dann notwendig, wenn Sie einen stehenden Gewerbebetrieb beginnen.",
-        "leika-id": "99050012104000",
-        "other-identifiers": [
-          {
-            "id": "8664844",
-            "schemeURI": "service.niedersachsen.de",
-            "schemeName": "Serviceportal Niedersachsen"
-          },
-          {
-            "id": "354824",
-            "schemeURI": "buerger.thueringen.de",
-            "schemeName": "Zuständigkeitsfinder Thüringen"
-          }
-        ]
-      },
       "applicants": [
         {
           "person": {
@@ -95,6 +78,23 @@
         "timestamp": "2020-03-03T12:38:23Z",
         "status": "success",
         "transaction": "1f77c5f9b759db9cdce59988b24974d465c7be5e462a6185485559ff6e2dea82"
+      },
+      "public-service-type": {
+        "name": "Gewerbeanmeldung",
+        "description": "Eine Gewerbeanmeldung ist immer dann notwendig, wenn Sie einen stehenden Gewerbebetrieb beginnen.",
+        "leika-id": "99050012104000",
+        "other-identifiers": [
+          {
+            "id": "8664844",
+            "schemeURI": "service.niedersachsen.de",
+            "schemeName": "Serviceportal Niedersachsen"
+          },
+          {
+            "id": "354824",
+            "schemeURI": "buerger.thueringen.de",
+            "schemeName": "Zuständigkeitsfinder Thüringen"
+          }
+        ]
       }
     }
   },
@@ -121,7 +121,8 @@
           "type": "object",
           "required": [
             "schema-id",
-            "mime-type"
+            "mime-type",
+            "size"
           ],
           "properties": {
             "schema-id": {
@@ -136,6 +137,9 @@
                 "json",
                 "xml"
               ]
+            },
+            "size": {
+              "type": "integer"
             }
           }
         },
