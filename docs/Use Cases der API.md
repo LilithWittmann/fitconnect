@@ -1,7 +1,10 @@
 # Use Cases der XFall APIs
 
-Die übergreifende Zielstellung der XFall APIs besteht darin, Anträge und Berichte, die aus den vorgelagerten Systemen (bspw. Onlineantragsdienste, Fachportal oder Berichtssysteme) in die elektronische Verfahrensbearbeitung der Verwaltung zu übergaben. 
-Um diese übergreifende Zielstellung zur erfüllen, werden über die Sender-API und Subscriber-API den Sender und Empfänger von Anträge folgende Anwendungsfälle zur Verfügung gestellt.
+Die übergreifende Zielstellung der XFall APIs besteht darin, Anträge und Berichte, die aus den vorgelagerten Systemen (bspw. Onlineantragsdienste, Fachportal oder Berichtssysteme) in die elektronische Verfahrensbearbeitung der Verwaltung zu übergeben.
+
+Um diese übergreifende Zielstellung zur erfüllen, werden über die Sender-API und Subscriber-API den Sender und Empfänger von Anträge folgende Anwendungsfälle zur Verfügung gestellt:
+
+![Application_Transfer] (../assets/images/use_case_documentation/Use_Case_Diagramm.png "Use Case Diagramm der XFall APIs")
 
 ## Systematik und Legende der verwendeten BPMN Symbole bei Anwendungsfallabläufen
 
