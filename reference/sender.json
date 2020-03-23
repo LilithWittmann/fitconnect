@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Application Sender API",
-    "version": "1.0",
+    "version": "0.2",
     "description": "API vom Onlineantragsdienst zum Zustelldienst",
     "contact": {
       "name": "FITKO",
@@ -64,7 +64,7 @@
             }
           },
           "410": {
-            "description": "Gone - Transfer-ID ungültig/Transfer-Timeout",
+            "description": "Gone - Application-ID ungültig/Transfer-Timeout",
             "content": {
               "application/json": {
                 "schema": {
@@ -103,7 +103,7 @@
           "description": "JSON oder XML Daten"
         },
         "tags": [
-          "transfer"
+          "Application Transfer"
         ]
       }
     },
@@ -170,7 +170,7 @@
             }
           },
           "410": {
-            "description": "Gone - Transfer-ID ungültig/Transfer-Timeout",
+            "description": "Gone - Application-ID ungültig/Transfer-Timeout",
             "content": {
               "application/json": {
                 "schema": {
@@ -212,7 +212,7 @@
           }
         },
         "tags": [
-          "transfer"
+          "Application Transfer"
         ]
       }
     },
@@ -238,7 +238,7 @@
       "get": {
         "summary": "Get Status",
         "tags": [
-          "status"
+          "Transfer related Information"
         ],
         "responses": {
           "200": {
@@ -249,12 +249,12 @@
                   "type": "object",
                   "properties": {
                     "current": {
-                      "$ref": "../models/status.json"
+                      "$ref": "../models/status-overview.json"
                     },
                     "history": {
                       "type": "array",
                       "items": {
-                        "$ref": "../models/status.json"
+                        "$ref": "../models/status-overview.json"
                       }
                     }
                   }
@@ -274,7 +274,8 @@
           }
         },
         "operationId": "get-application-status",
-        "description": "Ruft den aktuellen Status der Übermittlung ab."
+        "description": "Ruft den aktuellen Status der Übermittlung sowie einer Übersicht der bisherigen Übertragungshistorie ab.",
+        "parameters": []
       }
     },
     "/{source-id}/{application-id}/status/{status-nr}": {
@@ -303,37 +304,7 @@
           "in": "path",
           "required": true
         }
-      ],
-      "get": {
-        "summary": "Get Status Entry",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/status.json"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error.json"
-                }
-              }
-            }
-          }
-        },
-        "operationId": "get-application-status-entry",
-        "description": "Ruft einen spezifischen Statuswechsel aus der Historie des Status ab.",
-        "tags": [
-          "status"
-        ]
-      }
+      ]
     },
     "/{source-id}/{destination-id}/{application-id}/upload-status": {
       "parameters": [
@@ -365,7 +336,7 @@
       "get": {
         "summary": "Get Application Upload Status",
         "tags": [
-          "transfer"
+          "Transfer related Information"
         ],
         "responses": {
           "200": {
@@ -468,8 +439,8 @@
         }
       ],
       "post": {
-        "summary": "Create Transfer",
-        "operationId": "create-transfer",
+        "summary": "Create Application",
+        "operationId": "create-application",
         "responses": {
           "201": {
             "description": "Created",
@@ -508,7 +479,7 @@
           }
         },
         "tags": [
-          "transfer"
+          "Application Transfer"
         ],
         "requestBody": {
           "content": {
@@ -518,7 +489,7 @@
               }
             }
           },
-          "description": "Transfer"
+          "description": "Metadaten des Antrags"
         },
         "description": "Übertragung initiieren"
       },
@@ -549,7 +520,7 @@
         },
         "description": "Ruft die Information über eine Destination ab",
         "tags": [
-          "destination"
+          "Transfer related Information"
         ]
       }
     },
@@ -581,8 +552,8 @@
         }
       ],
       "post": {
-        "summary": "Commit Transfer",
-        "operationId": "commit-transfer",
+        "summary": "Send Application",
+        "operationId": "commit-application",
         "responses": {
           "200": {
             "description": "OK",
@@ -605,7 +576,7 @@
             }
           },
           "410": {
-            "description": "Gone - Transfer-ID ungültig/Transfer-Timeout",
+            "description": "Gone - Application-ID ungültig/Transfer-Timeout",
             "content": {
               "application/json": {
                 "schema": {
@@ -625,10 +596,10 @@
             }
           }
         },
-        "description": "Übertragung abschließen",
+        "description": "Übertragung abschließen, Antrag absenden",
         "parameters": [],
         "tags": [
-          "transfer"
+          "Application Transfer"
         ],
         "requestBody": {
           "content": {
@@ -646,16 +617,10 @@
   },
   "tags": [
     {
-      "name": "transfer"
+      "name": "Application Transfer"
     },
     {
-      "name": "status"
-    },
-    {
-      "name": "destination"
-    },
-    {
-      "name": "source"
+      "name": "Transfer related Infos"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Application Subscriber API",
-    "version": "1.0",
+    "version": "0.2",
     "description": "API vom Fachverfahren zum Zustelldienst",
     "contact": {
       "name": "FITKO",
@@ -57,7 +57,7 @@
       "get": {
         "summary": "Get Application Document",
         "tags": [
-          "transfer"
+          "Application Retrieval"
         ],
         "responses": {
           "200": {
@@ -109,7 +109,7 @@
       "get": {
         "summary": "Get Application Data",
         "tags": [
-          "transfer"
+          "Application Retrieval"
         ],
         "responses": {
           "200": {
@@ -119,13 +119,25 @@
                 "schema": {
                   "type": "object",
                   "properties": {}
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "F99000001": "Eins",
+                      "G99000001": {
+                        "F99000002": "Zwei",
+                        "F99000003": "Drei"
+                      }
+                    }
+                  }
                 }
               },
               "application/xml": {
                 "schema": {
                   "type": "object",
                   "properties": {}
-                }
+                },
+                "examples": {}
               }
             }
           },
@@ -134,7 +146,7 @@
           }
         },
         "operationId": "get-application-data",
-        "description": "Ruft die Fachdaten der Application ab."
+        "description": "Ruft die Fachdaten der Application ab.\n\nBeispiele:\n#### JSON\n```json\n{\n    \"F99000001\": \"Eins\",\n    \"G99000001\": {\n        \"F99000002\": \"Zwei\",\n        \"F99000003\": \"Drei\"\n    }\n}\n```\n\n#### XML\n```xml\n<S99000001>\n  <F99000001>Eins</F99000001>\n  <G99000001>\n    <F99000002>Zwei</F99000002>\n    <F99000003>Drei</F99000003>\n  </G99000001>\n</S99000001>\n```"
       }
     },
     "/{subscriber-id}/destinations/{destination-id}/applications/{application-id}": {
@@ -167,7 +179,7 @@
       "get": {
         "summary": "Get Application Metadata",
         "tags": [
-          "transfer"
+          "Application Retrieval"
         ],
         "responses": {
           "200": {
@@ -294,8 +306,8 @@
         "description": "Ruft eine wartende Application ab."
       },
       "post": {
-        "summary": "Commit Application",
-        "operationId": "commit-application",
+        "summary": "Acknowledge Application",
+        "operationId": "ack-application",
         "responses": {
           "200": {
             "description": "OK"
@@ -315,7 +327,7 @@
           }
         },
         "tags": [
-          "transfer"
+          "Application Retrieval"
         ],
         "description": "Bestätigt die Abholung der Application. Über den Parameter `final-delivery` im Body wird gesteuert, wie der Folgestatus aussieht:\n\n| final-delivery | status      |\n| -------------- | ----------- |\n| `false`        | \"forwarded\" |\n| `true`         | \"delivered\" |\n\nDer Parameter `final-delivery` zeigt an, ob der Antrag noch weitergesendet wird (`false`) oder das finale Ziel erreicht hat (`true`).\n\nSofern der Wert `false` übergeben wurde, muss zu einem späteren Zeitpunkt, wenn der Antrag final zugestellt wurde, ein weiterer Aufruf mit dem Wert `true` erfolgen.",
         "requestBody": {
@@ -358,7 +370,7 @@
       "get": {
         "summary": "List Applications",
         "tags": [
-          "transfer"
+          "Application Retrieval"
         ],
         "operationId": "list-applications",
         "responses": {
@@ -515,7 +527,7 @@
       "get": {
         "summary": "Get Destination",
         "tags": [
-          "destination"
+          "Destination Management"
         ],
         "responses": {
           "200": {
@@ -598,7 +610,7 @@
           }
         },
         "tags": [
-          "destination"
+          "Destination Management"
         ],
         "description": "Übertragungsziel aktualisieren",
         "requestBody": {
@@ -658,7 +670,7 @@
           }
         },
         "tags": [
-          "destination"
+          "Destination Management"
         ],
         "description": "Übertragungsziel löschen"
       }
@@ -677,7 +689,7 @@
       "get": {
         "summary": "List Destinations",
         "tags": [
-          "destination"
+          "Destination Management"
         ],
         "responses": {
           "200": {
@@ -797,20 +809,17 @@
           "description": "Anzulegende Destination"
         },
         "tags": [
-          "destination"
+          "Destination Management"
         ]
       }
     }
   },
   "tags": [
     {
-      "name": "destination"
+      "name": "Destination Management"
     },
     {
-      "name": "subscription"
-    },
-    {
-      "name": "transfer"
+      "name": "Application Retrieval"
     }
   ]
 }
