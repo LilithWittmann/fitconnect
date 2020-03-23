@@ -35,5 +35,5 @@ Parallelisierungspunkt innerhalb des Prozessablauf. Prozessflüsse nach dem para
 
 Ziel: 
 
-![Application_Tranfer] https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/Use_Case_Documentaion/Application_Transfer.svg?token=AOHBJRLDYIZQFLLOYETCAVS6QIUDG "Ablaufbeschreibung zur Uebertragung eines Antrags")
+![Application_Transfer] (../assets/images/use_case_documentation/application_transfer.png "Ablaufbeschreibung zur Uebertragung eines Antrags")
 
