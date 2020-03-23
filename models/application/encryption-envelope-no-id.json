@@ -1,6 +1,7 @@
 {
   "title": "Encryption Envelope without ID",
   "type": "object",
+  "description": "",
   "properties": {
     "content-structure": {
       "type": "object",
@@ -30,7 +31,12 @@
     },
     "public-service-type": {
       "$ref": "./public-service-type.json"
+    },
+    "encrypted-metadata": {
+      "$ref": "../common/jwe.json"
     }
   },
-  "description": ""
+  "required": [
+    "encrypted-metadata"
+  ]
 }

@@ -107,6 +107,21 @@
       "required": [
         "callback-url"
       ]
+    },
+    "encryption": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "$ref": "./common/jwk.json"
+        },
+        "must-encrypt": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "key",
+        "must-encrypt"
+      ]
     }
   }
 }
