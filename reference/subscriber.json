@@ -399,7 +399,7 @@
                       "application-id": {
                         "type": "string",
                         "pattern": {
-                          "$ref": "../common/id-string.json#/pattern"
+                          "$ref": "../models/common/id-string.json#/pattern"
                         },
                         "description": "ID des Antrags"
                       }

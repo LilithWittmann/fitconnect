@@ -573,7 +573,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/status.json"
+                  "$ref": "../models/status-overview.json"
                 }
               }
             }
@@ -633,7 +633,7 @@
       "name": "Application Transfer"
     },
     {
-      "name": "Transfer related Infos"
+      "name": "Transfer related Information"
     }
   ]
 }
