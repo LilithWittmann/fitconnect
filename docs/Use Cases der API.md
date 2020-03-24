@@ -4,7 +4,7 @@
 
 Die übergreifende Zielstellung der XFall APIs besteht darin, Anträge und Berichte, die aus den vorgelagerten Systemen (bspw. Onlineantragsdienste, Fachportal oder Berichtssysteme) in die elektronische Verfahrensbearbeitung der Verwaltung zu übergeben.
 
-Um diese übergreifende Zielstellung zur erfüllen, werden über die Sender-API und Subscriber-API den `Sender` und `Subscriber` (Empfänger) von Anträge folgende Anwendungsfälle zur Verfügung gestellt:
+Um diese übergreifende Zielstellung zur erfüllen, werden über die Sender-API und Subscriber-API den `Sender` (Sender eines Antrags an einen Zustellpunkt) und `Subscriber` (Empfänger eines Antrags am Zustellpunkt) von Anträge folgende Anwendungsfälle zur Verfügung gestellt:
 
 ![Application_Transfer](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/use_case_documentation/Use_Case_Diagramm.png?token=AOHBJRKJHOP6P3QZ4BKPMXK6QNDHU "Use Case Diagramm der XFall APIs")
 
