@@ -4,13 +4,13 @@ Die übergreifende Zielstellung der XFall APIs besteht darin, Anträge und Beric
 
 Um diese übergreifende Zielstellung zur erfüllen, werden über die Sender-API und Subscriber-API den Sender und Empfänger von Anträge folgende Anwendungsfälle zur Verfügung gestellt:
 
-![Application_Transfer] (../assets/images/use_case_documentation/Use_Case_Diagramm.png "Use Case Diagramm der XFall APIs")
+![Application_Transfer](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/use_case_documentation/Use_Case_Diagramm.png?token=AOHBJRKJHOP6P3QZ4BKPMXK6QNDHU "Use Case Diagramm der XFall APIs")
 
 ## Systematik und Legende der verwendeten BPMN Symbole bei Anwendungsfallabläufen
 
 ### Aktivität
 
-(Platzhalter Grafik)
+**(Platzhalter Grafik)**
 
 Beschreibt eine Tätigkeit innerhalb einer Prozessablaufs.
 
@@ -22,13 +22,13 @@ Beschreibt eine Tätigkeit innerhalb einer Prozessablaufs, die ab dem aktivierun
 
 ### Exclusive Gateways
 
-(Platzhalter Grafik)
+**(Platzhalter Grafik)**
 
 Ein Entscheidungspunkt innerhalb des Prozessablaufs im Sinne einer ODER Entscheidung. Es wird nur der weitere Prozessablauf weiterverfolgt, der dem Entscheidungsergebnis entspricht.
 
 ### Parallel Gateways
 
-(Platzhalter Grafik)
+**(Platzhalter Grafik)**
 
 Parallelisierungspunkt innerhalb des Prozessablauf. Prozessflüsse nach dem parallelen Gateway parallel durchgeführt.
 
