@@ -10,27 +10,27 @@ Um diese übergreifende Zielstellung zur erfüllen, werden über die Sender-API 
 
 
 
-## Systematik und Legende der verwendeten BPMN Symbole bei Anwendungsfallabläufen
+### Legende der verwendeten BPMN Symbole bei Anwendungsfallabläufen
 
-### Aktivität
+#### Aktivität
 
 **(Platzhalter Grafik)**
 
 Eine Tätigkeit innerhalb einer Prozessablaufs.
 
-### Aktivität mit multiplen parallelen Instanzen
+#### Aktivität mit multiplen parallelen Instanzen
 
 (Platzhalter Grafik)
 
 Eine Tätigkeit innerhalb einer Prozessablaufs, die ab dem aktivierungszeitpunkt mehrfach parallel durchgeführt werden kann.
 
-### Exclusive Gateways
+#### Exclusive Gateways
 
 **(Platzhalter Grafik)**
 
 Ein Entscheidungspunkt innerhalb des Prozessablaufs im Sinne einer ODER Entscheidung. Es wird nur der weitere Prozessablauf weiterverfolgt, der dem Entscheidungsergebnis entspricht.
 
-### Parallel Gateways
+#### Parallel Gateways
 
 **(Platzhalter Grafik)**
 
