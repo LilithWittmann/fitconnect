@@ -15,7 +15,12 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000"
+      "url": "https://xfall-sender-api.production.fiep-poc.de",
+      "description": "Produktionsumgebung der API."
+    },
+    {
+      "description": "Testumgebung der API.",
+      "url": "https://xfall-sender-api.sandbox.fiep-poc.de"
     }
   ],
   "paths": {
@@ -104,6 +109,17 @@
         },
         "tags": [
           "Application Transfer"
+        ],
+        "security": [
+          {
+            "Production API Key": [
+              "{source-id}:application:apply",
+              "{source-id}:source:manage"
+            ]
+          },
+          {
+            "Sandbox API Key": []
+          }
         ]
       }
     },
@@ -213,6 +229,17 @@
         },
         "tags": [
           "Application Transfer"
+        ],
+        "security": [
+          {
+            "Production API Key": [
+              "{source-id}:application:apply",
+              "{source-id}:source:manage"
+            ]
+          },
+          {
+            "Sandbox API Key": []
+          }
         ]
       }
     },
@@ -275,7 +302,20 @@
         },
         "operationId": "get-application-status",
         "description": "Ruft den aktuellen Status der Übermittlung sowie einer Übersicht der bisherigen Übertragungshistorie ab.",
-        "parameters": []
+        "tags": [
+          "status"
+        ],
+        "security": [
+          {
+            "Production API Key": [
+              "{source-id}:status:read",
+              "{source-id}:source:manage"
+            ]
+          },
+          {
+            "Sandbox API Key": []
+          }
+        ]
       }
     },
     "/{source-id}/{application-id}/status/{status-nr}": {
@@ -304,7 +344,48 @@
           "in": "path",
           "required": true
         }
-      ]
+      ],
+      "get": {
+        "summary": "Get Status Entry",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/status.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error.json"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-application-status-entry",
+        "description": "Ruft einen spezifischen Statuswechsel aus der Historie des Status ab.",
+        "tags": [
+          "status"
+        ],
+        "security": [
+          {
+            "Production API Key": [
+              "{source-id}:status:read",
+              "{source-id}:source:manage"
+            ]
+          },
+          {
+            "Sandbox API Key": []
+          }
+        ]
+      }
     },
     "/{source-id}/{destination-id}/{application-id}/upload-status": {
       "parameters": [
@@ -335,9 +416,6 @@
       ],
       "get": {
         "summary": "Get Application Upload Status",
-        "tags": [
-          "Transfer related Information"
-        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -416,7 +494,21 @@
           }
         },
         "operationId": "get-application-upload-status",
-        "description": "Abfrage des Übermittlungsstatus. Listet alle Unterresourcen (data und docs) mit Übermittlungsstatus auf."
+        "description": "Abfrage des Übermittlungsstatus. Listet alle Unterresourcen (data und docs) mit Übermittlungsstatus auf.",
+        "tags": [
+          "Transfer related Information"
+        ],
+        "security": [
+          {
+            "Production API Key": [
+              "{source-id}:application:apply",
+              "{source-id}:source:manage"
+            ]
+          },
+          {
+            "Sandbox API Key": []
+          }
+        ]
       }
     },
     "/{source-id}/{destination-id}": {
@@ -478,9 +570,6 @@
             }
           }
         },
-        "tags": [
-          "Application Transfer"
-        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -491,7 +580,21 @@
           },
           "description": "Metadaten des Antrags"
         },
-        "description": "Übertragung initiieren"
+        "description": "Übertragung initiieren",
+        "tags": [
+          "Application Transfer"
+        ],
+        "security": [
+          {
+            "Production API Key": [
+              "{source-id}:application:apply",
+              "{source-id}:source:manage"
+            ]
+          },
+          {
+            "Sandbox API Key": []
+          }
+        ]
       },
       "get": {
         "summary": "Get Destination",
@@ -521,6 +624,17 @@
         "description": "Ruft die Information über eine Destination ab",
         "tags": [
           "Transfer related Information"
+        ],
+        "security": [
+          {
+            "Production API Key": [
+              "{source-id}:destination-info:read",
+              "{source-id}:source:manage"
+            ]
+          },
+          {
+            "Sandbox API Key": []
+          }
         ]
       }
     },
@@ -598,9 +712,6 @@
         },
         "description": "Übertragung abschließen, Antrag absenden",
         "parameters": [],
-        "tags": [
-          "Application Transfer"
-        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -611,7 +722,21 @@
             }
           },
           "description": ""
-        }
+        },
+        "tags": [
+          "Application Transfer"
+        ],
+        "security": [
+          {
+            "Production API Key": [
+              "{source-id}:application:apply",
+              "{source-id}:source:manage"
+            ]
+          },
+          {
+            "Sandbox API Key": []
+          }
+        ]
       }
     }
   },
@@ -622,5 +747,31 @@
     {
       "name": "Transfer related Infos"
     }
-  ]
+  ],
+  "components": {
+    "securitySchemes": {
+      "Production API Key": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "beispieltokenURL.de",
+            "scopes": {
+              "{source-id}:application:apply": "Dieser Zugriffsbereich erlaubt es Anträge anzulegen, diesen zu aktualisieren und abzusenden.",
+              "{source-id}:status:read": "Dieser Zufriffsbereich erlaubt es auf Statusmitteilungen zu einem übersendeten Antrag abzurufen.",
+              "{source-id}:destination-info:read": "Dieser Zufriffsbereich erlaubt es Informationen von existierenden Destinationsabzurufen",
+              "{source-id}:source:manage": "Dieser Zufriffsbereich erlaubt es alle Endpunkte einer "
+            },
+            "refreshUrl": "beispielrefreshURL.de"
+          }
+        },
+        "description": "Dieses Authentifizierungsmethode wird genutzt, um den Zugriff auf die Produktiv API zu autorisieren. "
+      },
+      "Sandbox API Key": {
+        "name": "API Key",
+        "type": "apiKey",
+        "in": "header",
+        "description": "Der API wird als Authentifizierungsmittel für die Sandbox API benutzt."
+      }
+    }
+  }
 }
