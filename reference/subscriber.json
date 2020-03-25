@@ -85,9 +85,9 @@
         "security": [
           {
             "Production API Key": [
-              "{subscriber-id}:application:read",
-              "{subscriber-id}:{destination-id}:application:read",
-              "{subscriber-id}:manage"
+              "{subscriber-id}:manage",
+              "{subscriber-id}:application:receive",
+              "{subscriber-id}:destination:{destination-id}:application:receive"
             ]
           },
           {
@@ -167,9 +167,9 @@
         "security": [
           {
             "Production API Key": [
-              "{subscriber-id}:application:read",
-              "{subscriber-id}:{destination-id}:application:read",
-              "{subscriber-id}:manage"
+              "{subscriber-id}:manage",
+              "{subscriber-id}:application:receive",
+              "{subscriber-id}:destination:{destination-id}:application:receive"
             ]
           },
           {
@@ -336,9 +336,9 @@
         "security": [
           {
             "Production API Key": [
-              "{subscriber-id}:application:read",
-              "{subscriber-id}:{destination-id}:application:read",
-              "{subscriber-id}:manage"
+              "{subscriber-id}:manage",
+              "{subscriber-id}:application:receive",
+              "{subscriber-id}:destination:{destination-id}:application:receive"
             ]
           },
           {
@@ -390,9 +390,9 @@
         "security": [
           {
             "Production API Key": [
-              "{subscriber-id}:application:read",
-              "{subscriber-id}:{destination-id}:application:read",
-              "{subscriber-id}:manage"
+              "{subscriber-id}:manage",
+              "{subscriber-id}:application:receive",
+              "{subscriber-id}:destination:{destination-id}:application:receive"
             ]
           },
           {
@@ -559,9 +559,9 @@
         "security": [
           {
             "Production API Key": [
-              "{subscriber-id}:application:read",
-              "{subscriber-id}:{destination-id}:application:read",
-              "{subscriber-id}:manage"
+              "{subscriber-id}:manage",
+              "{subscriber-id}:application:receive",
+              "{subscriber-id}:destination:{destination-id}:application:receive"
             ]
           },
           {
@@ -660,7 +660,8 @@
             "Production API Key": [
               "{subscriber-id}:destination:read",
               "{subscriber-id}:destination:manage",
-              "{subscriber-id}:{destination-id}:read"
+              "{subscriber-id}:manage",
+              "{subscriber-id}:destination:{destination-id}:read"
             ]
           },
           {
@@ -731,9 +732,9 @@
           {
             "Production API Key": [
               "{subscriber-id}:manage",
-              "{subscriber-id}:{destination-id}:update",
               "{subscriber-id}:destination:update",
-              "{subscriber-id}:destination:manage"
+              "{subscriber-id}:destination:manage",
+              "{subscriber-id}:destination:{destination-id}:update"
             ]
           },
           {
@@ -768,7 +769,8 @@
             "Production API Key": [
               "{subscriber-id}:manage",
               "{subscriber-id}:destination:manage",
-              "{subscriber-id}:destination:delete"
+              "{subscriber-id}:destination:delete",
+              "{subscriber-id}:destination:{destination-id}:delete"
             ]
           },
           {
@@ -844,7 +846,8 @@
           {
             "Production API Key": [
               "{subscriber-id}:destination:read",
-              "{subscriber-id}:manage"
+              "{subscriber-id}:manage",
+              "{subscriber-id}:destination:manage"
             ]
           },
           {
@@ -923,6 +926,15 @@
         },
         "tags": [
           "Destination Management"
+        ],
+        "security": [
+          {
+            "Production API Key": [
+              "{subscriber-id}:manage",
+              "{subscriber-id}:destination:manage",
+              "{subscriber-id}:destination:create"
+            ]
+          }
         ]
       }
     }
@@ -948,12 +960,13 @@
               "{subscriber-id}:destination:create": "Der Zugriffsbereich erlaubt Destinations neu anzulegen und zu verändern.",
               "{subscriber-id}:destination:update": "Dieser Zugriffsbereich erlaubt es, bestehende Destinations zu verändern.",
               "{subscriber-id}:destination:manage": "Dieser Zugriffsbereich alle Destination Endpunkte eines Subscriber genutzt werden.",
-              "{subscriber-id}:{destination-id}:read": "Mit diesem Zugriffsbereich wird ein lesender Zugriff auf eine spezifische Destination ermöglicht.",
-              "{subscriber-id}:{destination-id}:update": "Mit diesem Zugriffsbereich wird ein lesender Zugriff auf eine spezifische Destination ermöglicht.",
-              "{subscriber-id}:application:read": "Dieser Zugriffsbereich erlaubt einen lesenden Zugriff auf Anträge in allen Destinations",
-              "{subscriber-id}:{destination-id}:application:read": "Dieser Zugriffsbereich erlaubt einen lesenden Zugriff auf Anträge in spezifischen Destinations",
-              "{subscriber-id}:manage": "Dieser Zugriffsbereich die vollständige Nutzung aller Endpunkte eines Subscribers",
-              "{subscriber-id}:destination:delete": "Dieser Zugriffsbereich erlaubt die Löschung von Destinations eines Accounts"
+              "{subscriber-id}:destination:{destination-id}:read": "Mit diesem Zugriffsbereich wird ein lesender Zugriff auf eine spezifische Destination ermöglicht.",
+              "{subscriber-id}:destination:{destination-id}:update": "Mit diesem Zugriffsbereich wird ein schreibende Zugriff auf eine spezifische Destination ermöglicht.",
+              "{subscriber-id}:application:receive": "Dieser Zugriffsbereich erlaubt es, Anträge für allen Destinations abzuholen.",
+              "{subscriber-id}:destination:{destination-id}:application:receive": "Dieser Zugriffsbereich erlaubt es, Anträge einer spezifischen Destination abzuholen.",
+              "{subscriber-id}:manage": "Dieser Zugriffsbereich die vollständige Nutzung aller Endpunkte eines Subscribers.",
+              "{subscriber-id}:destination:delete": "Dieser Zugriffsbereich erlaubt die Löschung von Destinations eines Accounts.",
+              "{subscriber-id}:destination:{destination-id}:delete": "Dieser Zugriffsbereich erlaubt es, eine spezifische Destination zu löschen."
             }
           }
         },
