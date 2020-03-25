@@ -48,7 +48,6 @@ Regex: `^\+[1-9]([ -]?[0-9]){1,14}$`
 Der Status beschreibt den Fortschritt der Übertragung. Hierzu sind folgende Werte definiert:
 - `incomplete`: Die Einlieferung von der Source hat begonnen
 - `queued`: Die Übertragung wurde vollständig eingeliefert und akzeptiert
-- `sending`: Die Weitergabe wurde begonnen
 - `forwarded`: Die Übertragung an die direkt angebundene Destination wurde abgeschlossen
 - `delivered`: Die Übertragung hat den vorgesehen Endpunkt erreicht
 

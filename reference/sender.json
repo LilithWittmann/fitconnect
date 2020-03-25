@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Application Sender API",
-    "version": "1.0",
+    "version": "0.2",
     "description": "API vom Onlineantragsdienst zum Zustelldienst",
     "contact": {
       "name": "FITKO",
@@ -69,7 +69,7 @@
             }
           },
           "410": {
-            "description": "Gone - Transfer-ID ungültig/Transfer-Timeout",
+            "description": "Gone - Application-ID ungültig/Transfer-Timeout",
             "content": {
               "application/json": {
                 "schema": {
@@ -108,7 +108,7 @@
           "description": "JSON oder XML Daten"
         },
         "tags": [
-          "transfer"
+          "Application Transfer"
         ],
         "security": [
           {
@@ -186,7 +186,7 @@
             }
           },
           "410": {
-            "description": "Gone - Transfer-ID ungültig/Transfer-Timeout",
+            "description": "Gone - Application-ID ungültig/Transfer-Timeout",
             "content": {
               "application/json": {
                 "schema": {
@@ -228,7 +228,7 @@
           }
         },
         "tags": [
-          "transfer"
+          "Application Transfer"
         ],
         "security": [
           {
@@ -264,6 +264,9 @@
       ],
       "get": {
         "summary": "Get Status",
+        "tags": [
+          "Transfer related Information"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -273,12 +276,12 @@
                   "type": "object",
                   "properties": {
                     "current": {
-                      "$ref": "../models/status.json"
+                      "$ref": "../models/status-overview.json"
                     },
                     "history": {
                       "type": "array",
                       "items": {
-                        "$ref": "../models/status.json"
+                        "$ref": "../models/status-overview.json"
                       }
                     }
                   }
@@ -298,7 +301,7 @@
           }
         },
         "operationId": "get-application-status",
-        "description": "Ruft den aktuellen Status der Übermittlung ab.",
+        "description": "Ruft den aktuellen Status der Übermittlung sowie einer Übersicht der bisherigen Übertragungshistorie ab.",
         "tags": [
           "status"
         ],
@@ -493,7 +496,7 @@
         "operationId": "get-application-upload-status",
         "description": "Abfrage des Übermittlungsstatus. Listet alle Unterresourcen (data und docs) mit Übermittlungsstatus auf.",
         "tags": [
-          "transfer"
+          "Transfer related Information"
         ],
         "security": [
           {
@@ -528,8 +531,8 @@
         }
       ],
       "post": {
-        "summary": "Create Transfer",
-        "operationId": "create-transfer",
+        "summary": "Create Application",
+        "operationId": "create-application",
         "responses": {
           "201": {
             "description": "Created",
@@ -575,11 +578,11 @@
               }
             }
           },
-          "description": "Transfer"
+          "description": "Metadaten des Antrags"
         },
         "description": "Übertragung initiieren",
         "tags": [
-          "transfer"
+          "Application Transfer"
         ],
         "security": [
           {
@@ -620,7 +623,7 @@
         },
         "description": "Ruft die Information über eine Destination ab",
         "tags": [
-          "destination"
+          "Transfer related Information"
         ],
         "security": [
           {
@@ -663,8 +666,8 @@
         }
       ],
       "post": {
-        "summary": "Commit Transfer",
-        "operationId": "commit-transfer",
+        "summary": "Send Application",
+        "operationId": "commit-application",
         "responses": {
           "200": {
             "description": "OK",
@@ -687,7 +690,7 @@
             }
           },
           "410": {
-            "description": "Gone - Transfer-ID ungültig/Transfer-Timeout",
+            "description": "Gone - Application-ID ungültig/Transfer-Timeout",
             "content": {
               "application/json": {
                 "schema": {
@@ -707,7 +710,7 @@
             }
           }
         },
-        "description": "Übertragung abschließen",
+        "description": "Übertragung abschließen, Antrag absenden",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -721,7 +724,7 @@
           "description": ""
         },
         "tags": [
-          "transfer"
+          "Application Transfer"
         ],
         "security": [
           {
@@ -739,16 +742,10 @@
   },
   "tags": [
     {
-      "name": "transfer"
+      "name": "Application Transfer"
     },
     {
-      "name": "status"
-    },
-    {
-      "name": "destination"
-    },
-    {
-      "name": "source"
+      "name": "Transfer related Infos"
     }
   ],
   "components": {

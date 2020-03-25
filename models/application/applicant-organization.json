@@ -62,7 +62,7 @@
           "type": "array",
           "description": "Namen der Mitglieder des Vertretungsorgans oder der gesetzlichen Vertreter",
           "items": {
-            "$ref": "../person/individual.json"
+            "$ref": "../common/individual.json"
           }
         }
       }

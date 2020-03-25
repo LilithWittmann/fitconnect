@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Application Subscriber API",
-    "version": "1.0",
+    "version": "0.2",
     "description": "API vom Fachverfahren zum Zustelldienst",
     "contact": {
       "name": "FITKO",
@@ -80,7 +80,7 @@
         "operationId": "get-application-document",
         "description": "Ruf ein Dokument (Formular oder Anlage) der Application ab.",
         "tags": [
-          "transfer"
+          "Application Retrieval"
         ],
         "security": [
           {
@@ -133,13 +133,25 @@
                 "schema": {
                   "type": "object",
                   "properties": {}
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "F99000001": "Eins",
+                      "G99000001": {
+                        "F99000002": "Zwei",
+                        "F99000003": "Drei"
+                      }
+                    }
+                  }
                 }
               },
               "application/xml": {
                 "schema": {
                   "type": "object",
                   "properties": {}
-                }
+                },
+                "examples": {}
               }
             }
           },
@@ -148,9 +160,9 @@
           }
         },
         "operationId": "get-application-data",
-        "description": "Ruft die Fachdaten der Application ab.",
+		"description": "Ruft die Fachdaten der Application ab.\n\nBeispiele:\n#### JSON\n```json\n{\n    \"F99000001\": \"Eins\",\n    \"G99000001\": {\n        \"F99000002\": \"Zwei\",\n        \"F99000003\": \"Drei\"\n    }\n}\n```\n\n#### XML\n```xml\n<S99000001>\n  <F99000001>Eins</F99000001>\n  <G99000001>\n    <F99000002>Zwei</F99000002>\n    <F99000003>Drei</F99000003>\n  </G99000001>\n</S99000001>\n```",
         "tags": [
-          "transfer"
+          "Application Retrieval"
         ],
         "security": [
           {
@@ -319,7 +331,7 @@
         "operationId": "get-application",
         "description": "Ruft eine wartende Application ab.",
         "tags": [
-          "transfer"
+          "Application Retrieval"
         ],
         "security": [
           {
@@ -335,8 +347,8 @@
         ]
       },
       "post": {
-        "summary": "Commit Application",
-        "operationId": "commit-application",
+        "summary": "Acknowledge Application",
+        "operationId": "ack-application",
         "responses": {
           "200": {
             "description": "OK"
@@ -373,7 +385,7 @@
           "description": "Details der Quittung"
         },
         "tags": [
-          "transfer"
+          "Application Retrieval"
         ],
         "security": [
           {
@@ -542,7 +554,7 @@
         },
         "description": "Ruft die Liste der wartenden Applications ab.",
         "tags": [
-          "transfer"
+          "Application Retrieval"
         ],
         "security": [
           {
@@ -641,7 +653,7 @@
         "operationId": "get-destination",
         "description": "Übertragungsziel abfragen",
         "tags": [
-          "destination"
+          "Destination Management"
         ],
         "security": [
           {
@@ -713,7 +725,7 @@
           }
         },
         "tags": [
-          "destination"
+          "Destination Management"
         ],
         "security": [
           {
@@ -749,7 +761,7 @@
         },
         "description": "Übertragungsziel löschen",
         "tags": [
-          "destination"
+          "Destination Management"
         ],
         "security": [
           {
@@ -826,7 +838,7 @@
         "operationId": "list-destinations",
         "description": "Ruft die Liste aller Destinations dieses Accounts auf.",
         "tags": [
-          "destination"
+          "Destination Management"
         ],
         "security": [
           {
@@ -910,20 +922,17 @@
           "description": "Anzulegende Destination"
         },
         "tags": [
-          "destination"
+          "Destination Management"
         ]
       }
     }
   },
   "tags": [
     {
-      "name": "destination"
+      "name": "Destination Management"
     },
     {
-      "name": "subscription"
-    },
-    {
-      "name": "transfer"
+      "name": "Application Retrieval"
     }
   ],
   "components": {
