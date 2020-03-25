@@ -76,4 +76,8 @@ Parallelisierungspunkt innerhalb des Prozessablauf. Prozessflüsse nach dem para
 
 ### Benachrichtigungen über Anträge erhalten
 
+**Vorbedingung:** 
 
+**Ziel:** 
+
+**Beschreibung:** 
