@@ -1,0 +1,63 @@
+{
+  "title": "Application Schema without ID",
+  "oneOf": [
+    {
+      "properties": {
+        "fim-schema": {
+          "$ref": "../common/fim-id.json"
+        }
+      },
+      "required": [
+        "fim-schema"
+      ]
+    },
+    {
+      "properties": {
+        "xml-schema": {
+          "type": "string",
+          "description": "Das XML Schema als String. Sofern der String leer ist, dürfen beliebige XML Daten übertragen werden."
+        }
+      },
+      "required": [
+        "xml-schema"
+      ]
+    },
+    {
+      "properties": {
+        "json-schema": {
+          "type": "object",
+          "description": "Das JSON Schema als Objekt. Sofern das Objekt leer ist dürfen beliebige JSON Daten übertragen werden."
+        }
+      },
+      "required": [
+        "json-schema"
+      ]
+    }
+  ],
+  "x-examples": {
+    "example-1": {
+      "fim-schema": {
+        "id": "S00000001",
+        "version": "1.0"
+      }
+    },
+    "example-2": {
+      "xml-schema": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<xs:schema xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:example=\"http://www.example.com\" targetNamespace=\"http://www.example.com\">\n[...]\n</xs:schema>"
+    },
+    "example-3": {
+      "json-schema": {
+        "type": "object",
+        "properties": {
+          "foo": {
+            "type": "string"
+          },
+          "bar": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  },
+  "description": "Basismodell für ein Application Schema, das noch keine ID enthält.",
+  "type": "object"
+}
