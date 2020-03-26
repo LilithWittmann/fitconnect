@@ -10,9 +10,12 @@ Um diese übergreifende Zielstellung zur erfüllen, werden dem Sender eines Antr
 
 ### Was bedeutet der Status "Proof of Concept"?
 
+...
 
 ### Was ist die föderale Integrations- und Entwicklungsplattform?
 
+...
 
 ### Überblick der Integrationsarchitektur
 
+...

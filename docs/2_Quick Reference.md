@@ -31,6 +31,7 @@ Es werden folgende Pfadparameter in der URL verwendet:
 
 ### Operationen
 Mit folgenden Operationen kann der Sender eine Application übertragen und die Übertragung verwalten:
+
 - [Create Application](../reference/sender.json/paths/~1{source-id}~1{destination-id}/post)
 Legt eine neue Übertragung an.
 - [Add Application Data](../reference/sender.json/paths/~1{source-id}~1{destination-id}~1{application-id}~1data/put)
@@ -43,7 +44,8 @@ Beendet die Übertragung des Antrags und löst seinen Versand aus.
 Ruft den Status der Uploads der Teile der Übertragung ab. Für die Fachdaten und Dokumente wird jeweils der Status und die auf dem Server vorliegende Länge in Bytes zurückgegegben.
 
 Darüber hinaus stehen dem Sender folgende weitere Operationen zur Verfügung:
--
+
+- 
 
 ## Application Subscriber API
 
