@@ -1,4 +1,9 @@
-# Callback
+# Callback Benachrichtigungen
+
+Callbacks sind einfache Webhooks und dienen dazu, API Nutzer über relevante Ereignisse aktiv zu informieren, anstatt das der Client über konstante Abfragen an der API potentielle Änderungen oder Eigenisse abzufragen muss. 
+
+Aktuell wird den Subscribern eine Callback Funktion angeboten, um diese über abrufbereite Anträge in ihren Destinations zu informieren.
+
 ## Callback registrieren
 Beim [anlegen](../reference/subscriber.json/paths/~1{subscriber-id}~1destinations/post) oder [aktualisieren](../reference/subscriber.json/paths/~1{subscriber-id}~1destinations~1{destination-id}/put) einer Destination sollte ein Callback angegeben werden.
 
