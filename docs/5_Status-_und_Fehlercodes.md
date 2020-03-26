@@ -19,7 +19,7 @@ Code | Text | Bedeutung
  200 | OK | Der Request war erfolgreich.
  201 | Created | Eine Ressource wurde erfolgreich angelegt.
  202 | Accepted | Daten wurden wurden erfolgreich übertragen und angenommen.
- 400 | Bad Request | Der Request war nicht korrekt aufgebaut.
+ 400 | Bad Request | Der Request war nicht korrekt aufgebaut oder es liegen mehrere Fehler vor, die unterschiedliche Statuscodes der 4xx-Klasse betreffen. 
  401 | Unauthorized | Der Request lieferte keine oder eine ungültige Authentifikation.
  404 | Not Found | Die Ressource kann nicht unter dem angegeben Pfad gefunden werden oder temporär nicht verfügbar.
  406 | Not Acceptable | Request Body entspricht nicht dem vorgebenen Schema.
@@ -30,9 +30,9 @@ Code | Text | Bedeutung
 
 ### Detailangaben zu clientseitig verursachten Fehlern
 
-Für Fehlermeldungen, die durch den API-Client verursacht wurden (HTTP Statusklasse 4XX), liefert die API im Response Body über eine Error Mitteilung eine detailierte Rückmeldung zu einer nicht erfolgreichen Operation. 
+Bei durch den API-Client verursachte Fehler (HTTP Statusklasse 4XX), liefert die API im Response Body eine Error Mitteilung mit detaillierten Angaben, wodurch der Fehler versacht wurde. 
 
-Eine Error Mitteilung enthält folgende Angaben:
+Eine Error Mitteilung enthält dabei folgende Angaben:
 
     code: Standardisierter Fehlercode
 
