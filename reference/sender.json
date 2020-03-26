@@ -15,7 +15,7 @@
   },
   "servers": [
     {
-      "url": "https://xfall-sender-api.production.fiep-poc.de",
+      "url": "https://sender.fiep-poc.de",
       "description": "Produktionsumgebung der API."
     },
     {
@@ -695,10 +695,10 @@
         "description": "Dieses Authentifizierungsmethode wird genutzt, um den Zugriff auf die Produktiv API zu autorisieren. "
       },
       "Sandbox API Key": {
-        "name": "API Key",
+        "name": "API-Key",
         "type": "apiKey",
         "in": "header",
-        "description": "Der API wird als Authentifizierungsmittel für die Sandbox API benutzt."
+        "description": "Der API-Key wird als Authentifizierungsmittel für die Sandbox API benutzt."
       }
     }
   }
