@@ -265,7 +265,7 @@
       "get": {
         "summary": "Get Status",
         "tags": [
-          "Transfer related Information"
+          "status"
         ],
         "responses": {
           "200": {
@@ -302,78 +302,6 @@
         },
         "operationId": "get-application-status",
         "description": "Ruft den aktuellen Status der Übermittlung sowie einer Übersicht der bisherigen Übertragungshistorie ab.",
-        "tags": [
-          "status"
-        ],
-        "security": [
-          {
-            "Production API Key": [
-              "{source-id}:status:read",
-              "{source-id}:source:manage"
-            ]
-          },
-          {
-            "Sandbox API Key": []
-          }
-        ]
-      }
-    },
-    "/{source-id}/{application-id}/status/{status-nr}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "source-id",
-          "in": "path",
-          "required": true
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "application-id",
-          "in": "path",
-          "required": true
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "status-nr",
-          "in": "path",
-          "required": true
-        }
-      ],
-      "get": {
-        "summary": "Get Status Entry",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/status.json"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error.json"
-                }
-              }
-            }
-          }
-        },
-        "operationId": "get-application-status-entry",
-        "description": "Ruft einen spezifischen Statuswechsel aus der Historie des Status ab.",
-        "tags": [
-          "status"
-        ],
         "security": [
           {
             "Production API Key": [
