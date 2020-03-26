@@ -1,6 +1,6 @@
 # Status- und Fehlercodes
 
-Die XFall APIs liefert in allen Responses die entsprechenden HTTP Response Codes. In der aktuell vorliegenden API Version werden nur HTTP Response Codes verwendet, die im ([RFC 7231](https://tools.ietf.org/html/rfc7231)) beschrieben sind. 
+Die XFall APIs liefert in allen Responses die entsprechenden HTTP Response Codes. In der aktuell vorliegenden API Version werden nur HTTP Response Codes verwendet, die im [RFC 7231](https://tools.ietf.org/html/rfc7231) beschrieben sind. 
 
 API Clients sollten aber gemäß RFC 7231 so implementiert, dass auch unbekannte Response Status Codes  (Neue verwendete Standardcodes oder proprietäre Erweiterungen) gemäß ihrer Statusklasse interpretiert werden können:
 >    "HTTP status codes are extensible.  HTTP clients are not required to
