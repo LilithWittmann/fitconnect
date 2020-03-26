@@ -4,8 +4,6 @@
 
 ![Application_Transfer](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/use_case_documentation/Use_Case_Diagramm.png?token=AOHBJRKJHOP6P3QZ4BKPMXK6QNDHU "Use Case Diagramm der XFall APIs")
 
-
-
 ### Legende der verwendeten BPMN Symbole bei Anwendungsfallabläufen
 
 #### Aktivität
@@ -58,9 +56,9 @@ Parallelisierungspunkt innerhalb des Prozessablauf. Prozessflüsse nach dem para
 
 **Vorbedingung:** Keine
 
-**Ziel:** Es wird ein Zustellpunkt eingerichtet und verwaltet, über den der Subscriber Anträge empfangen kann. Hierdurch wird  ein Zugang für alle Sender eröffnet, der über die ´destination-id` eindeutig adressierbar ist.
+**Ziel:** Es wird ein Zustellpunkt (`destination`) eingerichtet und verwaltet, über den der Subscriber Anträge empfangen kann. Hierdurch wird  ein Zugang für alle Sender eröffnet, der über die `destination-id` eindeutig adressierbar ist.
 
-**Beschreibung:** Der Subscriber erstellt einen Zustellpunkt per POST und bekommt von der API eine eindeutige ´destination-id`. Für diesen Zustellpunkt sind noch fachliche und technische Ansprechpartner zu definieren und das Schema der Inhaltsdaten zu definieren. Zusätzlich besteht die Möglichkeit, eine Callback URL zu definieren, über die der Zustelldienst den Subscriber über neue Anträge informieren kann.
+**Beschreibung:** Der Subscriber erstellt einen Zustellpunkt per POST und bekommt von der API eine eindeutige `destination-id`. Für diesen Zustellpunkt sind noch fachliche und technische Ansprechpartner zu definieren und das Schema der Inhaltsdaten zu definieren. Zusätzlich besteht die Möglichkeit, eine Callback URL zu definieren, über die der Zustelldienst den Subscriber über neue Anträge informieren kann.
 
 ### Benachrichtigungen über Anträge erhalten
 
@@ -70,10 +68,11 @@ Parallelisierungspunkt innerhalb des Prozessablauf. Prozessflüsse nach dem para
 
 **Beschreibung:** Bei der Benachrichtung nimmt der Subscriber die Rolle eines API Providers auf, indem dieser Benachrichtigungen empfängt. Der Zustelldienst sendet beim Vorliegen einer oder mehrer Anträge in einem Zustellpunkt an die Callback URL einen POST mit allen `application-id's` der abholbereiten Anträge.
 
-### Benachrichtigungen über Anträge erhalten
+### Anträge abrufen
 
-**Vorbedingung:** 
+**Vorbedingung:** Der Subscriber hat einen Zustellpunkt erstellt und einem oder mehreren Sendern die dazugehörige ´destination-id´ mitgeteilt.
 
-**Ziel:** 
+**Ziel:** Ziel ist es, abgegebene und abholbereite Anträge abzurufen.
 
 **Beschreibung:** 
+
