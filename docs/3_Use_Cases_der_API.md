@@ -8,33 +8,32 @@
 
 #### Start- und Endereignisse
 
-![Start_Event](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/use_case_documentation/Use_Case_Diagramm.png?token=AOHBJRKJHOP6P3QZ4BKPMXK6QNDHU "Startereignis")
+![Start_Event](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/use_case_documentation/BPMN%20Legend/Start_Event.png?token=AOHBJRJO7W76D7Y76HKKTCK6Q2AXY "Startereignis")
 
-![End_Event](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/use_case_documentation/Use_Case_Diagramm.png?token=AOHBJRKJHOP6P3QZ4BKPMXK6QNDHU "Endereignis")
+![End_Event](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/use_case_documentation/BPMN%20Legend/End_Event.png?token=AOHBJRNQZR6WYHWTRLHOYJK6Q2A2A "Endereignis")
 
 Startet oder beendet einen Prozessablauf.
 
 #### Aktivität
 
-**(Platzhalter Grafik)**
+![Activity](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/use_case_documentation/BPMN%20Legend/Activity.png?token=AOHBJRK2GNFYWQX5ARNV5FK6Q2A3I "Aktivität")
 
 Eine Tätigkeit innerhalb einer Prozessablaufs.
 
-#### Aktivität mit multiplen parallelen Instanzen
+#### Aktivität mit mehrfachen parallelen Instanzen
 
-(Platzhalter Grafik)
+![Activity_Multi_Instance](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/use_case_documentation/BPMN%20Legend/Activity_Multi_Instance.png?token=AOHBJRKPLT5SRL5UEAQN6AK6Q2A7C "Aktivität mit mehrfachen parallelen Instanzen")
 
 Eine Tätigkeit innerhalb einer Prozessablaufs, die ab dem aktivierungszeitpunkt mehrfach parallel durchgeführt werden kann.
 
 #### Exclusive Gateway
 
-**(Platzhalter Grafik)**
+![Exclusive Gateway](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/use_case_documentation/BPMN%20Legend/Exclusive%20Gateway.png?token=AOHBJROAOER2HJJMMVEUHXC6Q2BEE "Exklusives Gateway")
 
 Ein Entscheidungspunkt innerhalb des Prozessablaufs im Sinne einer ODER Entscheidung. Es wird nur der weitere Prozessablauf weiterverfolgt, der dem Entscheidungsergebnis entspricht.
-
 #### Parallel Gateway
 
-**(Platzhalter Grafik)**
+![Parallel Gateway](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/use_case_documentation/BPMN%20Legend/Parallel_Gateway.png?token=AOHBJRPFM2PJY37LHW3F7W26Q2BLQ "Paralleles Gateway")
 
 Parallelisierungspunkt innerhalb des Prozessablauf. Prozessflüsse nach dem parallelen Gateway parallel durchgeführt.
 

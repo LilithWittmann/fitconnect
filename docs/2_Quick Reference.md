@@ -49,6 +49,16 @@ Darüber hinaus stehen dem Sender folgende weitere Operationen zur Verfügung:
 
 ## Application Subscriber API
 
+### Verwendete IDs
+
+...
+
+**Noch in Arbeit**
+
+...
+
+### Operationen
+
 Mit diesen Operationen werden die Abonnements (im Sinne von Destinations) des Backends/Subscribers verwaltet:
 - [Create Destination](../reference/subscriber.json/paths/~1{subscriber-id}~1destinations/post)
 Legt ein neues Übertragungsziel (Destination) an.
@@ -61,7 +71,7 @@ Aktualisiert ein Übertragungsziel (Destination).
 - [Delete Destination](../reference/subscriber.json/paths/~1{subscriber-id}~1destinations~1{destination-id}/delete)
 Löscht ein Übertragungsziel (Destination).
 
-Mit diesen Operationen wird nach wartenden Applications gesucht und diese abgeholt.
+Mit diesen Operationen wird nach wartenden Applications gesucht und diese abgeholt:
 - [List Applications](../reference/subscriber.json/paths/~1{subscriber-id}~1destinations~1{destination-id}~1applications/get)
 Ruft die Liste der wartenden Übertragungen (Applications) ab.
 - [Get Application](../reference/subscriber.json/paths/~1{subscriber-id}~1destinations~1{destination-id}~1applications~1{application-id}/get)
