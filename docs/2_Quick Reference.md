@@ -19,14 +19,14 @@ Fachdaten bezeichnen in XFall im einen strukturieren Datensatz in XML oder JSON 
 
 Um Ressourcen eindeutig zu identifizieren, werden in den URLs der REST Endpunkt eine oder mehrere Identifikatoren (IDs) benutzt. 
 
-### Durch die API bereitgestellte IDs
+### Von der API bereitgestellte IDs
 #### application-id
 Der Zustelldienst weist jedem übertragenen Antrag (`Application`) eine global eindeutige `application-id` zu, die diesen Antrag dauerhaft über den gesamten Bearbeitungsverlauf eindeutig identifiziert.
 
 #### destination-id
 Die `destination-id` ist eine vom Zustelldienst vergebene ID für einen durch den Subscriber angelegten Zustellpunkt (`destination`). Diese ID wird dem Sender über externe Systeme (bspw. Zuständigkeitsfinder) oder bilaterale Absprachen zwischen beiden Seiten mitgeteilt.
 
-### Extern vergebene IDs
+### Vom API-Portal bereitgestellte IDs
 #### source-id
 Die `source-id` ist die ID des Accounts, der die Übertragung absendet. Sie wird vom genutzten Identitätssystem vergeben und muss global eindeutig sein.
 
@@ -37,15 +37,8 @@ Die `subscriber-id` ist die ID des Accounts, der die Übertragung empfängt. Sie
 #### doc-id
 Der Sender vergibt für jedes Antragsformular und jede Anlage in einer Übertragung eine `doc-id`. Diese muss für alle Dokumente (PDF-Antragsformulare und beliebige Anlagen) in der Übertragung eindeutig sein. Es wird empfohlen, die IDs `1`, `2` etc. zu verwenden.
 
-## Application Sender API
-### Verwendete IDs
-Es werden folgende Pfadparameter in der URL verwendet:
-- `source-id`
-- `destination-id`
-- `application-id`
-- `doc-id`
+## Operation der Application Sender API
 
-### Operationen
 Mit folgenden Operationen kann der Sender eine Application übertragen und die Übertragung verwalten:
 
 - [Create Application](../reference/sender.json/paths/~1{source-id}~1{destination-id}/post)
@@ -64,17 +57,7 @@ Darüber hinaus stehen dem Sender folgende weitere Operationen zur Verfügung:
 - [Get Destination](../reference/sender.json/paths/~1{source-id}~1{destination-id}/get): Ruft übertIagungsrelevante nformationen über den Zustellpunkt (bspw. zulässige Schemata oder Datentypen) ab.
 - [Get Status](../reference/sender.json/paths/~1{source-id}~1{application-id}~1status/get): Ruft den Status sowie die Statushistorie der Zustellung des Antrags ab.
 
-## Application Subscriber API
-
-### Verwendete IDs
-
-Es werden folgende Pfadparameter in der URL verwendet:
-- `subscriber-id`
-- `destination-id`
-- `application-id`
-- `doc-id`
-
-### Operationen
+## Operation derApplication Subscriber API
 
 Mit diesen Operationen kann der Subscriber Zustellpunkte (`Destinations`) verwalten:
 - [Create Destination](../reference/subscriber.json/paths/~1{subscriber-id}~1destinations/post)
