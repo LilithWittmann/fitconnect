@@ -2,9 +2,9 @@
 
 ## Der XFall Antrag
 
-![application_structure]( "Struktur des XFall Antrags")
+![application_structure](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/quick_reference/application_structure.png?token=AOHBJROKKDX4MECV4WW6IKC6Q4ZYS "Struktur des XFall Antrags")
 
-Der XFall Antrag ist das zentrale Element in der XFall API. Dieser besteht aus den Fachdaten (`Data`) und den beigefügten Anhängen (`document`). Der Antrag selbst wird über Metadaten beschrieben.
+Der XFall Antrag (`application`) ist das zentrale Geschäftsobjekt in der XFall API. Dieser besteht aus den Fachdaten (`data`) und den beigefügten Anhängen (`document`) und wird über Metadaten beschrieben.
 
 Die Metadaten des Antrags ([Application Metadata](../models/application/metadata.json)) entsprechen dem früheren XFall-Container und enthalten allgemeine Informationen über den Antrag, die enthaltenen Fachdaten und die enthaltenen Anhänge:
 
@@ -15,16 +15,16 @@ Die Metadaten des Antrags ([Application Metadata](../models/application/metadata
 
 Fachdaten bezeichnen in XFall im einen strukturieren Datensatz in XML oder JSON und können über ein externes Schema (bspw. aus FIM) beschrieben werden. Anhänge können entweder klassische Anhänge (bspw. Nachweise) sein oder oder eine PDF Representation des Fachantrags, falls dies aus rechtlichen oder technischen Gründen notwendig ist.
 
-## IDs in den XFall Endpunkten
+## Identifikatoren der XFall Ressourcen
 
-Um Ressourcen eindeutig zu identifizieren, werden in den URLs der REST Endpunkt eine oder mehrere Identifikatoren benutzt. 
+Um Ressourcen eindeutig zu identifizieren, werden in den URLs der REST Endpunkt eine oder mehrere Identifikatoren (IDs) benutzt. 
 
 ### Durch die API bereitgestellte IDs
 #### application-id
-Der Zustelldienst weist jeder Übertragung (Application) eine global eindeutige `application-id` zu.
+Der Zustelldienst weist jedem übertragenen Antrag (`Application`) eine global eindeutige `application-id` zu, die diesen Antrag dauerhaft über den gesamten Bearbeitungsverlauf eindeutig identifiziert.
 
 #### destination-id
-Für jeden vom Subscriber angelegtes Übertragungsziel vergibt der Zustelldienst eine global eindeutige `destination-id`.
+Die `destination-id` ist eine vom Zustelldienst vergebene ID für einen durch den Subscriber angelegten Zustellpunkt (`destination`). Diese ID wird dem Sender über externe Systeme (bspw. Zuständigkeitsfinder) oder bilaterale Absprachen zwischen beiden Seiten mitgeteilt.
 
 ### Extern vergebene IDs
 #### source-id
@@ -33,16 +33,17 @@ Die `source-id` ist die ID des Accounts, der die Übertragung absendet. Sie wird
 #### subscriber-id
 Die `subscriber-id` ist die ID des Accounts, der die Übertragung empfängt. Sie wird vom genutzten Identitätssystem vergeben und muss global eindeutig sein.
 
-### Vom Sender vergebene IDs
+### Vom Sender vergebene Identifikatoren
 #### doc-id
-Der Sender vergibt für jedes Antragsformular und jede Anlage in einer Übertragung eine `doc-id`. Diese muss für alle Dokumente (Antragsformulare und Anlagen) in der Übertragung eindeutig sein. Es wird empfohlen, die IDs `1`, `2` etc. zu verwenden.
+Der Sender vergibt für jedes Antragsformular und jede Anlage in einer Übertragung eine `doc-id`. Diese muss für alle Dokumente (PDF-Antragsformulare und beliebige Anlagen) in der Übertragung eindeutig sein. Es wird empfohlen, die IDs `1`, `2` etc. zu verwenden.
 
 ## Application Sender API
 ### Verwendete IDs
 Es werden folgende Pfadparameter in der URL verwendet:
-- `source-id`: Wird mit dem Source Account zugewiesen.
-- `destination-id`: Über externes System (Zuständigkeitsfinder) dem Onlineantragsdienst bekannt.
-- `application-id`: Vom Zustelldienst vergebene ID für die Übertragung.
+- `source-id`
+- `destination-id`
+- `application-id`
+- `doc-id`
 
 ### Operationen
 Mit folgenden Operationen kann der Sender eine Application übertragen und die Übertragung verwalten:
@@ -60,21 +61,22 @@ Ruft den Status der Uploads der Teile der Übertragung ab. Für die Fachdaten un
 
 Darüber hinaus stehen dem Sender folgende weitere Operationen zur Verfügung:
 
-- 
+- [Get Destination](../reference/sender.json/paths/~1{source-id}~1{destination-id}/get): Ruft übertIagungsrelevante nformationen über den Zustellpunkt (bspw. zulässige Schemata oder Datentypen) ab.
+- [Get Status](../reference/sender.json/paths/~1{source-id}~1{application-id}~1status/get): Ruft den Status sowie die Statushistorie der Zustellung des Antrags ab.
 
 ## Application Subscriber API
 
 ### Verwendete IDs
 
-...
-
-**Noch in Arbeit**
-
-...
+Es werden folgende Pfadparameter in der URL verwendet:
+- `subscriber-id`
+- `destination-id`
+- `application-id`
+- `doc-id`
 
 ### Operationen
 
-Mit diesen Operationen werden die Abonnements (im Sinne von Destinations) des Backends/Subscribers verwaltet:
+Mit diesen Operationen kann der Subscriber Zustellpunkte (`Destinations`) verwalten:
 - [Create Destination](../reference/subscriber.json/paths/~1{subscriber-id}~1destinations/post)
 Legt ein neues Übertragungsziel (Destination) an.
 - [List Destinations](../reference/subscriber.json/paths/~1{subscriber-id}~1destinations/get)

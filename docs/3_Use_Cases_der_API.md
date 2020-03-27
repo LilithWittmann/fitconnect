@@ -2,7 +2,7 @@
 
 ## Überblick über die Anwendungsfälle
 
-![Application_Transfer](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/use_case_documentation/Use_Case_Diagramm.png?token=AOHBJRKJHOP6P3QZ4BKPMXK6QNDHU "Use Case Diagramm der XFall APIs")
+![Application_Transfer](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/use_case_documentation/use_case_diagramm.png?token=AOHBJRMAJDMF7CQFPV476CK6Q5JGQ "Use Case Diagramm der XFall APIs")
 
 ### Legende der verwendeten BPMN Symbole bei Anwendungsfallabläufen
 

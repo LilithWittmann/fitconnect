@@ -6,7 +6,7 @@ Um diese übergreifende Zielstellung zur erfüllen, werden dem Sender eines Antr
 
 Das XFall API-Gateway ist ein Teilbereich der zukünftigen föderalen Integrations- und Entwicklungsplattform und wird aktuell als Proof of Concept umgesetzt.
 
-### Welches Problem löst das XFall-Gateway bzw. die dahinliegende Integrationsinfrastruktur?
+### Welches Problem löst das XFall API-Gateway bzw. die dahinliegende Integrationsinfrastruktur?
 
 ...
 
@@ -29,6 +29,7 @@ Beide Säulen folgen der Philosophie einer offenen Plattform und leiten einen Ku
 -	Dies ermöglicht es allen gesellschaftlichen Akteuren (Behörden, Unternehmen, Non-Profit Organisationen, Bürger) neue digitale Lösungen und Innovationen frei erstellen. 
 -	Die Lösungen können durch den Staat eingebunden, beauftragt oder eingekauft werden oder abseits des Staats im Rahmen neuer kommerzieller oder gesellschaftlicher Geschäftsmodelle eingebunden werden.
 
+![FIEP_Strategic_Vision](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/quick_reference/application_structure.png?token=AOHBJROKKDX4MECV4WW6IKC6Q4ZYS "Vision der föderalen Integrations- und Entwicklungsplattform")
 
 #### Zielstellung des Proof of Concepts
 
