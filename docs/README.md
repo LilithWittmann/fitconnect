@@ -2,15 +2,16 @@
 
 Willkomen auf der API Dokumentation für die XFall RESTful API. Zusammen mit der föderalen Integrations- und Entwicklungsplattform ermöglicht die XFall RESTful API es, dass Lösungsverantwortlichen und Entwicklern von OZG-Verfahren, ihre Verfahren schnell und wirtschaftlich in medienbruchfreie Antragsprozesse zu integrieren. 
 
-> Entlastet von wiederkehrenden Integrationsherausforderungen, werden wertvolle Kapazitäten freigestellt, um skalierbare Innovationen und nutzerzentrierte Lösungen für Antragssteller und Sachbearbeitern voranzutreiben!
+Das Ziel der XFall RESTful API:
+> Lösungsverantwortliche und Entwickler werden von wiederkehrenden Integrationsherausforderungen im Antragsprozess entlastet und können wertvolle Kapazitäten darauf fokussieren, neue Innovationen voranzutreiben und nutzerzentrierte  Lösungen für Antragssteller und Sachbearbeitern in die Breite zu bringen!
 
 ## Was ist die XFall RESTful API und was unterscheidet diese vom bisherigen XFall Standard?
 
-Die XFall RESTful API baut auf den bisherigen Konzepten und Erfahrungen des bestehenden IT-Planungsrats auf. Die übergreifende Zielstellung von XFall besteht darin, Anträge und Berichte, die aus den vorgelagerten Systemen (bspw. Onlineantragsdienste, Fachportal oder Berichtssysteme) erstellt werden, in die elektronische Verfahrensbearbeitung der Verwaltung zu übergeben. Ausgehend hiervon ist die XFall RESTful API keine einheitliche API, sondern besteht aus zwei dedizierten APIs für die Sender von Anträgen (`Application Sender API`) und die Empfänger von Anträgen (`Application Subscriber API`).
+Die XFall RESTful API baut auf den bisherigen Konzepten und Erfahrungen des bestehenden IT-Planungsrats auf. Die übergreifende Zielstellung von XFall besteht darin, Anträge und Berichte, die aus den vorgelagerten Systemen (bspw. Onlineantragsdienste, Fachportal oder Berichtssysteme) erstellt werden, in die elektronische Verfahrensbearbeitung der Verwaltung zu übergeben. 
 
-Bei der Entwicklung der XFall RESTful API wurde viele Konzepte mit Hinblick auf die neuen Erfordernisse des Onlinezugangsgesetzes, dem EU-Single Digital Gateway sowie Anforderungen moderner digitaler Geschäftsmodelle grundlegend weiterentwickelt. 
+Ausgehend hiervon ist die XFall RESTful API keine einheitliche API, sondern besteht aus zwei dedizierten APIs für die Sender von Anträgen (`Application Sender API`) und die Empfänger von Anträgen (`Application Subscriber API`).
 
-Im Vergleich zum bisherigen XFall-Standard setzt die XFall RESTful API auf einen leichgewichtigen REST-Architekturstil nach außen und ergänzt die API um eine einheitliche föderale Infrastruktur:
+Bei der Entwicklung der XFall RESTful API wurde viele Konzepte mit Hinblick auf die neuen Erfordernisse des Onlinezugangsgesetzes, dem EU-Single Digital Gateway sowie Anforderungen moderner digitaler Geschäftsmodelle grundlegend weiterentwickelt. Im Vergleich zum bisherigen XFall-Standard setzt die XFall RESTful API auf einen leichgewichtigen REST-Architekturstil und ergänzt die API um eine einheitliche föderale Infrastruktur:
 - Eine dem "Lightweight Messagin Principle" folgende Integrationsplattform, die die APIs für die Beiteiliten anbietet und viele Integrationsherausforderungen auf beiden Seiten löst.
 - Eine zentrale Entwicklerplattform, die alle Informationen und Ressourcen für Anbindung an die XFall RESTful API bereitstellt.
 
