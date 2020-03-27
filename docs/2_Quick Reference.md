@@ -4,14 +4,16 @@
 
 ![application_structur]( "Struktur des XFall Antrags")
 
+Der XFall Antrag ist das zentrale Element in der XFall API. Dieser besteht aus den Fachdaten (`Data`) und den beigefügten Anhängen (`document`). Der Antrag selbst wird über Metadaten beschrieben.
 
-
-Die Metadaten des Antrags ([Application Metadata](../models/application/metadata.json)) entsprechen dem früheren XFall-Container und enthalten allgemeine Informationen über den Antrag, die enthaltenen Antragsfachdaten und die enthaltenen Anhänge:
+Die Metadaten des Antrags ([Application Metadata](../models/application/metadata.json)) entsprechen dem früheren XFall-Container und enthalten allgemeine Informationen über den Antrag, die enthaltenen Fachdaten und die enthaltenen Anhänge:
 
 - Die `application-id` zur eindeutigen Identifizierung des Antrags (diese wird erst nach initialer Anlage der Antragsressource von der API vergeben)
 - Fachliche Informationen über den Antrag (zusätzliche Prozessinfromationen, Antragssteller oder Bezahlinformationen)
-- Angaben zu, verwendeten Schema in den Antragsfachdaten
+- Angaben zu, verwendeten Schema in den Fachdaten
 - Anzahl und Strukturinformationen zu den enthaltenen Anhängen
+
+Fachdaten bezeichnen in XFall im einen strukturieren Datensatz in XML oder JSON und können über ein externes Schema (bspw. aus FIM) beschrieben werden. Anhänge können entweder klassische Anhänge (bspw. Nachweise) sein oder oder eine PDF Representation des Fachantrags, falls dies aus rechtlichen oder technischen Gründen notwendig ist.
 
 ## IDs in den XFall Endpunkten
 
