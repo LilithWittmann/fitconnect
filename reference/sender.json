@@ -58,22 +58,32 @@
           "202": {
             "description": "Accepted"
           },
-          "406": {
-            "description": "Not Acceptable - Kein Schema zugeordnet oder Schemafehler",
+          "400": {
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
           },
           "410": {
-            "description": "Gone - Application-ID ungültig/Transfer-Timeout",
+            "description": "Gone",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -83,7 +93,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -166,11 +176,21 @@
             "description": "Accepted"
           },
           "400": {
-            "description": "Bad Request - Signaturprüfung nicht erfolgreich - Signatur passt nicht zum Dokument",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -180,7 +200,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -190,7 +210,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -200,7 +220,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -210,7 +230,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -289,12 +309,32 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -410,12 +450,32 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "410": {
             "description": "Gone",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -477,12 +537,32 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "406": {
             "description": "Not Acceptable",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -492,7 +572,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -538,12 +618,32 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -608,11 +708,21 @@
             }
           },
           "400": {
-            "description": "Bad Request - Unvollständig",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -622,7 +732,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -632,7 +742,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }

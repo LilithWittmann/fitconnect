@@ -73,8 +73,35 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
-            "description": "Not Found"
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
           }
         },
         "operationId": "get-application-document",
@@ -155,8 +182,35 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
-            "description": "Not Found"
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
           }
         },
         "operationId": "get-application-data",
@@ -317,12 +371,32 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -353,18 +427,45 @@
           "200": {
             "description": "OK"
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
           },
           "417": {
-            "description": "Expectation Failed - Status passt nicht"
+            "description": "Expectation Failed - Status passt nicht",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
           }
         },
         "description": "Bestätigt die Abholung der Application. Über den Parameter `final-delivery` im Body wird gesteuert, wie der Folgestatus aussieht:\n\n| final-delivery | status      |\n| -------------- | ----------- |\n| `false`        | \"forwarded\" |\n| `true`         | \"delivered\" |\n\nDer Parameter `final-delivery` zeigt an, ob der Antrag noch weitergesendet wird (`false`) oder das finale Ziel erreicht hat (`true`).\n\nSofern der Wert `false` übergeben wurde, muss zu einem späteren Zeitpunkt, wenn der Antrag final zugestellt wurde, ein weiterer Aufruf mit dem Wert `true` erfolgen.",
@@ -541,12 +642,32 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -639,12 +760,32 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -676,12 +817,32 @@
           "200": {
             "description": "OK"
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -749,12 +910,32 @@
           "200": {
             "description": "OK"
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -835,6 +1016,26 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
           }
         },
         "operationId": "list-destinations",
@@ -873,6 +1074,26 @@
                   "required": [
                     "destination-id"
                   ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
