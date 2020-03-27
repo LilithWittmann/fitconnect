@@ -6,6 +6,14 @@
 
 ### Legende der verwendeten BPMN Symbole bei Anwendungsfallabläufen
 
+#### Start- und Endereignisse
+
+![Start_Event](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/use_case_documentation/Use_Case_Diagramm.png?token=AOHBJRKJHOP6P3QZ4BKPMXK6QNDHU "Startereignis")
+
+![End_Event](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/use_case_documentation/Use_Case_Diagramm.png?token=AOHBJRKJHOP6P3QZ4BKPMXK6QNDHU "Endereignis")
+
+Startet oder beendet einen Prozessablauf.
+
 #### Aktivität
 
 **(Platzhalter Grafik)**
@@ -18,13 +26,13 @@ Eine Tätigkeit innerhalb einer Prozessablaufs.
 
 Eine Tätigkeit innerhalb einer Prozessablaufs, die ab dem aktivierungszeitpunkt mehrfach parallel durchgeführt werden kann.
 
-#### Exclusive Gateways
+#### Exclusive Gateway
 
 **(Platzhalter Grafik)**
 
 Ein Entscheidungspunkt innerhalb des Prozessablaufs im Sinne einer ODER Entscheidung. Es wird nur der weitere Prozessablauf weiterverfolgt, der dem Entscheidungsergebnis entspricht.
 
-#### Parallel Gateways
+#### Parallel Gateway
 
 **(Platzhalter Grafik)**
 
@@ -40,7 +48,7 @@ Parallelisierungspunkt innerhalb des Prozessablauf. Prozessflüsse nach dem para
 
 **Beschreibung:** Der Sender überträgt mittels eines POST Request die Metadaten des Antrags an die Sender API und legt die `application` (Antrag) als Ressource an. Hierfür bekommt der Sender durch die API eine eindeutige `application-id`in der Response zugeteilt. Zudem werden alle weiteren zu übermittelnden Antragsbestandteile (`data`, `document`) auf Basis der Angaben in den Metadaten als Subressourcen angelegt und sind durch die `doc-id` aus den Metadaten adressierbar. Für diese Subressourcen überträgt der Sender die Inhalte per PUT. Nach Übermittlung aller Antragsbestandteile wird durch einen POST auf die `application` die vollständige Übertragung des Antrags bestätigt und damit der Antrag den Abholbereich des Zustellpunkts übermittelt.
 
-![Application_Transfer] (../assets/images/use_case_documentation/application_transfer.png "Ablaufbeschreibung zur Uebertragung eines Antrags")
+![Application_Transfer](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/use_case_documentation/application_transfer.png?token=AOHBJRN3LGOYVXIHTXPH7L26QZ5US "Ablaufbeschreibung zur Uebertragung eines Antrags")
 
 ### Zustellstatus des abgegebenen Antrags abrufen
 
@@ -72,7 +80,8 @@ Parallelisierungspunkt innerhalb des Prozessablauf. Prozessflüsse nach dem para
 
 **Vorbedingung:** Der Subscriber hat einen Zustellpunkt erstellt und einem oder mehreren Sendern die dazugehörige ´destination-id´ mitgeteilt.
 
-**Ziel:** Ziel ist es, abgegebene und abholbereite Anträge abzurufen.
+**Ziel:** Ziel ist es, abholbereite Anträge abzurufen.
 
-**Beschreibung:** 
+**Beschreibung:** Zunächst ruft der Subscriber alle Metadaten der vorliegenden Anträge. Als nächsten Schritt ruft der Subscriber die Fachdaten (`data`) sowie basierend auf den Angaben der Metadaten alle  Anlagen (`document`) des Antrag ab. Falls der Subscriber den vollständigen Antrag oder alle relevanten Bestandteile abgerufen hat, bestätigt er den vollständigen Abruf. Dieser hat zur Folge, dass innerhalb einer definierten zeitlichen Frist der Antrag unwiederruflich gelöscht wird. 
 
+![Application_Retrieval](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/use_case_documentation/application_retrieval.png?token=AOHBJRPQTU2PPJR6XRA6X4C6QZ5IW "Ablaufbeschreibung zum Abruf eines Antrags")
