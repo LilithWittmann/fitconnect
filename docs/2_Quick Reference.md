@@ -1,5 +1,18 @@
 # API-Kurzreferenz
 
+## Der XFall Antrag
+
+![application_structur]( "Struktur des XFall Antrags")
+
+
+
+Die Metadaten des Antrags ([Application Metadata](../models/application/metadata.json)) entsprechen dem früheren XFall-Container und enthalten allgemeine Informationen über den Antrag, die enthaltenen Antragsfachdaten und die enthaltenen Anhänge:
+
+- Die `application-id` zur eindeutigen Identifizierung des Antrags (diese wird erst nach initialer Anlage der Antragsressource von der API vergeben)
+- Fachliche Informationen über den Antrag (zusätzliche Prozessinfromationen, Antragssteller oder Bezahlinformationen)
+- Angaben zu, verwendeten Schema in den Antragsfachdaten
+- Anzahl und Strukturinformationen zu den enthaltenen Anhängen
+
 ## IDs in den XFall Endpunkten
 
 Um Ressourcen eindeutig zu identifizieren, werden in den URLs der REST Endpunkt eine oder mehrere Identifikatoren benutzt. 

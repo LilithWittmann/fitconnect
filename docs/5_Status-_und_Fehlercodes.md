@@ -30,7 +30,7 @@ Code | Text | Bedeutung
 
 ### Detailangaben zu clientseitig verursachten Fehlern
 
-Bei durch den API-Client verursachte Fehler (HTTP Statusklasse 4XX), liefert die API im Response Body eine Error Mitteilung mit detaillierten Angaben, wodurch der Fehler versacht wurde. 
+Bei durch den API-Client verursachte Fehler (HTTP Statusklasse 4XX), liefert die API im Response Body eine [Error](../models/error.json) Mitteilung mit detaillierten Angaben, wodurch der Fehler versacht wurde. 
 
 Eine Error Mitteilung enthält dabei folgende Angaben:
 
