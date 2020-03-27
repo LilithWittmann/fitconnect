@@ -22,7 +22,6 @@ Code | Text | Bedeutung
  400 | Bad Request | Der Request war nicht korrekt aufgebaut oder es liegen mehrere Fehler vor, die unterschiedliche Statuscodes der 4xx-Klasse betreffen. 
  401 | Unauthorized | Der Request lieferte keine oder eine ungültige Authentifikation.
  404 | Not Found | Die Ressource kann nicht unter dem angegeben Pfad gefunden werden oder temporär nicht verfügbar.
- 406 | Not Acceptable | Request Body entspricht nicht dem vorgebenen Schema.
  410 | Gone | Die Ressource ist unter dem Pfad permanent nicht mehr verfügbar. (bspw. weil die Ressource gelöscht wurde in dieser Repräsentation nicht mehr verfügbar ist)
  413 | Request Entity Too Large | Der übertragene Datensatz ist zu groß.
  415 | Unsupported Media Type | Der Datentyp wird nicht unterstützt.

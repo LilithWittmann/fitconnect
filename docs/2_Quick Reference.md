@@ -2,7 +2,7 @@
 
 ## Der XFall Antrag
 
-![application_structur]( "Struktur des XFall Antrags")
+![application_structure]( "Struktur des XFall Antrags")
 
 Der XFall Antrag ist das zentrale Element in der XFall API. Dieser besteht aus den Fachdaten (`Data`) und den beigefügten Anhängen (`document`). Der Antrag selbst wird über Metadaten beschrieben.
 
