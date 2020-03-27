@@ -14,7 +14,7 @@ Im Vergleich zum bisherigen XFall-Standard wird die XFall RESTful API setzt auf 
 - Eine dem "Lightweight Messagin Principle" folgende Integrationsplattform, die die jeweiligen XFall APIs anbietet und viele typische Integrationsherausforderungen für beide Seiten löst
 - Eine zentrale Entwicklerplattform, die alle Informationen und Ressourcen für Anbindung an die XFall RESTful API bereitstellt.
 
-### Überblick der Integrationsarchitektur
+### Überblick über die Integrationsarchitektur
 
 ...
 
