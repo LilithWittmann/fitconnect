@@ -40,15 +40,15 @@
 
 **Ziel:** Ziel ist, Benachrichtigungen über abholbereite Anträge zu empfangen. Diese Benachrichtigungen ersetzen ein konstantes Polling durch den Subscriber und entlasten damit die verfügbaren Hardware und Netzwerkressourcen.
 
-**Beschreibung:** Bei der Benachrichtung nimmt der Subscriber die Rolle eines API Providers auf, indem dieser Benachrichtigungen empfängt. Der Zustelldienst sendet beim Vorliegen einer oder mehrer Anträge in einem Zustellpunkt an die Callback URL einen POST mit allen `application-id`s der abholbereiten Anträge.
+**Beschreibung:** Für die Benachrichtung übernimmt der Subscriber die Rolle eines API Providers, indem dieser Requests vom Zustelldienst empfängt. Der Zustelldienst sendet beim Vorliegen einer oder mehrerer Anträge einen POST Request mit allen `application-id's` der abholbereiten Anträge an die hinterlegte Callback URL.
 
 ### Anträge abrufen
 
-**Vorbedingung:** Der Subscriber hat einen Zustellpunkt erstellt und einem oder mehreren Sendern die dazugehörige `destination-id` mitgeteilt. Es wurde einen Antrag an eine dieser Destinations gesendet.
+**Vorbedingung:** Der Subscriber hat einen Zustellpunkt erstellt und die dazugehörige `destination-id` einem oder mehreren Sendern mitgeteilt und es liegt einer oder mehrere Anträge zum abholen bereit.
 
 **Ziel:** Ziel ist es, abholbereite Anträge abzurufen.
 
-**Beschreibung:** Zunächst ruft der Subscriber alle Metadaten der vorliegenden Anträge ab. Als nächsten Schritt ruft der Subscriber die Fachdaten (`data`) sowie basierend auf den Angaben der Metadaten alle  Anlagen (`document`) des Antrag ab. Falls der Subscriber den vollständigen Antrag oder alle relevanten Bestandteile abgerufen hat, bestätigt er den vollständigen Abruf. Dieser hat zur Folge, dass innerhalb einer definierten zeitlichen Frist der Antrag unwiederruflich gelöscht wird. 
+**Beschreibung:** Der Subscriber kann die Metadaten aller vorliegenden Anträge mit einem Request abrufen oder die Metadaten eines spezifischen Antrags abrufen, falls die `application-id` durch eine Callback Benachtigung bereits mitgeteilt wurde. Nach dem Abruf der Metadaten besteht die Möglichkeit, die Fachdaten (`data`) sowie die  Anlagen (`document`) abzurufen. Nach dem Abruf aller gewünschten Bestandteile des Antrags, muss der vollständige Abruf durch den Subscriber bestätigt werden. Diese Bestätigung hat zur Folge, dass innerhalb einer definierten Frist der Antrag unwiederruflich gelöscht wird. 
 
 ![Application_Retrieval](https://raw.githubusercontent.com/fiep-poc/assets/master/images/use_case_documentation/application_retrieval.png "Ablaufbeschreibung zum Abruf eines Antrags")
 
