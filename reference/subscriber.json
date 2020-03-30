@@ -94,7 +94,7 @@
             }
           },
           "403": {
-            "description": "Unauthorized",
+            "description": "Forbidden",
             "content": {
               "application/json": {
                 "schema": {
@@ -213,7 +213,7 @@
             }
           },
           "403": {
-            "description": "Unauthorized",
+            "description": "Forbidden",
             "content": {
               "application/json": {
                 "schema": {
@@ -412,7 +412,7 @@
             }
           },
           "403": {
-            "description": "Unauthorized",
+            "description": "Forbidden",
             "content": {
               "application/json": {
                 "schema": {
@@ -478,7 +478,7 @@
             }
           },
           "403": {
-            "description": "Unauthorized",
+            "description": "Forbidden",
             "content": {
               "application/json": {
                 "schema": {
@@ -703,7 +703,7 @@
             }
           },
           "403": {
-            "description": "Unauthorized",
+            "description": "Forbidden",
             "content": {
               "application/json": {
                 "schema": {
@@ -831,7 +831,7 @@
             }
           },
           "403": {
-            "description": "Unauthorized",
+            "description": "Forbidden",
             "content": {
               "application/json": {
                 "schema": {
@@ -898,7 +898,7 @@
             }
           },
           "403": {
-            "description": "Unauthorized",
+            "description": "Forbidden",
             "content": {
               "application/json": {
                 "schema": {
@@ -1001,7 +1001,7 @@
             }
           },
           "403": {
-            "description": "Unauthorized",
+            "description": "Forbidden",
             "content": {
               "application/json": {
                 "schema": {
@@ -1118,7 +1118,7 @@
             }
           },
           "403": {
-            "description": "Unauthorized",
+            "description": "Forbidden",
             "content": {
               "application/json": {
                 "schema": {
@@ -1189,7 +1189,7 @@
             }
           },
           "403": {
-            "description": "Unauthorized",
+            "description": "Forbidden",
             "content": {
               "application/json": {
                 "schema": {

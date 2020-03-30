@@ -2,6 +2,21 @@
   "title": "Identifier",
   "type": "object",
   "description": "Identifiers are keys that are owned by either the sender, receiver or a third party. If the keys used are owned by either sender or receiver, no meta data has to be specified by means of attributes. The table below specifies the use of attributes for the identifier types when they are owned by a third party.",
+  "x-examples": {
+    "example-1": {
+      "id": "978-1-894049-23-8",
+      "schemeID": "ISBN"
+    },
+    "example-2": {
+      "id": "99050012104000",
+      "schemeURI": "https://www.xrepository.de/details/urn:de:gkleika:leika:leistung",
+      "schemeDataURI": "https://www.xrepository.de/details/urn:de:gkleika:leika:leistung_20180705#version",
+      "schemeVersionID": "urn:de:gkleika:leika:leistung_20180705",
+      "schemeAgencyName": "Geschäfts- und Koordinierungsstelle LeiKa beim Ministerium der Finanzen des Landes Sachsen-Anhalt (GK_LEIKA)",
+      "schemeName": "Leistungen des LeiKa",
+      "schemeID": "urn:de:gkleika:leika:leistung"
+    }
+  },
   "properties": {
     "id": {
       "type": "string",
@@ -40,20 +55,5 @@
   },
   "required": [
     "id"
-  ],
-  "x-examples": {
-    "example-1": {
-      "id": "978-1-894049-23-8",
-      "schemeID": "ISBN"
-    },
-    "example-2": {
-      "id": "99050012104000",
-      "schemeURI": "https://www.xrepository.de/details/urn:de:gkleika:leika:leistung",
-      "schemeDataURI": "https://www.xrepository.de/details/urn:de:gkleika:leika:leistung_20180705#version",
-      "schemeVersionID": "urn:de:gkleika:leika:leistung_20180705",
-      "schemeAgencyName": "Geschäfts- und Koordinierungsstelle LeiKa beim Ministerium der Finanzen des Landes Sachsen-Anhalt (GK_LEIKA)",
-      "schemeName": "Leistungen des LeiKa",
-      "schemeID": "urn:de:gkleika:leika:leistung"
-    }
-  }
+  ]
 }
