@@ -8,21 +8,21 @@
 
 ### Antrag bei einem Zustellpunkt abgeben
 
-**Vorbedingung:** Es muss zuvor die `destination-id` eines gültigen Zustellpunkts ermittelt worden sein. Zum aktuellen Zeitpunkt wird dieser über einen persönlichen Kontakt zwischen dem Subscriber und den Sendern übermittelt. 
+**Vorbedingung:** Es muss zuvor die `destination-id` eines gültigen Zustellpunkts ermittelt worden sein. Im Rahmen des PoC erfolgt die Übermittlung mittels bilateraler Absprachen und Kanäle zwischen dem Subscriber und Sender. 
 
-**Ziel:** Alle Bestandteile des Antrags sind in den Abholbereich des addressierten Zustellpunkts übergeben worden und liegen dort zur Abholung des Subscribers bereit.
+**Ziel:** Alle Bestandteile des Antrags werden in den Abholbereich des addressierten Zustellpunkts übergeben und liegen dort zur Abholung durch den Subscriber bereit.
 
-**Beschreibung:** Der Sender überträgt mittels eines POST Request die Metadaten des Antrags an die Sender API und legt die `application` (Antrag) als Ressource an. Hierfür bekommt der Sender durch die API eine eindeutige `application-id`in der Response zugeteilt. Zudem werden alle weiteren zu übermittelnden Antragsbestandteile (`data`, `document`) auf Basis der Angaben in den Metadaten als Subressourcen angelegt und sind durch die `doc-id` aus den Metadaten adressierbar. Für diese Subressourcen überträgt der Sender die Inhalte per PUT. Nach Übermittlung aller Antragsbestandteile wird durch einen POST auf die `application` die vollständige Übertragung des Antrags bestätigt und damit der Antrag den Abholbereich des Zustellpunkts übermittelt.
+**Beschreibung:** Der Sender überträgt mittels eines POST die Metadaten des Antrags an die Sender API und legt damit den Antrag (`application`) als Ressource sowie die Fachdaten und die in den Metadaten angegebenen Anlagen als Subressourcen an. Für den Antrag bekommt der Sender eine eindeutige `application-id`in der Response mitgeteilt. Der Sender kann anschließend alle Bestandteile des Antrags an die jeweiligen Endpunkte per PUT übermitteln und die Übergabe an in den Abholbereich des Subscribers über einen abschließenden Commit initialisieren.
 
 ![Application_Transfer](https://raw.githubusercontent.com/fiep-poc/assets/master/images/use_case_documentation/application_transfer.png "Ablaufbeschreibung zur Uebertragung eines Antrags")
 
 ### Zustellstatus des abgegebenen Antrags abrufen
 
-**Vorbedingung:** Die `application` wurde als Ressourcen angelegt und dem Sender liegt eine `application-id` vor.
+**Vorbedingung:** Der Antrag wurde als Ressource angelegt und dem Sender liegt eine `application-id` vor.
 
-**Ziel:** Den Zustellungsstatus des Antrags bis zur weiterverarbeitenden Stelle überwachen.
+**Ziel:** Den Zustellungsstatus des Antrags abschließend überwachen.
 
-**Beschreibung:** Der Sender fragt per GET über die `application-id` den `status` der Antrags ab. Als Antwort bekommt dieser den aktuellen Status sowie die Statushistorie übersendet. Alle Statusübergänge sind als entsprechende Codes (`incomplete`, `queued`, `forwarded`, `delivered`) definiert.
+**Beschreibung:** Der Sender fragt per GET über die `application-id` den `status` der Antrags ab. Als Antwort bekommt dieser den aktuellen Status sowie die Statushistorie übersendet. Diese Statusübergänge sind über standardisierte Codes (`incomplete`, `queued`, `forwarded`, `delivered`) definiert.
 
 ## Anwendungsfälle für den Subscriber
 
@@ -30,9 +30,9 @@
 
 **Vorbedingung:** Keine
 
-**Ziel:** Es wird ein Zustellpunkt (`destination`) eingerichtet und verwaltet, über den der Subscriber Anträge empfangen kann. Hierdurch wird  ein Zugang für alle Sender eröffnet, der über die `destination-id` eindeutig adressierbar ist.
+**Ziel:** Es wird ein Zustellpunkt (`destination`) eingerichtet und verwaltet, über den der Subscriber Anträge empfangen kann. Hierdurch wird grundsätzlich ein Zugang für alle Sender eröffnet, die die `destination-id` kennen.
 
-**Beschreibung:** Der Subscriber erstellt einen Zustellpunkt per POST und bekommt von der API eine eindeutige `destination-id`. Für diesen Zustellpunkt sind noch fachliche und technische Ansprechpartner zu definieren und das Schema der Inhaltsdaten zu definieren. Zusätzlich besteht die Möglichkeit, eine Callback URL zu definieren, über die der Zustelldienst den Subscriber über neue Anträge informieren kann.
+**Beschreibung:** Der Subscriber erstellt einen Zustellpunkt per POST und bekommt von der API eine eindeutige `destination-id`. Für diesen Zustellpunkt sind fachliche und technische Ansprechpartner sowie das Schema der Fachdaten zu definieren. Zusätzlich besteht die Möglichkeit, eine Callback URL zu hinterlegen, über die der Zustelldienst den Subscriber über neue Anträge informieren kann.
 
 ### Benachrichtigungen über Anträge erhalten
 
