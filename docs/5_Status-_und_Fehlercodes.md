@@ -1,8 +1,8 @@
 # Status- und Fehlercodes
 
-Die XFall APIs liefert in allen Responses die entsprechenden HTTP Response Codes. In der aktuell vorliegenden API Version werden nur HTTP Response Codes verwendet, die im [RFC 7231](https://tools.ietf.org/html/rfc7231) beschrieben sind. 
+Die XFall RESTful API liefert in allen Responses HTTP Response Codes. In der aktuell vorliegenden API Version werden nur HTTP Response Codes verwendet, die im [RFC 7231](https://tools.ietf.org/html/rfc7231) beschrieben sind. 
 
-API Clients sollten aber gemäß RFC 7231 so implementiert, dass auch unbekannte Response Status Codes  (Neue verwendete Standardcodes oder proprietäre Erweiterungen) gemäß ihrer Statusklasse interpretiert werden können:
+API Clients sollten aber gemäß RFC 7231 so implementiert, dass auch unbekannte Response Status Codes (Neue Standardcodes oder proprietäre Erweiterungen) gemäß ihrer Statusklasse interpretiert werden können:
 >    "HTTP status codes are extensible.  HTTP clients are not required to
    understand the meaning of all registered status codes, though such
    understanding is obviously desirable.  However, a client MUST
@@ -30,9 +30,9 @@ Code | Text | Bedeutung
 
 ### Detailangaben zu clientseitig verursachten Fehlern
 
-Bei durch den API-Client verursachte Fehler (HTTP Statusklasse 4XX), liefert die API im Response Body einen [Error Body](../models/error-body.json) Mitteilung mit detaillierten Angaben, wodurch der Fehler versacht wurde. 
+Bei durch den API-Client verursachte Fehler (HTTP Statusklasse 4XX), liefert die API im Response Body eine [Error Body](../models/error-body.json) Mitteilung mit detaillierten Angaben, wodurch der Fehler versacht wurde. 
 
-Eine Error Mitteilung enthält dabei folgende Angaben:
+Eine Error Mitteilung enthält folgende Angaben:
 
     code: Standardisierter Fehlercode
 

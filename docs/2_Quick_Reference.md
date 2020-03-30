@@ -4,20 +4,17 @@
 
 ![application_structure](https://raw.githubusercontent.com/fiep-poc/assets/master/images/quick_reference/application_structure.png "Struktur des XFall Antrags")
 
-Der XFall Antrag (`application`) ist das zentrale Geschäftsobjekt in der XFall API. Dieser besteht aus den Fachdaten (`data`) und den beigefügten Anhängen (`document`) und wird über Metadaten beschrieben.
+Der XFall Antrag (`application`) ist das zentrale Geschäftsobjekt in der XFall API. Der XFall Antrag besteht aus den Fachdaten (`data`) sowie den beigefügten Anhängen (`document`) und wird über die Metadaten ([application metadata](../models/application/metadata.json)) beschrieben.
 
-Die Metadaten des Antrags ([Application Metadata](../models/application/metadata.json)) entsprechen dem früheren XFall-Container und enthalten allgemeine Informationen über den Antrag, die enthaltenen Fachdaten und die enthaltenen Anhänge:
+Die Metadaten des Antrags entsprechen dem früheren XFall-Container und enthalten übergreifenden Informationen über den Antrag sowie Strukturinformationen zu den enthaltenen Fachdaten und Anhängen.
 
-- Die `application-id` zur eindeutigen Identifizierung des Antrags (diese wird erst nach initialer Anlage der Antragsressource von der API vergeben)
-- Fachliche Informationen über den Antrag (zusätzliche Prozessinfromationen, Antragssteller oder Bezahlinformationen)
-- Angaben zu, verwendeten Schema in den Fachdaten
-- Anzahl und Strukturinformationen zu den enthaltenen Anhängen
+Fachdaten bezeichnen in XFall Antrag im einen strukturieren Datensatz in XML oder JSON und können über ein externes Schema (bspw. aus FIM) beschrieben werden. 
 
-Fachdaten bezeichnen in XFall im einen strukturieren Datensatz in XML oder JSON und können über ein externes Schema (bspw. aus FIM) beschrieben werden. Anhänge können entweder klassische Anhänge (bspw. Nachweise) sein oder oder eine PDF Representation des Fachantrags, falls dies aus rechtlichen oder technischen Gründen notwendig ist.
+Anhänge können entweder klassische Anhänge (bspw. Nachweise) oder oder eine PDF-Repräsentation der Fachdaten des Antrags, falls eine solche alternative Repräsentation aus rechtlichen, technischen oder organisatorischen Gründen notwendig ist.
 
 ## Identifikatoren der XFall Ressourcen
 
-Um Ressourcen eindeutig zu identifizieren, werden in den URLs der REST Endpunkt eine oder mehrere Identifikatoren (IDs) benutzt. 
+Um Ressourcen eindeutig zu identifizieren, werden in den URLs der REST Endpunkte eine oder mehrere Identifikatoren (IDs) benutzt. 
 
 ### Von der API bereitgestellte IDs
 #### application-id
@@ -52,9 +49,9 @@ Darüber hinaus stehen dem Sender folgende weitere Operationen zur Verfügung:
 - [Get Destination](../reference/sender.json/paths/~1{source-id}~1{destination-id}/get) - Ruft übertragungsrelevante Informationen über den Zustellpunkt (bspw. zulässige Schemata oder Datentypen) ab.
 - [Get Status](../reference/sender.json/paths/~1{source-id}~1{application-id}~1status/get) - Ruft den Status sowie die Statushistorie der Zustellung des Antrags ab.
 
-## Operation derApplication Subscriber API
+## Operation der Application Subscriber API
 
-Mit diesen Operationen kann der Subscriber einer oder mehrere Zustellpunkte (`Destinations`) verwalten:
+Mit diesen Operationen kann der Subscriber eine oder mehrere Zustellpunkte (`Destinations`) verwalten:
 - [Create Destination](../reference/subscriber.json/paths/~1{subscriber-id}~1destinations/post) - Legt ein neues Übertragungsziel (Destination) an.
 - [List Destinations](../reference/subscriber.json/paths/~1{subscriber-id}~1destinations/get) - Listet alle Übertragungsziele (Destinations) eines Subscribers auf.
 - [Get Destination](../reference/subscriber.json/paths/~1{subscriber-id}~1destinations~1{destination-id}/get) - Ruf die Daten eines Übertragungsziels (Destination) ab.
