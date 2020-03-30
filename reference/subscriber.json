@@ -93,6 +93,16 @@
               }
             }
           },
+          "403": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
@@ -193,6 +203,16 @@
             }
           },
           "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
             "description": "Unauthorized",
             "content": {
               "application/json": {
@@ -391,6 +411,16 @@
               }
             }
           },
+          "403": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
@@ -438,6 +468,16 @@
             }
           },
           "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
             "description": "Unauthorized",
             "content": {
               "application/json": {
@@ -662,6 +702,16 @@
               }
             }
           },
+          "403": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
@@ -780,6 +830,16 @@
               }
             }
           },
+          "403": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
@@ -828,6 +888,16 @@
             }
           },
           "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
             "description": "Unauthorized",
             "content": {
               "application/json": {
@@ -921,6 +991,16 @@
             }
           },
           "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
             "description": "Unauthorized",
             "content": {
               "application/json": {
@@ -1036,6 +1116,16 @@
                 }
               }
             }
+          },
+          "403": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
           }
         },
         "operationId": "list-destinations",
@@ -1089,6 +1179,16 @@
             }
           },
           "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
             "description": "Unauthorized",
             "content": {
               "application/json": {

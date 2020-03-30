@@ -17,10 +17,6 @@
     {
       "url": "https://sender.fiep-poc.de",
       "description": "Produktionsumgebung der API."
-    },
-    {
-      "description": "Testumgebung der API.",
-      "url": "https://xfall-sender-api.sandbox.fiep-poc.de"
     }
   ],
   "paths": {
@@ -78,6 +74,16 @@
               }
             }
           },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "410": {
             "description": "Gone",
             "content": {
@@ -122,13 +128,10 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{source-id}:application:apply",
               "{source-id}:source:manage"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       }
@@ -195,6 +198,16 @@
               }
             }
           },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Acceptable - Falsche doc-id",
             "content": {
@@ -252,13 +265,10 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{source-id}:application:apply",
               "{source-id}:source:manage"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       }
@@ -329,6 +339,16 @@
               }
             }
           },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
@@ -344,13 +364,10 @@
         "description": "Ruft den aktuellen Status der Übermittlung sowie einer Übersicht der bisherigen Übertragungshistorie ab.",
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{source-id}:status:read",
               "{source-id}:source:manage"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       }
@@ -470,6 +487,16 @@
               }
             }
           },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "410": {
             "description": "Gone",
             "content": {
@@ -488,13 +515,10 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{source-id}:application:apply",
               "{source-id}:source:manage"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       }
@@ -557,6 +581,16 @@
               }
             }
           },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "406": {
             "description": "Not Acceptable",
             "content": {
@@ -594,13 +628,10 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{source-id}:application:apply",
               "{source-id}:source:manage"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       },
@@ -638,6 +669,16 @@
               }
             }
           },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
@@ -655,13 +696,10 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{source-id}:destination-info:read",
               "{source-id}:source:manage"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       }
@@ -702,7 +740,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/status.json"
+                  "$ref": "../models/status-overview.json"
                 }
               }
             }
@@ -719,6 +757,16 @@
           },
           "401": {
             "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
             "content": {
               "application/json": {
                 "schema": {
@@ -766,13 +814,10 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{source-id}:application:apply",
               "{source-id}:source:manage"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       }
@@ -783,12 +828,15 @@
       "name": "Application Transfer"
     },
     {
-      "name": "Transfer related Infos"
+      "name": "status"
+    },
+    {
+      "name": "Transfer related Information"
     }
   ],
   "components": {
     "securitySchemes": {
-      "Production API Key": {
+      "API Key": {
         "type": "oauth2",
         "flows": {
           "clientCredentials": {
@@ -803,12 +851,6 @@
           }
         },
         "description": "Dieses Authentifizierungsmethode wird genutzt, um den Zugriff auf die Produktiv API zu autorisieren. "
-      },
-      "Sandbox API Key": {
-        "name": "API-Key",
-        "type": "apiKey",
-        "in": "header",
-        "description": "Der API-Key wird als Authentifizierungsmittel für die Sandbox API benutzt."
       }
     }
   }
