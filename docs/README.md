@@ -34,21 +34,29 @@ Die föderale Integrations- und Entwicklungsplattform folgt einem offenen Plattf
 -	Dies ermöglicht es allen gesellschaftlichen Akteuren (Behörden, Unternehmen, Non-Profit Organisationen, Bürger) neue digitale Lösungen und Innovationen frei zu erstellen. 
 -	Entwickelte Lösungen können durch den Staat eingebunden, beauftragt oder eingekauft werden oder abseits des Staates im Rahmen neuer kommerzieller oder gesellschaftlicher Geschäftsmodelle eingebunden werden.
 
+Die föderale Integrations- und Entwicklungsplattform ist dabei ganz bewusst nicht als zentralischer Ansatz zu sehen, sondern als ein föderaler Ansatz, der die Stärken des Föderalismus und der sozialen Markwirtschaft zum Tragen kommen lässt.
+
 ![FIEP_Strategic_Vision](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/api_overview/FIEP_strategic_vision.png?token=AOHBJRMFXOHXXYUFKVCPVNC6Q5KM6 "Vision der föderalen Integrations- und Entwicklungsplattform")
 
 ### Wozu dient der Proof of Concept?
 
-Der Proof of Concept soll wesentliche Grundprinzipien und Lösungsansätze der föderalen Integrations- und Entwicklungsplattform am Beispiel der Antragsübermittlung praktisch zu erproben. Für diesen Zweck wurde der bestehende XFall Standard für den PoC als offene RESTful API weiterentwicklet und die dazugehörigen Integrationskomponenten und Entwicklerressourcen prototypisch bereitgestellt.
+Der Proof of Concept (PoC) soll wesentliche Grundprinzipien und Lösungsansätze der föderalen Integrations- und Entwicklungsplattform am Beispiel der Antragsübermittlung praktisch erproben. Für diesen Zweck wurde der bestehende XFall Standard für den PoC als offene RESTful API weiterentwicklet und die dazugehörigen Integrationskomponenten und Entwicklerressourcen prototypisch bereitgestellt.
 
-Ziel ist es aufzuzeigen, dass mit den zwei Säulen der föderalen Integrations- und Entwicklungsplattform und dem offenen Plattformansatz ein echter Mehrwert für die Entwicklung interoperabler und skalierbarer Lösungen generiert werden kann, um somit die Verwaltungsdigitalisierung in Deutschland grundlegend voranzutreiben. 
+Ziel ist es aufzuzeigen, dass mit den zwei Säulen der föderalen Integrations- und Entwicklungsplattform und dem offenen Plattformansatz ein echter Mehrwert für die Entwicklung interoperabler und skalierbarer Lösungen generiert werden kann, um hiermit die föderale Verwaltungsdigitalisierung in Deutschland grundlegend voranzutreiben und zu beschleunigen.
 
-Bei einem positiven Ergebnis des Proof of Concepts wird angestrebt, die föderale Integrations- und Entwicklungsplattform als Gesamtansatz föderal umzusetzen und die XFall RESTful API sowie weitere APIs für die föderale Entwicklungsbereiche produktiv anzubieten.
+Bei einem positiven Ergebnis des PoC wird angestrebt, die föderale Integrations- und Entwicklungsplattform als Gesamtansatz föderal umzusetzen und die XFall RESTful API sowie weitere APIs für die föderale Entwicklungsbereiche produktiv anzubieten.
 
-### Integrationsarchitektur für den PoC
+### Überblick PoC-Integrationsarchitektur
 
-**...
-Vision mit Schaubild und Ausführungen aufzeigen
-**
+![PoC_Integrationarchitecture]( "Integrationsarchitektur für den PoC")
 
-**Abweichungn klar machen
-...**
+Für den PoC werden zwei zentrale Komponenten bereitgestellt:
+- XFall-Zustelldienst: Dieser Dienst stellt die `Application Sender API` und `Application Subscriber API` und die dahinter liegenden fachlichen Funktionen bereit.
+- API-Gateway: Das API-Gatway regelt den Zugriff (Authorisierung, Rate-Limiting, Sicherheitsüberprüfungen, etc.) auf die APIs des XFall-Zustelldienstes und stellt die Authentifizierung für den Zugriff auf die API. Für einen API-Client ist das API-Gatway im Rahmen der Zustelldienstes nicht direkt sichtbar.
+
+Die Integrationsarchitektur sieht vor, dass eine empfangende Behörde oder ein Dienstleister (bspw. eine kommunales Rechenzentrum) über die `Application Subscriber API` eine Zustellpunkt mit einer eindeutigen `destination-id` anlegen. Diese wird im Rahmen des PoC mit der Antragssenderseite bilateral ausgetauscht bzw. über einen vereinbaren Kanal veröffentlicht. Diese ID wird dann durch die Anwendung auf der Senderseite in der API genutzt, um die korrekte Stelle zu adressieren und bei deren Zustellpunkt den Antrag abzugeben. Die empfangende Behörde oder der Dienstleister können mit beliebigen technischen Systemen diesen Antrag beim angelegten Zustellpunkt abholen.
+
+Die Integrationsarchitektur vereinfacht jedoch einige zentrale Aspekte, die für die zukünftige Integrationsplattform im Rahmen der Antragsstellung vorgesehen sind:
+- **Nutzung von Zuständigkeitsfindern: **Langfristig ist angedacht, die `destination-id` über die bestehenden und etablierten Zuständigkeitsfindern von Bund und Ländern und deren Redaktionsprozesse zu veröffentlichen. Damit steht ein skalierbarer Ansatz bereit, bei dem Antragsdienste in Echtzeit während der Antragsstellung die `destination-id` der fachlich und örtlich zuständigen Stelle beim einem Zuständigkeitsfinder ermitteln können. Durch diesen Ansatz sind keine aufwendigen bilateralen Absprachen in der Entwicklung mehr notwendig, sondern die Antragsdienste können einen universellen zuständigkeitsbasierten Ansatz auf Basis föderaler Basisinfrastukturen nutzen!
+- **Standardisierte XTA-Einbindung: **Mit XTA steht ein in vielen Teilen der Verwaltung etablierter Standard bereit, um standardisiert Transportverfahren anzubinden, welche die eigentliche Übertragung von Fachdaten über diverse Protokolle und Kommunikationsinfrastrukturen für das Fachverfahren übernehmen. Während es schon im PoC prinzipiell möglich sein sollte, technische Intermedäre für die XFall RESTful API Anbindung per XTA-SOAP Webservice anzusprechen, wird zukünftig eine vollumfängliche Unterstützung alle XTA Bestandteile (wie bspw. Reports) angestrebt.
+- **Anbindung von Servicekonten und Antragsmanagementkomponenten:** Zukünftig soll der XFall-Zustelldienst alle antragsrelevenaten Daten (Kopien der Antragsdaten und Statusinformationen) bei definierten Ereignissen (Abgabe beim Zustelldienst und Abholung am Zustellpunkt) in den Hohheitsbereich des Antragsstellers übermitteln und damit Antragsdienst und Fachverfahren von dieser Querschnittsaufgabe entlasten. Hierfür ist angedacht, die zukünftig verfügbaren interoperablen Postfächer als standardisierten Übertragsweg in den Hohheitsbereich des Antragsstellers zu nutzen.
