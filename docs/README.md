@@ -1,9 +1,9 @@
 # Überblick über die XFall API
 
-Willkomen auf der API Dokumentation für die XFall RESTful API. Zusammen mit der föderalen Integrations- und Entwicklungsplattform ermöglicht die XFall RESTful API es, dass Lösungsverantwortlichen und Entwicklern von OZG-Verfahren, ihre Verfahren schnell und wirtschaftlich in medienbruchfreie Antragsprozesse zu integrieren. 
+Willkomen auf der API Dokumentation für die XFall RESTful API. Zusammen mit der föderalen Integrations- und Entwicklungsplattform ermöglicht die XFall RESTful API Lösungsverantwortlichen und Entwicklern von OZG-Verfahren, ihre Anwendungen schnell und wirtschaftlich in medienbruchfreie Antragsprozesse zu integrieren. 
 
 Das Ziel der XFall RESTful API:
-> Lösungsverantwortliche und Entwickler werden von wiederkehrenden Integrationsherausforderungen im Antragsprozess entlastet und können wertvolle Kapazitäten darauf fokussieren, neue Innovationen voranzutreiben und nutzerzentrierte  Lösungen für Antragssteller und Sachbearbeitern in die Breite zu bringen!
+> Lösungsverantwortliche und Entwickler werden von wiederkehrenden Integrationsherausforderungen im Antragsprozess entlastet und können wertvolle Kapazitäten darauf fokussieren, neue Verwaltungsinnovationen voranzutreiben und nutzerzentrierte Lösungen für Antragssteller und Sachbearbeitern schnell und kostengünstig in die Breite zu bringen!
 
 ## Was ist die XFall RESTful API und was unterscheidet diese vom bisherigen XFall Standard?
 
