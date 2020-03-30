@@ -73,14 +73,14 @@ Parallelisierungspunkt innerhalb des Prozessablauf. Prozessflüsse nach dem para
 
 **Ziel:** Ziel ist, Benachrichtigungen über abholbereite Anträge zu empfangen. Diese Benachrichtigungen ersetzen ein konstantes Polling durch den Subscriber und entlasten damit die verfügbaren Hardware und Netzwerkressourcen.
 
-**Beschreibung:** Bei der Benachrichtung nimmt der Subscriber die Rolle eines API Providers auf, indem dieser Benachrichtigungen empfängt. Der Zustelldienst sendet beim Vorliegen einer oder mehrer Anträge in einem Zustellpunkt an die Callback URL einen POST mit allen `application-id's` der abholbereiten Anträge.
+**Beschreibung:** Bei der Benachrichtung nimmt der Subscriber die Rolle eines API Providers auf, indem dieser Benachrichtigungen empfängt. Der Zustelldienst sendet beim Vorliegen einer oder mehrer Anträge in einem Zustellpunkt an die Callback URL einen POST mit allen `application-id`s der abholbereiten Anträge.
 
 ### Anträge abrufen
 
-**Vorbedingung:** Der Subscriber hat einen Zustellpunkt erstellt und einem oder mehreren Sendern die dazugehörige ´destination-id´ mitgeteilt.
+**Vorbedingung:** Der Subscriber hat einen Zustellpunkt erstellt und einem oder mehreren Sendern die dazugehörige `destination-id` mitgeteilt. Es wurde einen Antrag an eine dieser Destinations gesendet.
 
 **Ziel:** Ziel ist es, abholbereite Anträge abzurufen.
 
-**Beschreibung:** Zunächst ruft der Subscriber alle Metadaten der vorliegenden Anträge. Als nächsten Schritt ruft der Subscriber die Fachdaten (`data`) sowie basierend auf den Angaben der Metadaten alle  Anlagen (`document`) des Antrag ab. Falls der Subscriber den vollständigen Antrag oder alle relevanten Bestandteile abgerufen hat, bestätigt er den vollständigen Abruf. Dieser hat zur Folge, dass innerhalb einer definierten zeitlichen Frist der Antrag unwiederruflich gelöscht wird. 
+**Beschreibung:** Zunächst ruft der Subscriber alle Metadaten der vorliegenden Anträge ab. Als nächsten Schritt ruft der Subscriber die Fachdaten (`data`) sowie basierend auf den Angaben der Metadaten alle  Anlagen (`document`) des Antrag ab. Falls der Subscriber den vollständigen Antrag oder alle relevanten Bestandteile abgerufen hat, bestätigt er den vollständigen Abruf. Dieser hat zur Folge, dass innerhalb einer definierten zeitlichen Frist der Antrag unwiederruflich gelöscht wird. 
 
 ![Application_Retrieval](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/use_case_documentation/application_retrieval.png?token=AOHBJRPQTU2PPJR6XRA6X4C6QZ5IW "Ablaufbeschreibung zum Abruf eines Antrags")

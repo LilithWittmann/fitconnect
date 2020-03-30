@@ -21,6 +21,7 @@ Code | Text | Bedeutung
  202 | Accepted | Daten wurden wurden erfolgreich übertragen und angenommen.
  400 | Bad Request | Der Request war nicht korrekt aufgebaut oder es liegen mehrere Fehler vor, die unterschiedliche Statuscodes der 4xx-Klasse betreffen. 
  401 | Unauthorized | Der Request lieferte keine oder eine ungültige Authentifikation.
+ 403 | Forbidden | Die mit dem Request gelieferte Authentifikation ist für diese Resource nicht zugriffsberechtigt.
  404 | Not Found | Die Ressource kann nicht unter dem angegeben Pfad gefunden werden oder temporär nicht verfügbar.
  410 | Gone | Die Ressource ist unter dem Pfad permanent nicht mehr verfügbar. (bspw. weil die Ressource gelöscht wurde in dieser Repräsentation nicht mehr verfügbar ist)
  413 | Request Entity Too Large | Der übertragene Datensatz ist zu groß.
@@ -29,7 +30,7 @@ Code | Text | Bedeutung
 
 ### Detailangaben zu clientseitig verursachten Fehlern
 
-Bei durch den API-Client verursachte Fehler (HTTP Statusklasse 4XX), liefert die API im Response Body eine [Error](../models/error.json) Mitteilung mit detaillierten Angaben, wodurch der Fehler versacht wurde. 
+Bei durch den API-Client verursachte Fehler (HTTP Statusklasse 4XX), liefert die API im Response Body einen [Error Body](../models/error-body.json) Mitteilung mit detaillierten Angaben, wodurch der Fehler versacht wurde. 
 
 Eine Error Mitteilung enthält dabei folgende Angaben:
 
