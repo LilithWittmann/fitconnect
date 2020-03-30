@@ -35,9 +35,7 @@
   "properties": {
     "doc-id": {
       "type": "string",
-      "pattern": {
-        "$ref": "../common/id-string.json#/pattern"
-      },
+      "pattern": "^[-_.A-Za-z0-9]+$",
       "description": "ID des Dokuments. Diese muss nur innerhalb des Antrags (Application) eindeutig sein. Es wird daher empfohlen, die IDs fortlaufend (1, 2 etc.) zu vergeben."
     },
     "purpose": {

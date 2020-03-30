@@ -120,15 +120,12 @@
         "data": {
           "type": "object",
           "required": [
-            "schema-id",
+            "schema",
             "mime-type"
           ],
           "properties": {
-            "schema-id": {
-              "type": "string",
-              "pattern": {
-                "$ref": "../common/id-string.json#/pattern"
-              }
+            "schema": {
+              "$ref": "./schema.json"
             },
             "mime-type": {
               "type": "string",

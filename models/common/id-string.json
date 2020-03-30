@@ -1,7 +1,0 @@
-{
-  "type": "string",
-  "title": "ID String",
-  "description": "Datentyp für IDs. Darf nur die Zeichen A-Z, a-z, 0-9 sowie Bindestrich (-), Unterstrich (_) und Punkt (.) enthalten.\n",
-  "example": "JB007",
-  "pattern": "^[-_.A-Za-z0-9]+$"
-}
