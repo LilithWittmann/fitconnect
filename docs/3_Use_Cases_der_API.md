@@ -2,40 +2,7 @@
 
 ## Überblick über die Anwendungsfälle
 
-![Application_Transfer](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/use_case_documentation/use_case_diagramm.png?token=AOHBJRMAJDMF7CQFPV476CK6Q5JGQ "Use Case Diagramm der XFall APIs")
-
-### Legende der verwendeten BPMN Symbole bei Anwendungsfallabläufen
-
-#### Start- und Endereignisse
-
-![Start_Event](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/use_case_documentation/BPMN%20Legend/Start_Event.png?token=AOHBJRJO7W76D7Y76HKKTCK6Q2AXY "Startereignis")
-
-![End_Event](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/use_case_documentation/BPMN%20Legend/End_Event.png?token=AOHBJRNQZR6WYHWTRLHOYJK6Q2A2A "Endereignis")
-
-Startet oder beendet einen Prozessablauf.
-
-#### Aktivität
-
-![Activity](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/use_case_documentation/BPMN%20Legend/Activity.png?token=AOHBJRK2GNFYWQX5ARNV5FK6Q2A3I "Aktivität")
-
-Eine Tätigkeit innerhalb einer Prozessablaufs.
-
-#### Aktivität mit mehrfachen parallelen Instanzen
-
-![Activity_Multi_Instance](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/use_case_documentation/BPMN%20Legend/Activity_Multi_Instance.png?token=AOHBJRKPLT5SRL5UEAQN6AK6Q2A7C "Aktivität mit mehrfachen parallelen Instanzen")
-
-Eine Tätigkeit innerhalb einer Prozessablaufs, die ab dem aktivierungszeitpunkt mehrfach parallel durchgeführt werden kann.
-
-#### Exclusive Gateway
-
-![Exclusive Gateway](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/use_case_documentation/BPMN%20Legend/Exclusive%20Gateway.png?token=AOHBJROAOER2HJJMMVEUHXC6Q2BEE "Exklusives Gateway")
-
-Ein Entscheidungspunkt innerhalb des Prozessablaufs im Sinne einer ODER Entscheidung. Es wird nur der weitere Prozessablauf weiterverfolgt, der dem Entscheidungsergebnis entspricht.
-#### Parallel Gateway
-
-![Parallel Gateway](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/use_case_documentation/BPMN%20Legend/Parallel_Gateway.png?token=AOHBJRPFM2PJY37LHW3F7W26Q2BLQ "Paralleles Gateway")
-
-Parallelisierungspunkt innerhalb des Prozessablauf. Prozessflüsse nach dem parallelen Gateway parallel durchgeführt.
+![Application_Transfer](https://raw.githubusercontent.com/fiep-poc/assets/master/images/use_case_documentation/use_case_diagramm.png "Use Case Diagramm der XFall APIs")
 
 ## Anwendungsfälle für den Sender
 
@@ -47,7 +14,7 @@ Parallelisierungspunkt innerhalb des Prozessablauf. Prozessflüsse nach dem para
 
 **Beschreibung:** Der Sender überträgt mittels eines POST Request die Metadaten des Antrags an die Sender API und legt die `application` (Antrag) als Ressource an. Hierfür bekommt der Sender durch die API eine eindeutige `application-id`in der Response zugeteilt. Zudem werden alle weiteren zu übermittelnden Antragsbestandteile (`data`, `document`) auf Basis der Angaben in den Metadaten als Subressourcen angelegt und sind durch die `doc-id` aus den Metadaten adressierbar. Für diese Subressourcen überträgt der Sender die Inhalte per PUT. Nach Übermittlung aller Antragsbestandteile wird durch einen POST auf die `application` die vollständige Übertragung des Antrags bestätigt und damit der Antrag den Abholbereich des Zustellpunkts übermittelt.
 
-![Application_Transfer](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/use_case_documentation/application_transfer.png?token=AOHBJRN3LGOYVXIHTXPH7L26QZ5US "Ablaufbeschreibung zur Uebertragung eines Antrags")
+![Application_Transfer](https://raw.githubusercontent.com/fiep-poc/assets/master/images/use_case_documentation/application_transfer.png "Ablaufbeschreibung zur Uebertragung eines Antrags")
 
 ### Zustellstatus des abgegebenen Antrags abrufen
 
@@ -83,4 +50,37 @@ Parallelisierungspunkt innerhalb des Prozessablauf. Prozessflüsse nach dem para
 
 **Beschreibung:** Zunächst ruft der Subscriber alle Metadaten der vorliegenden Anträge ab. Als nächsten Schritt ruft der Subscriber die Fachdaten (`data`) sowie basierend auf den Angaben der Metadaten alle  Anlagen (`document`) des Antrag ab. Falls der Subscriber den vollständigen Antrag oder alle relevanten Bestandteile abgerufen hat, bestätigt er den vollständigen Abruf. Dieser hat zur Folge, dass innerhalb einer definierten zeitlichen Frist der Antrag unwiederruflich gelöscht wird. 
 
-![Application_Retrieval](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/use_case_documentation/application_retrieval.png?token=AOHBJRPQTU2PPJR6XRA6X4C6QZ5IW "Ablaufbeschreibung zum Abruf eines Antrags")
+![Application_Retrieval](https://raw.githubusercontent.com/fiep-poc/assets/master/images/use_case_documentation/application_retrieval.png "Ablaufbeschreibung zum Abruf eines Antrags")
+
+### Legende der verwendeten BPMN Symbole
+
+#### Start- und Endereignisse
+
+![Start_Event](https://raw.githubusercontent.com/fiep-poc/assets/master/images/use_case_documentation/BPMN%20Legend/Start_Event.png "Startereignis")
+
+![End_Event](https://raw.githubusercontent.com/fiep-poc/assets/master/images/use_case_documentation/BPMN%20Legend/End_Event.png "Endereignis")
+
+Startet oder beendet einen Prozessablauf.
+
+#### Aktivität
+
+![Activity](https://raw.githubusercontent.com/fiep-poc/assets/master/images/use_case_documentation/BPMN%20Legend/Activity.png "Aktivität")
+
+Eine Tätigkeit innerhalb einer Prozessablaufs.
+
+#### Aktivität mit mehrfachen parallelen Instanzen
+
+![Activity_Multi_Instance](https://raw.githubusercontent.com/fiep-poc/assets/master/images/use_case_documentation/BPMN%20Legend/Activity_Multi_Instance.png "Aktivität mit mehrfachen parallelen Instanzen")
+
+Eine Tätigkeit innerhalb einer Prozessablaufs, die ab dem aktivierungszeitpunkt mehrfach parallel durchgeführt werden kann.
+
+#### Exclusive Gateway
+
+![Exclusive Gateway](https://raw.githubusercontent.com/fiep-poc/assets/master/images/use_case_documentation/BPMN%20Legend/Exclusive%20Gateway.png "Exklusives Gateway")
+
+Ein Entscheidungspunkt innerhalb des Prozessablaufs im Sinne einer ODER Entscheidung. Es wird nur der weitere Prozessablauf weiterverfolgt, der dem Entscheidungsergebnis entspricht.
+#### Parallel Gateway
+
+![Parallel Gateway](https://raw.githubusercontent.com/fiep-poc/assets/master/images/use_case_documentation/BPMN%20Legend/Parallel_Gateway.png "Paralleles Gateway")
+
+Parallelisierungspunkt innerhalb des Prozessablauf. Prozessflüsse nach dem parallelen Gateway parallel durchgeführt.

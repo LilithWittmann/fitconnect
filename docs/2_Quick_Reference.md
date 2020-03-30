@@ -2,7 +2,7 @@
 
 ## Der XFall Antrag
 
-![application_structure](https://raw.githubusercontent.com/fiep-poc/fiep-poc/documentation/assets/images/quick_reference/application_structure.png?token=AOHBJROKKDX4MECV4WW6IKC6Q4ZYS "Struktur des XFall Antrags")
+![application_structure](https://raw.githubusercontent.com/fiep-poc/assets/master/images/quick_reference/application_structure.png "Struktur des XFall Antrags")
 
 Der XFall Antrag (`application`) ist das zentrale Geschäftsobjekt in der XFall API. Dieser besteht aus den Fachdaten (`data`) und den beigefügten Anhängen (`document`) und wird über Metadaten beschrieben.
 
@@ -54,7 +54,7 @@ Darüber hinaus stehen dem Sender folgende weitere Operationen zur Verfügung:
 
 ## Operation derApplication Subscriber API
 
-Mit diesen Operationen kann der Subscriber Zustellpunkte (`Destinations`) verwalten:
+Mit diesen Operationen kann der Subscriber einer oder mehrere Zustellpunkte (`Destinations`) verwalten:
 - [Create Destination](../reference/subscriber.json/paths/~1{subscriber-id}~1destinations/post) - Legt ein neues Übertragungsziel (Destination) an.
 - [List Destinations](../reference/subscriber.json/paths/~1{subscriber-id}~1destinations/get) - Listet alle Übertragungsziele (Destinations) eines Subscribers auf.
 - [Get Destination](../reference/subscriber.json/paths/~1{subscriber-id}~1destinations~1{destination-id}/get) - Ruf die Daten eines Übertragungsziels (Destination) ab.

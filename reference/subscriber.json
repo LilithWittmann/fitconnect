@@ -17,10 +17,6 @@
     {
       "url": "https://subscriber.fiep-poc.de",
       "description": "Produktionsumgebung der API."
-    },
-    {
-      "url": "https://xfall-sender-api.sandbox.fiep-poc.de",
-      "description": "Testumgebung der API."
     }
   ],
   "paths": {
@@ -121,14 +117,11 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{subscriber-id}:manage",
               "{subscriber-id}:application:receive",
               "{subscriber-id}:destination:{destination-id}:application:receive"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       }
@@ -240,14 +233,11 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{subscriber-id}:manage",
               "{subscriber-id}:application:receive",
               "{subscriber-id}:destination:{destination-id}:application:receive"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       }
@@ -439,14 +429,11 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{subscriber-id}:manage",
               "{subscriber-id}:application:receive",
               "{subscriber-id}:destination:{destination-id}:application:receive"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       },
@@ -530,14 +517,11 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{subscriber-id}:manage",
               "{subscriber-id}:application:receive",
               "{subscriber-id}:destination:{destination-id}:application:receive"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       }
@@ -729,14 +713,11 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{subscriber-id}:manage",
               "{subscriber-id}:application:receive",
               "{subscriber-id}:destination:{destination-id}:application:receive"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       }
@@ -858,15 +839,12 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{subscriber-id}:destination:read",
               "{subscriber-id}:destination:manage",
               "{subscriber-id}:manage",
               "{subscriber-id}:destination:{destination-id}:read"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       },
@@ -961,15 +939,12 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{subscriber-id}:manage",
               "{subscriber-id}:destination:update",
               "{subscriber-id}:destination:manage",
               "{subscriber-id}:destination:{destination-id}:update"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       },
@@ -1027,15 +1002,12 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{subscriber-id}:manage",
               "{subscriber-id}:destination:manage",
               "{subscriber-id}:destination:delete",
               "{subscriber-id}:destination:{destination-id}:delete"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       }
@@ -1135,14 +1107,11 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{subscriber-id}:destination:read",
               "{subscriber-id}:manage",
               "{subscriber-id}:destination:manage"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       },
@@ -1250,7 +1219,7 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{subscriber-id}:manage",
               "{subscriber-id}:destination:manage",
               "{subscriber-id}:destination:create"
@@ -1270,7 +1239,7 @@
   ],
   "components": {
     "securitySchemes": {
-      "Production API Key": {
+      "API Key": {
         "type": "oauth2",
         "flows": {
           "clientCredentials": {
@@ -1292,12 +1261,6 @@
           }
         },
         "description": "Dieses Authentifizierungsmethode wird genutzt, um den Zugriff auf die Produktiv API zu autorisieren. "
-      },
-      "Sandbox API Key": {
-        "name": "API-Key",
-        "type": "apiKey",
-        "in": "header",
-        "description": "Der API-Key wird als Authentifizierungsmittel für die Sandbox API benutzt."
       }
     }
   }

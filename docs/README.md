@@ -36,7 +36,7 @@ Die föderale Integrations- und Entwicklungsplattform folgt einem offenen Plattf
 
 Die föderale Integrations- und Entwicklungsplattform ist dabei ganz bewusst nicht als zentralischer Ansatz zu sehen, sondern als ein föderaler Ansatz, der die Stärken des Föderalismus und der sozialen Markwirtschaft zum Tragen kommen lässt.
 
-![FIEP_Strategic_Vision](https://raw.githubusercontent.com/fiep-poc/fiep-poc/develop/assets/images/api_overview/FIEP_strategic_vision.png?token=AOHBJRMFXOHXXYUFKVCPVNC6Q5KM6 "Vision der föderalen Integrations- und Entwicklungsplattform")
+![FIEP_Strategic_Vision](https://raw.githubusercontent.com/fiep-poc/assets/master/images/api_overview/FIEP_strategic_vision.png "Vision der föderalen Integrations- und Entwicklungsplattform")
 
 ### Wozu dient der Proof of Concept?
 
@@ -48,7 +48,7 @@ Bei einem positiven Ergebnis des PoC wird angestrebt, die föderale Integrations
 
 ### Überblick PoC-Integrationsarchitektur
 
-![PoC_Integrationarchitecture]( "Integrationsarchitektur für den PoC")
+![PoC_Integrationarchitecture](https://raw.githubusercontent.com/fiep-poc/assets/master/images/api_overview/PoC_integrationarchitecture.jpg "Integrationsarchitektur für den PoC")
 
 Für den PoC werden zwei zentrale Komponenten bereitgestellt:
 - **XFall-Zustelldienst:** Dieser Dienst stellt die `Application Sender API` und `Application Subscriber API` und die dahinter liegenden fachlichen Funktionen bereit.
@@ -61,7 +61,9 @@ Diese `destination-id` wird im Rahmen des PoC mit der Antragssenderseite bilater
 Die Integrationsarchitektur wird im Rahmen des PoC um einige zentrale Aspekte vereinfacht, die für die zukünftige Integrationsarchitektur fest eingeplant sind:
 - **Nutzung von Zuständigkeitsfindern:** Langfristig ist angedacht, die `destination-id` über die bestehenden und etablierten Zuständigkeitsfindern von Bund und Ländern und deren Redaktionsprozesse zu veröffentlichen. Damit steht ein skalierbarer Ansatz bereit, bei dem Antragsdienste in Echtzeit während der Antragsstellung die `destination-id` der fachlich und örtlich zuständigen Stelle beim einem Zuständigkeitsfinder ermitteln können. Durch diesen Ansatz sind keine aufwendigen bilateralen Absprachen in der Entwicklung mehr notwendig, sondern die Antragsdienste können einen universellen zuständigkeitsbasierten Ansatz auf Basis föderaler Basisinfrastukturen nutzen!
 
-![FIEP_Strategic_Vision](https://raw.githubusercontent.com/fiep-poc/fiep-poc/develop/assets/images/api_overview/FIEP_strategic_vision.png?token=AOHBJRMFXOHXXYUFKVCPVNC6Q5KM6 "Vision der föderalen Integrations- und Entwicklungsplattform")
+![destination-id_publishing_jurisdiction-finder](https://raw.githubusercontent.com/fiep-poc/fiep-poc/develop/assets/images/api_overview/destination-id_publishing_jurisdiction-finder.png?token=AOHBJRJFNZQDZFRNM25AFSS6RMN2C "Redaktionsprozess zur Veröffentlichung einer Destination-ID in einem Zuständigkeitsfinder")
 
 - **Standardisierte XTA-Einbindung:** Mit XTA steht ein in vielen Teilen der Verwaltung etablierter Standard bereit, um standardisiert Transportverfahren anzubinden, welche die eigentliche Übertragung von Fachdaten über diverse Protokolle und Kommunikationsinfrastrukturen für das Fachverfahren übernehmen. Während es schon im PoC prinzipiell möglich sein sollte, technische Intermedäre für die XFall RESTful API Anbindung per XTA-SOAP Webservice anzusprechen, wird zukünftig eine vollumfängliche Unterstützung alle XTA Bestandteile (wie bspw. Reports) angestrebt.
 - **Anbindung von Servicekonten und Antragsmanagementkomponenten:** Zukünftig soll der XFall-Zustelldienst alle antragsrelevenaten Daten (Kopien der Antragsdaten und Statusinformationen) bei definierten Ereignissen (Abgabe beim Zustelldienst und Abholung am Zustellpunkt) in den Hohheitsbereich des Antragsstellers übermitteln und damit Antragsdienst und Fachverfahren von dieser Querschnittsaufgabe entlasten. Hierfür ist angedacht, die zukünftig verfügbaren interoperablen Postfächer als standardisierten Übertragsweg in den Hohheitsbereich des Antragsstellers zu nutzen.
+
+![future_integrationarchitecture](https://raw.githubusercontent.com/fiep-poc/assets/master/images/api_overview/future_integrationarchitecture.jpg "Zielvision Integrationsarchitektur für die Antragsstellung")
