@@ -771,7 +771,7 @@
         ]
       },
       "get": {
-        "summary": "Get Destination",
+        "summary": "Get Destination Info",
         "operationId": "get-destination-info",
         "responses": {
           "200": {
