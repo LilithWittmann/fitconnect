@@ -112,6 +112,33 @@
               "schema": {
                 "type": "object",
                 "properties": {}
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "F99000001": "string",
+                    "G99000001": {
+                      "F99000002": "string",
+                      "F99000003": 42
+                    },
+                    "G99000002": [
+                      {
+                        "F99000004": true,
+                        "G99000001": {
+                          "F99000002": "string",
+                          "F99000003": 17
+                        }
+                      },
+                      {
+                        "F99000004": true,
+                        "G99000001": {
+                          "F99000002": "string",
+                          "F99000003": 24
+                        }
+                      }
+                    ]
+                  }
+                }
               }
             },
             "application/xml": {
@@ -555,6 +582,13 @@
                       "type": "string"
                     }
                   }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "application-id": "45bb5b95-d853-4fc5-b45d-10aa9e15287a"
+                    }
+                  }
                 }
               }
             }
@@ -615,6 +649,109 @@
             "application/json": {
               "schema": {
                 "$ref": "../models/application/metadata-no-id.json"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "additional-reference-info": {
+                      "subject": "Anmeldung eines Gewerbes in Musterstadt",
+                      "case-id": "DF/8923"
+                    },
+                    "content-structure": {
+                      "data": {
+                        "schema": {
+                          "mime-type": "json",
+                          "schema-source": "none"
+                        },
+                        "mime-type": "json"
+                      },
+                      "docs": [
+                        {
+                          "doc-id": "1",
+                          "purpose": "form",
+                          "size": 39273,
+                          "mime": "application/pdf",
+                          "filename": "antrag.pdf",
+                          "description": "Das Antragsformular",
+                          "lang": {
+                            "lang": "de",
+                            "region": "DE"
+                          },
+                          "hash": {
+                            "algorithm": "SHA-256",
+                            "digest": "03ba204e50d126e4674c005e04d82e84c21366780af1f43bd54a37816b6ab340"
+                          }
+                        }
+                      ]
+                    },
+                    "public-service-type": {
+                      "name": "Gewerbeanmeldung",
+                      "description": "Eine Gewerbeanmeldung ist immer dann notwendig, wenn Sie einen stehenden Gewerbebetrieb beginnen.",
+                      "leika-id": "99050012104000",
+                      "other-identifiers": [
+                        {
+                          "id": "8664844",
+                          "schemeURI": "service.niedersachsen.de",
+                          "schemeName": "Serviceportal Niedersachsen"
+                        },
+                        {
+                          "id": "354824",
+                          "schemeURI": "buerger.thueringen.de",
+                          "schemeName": "Zuständigkeitsfinder Thüringen"
+                        }
+                      ]
+                    },
+                    "applicants": [
+                      {
+                        "authentification-info": {
+                          "assurance-level": "high",
+                          "authentification-method": "eID",
+                          "timestamp": "2020-03-03T12:38:23Z"
+                        },
+                        "identity-info": {
+                          "date-of-birth": "1970-09-13",
+                          "gender": "m",
+                          "given-name": "WERNER",
+                          "family-name": "MUSTERMANN",
+                          "place-of-residence": {
+                            "street": "KURZER WEG 7",
+                            "postal-code": "12345",
+                            "city": "ANKH-MORPORK"
+                          }
+                        },
+                        "contact-info": {
+                          "electronic-adresses": [
+                            {
+                              "channel-type": "Service-Account-Mailbox",
+                              "address": "3b0c9c8c-0801-45f0-a331-2abfc9db78d0"
+                            }
+                          ],
+                          "physical-adress": {
+                            "street": "Kurzer Weg",
+                            "house-number": "7",
+                            "postal-code": "12345",
+                            "city": "Ankh-Morpork"
+                          },
+                          "telephone": [
+                            {
+                              "number": "+49 89 32168-42",
+                              "mobile": true,
+                              "type": "work"
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "payment-info": {
+                      "reference": "TP/93/GDP",
+                      "usage": "Gewerbeanmeldung",
+                      "amount": 17.3,
+                      "timestamp": "2020-03-03T12:38:23Z",
+                      "status": "success",
+                      "transaction": "1f77c5f9b759db9cdce59988b24974d465c7be5e462a6185485559ff6e2dea82"
+                    }
+                  }
+                }
               }
             }
           },

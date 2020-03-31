@@ -1133,6 +1133,13 @@
                   "required": [
                     "destination-id"
                   ]
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "destination-id": "e15fc92e-c286-424b-9802-39c6b6bc441d"
+                    }
+                  }
                 }
               }
             }
@@ -1178,7 +1185,8 @@
               "examples": {
                 "example-1": {
                   "value": {
-                    "organization": {
+                    "public-organization": {
+                      "organization-name": "Gewerbeamt Musterstadt",
                       "address": {
                         "street": "Kurzer Weg",
                         "houseNr": "7",
@@ -1188,6 +1196,7 @@
                       "contact": {
                         "telephone": {
                           "number": "+49 89 32168-0",
+                          "mobile": false,
                           "type": "work"
                         },
                         "email": "behoerde@example.com"
@@ -1199,13 +1208,29 @@
                       "firstName": "Kunibert",
                       "lastName": "Vonundzu",
                       "contact": {
-                        "telephone": {
-                          "number": "+49 89 32168-42",
-                          "mobile": "+49 123 456789",
-                          "type": "work"
-                        },
+                        "telephone": [
+                          {
+                            "number": "+49 89 32168-42",
+                            "mobile": false,
+                            "type": "work"
+                          },
+                          {
+                            "number": "+49 123 456789",
+                            "mobile": true,
+                            "type": "work"
+                          }
+                        ],
                         "email": "kunibert.vonundzu@example.com"
                       }
+                    },
+                    "schemas": [
+                      {
+                        "mime-type": "json",
+                        "schema-source": "none"
+                      }
+                    ],
+                    "callback": {
+                      "callback-url": "https://www.example.com/callback"
                     }
                   }
                 }

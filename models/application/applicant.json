@@ -1,15 +1,12 @@
 {
+  "oneOf": [
+    {
+      "$ref": "./applicant-person.json"
+    },
+    {
+      "$ref": "./applicant-organization.json"
+    }
+  ],
   "title": "Applicant",
-  "type": "array",
-  "description": "Ein Antragsteller, entweder eine Organisation oder eine natürliche Person",
-  "items": {
-    "oneOf": [
-      {
-        "$ref": "./applicant-person.json"
-      },
-      {
-        "$ref": "./applicant-organization.json"
-      }
-    ]
-  }
+  "description": "Ein Antragsteller, entweder eine Organisation oder eine natürliche Person"
 }
