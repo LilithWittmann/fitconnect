@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Notification Callback",
-    "version": "1.0",
+    "version": "0.2",
     "contact": {
       "name": "FITKO",
       "url": "https://www.fitko.de/"
@@ -15,19 +15,20 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000"
+      "url": "{callback-host}"
     }
   ],
   "paths": {
-    "/{path}": {
+    "/{callback-path}": {
       "parameters": [
         {
           "schema": {
             "type": "string"
           },
-          "name": "path",
+          "name": "callback-path",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "Dies ist nur ein Platzhalter. Die ganze Callback-URL ergibt sich aus der Angabe in der Destiantion."
         }
       ],
       "post": {

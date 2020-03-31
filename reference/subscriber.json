@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Application Subscriber API",
-    "version": "1.0",
+    "version": "0.2",
     "description": "API vom Fachverfahren zum Zustelldienst",
     "contact": {
       "name": "FITKO",
@@ -15,7 +15,8 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000"
+      "url": "https://subscriber.fiep-poc.de",
+      "description": "Produktionsumgebung der API."
     }
   ],
   "paths": {
@@ -56,9 +57,6 @@
       ],
       "get": {
         "summary": "Get Application Document",
-        "tags": [
-          "transfer"
-        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -71,12 +69,61 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
-            "description": "Not Found"
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
           }
         },
         "operationId": "get-application-document",
-        "description": "Ruf ein Dokument (Formular oder Anlage) der Application ab."
+        "description": "Ruf ein Dokument (Formular oder Anlage) der Application ab.",
+        "tags": [
+          "Application Retrieval"
+        ],
+        "security": [
+          {
+            "API Key": [
+              "{subscriber-id}:manage",
+              "{subscriber-id}:application:receive",
+              "{subscriber-id}:destination:{destination-id}:application:receive"
+            ]
+          }
+        ]
       }
     },
     "/{subscriber-id}/destinations/{destination-id}/applications/{application-id}/data": {
@@ -108,9 +155,6 @@
       ],
       "get": {
         "summary": "Get Application Data",
-        "tags": [
-          "transfer"
-        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -119,22 +163,83 @@
                 "schema": {
                   "type": "object",
                   "properties": {}
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "F99000001": "Eins",
+                      "G99000001": {
+                        "F99000002": "Zwei",
+                        "F99000003": "Drei"
+                      }
+                    }
+                  }
                 }
               },
               "application/xml": {
                 "schema": {
                   "type": "object",
                   "properties": {}
+                },
+                "examples": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
           },
           "404": {
-            "description": "Not Found"
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
           }
         },
         "operationId": "get-application-data",
-        "description": "Ruft die Fachdaten der Application ab."
+        "description": "Ruft die Fachdaten der Application ab.\n\nBeispiele:\n#### JSON\n```json\n{\n    \"F99000001\": \"Eins\",\n    \"G99000001\": {\n        \"F99000002\": \"Zwei\",\n        \"F99000003\": \"Drei\"\n    }\n}\n```\n\n#### XML\n```xml\n<S99000001>\n  <F99000001>Eins</F99000001>\n  <G99000001>\n    <F99000002>Zwei</F99000002>\n    <F99000003>Drei</F99000003>\n  </G99000001>\n</S99000001>\n```",
+        "tags": [
+          "Application Retrieval"
+        ],
+        "security": [
+          {
+            "API Key": [
+              "{subscriber-id}:manage",
+              "{subscriber-id}:application:receive",
+              "{subscriber-id}:destination:{destination-id}:application:receive"
+            ]
+          }
+        ]
       }
     },
     "/{subscriber-id}/destinations/{destination-id}/applications/{application-id}": {
@@ -166,9 +271,6 @@
       ],
       "get": {
         "summary": "Get Application Metadata",
-        "tags": [
-          "transfer"
-        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -279,44 +381,120 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
           }
         },
         "operationId": "get-application",
-        "description": "Ruft eine wartende Application ab."
+        "description": "Ruft eine wartende Application ab.",
+        "tags": [
+          "Application Retrieval"
+        ],
+        "security": [
+          {
+            "API Key": [
+              "{subscriber-id}:manage",
+              "{subscriber-id}:application:receive",
+              "{subscriber-id}:destination:{destination-id}:application:receive"
+            ]
+          }
+        ]
       },
       "post": {
-        "summary": "Commit Application",
-        "operationId": "commit-application",
+        "summary": "Acknowledge Application",
+        "operationId": "ack-application",
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
           },
           "404": {
             "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
           },
           "417": {
-            "description": "Expectation Failed - Status passt nicht"
+            "description": "Expectation Failed - Status passt nicht",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
           }
         },
-        "tags": [
-          "transfer"
-        ],
         "description": "Bestätigt die Abholung der Application. Über den Parameter `final-delivery` im Body wird gesteuert, wie der Folgestatus aussieht:\n\n| final-delivery | status      |\n| -------------- | ----------- |\n| `false`        | \"forwarded\" |\n| `true`         | \"delivered\" |\n\nDer Parameter `final-delivery` zeigt an, ob der Antrag noch weitergesendet wird (`false`) oder das finale Ziel erreicht hat (`true`).\n\nSofern der Wert `false` übergeben wurde, muss zu einem späteren Zeitpunkt, wenn der Antrag final zugestellt wurde, ein weiterer Aufruf mit dem Wert `true` erfolgen.",
         "requestBody": {
           "content": {
@@ -333,7 +511,19 @@
             }
           },
           "description": "Details der Quittung"
-        }
+        },
+        "tags": [
+          "Application Retrieval"
+        ],
+        "security": [
+          {
+            "API Key": [
+              "{subscriber-id}:manage",
+              "{subscriber-id}:application:receive",
+              "{subscriber-id}:destination:{destination-id}:application:receive"
+            ]
+          }
+        ]
       }
     },
     "/{subscriber-id}/destinations/{destination-id}/applications": {
@@ -357,9 +547,6 @@
       ],
       "get": {
         "summary": "List Applications",
-        "tags": [
-          "transfer"
-        ],
         "operationId": "list-applications",
         "responses": {
           "200": {
@@ -479,18 +666,60 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
           }
         },
-        "description": "Ruft die Liste der wartenden Applications ab."
+        "description": "Ruft die Liste der wartenden Applications ab.",
+        "tags": [
+          "Application Retrieval"
+        ],
+        "security": [
+          {
+            "API Key": [
+              "{subscriber-id}:manage",
+              "{subscriber-id}:application:receive",
+              "{subscriber-id}:destination:{destination-id}:application:receive"
+            ]
+          }
+        ]
       }
     },
     "/{subscriber-id}/destinations/{destination-id}": {
@@ -514,9 +743,6 @@
       ],
       "get": {
         "summary": "Get Destination",
-        "tags": [
-          "destination"
-        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -565,19 +791,62 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
           }
         },
         "operationId": "get-destination",
-        "description": "Übertragungsziel abfragen"
+        "description": "Übertragungsziel abfragen",
+        "tags": [
+          "Destination Management"
+        ],
+        "security": [
+          {
+            "API Key": [
+              "{subscriber-id}:destination:read",
+              "{subscriber-id}:destination:manage",
+              "{subscriber-id}:manage",
+              "{subscriber-id}:destination:{destination-id}:read"
+            ]
+          }
+        ]
       },
       "put": {
         "summary": "Update Destination",
@@ -586,20 +855,47 @@
           "200": {
             "description": "OK"
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
           }
         },
-        "tags": [
-          "destination"
-        ],
         "description": "Übertragungsziel aktualisieren",
         "requestBody": {
           "content": {
@@ -637,7 +933,20 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Destination Management"
+        ],
+        "security": [
+          {
+            "API Key": [
+              "{subscriber-id}:manage",
+              "{subscriber-id}:destination:update",
+              "{subscriber-id}:destination:manage",
+              "{subscriber-id}:destination:{destination-id}:update"
+            ]
+          }
+        ]
       },
       "delete": {
         "summary": "Delete Destination",
@@ -646,21 +955,61 @@
           "200": {
             "description": "OK"
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
           }
         },
+        "description": "Übertragungsziel löschen",
         "tags": [
-          "destination"
+          "Destination Management"
         ],
-        "description": "Übertragungsziel löschen"
+        "security": [
+          {
+            "API Key": [
+              "{subscriber-id}:manage",
+              "{subscriber-id}:destination:manage",
+              "{subscriber-id}:destination:delete",
+              "{subscriber-id}:destination:{destination-id}:delete"
+            ]
+          }
+        ]
       }
     },
     "/{subscriber-id}/destinations": {
@@ -676,9 +1025,6 @@
       ],
       "get": {
         "summary": "List Destinations",
-        "tags": [
-          "destination"
-        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -722,10 +1068,52 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
           }
         },
         "operationId": "list-destinations",
-        "description": "Ruft die Liste aller Destinations dieses Accounts auf."
+        "description": "Ruft die Liste aller Destinations dieses Accounts auf.",
+        "tags": [
+          "Destination Management"
+        ],
+        "security": [
+          {
+            "API Key": [
+              "{subscriber-id}:destination:read",
+              "{subscriber-id}:manage",
+              "{subscriber-id}:destination:manage"
+            ]
+          }
+        ]
       },
       "post": {
         "summary": "Create Destination",
@@ -745,6 +1133,43 @@
                   "required": [
                     "destination-id"
                   ]
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "destination-id": "e15fc92e-c286-424b-9802-39c6b6bc441d"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -760,7 +1185,8 @@
               "examples": {
                 "example-1": {
                   "value": {
-                    "organization": {
+                    "public-organization": {
+                      "organization-name": "Gewerbeamt Musterstadt",
                       "address": {
                         "street": "Kurzer Weg",
                         "houseNr": "7",
@@ -770,6 +1196,7 @@
                       "contact": {
                         "telephone": {
                           "number": "+49 89 32168-0",
+                          "mobile": false,
                           "type": "work"
                         },
                         "email": "behoerde@example.com"
@@ -781,13 +1208,29 @@
                       "firstName": "Kunibert",
                       "lastName": "Vonundzu",
                       "contact": {
-                        "telephone": {
-                          "number": "+49 89 32168-42",
-                          "mobile": "+49 123 456789",
-                          "type": "work"
-                        },
+                        "telephone": [
+                          {
+                            "number": "+49 89 32168-42",
+                            "mobile": false,
+                            "type": "work"
+                          },
+                          {
+                            "number": "+49 123 456789",
+                            "mobile": true,
+                            "type": "work"
+                          }
+                        ],
                         "email": "kunibert.vonundzu@example.com"
                       }
+                    },
+                    "schemas": [
+                      {
+                        "mime-type": "json",
+                        "schema-source": "none"
+                      }
+                    ],
+                    "callback": {
+                      "callback-url": "https://www.example.com/callback"
                     }
                   }
                 }
@@ -797,20 +1240,53 @@
           "description": "Anzulegende Destination"
         },
         "tags": [
-          "destination"
+          "Destination Management"
+        ],
+        "security": [
+          {
+            "API Key": [
+              "{subscriber-id}:manage",
+              "{subscriber-id}:destination:manage",
+              "{subscriber-id}:destination:create"
+            ]
+          }
         ]
       }
     }
   },
   "tags": [
     {
-      "name": "destination"
+      "name": "Destination Management"
     },
     {
-      "name": "subscription"
-    },
-    {
-      "name": "transfer"
+      "name": "Application Retrieval"
     }
-  ]
+  ],
+  "components": {
+    "securitySchemes": {
+      "API Key": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "",
+            "refreshUrl": "",
+            "scopes": {
+              "{subscriber-id}:destination:read": "Dieser Zugriffsbereich erlaubt bei allen Destination-Informationen ein lesender Zugriff.",
+              "{subscriber-id}:destination:create": "Der Zugriffsbereich erlaubt Destinations neu anzulegen und zu verändern.",
+              "{subscriber-id}:destination:update": "Dieser Zugriffsbereich erlaubt es, bestehende Destinations zu verändern.",
+              "{subscriber-id}:destination:manage": "Dieser Zugriffsbereich alle Destination Endpunkte eines Subscriber genutzt werden.",
+              "{subscriber-id}:destination:{destination-id}:read": "Mit diesem Zugriffsbereich wird ein lesender Zugriff auf eine spezifische Destination ermöglicht.",
+              "{subscriber-id}:destination:{destination-id}:update": "Mit diesem Zugriffsbereich wird ein schreibende Zugriff auf eine spezifische Destination ermöglicht.",
+              "{subscriber-id}:application:receive": "Dieser Zugriffsbereich erlaubt es, Anträge für allen Destinations abzuholen.",
+              "{subscriber-id}:destination:{destination-id}:application:receive": "Dieser Zugriffsbereich erlaubt es, Anträge einer spezifischen Destination abzuholen.",
+              "{subscriber-id}:manage": "Dieser Zugriffsbereich die vollständige Nutzung aller Endpunkte eines Subscribers.",
+              "{subscriber-id}:destination:delete": "Dieser Zugriffsbereich erlaubt die Löschung von Destinations eines Accounts.",
+              "{subscriber-id}:destination:{destination-id}:delete": "Dieser Zugriffsbereich erlaubt es, eine spezifische Destination zu löschen."
+            }
+          }
+        },
+        "description": "Dieses Authentifizierungsmethode wird genutzt, um den Zugriff auf die Produktiv API zu autorisieren. "
+      }
+    }
+  }
 }

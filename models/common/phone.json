@@ -1,5 +1,5 @@
 {
-  "title": "phone",
+  "title": "Phone",
   "type": "object",
   "description": "Telefonnumer mit Zusatzinformationen",
   "properties": {
@@ -23,5 +23,9 @@
       ],
       "description": "Art der Telefonnummer: work=dienstlich, home=privat oder other=sonstige"
     }
-  }
+  },
+  "required": [
+    "number",
+    "type"
+  ]
 }

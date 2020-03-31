@@ -1,0 +1,116 @@
+{
+  "title": "JSON Web Encryption (JWE)",
+  "type": "object",
+  "description": "JSON Web Encryption - JSON Serialization - RFC 7516",
+  "properties": {
+    "protected": {
+      "$ref": "./base64url.json"
+    },
+    "unprotected": {
+      "type": "object",
+      "properties": {
+        "alg": {
+          "type": "string",
+          "description": "Algorithm",
+          "enum": [
+            "A256GCMKW",
+            "RS256",
+            "PS256",
+            "RSA-OAEP-256"
+          ]
+        },
+        "enc": {
+          "type": "string",
+          "description": "Encryption Algorithm",
+          "enum": [
+            "A256GCM"
+          ]
+        },
+        "zip": {
+          "type": "string",
+          "description": "Compression Algorithm",
+          "enum": [
+            "DEF"
+          ]
+        },
+        "jku": {
+          "type": "string",
+          "description": "JWK Set URL"
+        },
+        "jwk": {
+          "$ref": "./jwk.json"
+        },
+        "kid": {
+          "description": "Key ID"
+        },
+        "x5u": {
+          "type": "string",
+          "description": "X.509 URL",
+          "format": "uri"
+        },
+        "x5c": {
+          "type": "array",
+          "description": "X.509 Certificate Chain",
+          "items": {
+            "$ref": "./base64.json"
+          }
+        },
+        "x5t": {
+          "$ref": "./base64url.json"
+        },
+        "x5t#S256": {
+          "$ref": "./base64url.json"
+        },
+        "typ": {
+          "type": "string",
+          "description": "Type"
+        },
+        "cty": {
+          "type": "string",
+          "description": "Content Type"
+        },
+        "crit": {
+          "description": "Critical",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "recipients": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "$ref": "#/properties/unprotected"
+          },
+          "encrypted_key": {
+            "$ref": "./base64url.json"
+          }
+        }
+      }
+    },
+    "encrypted_key": {
+      "type": "object"
+    },
+    "iv": {
+      "$ref": "./base64url.json"
+    },
+    "aad": {
+      "$ref": "./base64url.json"
+    },
+    "ciphertext": {
+      "$ref": "./base64url.json"
+    },
+    "tag": {
+      "$ref": "./base64url.json"
+    }
+  },
+  "required": [
+    "protected",
+    "recipients",
+    "ciphertext"
+  ]
+}

@@ -1,8 +1,23 @@
 {
-  "title": "Abstract Person",
+  "title": "Individual",
   "type": "object",
-  "description": "Abstrakte Klasse für natürliche Person (Individual) und Organisation (Organization)",
   "properties": {
+    "form-of-address": {
+      "type": "string",
+      "description": "Anrede der Person wie \"Herr\" oder \"Frau\""
+    },
+    "academic-title": {
+      "type": "string",
+      "description": "Titel der Person wie \"Dr.\" oder \"Prof.\""
+    },
+    "first-name": {
+      "type": "string",
+      "description": "Vorname der Person"
+    },
+    "last-name": {
+      "type": "string",
+      "description": "Nachname der Person"
+    },
     "address": {
       "description": "Adresse als Alternative (Choice) von nationaler und internationaler Adresse.",
       "oneOf": [
@@ -29,30 +44,7 @@
           "type": "array",
           "description": "Liste der Telefonnummern, außer Fax",
           "items": {
-            "type": "object",
-            "description": "Telefonnumer mit Zusatzinformationen",
-            "properties": {
-              "number": {
-                "$ref": "../common/phonenr.json"
-              },
-              "mobile": {
-                "type": "boolean",
-                "description": "Zeigt an, ob es sich um eine Mobilfunknummer handelt."
-              },
-              "type": {
-                "type": "string",
-                "enum": [
-                  "work",
-                  "home",
-                  "other"
-                ],
-                "description": "Art der Telefonnummer: work=dienstlich, home=privat oder other=sonstige"
-              }
-            },
-            "required": [
-              "number",
-              "type"
-            ]
+            "$ref": "../common/phone.json"
           }
         },
         "email": {
@@ -66,8 +58,26 @@
           "description": "Webadresse"
         },
         "telefax": {
-          "$ref": "../common/phonenr.json"
+          "$ref": "../common/phone.json#/properties/number"
         }
+      }
+    }
+  },
+  "description": "Natürliche Person",
+  "x-examples": {
+    "example-1": {
+      "form-of-address": "Herr",
+      "academic-title": "Dr.",
+      "first-name": "Werner",
+      "last-name": "Mustermann",
+      "contact": {
+        "telephone": [
+          {
+            "number": "+49 89 32168-42",
+            "mobile": false,
+            "type": "work"
+          }
+        ]
       }
     }
   }

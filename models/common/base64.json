@@ -1,0 +1,6 @@
+{
+  "type": "string",
+  "title": "base64",
+  "pattern": "^[a-zA-Z0-9+/=]+$",
+  "description": "Base 64 Encoding (RFC 4648 section 4)"
+}
