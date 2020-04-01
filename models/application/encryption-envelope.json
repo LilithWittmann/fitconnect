@@ -6,9 +6,7 @@
       "properties": {
         "application-id": {
           "type": "string",
-          "pattern": {
-            "$ref": "../common/id-string.json#/pattern"
-          },
+          "pattern": "^[-_.A-Za-z0-9]+$",
           "description": "ID des Antrags"
         }
       },
