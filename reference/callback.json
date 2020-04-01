@@ -15,19 +15,20 @@
   },
   "servers": [
     {
-      "url": "{callbackURL}"
+      "url": "{callback-host}"
     }
   ],
   "paths": {
-    "/{path}": {
+    "/{callback-path}": {
       "parameters": [
         {
           "schema": {
             "type": "string"
           },
-          "name": "path",
+          "name": "callback-path",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "Dies ist nur ein Platzhalter. Die ganze Callback-URL ergibt sich aus der Angabe in der Destiantion."
         }
       ],
       "post": {

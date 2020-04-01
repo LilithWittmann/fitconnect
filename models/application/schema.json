@@ -1,32 +1,38 @@
 {
   "title": "Application Schema",
-  "type": "object",
-  "description": "Strukturinformationen zu übertragbaren oder übertragenen Daten.",
-  "properties": {
-    "schema-id": {
-      "description": "Vom Zustelldienst vergebene ID für dieses Schema. Wird beim Anlegen eines neuen Schemas weggelassen.",
-      "pattern": {
-        "$ref": "../common/id-string.json#/pattern"
-      },
-      "type": "string"
-    },
-    "fim-schema": {
-      "$ref": "../common/fim-id.json"
-    }
-  },
   "x-examples": {
     "example-1": {
-      "fim-schema": {
-        "id": "S00000001",
-        "version": "1.0"
-      }
-    },
-    "example-2": {
-      "schema-id": "8438",
-      "fim-schema": {
-        "id": "S00000001",
-        "version": "1.0"
-      }
+      "mime-type": "xml",
+      "schema-source": "fim",
+      "schema-id": "S00000001V1.0"
     }
-  }
+  },
+  "description": "Strukturinformationen zu übertragbaren oder übertragenen Daten.",
+  "type": "object",
+  "properties": {
+    "mime-type": {
+      "type": "string",
+      "enum": [
+        "json",
+        "xml"
+      ],
+      "description": "Gibt das zulässige Format (JSON oder XML) der Fachdaten an."
+    },
+    "schema-source": {
+      "type": "string",
+      "enum": [
+        "fim",
+        "none"
+      ],
+      "description": "Quelle, von der das Schema bezogen werden kann."
+    },
+    "schema-id": {
+      "type": "string",
+      "description": "ID des Schemas, abhängig von der ausgewählten Quelle."
+    }
+  },
+  "required": [
+    "mime-type",
+    "schema-source"
+  ]
 }

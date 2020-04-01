@@ -15,12 +15,8 @@
   },
   "servers": [
     {
-      "url": "https://xfall-sender-api.production.fiep-poc.de",
+      "url": "https://subscriber.fiep-poc.de",
       "description": "Produktionsumgebung der API."
-    },
-    {
-      "url": "https://xfall-sender-api.sandbox.fiep-poc.de",
-      "description": "Testumgebung der API."
     }
   ],
   "paths": {
@@ -73,8 +69,45 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
-            "description": "Not Found"
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
           }
         },
         "operationId": "get-application-document",
@@ -84,14 +117,11 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{subscriber-id}:manage",
               "{subscriber-id}:application:receive",
               "{subscriber-id}:destination:{destination-id}:application:receive"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       }
@@ -161,25 +191,59 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
-            "description": "Not Found"
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
           }
         },
         "operationId": "get-application-data",
-		"description": "Ruft die Fachdaten der Application ab.\n\nBeispiele:\n#### JSON\n```json\n{\n    \"F99000001\": \"Eins\",\n    \"G99000001\": {\n        \"F99000002\": \"Zwei\",\n        \"F99000003\": \"Drei\"\n    }\n}\n```\n\n#### XML\n```xml\n<S99000001>\n  <F99000001>Eins</F99000001>\n  <G99000001>\n    <F99000002>Zwei</F99000002>\n    <F99000003>Drei</F99000003>\n  </G99000001>\n</S99000001>\n```",
+        "description": "Ruft die Fachdaten der Application ab.\n\nBeispiele:\n#### JSON\n```json\n{\n    \"F99000001\": \"Eins\",\n    \"G99000001\": {\n        \"F99000002\": \"Zwei\",\n        \"F99000003\": \"Drei\"\n    }\n}\n```\n\n#### XML\n```xml\n<S99000001>\n  <F99000001>Eins</F99000001>\n  <G99000001>\n    <F99000002>Zwei</F99000002>\n    <F99000003>Drei</F99000003>\n  </G99000001>\n</S99000001>\n```",
         "tags": [
           "Application Retrieval"
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{subscriber-id}:manage",
               "{subscriber-id}:application:receive",
               "{subscriber-id}:destination:{destination-id}:application:receive"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       }
@@ -330,12 +394,42 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -348,14 +442,11 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{subscriber-id}:manage",
               "{subscriber-id}:application:receive",
               "{subscriber-id}:destination:{destination-id}:application:receive"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       },
@@ -366,18 +457,55 @@
           "200": {
             "description": "OK"
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
           },
           "417": {
-            "description": "Expectation Failed - Status passt nicht"
+            "description": "Expectation Failed - Status passt nicht",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
           }
         },
         "description": "Bestätigt die Abholung der Application. Über den Parameter `final-delivery` im Body wird gesteuert, wie der Folgestatus aussieht:\n\n| final-delivery | status      |\n| -------------- | ----------- |\n| `false`        | \"forwarded\" |\n| `true`         | \"delivered\" |\n\nDer Parameter `final-delivery` zeigt an, ob der Antrag noch weitergesendet wird (`false`) oder das finale Ziel erreicht hat (`true`).\n\nSofern der Wert `false` übergeben wurde, muss zu einem späteren Zeitpunkt, wenn der Antrag final zugestellt wurde, ein weiterer Aufruf mit dem Wert `true` erfolgen.",
@@ -402,14 +530,11 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{subscriber-id}:manage",
               "{subscriber-id}:application:receive",
               "{subscriber-id}:destination:{destination-id}:application:receive"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       }
@@ -563,12 +688,42 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -580,14 +735,11 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{subscriber-id}:manage",
               "{subscriber-id}:application:receive",
               "{subscriber-id}:destination:{destination-id}:application:receive"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       }
@@ -661,12 +813,42 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -679,15 +861,12 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{subscriber-id}:destination:read",
               "{subscriber-id}:destination:manage",
               "{subscriber-id}:manage",
               "{subscriber-id}:destination:{destination-id}:read"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       },
@@ -698,12 +877,42 @@
           "200": {
             "description": "OK"
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -752,15 +961,12 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{subscriber-id}:manage",
               "{subscriber-id}:destination:update",
               "{subscriber-id}:destination:manage",
               "{subscriber-id}:destination:{destination-id}:update"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       },
@@ -771,12 +977,42 @@
           "200": {
             "description": "OK"
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -788,15 +1024,12 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{subscriber-id}:manage",
               "{subscriber-id}:destination:manage",
               "{subscriber-id}:destination:delete",
               "{subscriber-id}:destination:{destination-id}:delete"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       }
@@ -857,6 +1090,36 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
           }
         },
         "operationId": "list-destinations",
@@ -866,14 +1129,11 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{subscriber-id}:destination:read",
               "{subscriber-id}:manage",
               "{subscriber-id}:destination:manage"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       },
@@ -895,6 +1155,43 @@
                   "required": [
                     "destination-id"
                   ]
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "destination-id": "e15fc92e-c286-424b-9802-39c6b6bc441d"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -910,7 +1207,8 @@
               "examples": {
                 "example-1": {
                   "value": {
-                    "organization": {
+                    "public-organization": {
+                      "organization-name": "Gewerbeamt Musterstadt",
                       "address": {
                         "street": "Kurzer Weg",
                         "houseNr": "7",
@@ -920,6 +1218,7 @@
                       "contact": {
                         "telephone": {
                           "number": "+49 89 32168-0",
+                          "mobile": false,
                           "type": "work"
                         },
                         "email": "behoerde@example.com"
@@ -931,13 +1230,29 @@
                       "firstName": "Kunibert",
                       "lastName": "Vonundzu",
                       "contact": {
-                        "telephone": {
-                          "number": "+49 89 32168-42",
-                          "mobile": "+49 123 456789",
-                          "type": "work"
-                        },
+                        "telephone": [
+                          {
+                            "number": "+49 89 32168-42",
+                            "mobile": false,
+                            "type": "work"
+                          },
+                          {
+                            "number": "+49 123 456789",
+                            "mobile": true,
+                            "type": "work"
+                          }
+                        ],
                         "email": "kunibert.vonundzu@example.com"
                       }
+                    },
+                    "schemas": [
+                      {
+                        "mime-type": "json",
+                        "schema-source": "none"
+                      }
+                    ],
+                    "callback": {
+                      "callback-url": "https://www.example.com/callback"
                     }
                   }
                 }
@@ -951,7 +1266,7 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{subscriber-id}:manage",
               "{subscriber-id}:destination:manage",
               "{subscriber-id}:destination:create"
@@ -971,7 +1286,7 @@
   ],
   "components": {
     "securitySchemes": {
-      "Production API Key": {
+      "API Key": {
         "type": "oauth2",
         "flows": {
           "clientCredentials": {
@@ -993,12 +1308,6 @@
           }
         },
         "description": "Dieses Authentifizierungsmethode wird genutzt, um den Zugriff auf die Produktiv API zu autorisieren. "
-      },
-      "Sandbox API Key": {
-        "name": "API Key",
-        "type": "apiKey",
-        "in": "header",
-        "description": "Der API wird als Authentifizierungsmittel für die Sandbox API benutzt."
       }
     }
   }

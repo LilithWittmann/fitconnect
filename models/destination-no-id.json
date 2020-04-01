@@ -32,7 +32,7 @@
       "type": "object",
       "properties": {
         "organization-name": {
-          "type": ",string"
+          "type": "string"
         },
         "address": {
           "description": "Adresse als Alternative (Choice) von nationaler und internationaler Adresse.",

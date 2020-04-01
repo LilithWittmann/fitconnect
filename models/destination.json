@@ -6,9 +6,7 @@
       "properties": {
         "destination-id": {
           "description": "Vom Zustelldienst für dieses Ziel vergebene ID. Wird beim Anlegen eines neuen Ziels leer gelassen.",
-          "pattern": {
-            "$ref": "./common/id-string.json#/pattern"
-          },
+          "pattern": "^[-_.A-Za-z0-9]+$",
           "type": "string"
         }
       },

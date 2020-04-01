@@ -7,7 +7,7 @@
       "type": "array",
       "description": "IDs für diese Organisation",
       "items": {
-        "$ref": ""
+        "$ref": "../common/identifier.json"
       }
     },
     "org-validation": {

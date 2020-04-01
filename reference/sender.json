@@ -15,12 +15,8 @@
   },
   "servers": [
     {
-      "url": "https://xfall-sender-api.production.fiep-poc.de",
+      "url": "https://sender.fiep-poc.de",
       "description": "Produktionsumgebung der API."
-    },
-    {
-      "description": "Testumgebung der API.",
-      "url": "https://xfall-sender-api.sandbox.fiep-poc.de"
     }
   ],
   "paths": {
@@ -58,22 +54,42 @@
           "202": {
             "description": "Accepted"
           },
-          "406": {
-            "description": "Not Acceptable - Kein Schema zugeordnet oder Schemafehler",
+          "400": {
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
           },
           "410": {
-            "description": "Gone - Application-ID ungültig/Transfer-Timeout",
+            "description": "Gone",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -83,7 +99,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -96,6 +112,33 @@
               "schema": {
                 "type": "object",
                 "properties": {}
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "F99000001": "string",
+                    "G99000001": {
+                      "F99000002": "string",
+                      "F99000003": 42
+                    },
+                    "G99000002": [
+                      {
+                        "F99000004": true,
+                        "G99000001": {
+                          "F99000002": "string",
+                          "F99000003": 17
+                        }
+                      },
+                      {
+                        "F99000004": true,
+                        "G99000001": {
+                          "F99000002": "string",
+                          "F99000003": 24
+                        }
+                      }
+                    ]
+                  }
+                }
               }
             },
             "application/xml": {
@@ -118,13 +161,10 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{source-id}:application:apply",
               "{source-id}:source:manage"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       }
@@ -172,11 +212,31 @@
             "description": "Accepted"
           },
           "400": {
-            "description": "Bad Request - Signaturprüfung nicht erfolgreich - Signatur passt nicht zum Dokument",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -186,7 +246,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -196,7 +256,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -206,7 +266,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -216,7 +276,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -238,13 +298,10 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{source-id}:application:apply",
               "{source-id}:source:manage"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       }
@@ -271,7 +328,7 @@
       "get": {
         "summary": "Get Status",
         "tags": [
-          "Transfer related Information"
+          "status"
         ],
         "responses": {
           "200": {
@@ -295,12 +352,42 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -308,87 +395,12 @@
         },
         "operationId": "get-application-status",
         "description": "Ruft den aktuellen Status der Übermittlung sowie einer Übersicht der bisherigen Übertragungshistorie ab.",
-        "tags": [
-          "status"
-        ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{source-id}:status:read",
               "{source-id}:source:manage"
             ]
-          },
-          {
-            "Sandbox API Key": []
-          }
-        ]
-      }
-    },
-    "/{source-id}/{application-id}/status/{status-nr}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "source-id",
-          "in": "path",
-          "required": true
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "application-id",
-          "in": "path",
-          "required": true
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "status-nr",
-          "in": "path",
-          "required": true
-        }
-      ],
-      "get": {
-        "summary": "Get Status Entry",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/status.json"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error.json"
-                }
-              }
-            }
-          }
-        },
-        "operationId": "get-application-status-entry",
-        "description": "Ruft einen spezifischen Statuswechsel aus der Historie des Status ab.",
-        "tags": [
-          "status"
-        ],
-        "security": [
-          {
-            "Production API Key": [
-              "{source-id}:status:read",
-              "{source-id}:source:manage"
-            ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       }
@@ -458,9 +470,7 @@
                         "properties": {
                           "doc-id": {
                             "type": "string",
-                            "pattern": {
-                              "$ref": "../models/common/id-string.json#/pattern"
-                            },
+                            "pattern": "^[-_.A-Za-z0-9]+$",
                             "description": "ID des Dokuments. Diese muss nur innerhalb des Antrags (Application) eindeutig sein. Es wird daher empfohlen, die IDs fortlaufend (1, 2 etc.) zu vergeben."
                           },
                           "status": {
@@ -488,12 +498,42 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "410": {
             "description": "Gone",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -506,13 +546,10 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{source-id}:application:apply",
               "{source-id}:source:manage"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       }
@@ -551,6 +588,43 @@
                       "type": "string"
                     }
                   }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "application-id": "45bb5b95-d853-4fc5-b45d-10aa9e15287a"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -560,7 +634,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -570,7 +644,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -588,6 +662,109 @@
                     "$ref": "../models/application/encryption-envelope-no-id.json"
                   }
                 ]
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "additional-reference-info": {
+                      "subject": "Anmeldung eines Gewerbes in Musterstadt",
+                      "case-id": "DF/8923"
+                    },
+                    "content-structure": {
+                      "data": {
+                        "schema": {
+                          "mime-type": "json",
+                          "schema-source": "none"
+                        },
+                        "mime-type": "json"
+                      },
+                      "docs": [
+                        {
+                          "doc-id": "1",
+                          "purpose": "form",
+                          "size": 39273,
+                          "mime": "application/pdf",
+                          "filename": "antrag.pdf",
+                          "description": "Das Antragsformular",
+                          "lang": {
+                            "lang": "de",
+                            "region": "DE"
+                          },
+                          "hash": {
+                            "algorithm": "SHA-256",
+                            "digest": "03ba204e50d126e4674c005e04d82e84c21366780af1f43bd54a37816b6ab340"
+                          }
+                        }
+                      ]
+                    },
+                    "public-service-type": {
+                      "name": "Gewerbeanmeldung",
+                      "description": "Eine Gewerbeanmeldung ist immer dann notwendig, wenn Sie einen stehenden Gewerbebetrieb beginnen.",
+                      "leika-id": "99050012104000",
+                      "other-identifiers": [
+                        {
+                          "id": "8664844",
+                          "schemeURI": "service.niedersachsen.de",
+                          "schemeName": "Serviceportal Niedersachsen"
+                        },
+                        {
+                          "id": "354824",
+                          "schemeURI": "buerger.thueringen.de",
+                          "schemeName": "Zuständigkeitsfinder Thüringen"
+                        }
+                      ]
+                    },
+                    "applicants": [
+                      {
+                        "authentification-info": {
+                          "assurance-level": "high",
+                          "authentification-method": "eID",
+                          "timestamp": "2020-03-03T12:38:23Z"
+                        },
+                        "identity-info": {
+                          "date-of-birth": "1970-09-13",
+                          "gender": "m",
+                          "given-name": "WERNER",
+                          "family-name": "MUSTERMANN",
+                          "place-of-residence": {
+                            "street": "KURZER WEG 7",
+                            "postal-code": "12345",
+                            "city": "ANKH-MORPORK"
+                          }
+                        },
+                        "contact-info": {
+                          "electronic-adresses": [
+                            {
+                              "channel-type": "Service-Account-Mailbox",
+                              "address": "3b0c9c8c-0801-45f0-a331-2abfc9db78d0"
+                            }
+                          ],
+                          "physical-adress": {
+                            "street": "Kurzer Weg",
+                            "house-number": "7",
+                            "postal-code": "12345",
+                            "city": "Ankh-Morpork"
+                          },
+                          "telephone": [
+                            {
+                              "number": "+49 89 32168-42",
+                              "mobile": true,
+                              "type": "work"
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "payment-info": {
+                      "reference": "TP/93/GDP",
+                      "usage": "Gewerbeanmeldung",
+                      "amount": 17.3,
+                      "timestamp": "2020-03-03T12:38:23Z",
+                      "status": "success",
+                      "transaction": "1f77c5f9b759db9cdce59988b24974d465c7be5e462a6185485559ff6e2dea82"
+                    }
+                  }
+                }
               }
             }
           },
@@ -599,13 +776,10 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{source-id}:application:apply",
               "{source-id}:source:manage"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       },
@@ -623,12 +797,42 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -640,13 +844,10 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{source-id}:destination-info:read",
               "{source-id}:source:manage"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       }
@@ -693,11 +894,31 @@
             }
           },
           "400": {
-            "description": "Bad Request - Unvollständig",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -707,7 +928,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -717,7 +938,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error.json"
+                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -741,13 +962,10 @@
         ],
         "security": [
           {
-            "Production API Key": [
+            "API Key": [
               "{source-id}:application:apply",
               "{source-id}:source:manage"
             ]
-          },
-          {
-            "Sandbox API Key": []
           }
         ]
       }
@@ -758,12 +976,15 @@
       "name": "Application Transfer"
     },
     {
+      "name": "status"
+    },
+    {
       "name": "Transfer related Information"
     }
   ],
   "components": {
     "securitySchemes": {
-      "Production API Key": {
+      "API Key": {
         "type": "oauth2",
         "flows": {
           "clientCredentials": {
@@ -778,12 +999,6 @@
           }
         },
         "description": "Dieses Authentifizierungsmethode wird genutzt, um den Zugriff auf die Produktiv API zu autorisieren. "
-      },
-      "Sandbox API Key": {
-        "name": "API Key",
-        "type": "apiKey",
-        "in": "header",
-        "description": "Der API wird als Authentifizierungsmittel für die Sandbox API benutzt."
       }
     }
   }

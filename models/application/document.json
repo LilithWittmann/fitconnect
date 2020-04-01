@@ -47,7 +47,7 @@
           ],
           "description": "Zweck/Art des Dokuments\n- form: Antragsformular\n- attachment: Anlage (Upload)\n- report: Vom System erzeugte Unterlage"
         },
-        "mime": {
+        "mime-type": {
           "$ref": "../common/mime-type.json"
         },
         "filename": {
@@ -71,7 +71,7 @@
       },
       "required": [
         "purpose",
-        "mime"
+        "mime-type"
       ]
     }
   ]
