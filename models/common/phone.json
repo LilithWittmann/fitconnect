@@ -22,5 +22,17 @@
   },
   "required": [
     "number"
-  ]
+  ],
+  "x-examples": {
+    "example-1": {
+      "number": "+49 89 32618",
+      "mobile": false,
+      "description": "Rosis Nummer"
+    },
+    "example-2": {
+      "number": "(089) 32618",
+      "mobile": false,
+      "description": "Rosis Nummer"
+    }
+  }
 }

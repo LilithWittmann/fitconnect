@@ -1,14 +1,8 @@
 {
-  "title": "Application Schema",
-  "x-examples": {
-    "example-1": {
-      "mime-type": "xml",
-      "schema-source": "fim",
-      "schema-id": "S00000001V1.0"
-    }
-  },
-  "description": "Strukturinformationen zu übertragbaren oder übertragenen Daten.",
   "type": "object",
+  "title": "Application Schema",
+  "description": "Strukturinformationen zu übertragbaren oder übertragenen Daten.",
+  "additionalProperties": false,
   "properties": {
     "mime-type": {
       "type": "string",

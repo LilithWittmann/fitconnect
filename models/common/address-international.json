@@ -25,5 +25,21 @@
   "required": [
     "lines",
     "country"
-  ]
+  ],
+  "x-examples": {
+    "example-1": {
+      "lines": [
+        "760 United Nations Plaza",
+        "Manhattan, New York City, New York 10017"
+      ],
+      "country": "368"
+    },
+    "example-2": {
+      "lines": [
+        "Threadneedle Street",
+        "London EC2R 8AH"
+      ],
+      "country": "168"
+    }
+  }
 }
