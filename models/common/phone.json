@@ -7,7 +7,7 @@
     "number": {
       "type": "string",
       "title": "Phone Number",
-      "description": "Telefonnummer im internationalen Format, z.B. \"+49 89 32168-42\". Muss mit einem Plus beginnen und darf danach außer Ziffern nur Leerzeichen ( ) und Bindestriche (-) enthalten.",
+      "description": "Telefonnummer gemäß ITU E.123. Es soll das internationalen Format, z.B. \"+49 89 32168-42\" verwendet werden.",
       "example": "+49 89 32168-42",
       "maxLength": 23
     },

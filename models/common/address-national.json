@@ -11,6 +11,7 @@
   },
   "oneOf": [
     {
+      "additionalProperties": false,
       "properties": {
         "street": {
           "type": "string",
@@ -24,6 +25,7 @@
           ],
           "description": "Hausnummer",
           "maxLength": 9,
+          "pattern": "^[1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?$",
           "minimum": 1
         },
         "house-number-suffix": {
@@ -48,9 +50,15 @@
           "type": "string",
           "description": "Adresszusatz"
         }
-      }
+      },
+      "required": [
+        "street",
+        "postal-code",
+        "city"
+      ]
     },
     {
+      "additionalProperties": false,
       "properties": {
         "post-office-box": {
           "type": "string",
@@ -68,7 +76,11 @@
           "description": "Ort",
           "maxLength": 50
         }
-      }
+      },
+      "required": [
+        "postal-code",
+        "city"
+      ]
     }
   ],
   "type": "object"

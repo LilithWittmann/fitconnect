@@ -1,21 +1,8 @@
 {
-  "title": "International Address",
   "type": "object",
+  "title": "International Address",
   "description": "Eine internationale Adresse, bestehend aus ein bis fünf Adresszeilen.",
-  "x-examples": {
-    "example-1": {
-      "lines": [
-        "760 United Nations Plaza",
-        "Manhattan, New York City, New York 10017"
-      ]
-    },
-    "example-2": {
-      "lines": [
-        "Threadneedle Street",
-        "London EC2R 8AH"
-      ]
-    }
-  },
+  "additionalProperties": false,
   "properties": {
     "lines": {
       "type": "array",
@@ -29,7 +16,14 @@
     },
     "country": {
       "type": "string",
-      "description": "Staat"
+      "description": "Staat gemäß Codeliste [https://www.xrepository.de/details/urn:de:bund:destatis:bevoelkerungsstatistik:schluessel:staat](Codeliste Staat aus der Staats- und Gebietssystematik des Statistischen Bundesamtes)",
+      "minLength": 3,
+      "maxLength": 3,
+      "pattern": "^[0-9]{3}$"
     }
-  }
+  },
+  "required": [
+    "lines",
+    "country"
+  ]
 }
