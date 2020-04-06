@@ -29,7 +29,7 @@
       "type": "string",
       "description": "Künstler- oder Ordensname"
     },
-    "academic-title": {
+    "doctoral-degrees": {
       "type": "string",
       "description": "Akademischer Titel, z.B. \"Dr.\" oder \"Prof.\""
     },

@@ -1,25 +1,6 @@
 {
   "title": "National Address",
-  "type": "object",
   "description": "Eine nationale (deutsche) Adresse, bestehend aus Straße, Hausnummer, PLZ und Ort.",
-  "properties": {
-    "street": {
-      "type": "string",
-      "description": "Straße"
-    },
-    "house-number": {
-      "type": "string",
-      "description": "Hausnummer"
-    },
-    "postal-code": {
-      "type": "string",
-      "description": "PLZ"
-    },
-    "city": {
-      "type": "string",
-      "description": "Ort"
-    }
-  },
   "x-examples": {
     "example-1": {
       "street": "Kurzer Weg",
@@ -27,5 +8,68 @@
       "postal-code": "12345",
       "city": "Ankh-Morpork"
     }
-  }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "street": {
+          "type": "string",
+          "description": "Straße",
+          "maxLength": 55
+        },
+        "house-number": {
+          "type": [
+            "string",
+            "integer"
+          ],
+          "description": "Hausnummer",
+          "maxLength": 9,
+          "minimum": 1
+        },
+        "house-number-suffix": {
+          "type": "string",
+          "description": "Hausnummerzusatz",
+          "maxLength": 2,
+          "pattern": "^[\\p{L}0-9. ]*$"
+        },
+        "postal-code": {
+          "type": "string",
+          "description": "Postleitzahl",
+          "minLength": 5,
+          "maxLength": 5,
+          "pattern": "^([0]{1}[1-9]{1}|[1-9]{1}[0-9]{1})[0-9]{3}$"
+        },
+        "city": {
+          "type": "string",
+          "description": "Ort",
+          "maxLength": 50
+        },
+        "address-supplement": {
+          "type": "string",
+          "description": "Adresszusatz"
+        }
+      }
+    },
+    {
+      "properties": {
+        "post-office-box": {
+          "type": "string",
+          "description": "Postfach"
+        },
+        "postal-code": {
+          "type": "string",
+          "description": "Postleitzahl",
+          "minLength": 5,
+          "maxLength": 5,
+          "pattern": "^([0]{1}[1-9]{1}|[1-9]{1}[0-9]{1})[0-9]{3}$"
+        },
+        "city": {
+          "type": "string",
+          "description": "Ort",
+          "maxLength": 50
+        }
+      }
+    }
+  ],
+  "type": "object"
 }
