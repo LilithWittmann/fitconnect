@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Application Sender API",
-    "version": "0.2",
+    "version": "0.3",
     "description": "API vom Onlineantragsdienst zum Zustelldienst",
     "contact": {
       "name": "FITKO",
@@ -771,7 +771,7 @@
         ]
       },
       "get": {
-        "summary": "Get Destination",
+        "summary": "Get Destination Info",
         "operationId": "get-destination-info",
         "responses": {
           "200": {

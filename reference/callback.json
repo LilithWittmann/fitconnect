@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Notification Callback",
-    "version": "0.2",
+    "version": "0.3",
     "contact": {
       "name": "FITKO",
       "url": "https://www.fitko.de/"
