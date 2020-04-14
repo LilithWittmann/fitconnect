@@ -1,5 +1,5 @@
 {
-  "title": "Identity Information for Organization Acting Person",
+  "title": "Identity Information without Address",
   "type": "object",
   "properties": {
     "place-of-birth": {
@@ -25,11 +25,11 @@
       "type": "string",
       "description": "Nationalität"
     },
-    "artictic-name": {
+    "artistic-name": {
       "type": "string",
       "description": "Künstler- oder Ordensname"
     },
-    "academic-title": {
+    "doctoral-degrees": {
       "type": "string",
       "description": "Akademischer Titel, z.B. \"Dr.\" oder \"Prof.\""
     },

@@ -1,7 +1,0 @@
-{
-  "type": "string",
-  "title": "Phone Number",
-  "example": "+49 89 32168-42",
-  "pattern": "^\\+[1-9]([ -]?[0-9]){1,14}$",
-  "description": "Telefonnummer im internationalen Format, z.B. \"+49 89 32168-42\". Muss mit einem Plus beginnen und darf danach außer Ziffern nur Leerzeichen ( ) und Bindestriche (-) enthalten."
-}

@@ -120,13 +120,13 @@
         "data": {
           "type": "object",
           "required": [
-            "schema-id",
             "mime-type",
-            "size"
+            "schema"
           ],
           "properties": {
-            "schema": {
-              "$ref": "./schema.json"
+            "size": {
+              "type": "integer",
+              "description": "Größe des Dokuments in Bytes"
             },
             "mime-type": {
               "type": "string",
@@ -135,8 +135,8 @@
                 "xml"
               ]
             },
-            "size": {
-              "type": "integer"
+            "schema": {
+              "$ref": "./schema.json"
             }
           }
         },
