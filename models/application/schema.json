@@ -4,7 +4,7 @@
   "description": "Strukturinformationen zu übertragbaren oder übertragenen Daten.",
   "additionalProperties": false,
   "properties": {
-    "mime-type": {
+    "mimeType": {
       "type": "string",
       "enum": [
         "json",
@@ -12,7 +12,7 @@
       ],
       "description": "Gibt das zulässige Format (JSON oder XML) der Fachdaten an."
     },
-    "schema-source": {
+    "schemaSource": {
       "type": "string",
       "enum": [
         "fim",
@@ -20,13 +20,13 @@
       ],
       "description": "Quelle, von der das Schema bezogen werden kann."
     },
-    "schema-id": {
+    "schemaID": {
       "type": "string",
       "description": "ID des Schemas, abhängig von der ausgewählten Quelle."
     }
   },
   "required": [
-    "mime-type",
-    "schema-source"
+    "mimeType",
+    "schemaSource"
   ]
 }

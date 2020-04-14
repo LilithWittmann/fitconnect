@@ -99,18 +99,18 @@
     }
   },
   "properties": {
-    "additional-reference-info": {
+    "additionalReferenceInfo": {
       "type": "object",
       "properties": {
         "subject": {
           "type": "string"
         },
-        "case-id": {
+        "caseID": {
           "type": "string"
         }
       }
     },
-    "content-structure": {
+    "contentStructure": {
       "type": "object",
       "required": [
         "data",
@@ -120,7 +120,7 @@
         "data": {
           "type": "object",
           "required": [
-            "mime-type",
+            "mimeType",
             "schema"
           ],
           "properties": {
@@ -128,7 +128,7 @@
               "type": "integer",
               "description": "Größe des Dokuments in Bytes"
             },
-            "mime-type": {
+            "mimeType": {
               "type": "string",
               "enum": [
                 "json",
@@ -148,7 +148,7 @@
         }
       }
     },
-    "public-service-type": {
+    "publicServiceType": {
       "$ref": "./public-service-type.json"
     },
     "applicants": {
@@ -157,11 +157,11 @@
         "$ref": "./applicant.json"
       }
     },
-    "payment-info": {
+    "paymentInfo": {
       "$ref": "./payment-info.json"
     }
   },
   "required": [
-    "content-structure"
+    "contentStructure"
   ]
 }

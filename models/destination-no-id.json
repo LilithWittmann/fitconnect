@@ -28,10 +28,10 @@
     }
   },
   "properties": {
-    "public-organization": {
+    "publicOrganization": {
       "type": "object",
       "properties": {
-        "organization-name": {
+        "organizationName": {
           "type": "string"
         },
         "address": {
@@ -80,7 +80,7 @@
         }
       }
     },
-    "technical-contact": {
+    "technicalContact": {
       "type": "array",
       "description": "Technischer Ansprechpartner",
       "items": {
@@ -98,14 +98,14 @@
       "type": "object",
       "description": "Callback zur Benachrichtigung bei neuen Anträgen",
       "properties": {
-        "callback-url": {
+        "callbackURI": {
           "type": "string",
           "description": "URL auf die der Callback als POST durchgeführt wird",
           "format": "uri"
         }
       },
       "required": [
-        "callback-url"
+        "callbackURI"
       ]
     }
   }

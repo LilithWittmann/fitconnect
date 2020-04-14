@@ -4,14 +4,14 @@
     {
       "type": "object",
       "properties": {
-        "destination-id": {
+        "destinationID": {
           "description": "Vom Zustelldienst für dieses Ziel vergebene ID. Wird beim Anlegen eines neuen Ziels leer gelassen.",
           "pattern": "^[-_.A-Za-z0-9]+$",
           "type": "string"
         }
       },
       "required": [
-        "destination-id"
+        "destinationID"
       ]
     },
     {

@@ -33,7 +33,7 @@
     }
   },
   "properties": {
-    "doc-id": {
+    "docID": {
       "type": "string",
       "pattern": "^[-_.A-Za-z0-9]+$",
       "description": "ID des Dokuments. Diese muss nur innerhalb des Antrags (Application) eindeutig sein. Es wird daher empfohlen, die IDs fortlaufend (1, 2 etc.) zu vergeben."
@@ -51,7 +51,7 @@
       "type": "integer",
       "description": "Größe des Dokuments in Bytes"
     },
-    "mime-type": {
+    "mimeType": {
       "$ref": "../common/mime-type.json"
     },
     "filename": {
@@ -100,6 +100,6 @@
   "required": [
     "purpose",
     "size",
-    "mime-type"
+    "mimeType"
   ]
 }

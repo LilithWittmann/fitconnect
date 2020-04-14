@@ -10,13 +10,13 @@
         "$ref": "../common/identifier.json"
       }
     },
-    "authentification-info": {
+    "authentificationInfo": {
       "$ref": "../common/authentification-info.json"
     },
-    "identity-info": {
+    "identityInfo": {
       "$ref": "../common/eID-natural-person.json"
     },
-    "contact-info": {
+    "contactInfo": {
       "$ref": "./applicant-contact-info.json"
     }
   }

@@ -20,13 +20,13 @@
     }
   ],
   "paths": {
-    "/{subscriber-id}/destinations/{destination-id}/applications/{application-id}/docs/{doc-id}": {
+    "/{subscriberID}/destinations/{destinationID}/applications/{applicationID}/docs/{docID}": {
       "parameters": [
         {
           "schema": {
             "type": "string"
           },
-          "name": "subscriber-id",
+          "name": "subscriberID",
           "in": "path",
           "required": true
         },
@@ -34,7 +34,7 @@
           "schema": {
             "type": "string"
           },
-          "name": "destination-id",
+          "name": "destinationID",
           "in": "path",
           "required": true
         },
@@ -42,7 +42,7 @@
           "schema": {
             "type": "string"
           },
-          "name": "application-id",
+          "name": "applicationID",
           "in": "path",
           "required": true
         },
@@ -50,7 +50,7 @@
           "schema": {
             "type": "string"
           },
-          "name": "doc-id",
+          "name": "docID",
           "in": "path",
           "required": true
         }
@@ -118,21 +118,21 @@
         "security": [
           {
             "API Key": [
-              "{subscriber-id}:manage",
-              "{subscriber-id}:application:receive",
-              "{subscriber-id}:destination:{destination-id}:application:receive"
+              "{subscriberID}:manage",
+              "{subscriberID}:application:receive",
+              "{subscriberID}:destination:{destinationID}:application:receive"
             ]
           }
         ]
       }
     },
-    "/{subscriber-id}/destinations/{destination-id}/applications/{application-id}/data": {
+    "/{subscriberID}/destinations/{destinationID}/applications/{applicationID}/data": {
       "parameters": [
         {
           "schema": {
             "type": "string"
           },
-          "name": "subscriber-id",
+          "name": "subscriberID",
           "in": "path",
           "required": true
         },
@@ -140,7 +140,7 @@
           "schema": {
             "type": "string"
           },
-          "name": "destination-id",
+          "name": "destinationID",
           "in": "path",
           "required": true
         },
@@ -148,7 +148,7 @@
           "schema": {
             "type": "string"
           },
-          "name": "application-id",
+          "name": "applicationID",
           "in": "path",
           "required": true
         }
@@ -234,21 +234,21 @@
         "security": [
           {
             "API Key": [
-              "{subscriber-id}:manage",
-              "{subscriber-id}:application:receive",
-              "{subscriber-id}:destination:{destination-id}:application:receive"
+              "{subscriberID}:manage",
+              "{subscriberID}:application:receive",
+              "{subscriberID}:destination:{destinationID}:application:receive"
             ]
           }
         ]
       }
     },
-    "/{subscriber-id}/destinations/{destination-id}/applications/{application-id}": {
+    "/{subscriberID}/destinations/{destinationID}/applications/{applicationID}": {
       "parameters": [
         {
           "schema": {
             "type": "string"
           },
-          "name": "subscriber-id",
+          "name": "subscriberID",
           "in": "path",
           "required": true
         },
@@ -256,7 +256,7 @@
           "schema": {
             "type": "string"
           },
-          "name": "destination-id",
+          "name": "destinationID",
           "in": "path",
           "required": true
         },
@@ -264,7 +264,7 @@
           "schema": {
             "type": "string"
           },
-          "name": "application-id",
+          "name": "applicationID",
           "in": "path",
           "required": true
         }
@@ -282,19 +282,19 @@
                 "examples": {
                   "example-1": {
                     "value": {
-                      "application-id": "7236",
+                      "applicationID": "7236",
                       "additional-reference-info": {
                         "subject": "Anmeldung eines Gewerbes in Musterstadt",
-                        "case-id": "DF/8923"
+                        "caseID": "DF/8923"
                       },
                       "content-structure": {
                         "data": {
-                          "schema-id": "742",
+                          "schemaID": "742",
                           "mime-type": "json"
                         },
                         "docs": [
                           {
-                            "doc-id": "1",
+                            "docID": "1",
                             "purpose": "form",
                             "size": 39273,
                             "mime": "application/pdf",
@@ -310,7 +310,7 @@
                             }
                           },
                           {
-                            "doc-id": "2",
+                            "docID": "2",
                             "purpose": "attachment",
                             "size": 894834874,
                             "mime": "image/jpeg",
@@ -326,8 +326,8 @@
                       "public-service-type": {
                         "name": "Gewerbeanmeldung",
                         "description": "Eine Gewerbeanmeldung ist immer dann notwendig, wenn Sie einen stehenden Gewerbebetrieb beginnen.",
-                        "leika-id": "99050012104000",
-                        "other-identifiers": [
+                        "leikaID": "99050012104000",
+                        "otherIDentifiers": [
                           {
                             "id": "8664844",
                             "schemeURI": "service.niedersachsen.de",
@@ -430,9 +430,9 @@
         "security": [
           {
             "API Key": [
-              "{subscriber-id}:manage",
-              "{subscriber-id}:application:receive",
-              "{subscriber-id}:destination:{destination-id}:application:receive"
+              "{subscriberID}:manage",
+              "{subscriberID}:application:receive",
+              "{subscriberID}:destination:{destinationID}:application:receive"
             ]
           }
         ]
@@ -518,21 +518,21 @@
         "security": [
           {
             "API Key": [
-              "{subscriber-id}:manage",
-              "{subscriber-id}:application:receive",
-              "{subscriber-id}:destination:{destination-id}:application:receive"
+              "{subscriberID}:manage",
+              "{subscriberID}:application:receive",
+              "{subscriberID}:destination:{destinationID}:application:receive"
             ]
           }
         ]
       }
     },
-    "/{subscriber-id}/destinations/{destination-id}/applications": {
+    "/{subscriberID}/destinations/{destinationID}/applications": {
       "parameters": [
         {
           "schema": {
             "type": "string"
           },
-          "name": "subscriber-id",
+          "name": "subscriberID",
           "in": "path",
           "required": true
         },
@@ -540,7 +540,7 @@
           "schema": {
             "type": "string"
           },
-          "name": "destination-id",
+          "name": "destinationID",
           "in": "path",
           "required": true
         }
@@ -566,19 +566,19 @@
                   "example-2": {
                     "value": [
                       {
-                        "application-id": "7236",
+                        "applicationID": "7236",
                         "additional-reference-info": {
                           "subject": "Anmeldung eines Gewerbes in Musterstadt",
-                          "case-id": "DF/8923"
+                          "caseID": "DF/8923"
                         },
                         "content-structure": {
                           "data": {
-                            "schema-id": "742",
+                            "schemaID": "742",
                             "mime-type": "json"
                           },
                           "docs": [
                             {
-                              "doc-id": "1",
+                              "docID": "1",
                               "purpose": "form",
                               "size": 39273,
                               "mime": "application/pdf",
@@ -594,7 +594,7 @@
                               }
                             },
                             {
-                              "doc-id": "2",
+                              "docID": "2",
                               "purpose": "attachment",
                               "size": 894834874,
                               "mime": "image/jpeg",
@@ -610,8 +610,8 @@
                         "public-service-type": {
                           "name": "Gewerbeanmeldung",
                           "description": "Eine Gewerbeanmeldung ist immer dann notwendig, wenn Sie einen stehenden Gewerbebetrieb beginnen.",
-                          "leika-id": "99050012104000",
-                          "other-identifiers": [
+                          "leikaID": "99050012104000",
+                          "otherIDentifiers": [
                             {
                               "id": "8664844",
                               "schemeURI": "service.niedersachsen.de",
@@ -714,21 +714,21 @@
         "security": [
           {
             "API Key": [
-              "{subscriber-id}:manage",
-              "{subscriber-id}:application:receive",
-              "{subscriber-id}:destination:{destination-id}:application:receive"
+              "{subscriberID}:manage",
+              "{subscriberID}:application:receive",
+              "{subscriberID}:destination:{destinationID}:application:receive"
             ]
           }
         ]
       }
     },
-    "/{subscriber-id}/destinations/{destination-id}": {
+    "/{subscriberID}/destinations/{destinationID}": {
       "parameters": [
         {
           "schema": {
             "type": "string"
           },
-          "name": "destination-id",
+          "name": "destinationID",
           "in": "path",
           "required": true
         },
@@ -736,7 +736,7 @@
           "schema": {
             "type": "string"
           },
-          "name": "subscriber-id",
+          "name": "subscriberID",
           "in": "path",
           "required": true
         }
@@ -754,7 +754,7 @@
                 "examples": {
                   "example-1": {
                     "value": {
-                      "destination-id": "52",
+                      "destinationID": "52",
                       "organization": {
                         "organization-name": "Umweltamt Ankh-Morpork",
                         "address": {
@@ -840,10 +840,10 @@
         "security": [
           {
             "API Key": [
-              "{subscriber-id}:destination:read",
-              "{subscriber-id}:destination:manage",
-              "{subscriber-id}:manage",
-              "{subscriber-id}:destination:{destination-id}:read"
+              "{subscriberID}:destination:read",
+              "{subscriberID}:destination:manage",
+              "{subscriberID}:manage",
+              "{subscriberID}:destination:{destinationID}:read"
             ]
           }
         ]
@@ -906,7 +906,7 @@
               "examples": {
                 "example-1": {
                   "value": {
-                    "destination-id": "83578",
+                    "destinationID": "83578",
                     "organization": {
                       "organization-name": "Gewerbeamt Musterhausen"
                     },
@@ -940,10 +940,10 @@
         "security": [
           {
             "API Key": [
-              "{subscriber-id}:manage",
-              "{subscriber-id}:destination:update",
-              "{subscriber-id}:destination:manage",
-              "{subscriber-id}:destination:{destination-id}:update"
+              "{subscriberID}:manage",
+              "{subscriberID}:destination:update",
+              "{subscriberID}:destination:manage",
+              "{subscriberID}:destination:{destinationID}:update"
             ]
           }
         ]
@@ -1003,22 +1003,22 @@
         "security": [
           {
             "API Key": [
-              "{subscriber-id}:manage",
-              "{subscriber-id}:destination:manage",
-              "{subscriber-id}:destination:delete",
-              "{subscriber-id}:destination:{destination-id}:delete"
+              "{subscriberID}:manage",
+              "{subscriberID}:destination:manage",
+              "{subscriberID}:destination:delete",
+              "{subscriberID}:destination:{destinationID}:delete"
             ]
           }
         ]
       }
     },
-    "/{subscriber-id}/destinations": {
+    "/{subscriberID}/destinations": {
       "parameters": [
         {
           "schema": {
             "type": "string"
           },
-          "name": "subscriber-id",
+          "name": "subscriberID",
           "in": "path",
           "required": true
         }
@@ -1040,7 +1040,7 @@
                   "example-1": {
                     "value": [
                       {
-                        "destination-id": "83578",
+                        "destinationID": "83578",
                         "organization": {
                           "organization-name": "Gewerbeamt Musterhausen"
                         },
@@ -1108,9 +1108,9 @@
         "security": [
           {
             "API Key": [
-              "{subscriber-id}:destination:read",
-              "{subscriber-id}:manage",
-              "{subscriber-id}:destination:manage"
+              "{subscriberID}:destination:read",
+              "{subscriberID}:manage",
+              "{subscriberID}:destination:manage"
             ]
           }
         ]
@@ -1126,18 +1126,18 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "destination-id": {
+                    "destinationID": {
                       "type": "string"
                     }
                   },
                   "required": [
-                    "destination-id"
+                    "destinationID"
                   ]
                 },
                 "examples": {
                   "example-1": {
                     "value": {
-                      "destination-id": "e15fc92e-c286-424b-9802-39c6b6bc441d"
+                      "destinationID": "e15fc92e-c286-424b-9802-39c6b6bc441d"
                     }
                   }
                 }
@@ -1245,9 +1245,9 @@
         "security": [
           {
             "API Key": [
-              "{subscriber-id}:manage",
-              "{subscriber-id}:destination:manage",
-              "{subscriber-id}:destination:create"
+              "{subscriberID}:manage",
+              "{subscriberID}:destination:manage",
+              "{subscriberID}:destination:create"
             ]
           }
         ]
@@ -1271,17 +1271,17 @@
             "tokenUrl": "",
             "refreshUrl": "",
             "scopes": {
-              "{subscriber-id}:destination:read": "Dieser Zugriffsbereich erlaubt bei allen Destination-Informationen ein lesender Zugriff.",
-              "{subscriber-id}:destination:create": "Der Zugriffsbereich erlaubt Destinations neu anzulegen und zu verändern.",
-              "{subscriber-id}:destination:update": "Dieser Zugriffsbereich erlaubt es, bestehende Destinations zu verändern.",
-              "{subscriber-id}:destination:manage": "Dieser Zugriffsbereich alle Destination Endpunkte eines Subscriber genutzt werden.",
-              "{subscriber-id}:destination:{destination-id}:read": "Mit diesem Zugriffsbereich wird ein lesender Zugriff auf eine spezifische Destination ermöglicht.",
-              "{subscriber-id}:destination:{destination-id}:update": "Mit diesem Zugriffsbereich wird ein schreibende Zugriff auf eine spezifische Destination ermöglicht.",
-              "{subscriber-id}:application:receive": "Dieser Zugriffsbereich erlaubt es, Anträge für allen Destinations abzuholen.",
-              "{subscriber-id}:destination:{destination-id}:application:receive": "Dieser Zugriffsbereich erlaubt es, Anträge einer spezifischen Destination abzuholen.",
-              "{subscriber-id}:manage": "Dieser Zugriffsbereich die vollständige Nutzung aller Endpunkte eines Subscribers.",
-              "{subscriber-id}:destination:delete": "Dieser Zugriffsbereich erlaubt die Löschung von Destinations eines Accounts.",
-              "{subscriber-id}:destination:{destination-id}:delete": "Dieser Zugriffsbereich erlaubt es, eine spezifische Destination zu löschen."
+              "{subscriberID}:destination:read": "Dieser Zugriffsbereich erlaubt bei allen Destination-Informationen ein lesender Zugriff.",
+              "{subscriberID}:destination:create": "Der Zugriffsbereich erlaubt Destinations neu anzulegen und zu verändern.",
+              "{subscriberID}:destination:update": "Dieser Zugriffsbereich erlaubt es, bestehende Destinations zu verändern.",
+              "{subscriberID}:destination:manage": "Dieser Zugriffsbereich alle Destination Endpunkte eines Subscriber genutzt werden.",
+              "{subscriberID}:destination:{destinationID}:read": "Mit diesem Zugriffsbereich wird ein lesender Zugriff auf eine spezifische Destination ermöglicht.",
+              "{subscriberID}:destination:{destinationID}:update": "Mit diesem Zugriffsbereich wird ein schreibende Zugriff auf eine spezifische Destination ermöglicht.",
+              "{subscriberID}:application:receive": "Dieser Zugriffsbereich erlaubt es, Anträge für allen Destinations abzuholen.",
+              "{subscriberID}:destination:{destinationID}:application:receive": "Dieser Zugriffsbereich erlaubt es, Anträge einer spezifischen Destination abzuholen.",
+              "{subscriberID}:manage": "Dieser Zugriffsbereich die vollständige Nutzung aller Endpunkte eines Subscribers.",
+              "{subscriberID}:destination:delete": "Dieser Zugriffsbereich erlaubt die Löschung von Destinations eines Accounts.",
+              "{subscriberID}:destination:{destinationID}:delete": "Dieser Zugriffsbereich erlaubt es, eine spezifische Destination zu löschen."
             }
           }
         },

@@ -20,13 +20,13 @@
     }
   ],
   "paths": {
-    "/{source-id}/{destination-id}/{application-id}/data": {
+    "/{sourceID}/{destinationID}/{applicationID}/data": {
       "parameters": [
         {
           "schema": {
             "type": "string"
           },
-          "name": "source-id",
+          "name": "sourceID",
           "in": "path",
           "required": true
         },
@@ -34,7 +34,7 @@
           "schema": {
             "type": "string"
           },
-          "name": "destination-id",
+          "name": "destinationID",
           "in": "path",
           "required": true
         },
@@ -42,7 +42,7 @@
           "schema": {
             "type": "string"
           },
-          "name": "application-id",
+          "name": "applicationID",
           "in": "path",
           "required": true
         }
@@ -156,20 +156,20 @@
         "security": [
           {
             "API Key": [
-              "{source-id}:application:apply",
-              "{source-id}:source:manage"
+              "{sourceID}:application:apply",
+              "{sourceID}:source:manage"
             ]
           }
         ]
       }
     },
-    "/{source-id}/{destination-id}/{application-id}/docs/{doc-id}": {
+    "/{sourceID}/{destinationID}/{applicationID}/docs/{docID}": {
       "parameters": [
         {
           "schema": {
             "type": "string"
           },
-          "name": "source-id",
+          "name": "sourceID",
           "in": "path",
           "required": true
         },
@@ -177,7 +177,7 @@
           "schema": {
             "type": "string"
           },
-          "name": "destination-id",
+          "name": "destinationID",
           "in": "path",
           "required": true
         },
@@ -185,7 +185,7 @@
           "schema": {
             "type": "string"
           },
-          "name": "application-id",
+          "name": "applicationID",
           "in": "path",
           "required": true
         },
@@ -193,7 +193,7 @@
           "schema": {
             "type": "string"
           },
-          "name": "doc-id",
+          "name": "docID",
           "in": "path",
           "required": true
         }
@@ -236,7 +236,7 @@
             }
           },
           "404": {
-            "description": "Not Acceptable - Falsche doc-id",
+            "description": "Not Acceptable - Falsche docID",
             "content": {
               "application/json": {
                 "schema": {
@@ -246,7 +246,7 @@
             }
           },
           "410": {
-            "description": "Gone - Application-ID ungültig/Transfer-Timeout",
+            "description": "Gone - ApplicationID ungültig/Transfer-Timeout",
             "content": {
               "application/json": {
                 "schema": {
@@ -293,20 +293,20 @@
         "security": [
           {
             "API Key": [
-              "{source-id}:application:apply",
-              "{source-id}:source:manage"
+              "{sourceID}:application:apply",
+              "{sourceID}:source:manage"
             ]
           }
         ]
       }
     },
-    "/{source-id}/{application-id}/status": {
+    "/{sourceID}/{applicationID}/status": {
       "parameters": [
         {
           "schema": {
             "type": "string"
           },
-          "name": "source-id",
+          "name": "sourceID",
           "in": "path",
           "required": true
         },
@@ -314,7 +314,7 @@
           "schema": {
             "type": "string"
           },
-          "name": "application-id",
+          "name": "applicationID",
           "in": "path",
           "required": true
         }
@@ -392,20 +392,20 @@
         "security": [
           {
             "API Key": [
-              "{source-id}:status:read",
-              "{source-id}:source:manage"
+              "{sourceID}:status:read",
+              "{sourceID}:source:manage"
             ]
           }
         ]
       }
     },
-    "/{source-id}/{destination-id}/{application-id}/upload-status": {
+    "/{sourceID}/{destinationID}/{applicationID}/upload-status": {
       "parameters": [
         {
           "schema": {
             "type": "string"
           },
-          "name": "source-id",
+          "name": "sourceID",
           "in": "path",
           "required": true
         },
@@ -413,7 +413,7 @@
           "schema": {
             "type": "string"
           },
-          "name": "destination-id",
+          "name": "destinationID",
           "in": "path",
           "required": true
         },
@@ -421,7 +421,7 @@
           "schema": {
             "type": "string"
           },
-          "name": "application-id",
+          "name": "applicationID",
           "in": "path",
           "required": true
         }
@@ -462,7 +462,7 @@
                       "items": {
                         "type": "object",
                         "properties": {
-                          "doc-id": {
+                          "docID": {
                             "type": "string",
                             "pattern": "^[-_.A-Za-z0-9]+$",
                             "description": "ID des Dokuments. Diese muss nur innerhalb des Antrags (Application) eindeutig sein. Es wird daher empfohlen, die IDs fortlaufend (1, 2 etc.) zu vergeben."
@@ -481,7 +481,7 @@
                           }
                         },
                         "required": [
-                          "doc-id",
+                          "docID",
                           "status",
                           "length"
                         ]
@@ -541,20 +541,20 @@
         "security": [
           {
             "API Key": [
-              "{source-id}:application:apply",
-              "{source-id}:source:manage"
+              "{sourceID}:application:apply",
+              "{sourceID}:source:manage"
             ]
           }
         ]
       }
     },
-    "/{source-id}/{destination-id}": {
+    "/{sourceID}/{destinationID}": {
       "parameters": [
         {
           "schema": {
             "type": "string"
           },
-          "name": "source-id",
+          "name": "sourceID",
           "in": "path",
           "required": true
         },
@@ -562,7 +562,7 @@
           "schema": {
             "type": "string"
           },
-          "name": "destination-id",
+          "name": "destinationID",
           "in": "path",
           "required": true
         }
@@ -578,7 +578,7 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "application-id": {
+                    "applicationID": {
                       "type": "string"
                     }
                   }
@@ -586,7 +586,7 @@
                 "examples": {
                   "example-1": {
                     "value": {
-                      "application-id": "45bb5b95-d853-4fc5-b45d-10aa9e15287a"
+                      "applicationID": "45bb5b95-d853-4fc5-b45d-10aa9e15287a"
                     }
                   }
                 }
@@ -655,7 +655,7 @@
                   "value": {
                     "additional-reference-info": {
                       "subject": "Anmeldung eines Gewerbes in Musterstadt",
-                      "case-id": "DF/8923"
+                      "caseID": "DF/8923"
                     },
                     "content-structure": {
                       "data": {
@@ -667,7 +667,7 @@
                       },
                       "docs": [
                         {
-                          "doc-id": "1",
+                          "docID": "1",
                           "purpose": "form",
                           "size": 39273,
                           "mime": "application/pdf",
@@ -687,8 +687,8 @@
                     "public-service-type": {
                       "name": "Gewerbeanmeldung",
                       "description": "Eine Gewerbeanmeldung ist immer dann notwendig, wenn Sie einen stehenden Gewerbebetrieb beginnen.",
-                      "leika-id": "99050012104000",
-                      "other-identifiers": [
+                      "leikaID": "99050012104000",
+                      "otherIDentifiers": [
                         {
                           "id": "8664844",
                           "schemeURI": "service.niedersachsen.de",
@@ -764,8 +764,8 @@
         "security": [
           {
             "API Key": [
-              "{source-id}:application:apply",
-              "{source-id}:source:manage"
+              "{sourceID}:application:apply",
+              "{sourceID}:source:manage"
             ]
           }
         ]
@@ -832,20 +832,20 @@
         "security": [
           {
             "API Key": [
-              "{source-id}:destination-info:read",
-              "{source-id}:source:manage"
+              "{sourceID}:destination-info:read",
+              "{sourceID}:source:manage"
             ]
           }
         ]
       }
     },
-    "/{source-id}/{destination-id}/{application-id}": {
+    "/{sourceID}/{destinationID}/{applicationID}": {
       "parameters": [
         {
           "schema": {
             "type": "string"
           },
-          "name": "source-id",
+          "name": "sourceID",
           "in": "path",
           "required": true
         },
@@ -853,7 +853,7 @@
           "schema": {
             "type": "string"
           },
-          "name": "destination-id",
+          "name": "destinationID",
           "in": "path",
           "required": true
         },
@@ -861,7 +861,7 @@
           "schema": {
             "type": "string"
           },
-          "name": "application-id",
+          "name": "applicationID",
           "in": "path",
           "required": true
         }
@@ -911,7 +911,7 @@
             }
           },
           "410": {
-            "description": "Gone - Application-ID ungültig/Transfer-Timeout",
+            "description": "Gone - ApplicationID ungültig/Transfer-Timeout",
             "content": {
               "application/json": {
                 "schema": {
@@ -950,8 +950,8 @@
         "security": [
           {
             "API Key": [
-              "{source-id}:application:apply",
-              "{source-id}:source:manage"
+              "{sourceID}:application:apply",
+              "{sourceID}:source:manage"
             ]
           }
         ]
@@ -977,10 +977,10 @@
           "clientCredentials": {
             "tokenUrl": "beispieltokenURL.de",
             "scopes": {
-              "{source-id}:application:apply": "Dieser Zugriffsbereich erlaubt es Anträge anzulegen, diesen zu aktualisieren und abzusenden.",
-              "{source-id}:status:read": "Dieser Zufriffsbereich erlaubt es auf Statusmitteilungen zu einem übersendeten Antrag abzurufen.",
-              "{source-id}:destination-info:read": "Dieser Zufriffsbereich erlaubt es Informationen von existierenden Destinationsabzurufen",
-              "{source-id}:source:manage": "Dieser Zufriffsbereich erlaubt es alle Endpunkte einer "
+              "{sourceID}:application:apply": "Dieser Zugriffsbereich erlaubt es Anträge anzulegen, diesen zu aktualisieren und abzusenden.",
+              "{sourceID}:status:read": "Dieser Zufriffsbereich erlaubt es auf Statusmitteilungen zu einem übersendeten Antrag abzurufen.",
+              "{sourceID}:destination-info:read": "Dieser Zufriffsbereich erlaubt es Informationen von existierenden Destinationsabzurufen",
+              "{sourceID}:source:manage": "Dieser Zufriffsbereich erlaubt es alle Endpunkte einer "
             },
             "refreshUrl": "beispielrefreshURL.de"
           }

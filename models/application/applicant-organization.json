@@ -10,7 +10,7 @@
         "$ref": "../common/identifier.json"
       }
     },
-    "org-validation": {
+    "orgValidation": {
       "type": "object",
       "description": "Informationen, ob diese Organisation vom sendenden System identifiziert wurde",
       "properties": {
@@ -23,31 +23,31 @@
         "method"
       ]
     },
-    "organization-info": {
+    "organizationInfo": {
       "type": "object",
       "description": "Informationen über die Organisation",
       "properties": {
-        "legal-name": {
+        "legalName": {
           "type": "string",
           "description": "Name oder Bezeichnung - Der rechtliche Name einer Organisation. Der Name ist nicht zwingend eindeutig, um die Organisation zu identifizieren."
         },
-        "organization-type": {
+        "organizationType": {
           "type": "string",
           "description": "Rechtsform der Organisation"
         },
-        "registry-court": {
+        "registryCourt": {
           "type": "string",
           "description": "Registergericht"
         },
-        "registry-type": {
+        "registryType": {
           "type": "string",
           "description": "Registerart - Die Registerart macht die Registernummer zur Identifizierung der Organisation innerhalb des Registergerichts eindeutig (z. B. HRA und HRB als Registerarten für das Handelsregister)."
         },
-        "registry-number": {
+        "registryNumber": {
           "type": "string",
           "description": "Registernummer, z.B. vom Handelsregister"
         },
-        "legal-address": {
+        "legalAddress": {
           "oneOf": [
             {
               "$ref": "../common/address-national.json"
@@ -58,7 +58,7 @@
           ],
           "description": "Offizielle Adresse"
         },
-        "legal-representatives": {
+        "legalRepresentatives": {
           "type": "array",
           "description": "Namen der Mitglieder des Vertretungsorgans oder der gesetzlichen Vertreter",
           "items": {
@@ -67,22 +67,22 @@
         }
       }
     },
-    "acting-person": {
+    "actingPerson": {
       "type": "array",
       "description": "Im Namen der Organisation auftretende natürliche Personen, wie z.B. Geschäftsführer, Vorstände oder Prokuristen",
       "items": {
         "type": "object",
         "properties": {
-          "identity-info": {
+          "identityInfo": {
             "$ref": "../common/eID-natural-person.json"
           },
-          "authentification-info": {
+          "authentificationInfo": {
             "$ref": "../common/authentification-info.json"
           }
         }
       }
     },
-    "contact-info": {
+    "contactInfo": {
       "$ref": "./applicant-contact-info.json"
     }
   }

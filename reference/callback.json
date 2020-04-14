@@ -15,20 +15,19 @@
   },
   "servers": [
     {
-      "url": "{callback-host}"
+      "url": "{callbackHost}"
     }
   ],
   "paths": {
-    "/{callback-path}": {
+    "/{callbackPath}": {
       "parameters": [
         {
           "schema": {
             "type": "string"
           },
-          "name": "callback-path",
+          "name": "callbackPath",
           "in": "path",
-          "required": true,
-          "description": "Dies ist nur ein Platzhalter. Die ganze Callback-URL ergibt sich aus der Angabe in der Destiantion."
+          "required": true
         }
       ],
       "post": {
@@ -46,7 +45,7 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "destination-id": {
+                  "destinationID": {
                     "type": "string"
                   },
                   "applications": {
@@ -54,7 +53,7 @@
                     "items": {
                       "type": "object",
                       "properties": {
-                        "application-id": {
+                        "applicationID": {
                           "type": "string"
                         }
                       }

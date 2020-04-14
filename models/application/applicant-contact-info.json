@@ -3,14 +3,14 @@
   "type": "object",
   "description": "Kontaktdaten des Antragstellers",
   "properties": {
-    "electronic-adresses": {
+    "electronicAdresses": {
       "type": "array",
       "description": "Elektronische Kontaktmöglkichkeiten, z.B. E-Mail",
       "items": {
         "type": "object",
         "description": "",
         "properties": {
-          "channel-type": {
+          "channelType": {
             "type": "string",
             "enum": [
               "Service-Account-Mailbox",

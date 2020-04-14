@@ -2,7 +2,7 @@
   "title": "authentification-info",
   "type": "object",
   "properties": {
-    "assurance-level": {
+    "assuranceLevel": {
       "type": "string",
       "enum": [
         "low",
@@ -10,10 +10,10 @@
         "high"
       ]
     },
-    "authentification-method": {
+    "authentificationMethod": {
       "type": "string"
     },
-    "authentification-token": {
+    "authentificationToken": {
       "type": "object"
     },
     "timestamp": {
@@ -22,7 +22,7 @@
     }
   },
   "required": [
-    "assurance-level",
-    "authentification-method"
+    "assuranceLevel",
+    "authentificationMethod"
   ]
 }
