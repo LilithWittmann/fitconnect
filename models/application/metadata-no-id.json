@@ -99,16 +99,17 @@
     }
   },
   "properties": {
-    "additionalReferenceInfo": {
-      "type": "object",
-      "properties": {
-        "subject": {
-          "type": "string"
-        },
-        "caseID": {
-          "type": "string"
-        }
+    "applicants": {
+      "type": "array",
+      "items": {
+        "$ref": "./applicant.json"
       }
+    },
+    "paymentInfo": {
+      "$ref": "./payment-info.json"
+    },
+    "publicServiceType": {
+      "$ref": "./public-service-type.json"
     },
     "contentStructure": {
       "type": "object",
@@ -148,17 +149,16 @@
         }
       }
     },
-    "publicServiceType": {
-      "$ref": "./public-service-type.json"
-    },
-    "applicants": {
-      "type": "array",
-      "items": {
-        "$ref": "./applicant.json"
+    "additionalReferenceInfo": {
+      "type": "object",
+      "properties": {
+        "subject": {
+          "type": "string"
+        },
+        "caseId": {
+          "type": "string"
+        }
       }
-    },
-    "paymentInfo": {
-      "$ref": "./payment-info.json"
     }
   },
   "required": [

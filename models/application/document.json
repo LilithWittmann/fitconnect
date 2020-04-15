@@ -33,11 +33,6 @@
     }
   },
   "properties": {
-    "docID": {
-      "type": "string",
-      "pattern": "^[-_.A-Za-z0-9]+$",
-      "description": "ID des Dokuments. Diese muss nur innerhalb des Antrags (Application) eindeutig sein. Es wird daher empfohlen, die IDs fortlaufend (1, 2 etc.) zu vergeben."
-    },
     "purpose": {
       "type": "string",
       "enum": [
@@ -50,9 +45,6 @@
     "size": {
       "type": "integer",
       "description": "Größe des Dokuments in Bytes"
-    },
-    "mimeType": {
-      "$ref": "../common/mime-type.json"
     },
     "filename": {
       "type": "string",
@@ -95,6 +87,14 @@
       },
       "type": "string",
       "description": "Sofern der Antragstellers dieses Dokument signiert hat, wird die Signatur hier base64url-encoded eingebettet"
+    },
+    "mimeType": {
+      "$ref": "../common/mime-type.json"
+    },
+    "docId": {
+      "type": "string",
+      "pattern": "^[-_.A-Za-z0-9]+$",
+      "description": "ID des Dokuments. Diese muss nur innerhalb des Antrags (Application) eindeutig sein. Es wird daher empfohlen, die IDs fortlaufend (1, 2 etc.) zu vergeben."
     }
   },
   "required": [

@@ -4,14 +4,14 @@
     {
       "type": "object",
       "properties": {
-        "applicationID": {
+        "applicationId": {
           "type": "string",
           "pattern": "^[-_.A-Za-z0-9]+$",
           "description": "ID des Antrags"
         }
       },
       "required": [
-        "applicationID"
+        "applicationId"
       ]
     },
     {

@@ -3,7 +3,25 @@
   "type": "object",
   "description": "Kontaktdaten des Antragstellers",
   "properties": {
-    "electronicAdresses": {
+    "physicalAddress": {
+      "oneOf": [
+        {
+          "$ref": "../common/address-national.json"
+        },
+        {
+          "$ref": "../common/address-international.json"
+        }
+      ],
+      "description": "Physikalische (Post-)Adresse"
+    },
+    "telephone": {
+      "type": "array",
+      "description": "Liste der Telefonnummern, außer Fax",
+      "items": {
+        "$ref": "../common/phone.json"
+      }
+    },
+    "electronicAddresses": {
       "type": "array",
       "description": "Elektronische Kontaktmöglkichkeiten, z.B. E-Mail",
       "items": {
@@ -25,24 +43,6 @@
             "description": "Kommunikationsadresse"
           }
         }
-      }
-    },
-    "physical-adress": {
-      "oneOf": [
-        {
-          "$ref": "../common/address-national.json"
-        },
-        {
-          "$ref": "../common/address-international.json"
-        }
-      ],
-      "description": "Physikalische (Post-)Adresse"
-    },
-    "telephone": {
-      "type": "array",
-      "description": "Liste der Telefonnummern, außer Fax",
-      "items": {
-        "$ref": "../common/phone.json"
       }
     }
   }

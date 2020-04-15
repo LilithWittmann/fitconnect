@@ -32,7 +32,7 @@
       "format": "uri",
       "description": "Link to the location of the list"
     },
-    "schemeVersionID": {
+    "schemeVersionId": {
       "type": "string",
       "description": "Version of the scheme"
     },
@@ -40,7 +40,7 @@
       "type": "string",
       "description": "Specifies the name of the ID issuer"
     },
-    "schemeAgencyID": {
+    "schemeAgencyId": {
       "type": "string",
       "description": "Specifies the ID of the ID issuer"
     },
@@ -48,7 +48,7 @@
       "type": "string",
       "description": "Name of the scheme"
     },
-    "schemeID": {
+    "schemeId": {
       "type": "string",
       "description": "Identifices the ID type"
     }

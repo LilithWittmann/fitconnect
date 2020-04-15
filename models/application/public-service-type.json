@@ -35,17 +35,17 @@
       "type": "string",
       "description": "(Kurz-)Beschreibung der behördlichen Leistung"
     },
-    "leikaID": {
-      "type": "string",
-      "pattern": "^[0-9]{2}([0-9]{3}){1,4}$",
-      "description": "ID aus dem Leistungskatalog (Leika)"
-    },
     "otherIdentifiers": {
       "type": "array",
       "description": "Weitere Identifikatioren. Die ID wird in `content` abgelegt, zusätzlich sollten die Schema-Attribute zur Spezifikation des Gültigkeitsraumes verwendet werden.",
       "items": {
         "$ref": "../common/identifier.json"
       }
+    },
+    "leikaId": {
+      "type": "string",
+      "pattern": "^[0-9]{2}([0-9]{3}){1,4}$",
+      "description": "ID aus dem Leistungskatalog (Leika)"
     }
   },
   "required": [

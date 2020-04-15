@@ -45,7 +45,7 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "destinationID": {
+                  "destinationId": {
                     "type": "string"
                   },
                   "applications": {
@@ -53,7 +53,7 @@
                     "items": {
                       "type": "object",
                       "properties": {
-                        "applicationID": {
+                        "applicationId": {
                           "type": "string"
                         }
                       }
@@ -64,10 +64,10 @@
               "examples": {
                 "example-1": {
                   "value": {
-                    "destination-id": "821",
+                    "destinationId": "821",
                     "applications": [
                       {
-                        "application-id": "98472"
+                        "applicationId": "98472"
                       }
                     ]
                   }
