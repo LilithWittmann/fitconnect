@@ -4,11 +4,11 @@
   "description": "Metadaten eines Antrags noch ohne ID, zum Anlegen eines neuen Antrags. Nach dem Zuweisen der `application-id` wird das Modell [Application Metadata](metadata.json) verwendet.",
   "x-examples": {
     "example-1": {
-      "additional-reference-info": {
+      "additionalReferenceInfo": {
         "subject": "Anmeldung eines Gewerbes in Musterstadt",
-        "case-id": "DF/8923"
+        "caseId": "DF/8923"
       },
-      "content-structure": {
+      "contentStructure": {
         "data": {
           "schema-id": "742",
           "mime-type": "json"
