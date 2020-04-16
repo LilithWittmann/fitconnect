@@ -3,7 +3,7 @@
   "type": "object",
   "description": "",
   "properties": {
-    "content-structure": {
+    "contentStructure": {
       "type": "object",
       "properties": {
         "data": {
@@ -29,14 +29,14 @@
         "docs"
       ]
     },
-    "public-service-type": {
+    "publicServiceType": {
       "$ref": "./public-service-type.json"
     },
-    "encrypted-metadata": {
+    "encryptedMetadata": {
       "$ref": "../common/jwe.json"
     }
   },
   "required": [
-    "encrypted-metadata"
+    "encryptedMetadata"
   ]
 }

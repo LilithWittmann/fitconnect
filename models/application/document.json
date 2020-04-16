@@ -3,10 +3,8 @@
   "description": "Ein im Antrag (Application) enthaltenes Dokument (z.B. Antragsformular oder hochgeladene Anlage)",
   "x-examples": {
     "example-1": {
-      "docId": "1",
       "purpose": "form",
       "size": 39273,
-      "mimeType": "application/pdf",
       "filename": "antrag.pdf",
       "description": "Das Antragsformular",
       "lang": {
@@ -16,19 +14,21 @@
       "hash": {
         "algorithm": "SHA-256",
         "digest": "03ba204e50d126e4674c005e04d82e84c21366780af1f43bd54a37816b6ab340"
-      }
+      },
+      "mime": "application/pdf",
+      "doc-id": "1"
     },
     "example-2": {
-      "docId": "2",
       "purpose": "attachment",
       "size": 894834874,
-      "mimeType": "image/jpeg",
       "filename": "scan.jpg",
       "description": "Scan der Bescheinigung",
       "hash": {
         "algorithm": "SHA-256",
         "digest": "e1762f14d9924e37b32f1c81dfd256410af462f5136415c96877efa8c80345d0"
-      }
+      },
+      "mime": "image/jpeg",
+      "doc-id": "2"
     }
   },
   "allOf": [
@@ -36,32 +36,6 @@
       "$ref": "./encrypted-document.json"
     },
     {
-  "properties": {
-    "purpose": {
-      "type": "string",
-      "enum": [
-        "form",
-        "attachment",
-        "report"
-      ],
-      "description": "Zweck/Art des Dokuments\n- form: Antragsformular\n- attachment: Anlage (Upload)\n- report: Vom System erzeugte Unterlage"
-    },
-    "size": {
-      "type": "integer",
-      "description": "Größe des Dokuments in Bytes"
-    },
-    "filename": {
-      "type": "string",
-      "description": "Ursprünglicher Dateiname bei Erzeugung oder Upload"
-    },
-    "description": {
-      "type": "string",
-      "description": "Optionale Beschreibung des Dokuments"
-    },
-    "lang": {
-      "$ref": "../common/language.json"
-    },
-    "hash": {
       "type": "object",
       "properties": {
         "purpose": {
@@ -73,7 +47,7 @@
           ],
           "description": "Zweck/Art des Dokuments\n- form: Antragsformular\n- attachment: Anlage (Upload)\n- report: Vom System erzeugte Unterlage"
         },
-        "mime-type": {
+        "mimeType": {
           "$ref": "../common/mime-type.json"
         },
         "filename": {
@@ -97,28 +71,8 @@
       },
       "required": [
         "purpose",
-        "mime-type"
+        "mimeType"
       ]
-    },
-    "signature": {
-      "pattern": {
-        "$ref": "../common/base64url.json#/pattern"
-      },
-      "type": "string",
-      "description": "Sofern der Antragstellers dieses Dokument signiert hat, wird die Signatur hier base64url-encoded eingebettet"
-    },
-    "mimeType": {
-      "$ref": "../common/mime-type.json"
-    },
-    "docId": {
-      "type": "string",
-      "pattern": "^[-_.A-Za-z0-9]+$",
-      "description": "ID des Dokuments. Diese muss nur innerhalb des Antrags (Application) eindeutig sein. Es wird daher empfohlen, die IDs fortlaufend (1, 2 etc.) zu vergeben."
     }
-  },
-  "required": [
-    "purpose",
-    "size",
-    "mimeType"
   ]
 }
