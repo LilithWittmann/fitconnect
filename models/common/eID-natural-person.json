@@ -8,7 +8,7 @@
     {
       "type": "object",
       "properties": {
-        "place-of-residence": {
+        "placeOfResidence": {
           "$ref": "./address-national.json"
         }
       }
