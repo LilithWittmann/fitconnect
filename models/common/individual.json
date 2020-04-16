@@ -4,16 +4,16 @@
   "description": "Natürliche Person",
   "x-examples": {
     "example-1": {
-      "form-of-address": "Herr",
-      "academic-title": "Dr.",
-      "first-name": "Werner",
-      "last-name": "Mustermann",
+      "formOfAddress": "Herr",
+      "academicTitle": "Dr.",
+      "firstName": "Werner",
+      "lastName": "Mustermann",
       "contact": {
         "telephone": [
           {
             "number": "+49 89 32168-42",
             "mobile": false,
-            "type": "work"
+            "description": "Dienstliche Telefonnummer"
           }
         ]
       }

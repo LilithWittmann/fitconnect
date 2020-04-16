@@ -4,8 +4,8 @@
   "x-examples": {
     "example-1": {
       "street": "Kurzer Weg",
-      "house-number": "7",
-      "postal-code": "12345",
+      "houseNumber": 7,
+      "postalCode": "12345",
       "city": "Ankh-Morpork"
     }
   },

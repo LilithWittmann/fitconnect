@@ -28,5 +28,20 @@
   "required": [
     "schemaSource",
     "mimeType"
-  ]
+  ],
+  "x-examples": {
+    "example-1": {
+      "mimeType": "json",
+      "schemaSource": "none"
+    },
+    "example-2": {
+      "mimeType": "xml",
+      "schemaSource": "none"
+    },
+    "example-3": {
+      "mimeType": "xml",
+      "schemaSource": "fim",
+      "schemaId": "S99000001V1.0"
+    }
+  }
 }

@@ -5,16 +5,16 @@
   "x-examples": {
     "example-1": {
       "id": "978-1-894049-23-8",
-      "schemeID": "ISBN"
+      "schemeId": "ISBN"
     },
     "example-2": {
       "id": "99050012104000",
       "schemeURI": "https://www.xrepository.de/details/urn:de:gkleika:leika:leistung",
       "schemeDataURI": "https://www.xrepository.de/details/urn:de:gkleika:leika:leistung_20180705#version",
-      "schemeVersionID": "urn:de:gkleika:leika:leistung_20180705",
+      "schemeVersionId": "urn:de:gkleika:leika:leistung_20180705",
       "schemeAgencyName": "Geschäfts- und Koordinierungsstelle LeiKa beim Ministerium der Finanzen des Landes Sachsen-Anhalt (GK_LEIKA)",
       "schemeName": "Leistungen des LeiKa",
-      "schemeID": "urn:de:gkleika:leika:leistung"
+      "schemeId": "urn:de:gkleika:leika:leistung"
     }
   },
   "properties": {

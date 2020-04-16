@@ -22,26 +22,26 @@
   "x-examples": {
     "example-1": {
       "destination-id": "83578",
-      "organization": {
-        "organization-name": "Gewerbeamt Musterhausen"
+      "public-organization": {
+        "organizationName": "Gewerbeamt Musterhausen"
       },
-      "technical-contact": [
+      "technicalContact": [
         {
-          "first-name": "Werner",
-          "last-name": "Mustermann",
+          "firstName": "Werner",
+          "lastName": "Mustermann",
           "contact": {
             "telephone": [
               {
                 "number": "+49 89 32168-42",
                 "mobile": false,
-                "type": "work"
+                "description": "Dienstliches Festnetz"
               }
             ]
           }
         }
       ],
       "callback": {
-        "callback-url": "https://www.example.com/callback"
+        "callbackURI": "https://www.example.com/callback"
       }
     }
   }
