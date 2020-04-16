@@ -2,11 +2,11 @@
   "title": "Identity Information without Address",
   "type": "object",
   "properties": {
-    "place-of-birth": {
+    "placeOfBirth": {
       "type": "string",
       "description": "Geburtsort"
     },
-    "date-of-birth": {
+    "dateOfBirth": {
       "type": "string",
       "format": "date",
       "description": "Geburtsdatum"
@@ -25,23 +25,23 @@
       "type": "string",
       "description": "Nationalität"
     },
-    "artistic-name": {
+    "artisticName": {
       "type": "string",
       "description": "Künstler- oder Ordensname"
     },
-    "doctoral-degrees": {
+    "doctoralDegrees": {
       "type": "string",
       "description": "Akademischer Titel, z.B. \"Dr.\" oder \"Prof.\""
     },
-    "birth-name": {
+    "birthName": {
       "type": "string",
       "description": "Geburtsname"
     },
-    "given-name": {
+    "givenName": {
       "type": "string",
       "description": "Vorname(n)"
     },
-    "family-name": {
+    "familyName": {
       "type": "string",
       "description": "Familienname"
     }

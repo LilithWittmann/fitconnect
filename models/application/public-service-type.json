@@ -6,13 +6,13 @@
   "x-examples": {
     "example-1": {
       "name": "Gewerbeanmeldung",
-      "leika-id": "99050012104000"
+      "leikaId": "99050012104000"
     },
     "example-2": {
       "name": "Gewerbeanmeldung",
       "description": "Eine Gewerbeanmeldung ist immer dann notwendig, wenn Sie einen stehenden Gewerbebetrieb beginnen.",
-      "leika-id": "99050012104000",
-      "other-identifiers": [
+      "leikaId": "99050012104000",
+      "otherIdentifiers": [
         {
           "id": "8664844",
           "schemeURI": "service.niedersachsen.de",
@@ -35,17 +35,17 @@
       "type": "string",
       "description": "(Kurz-)Beschreibung der behördlichen Leistung"
     },
-    "leika-id": {
-      "type": "string",
-      "pattern": "^[0-9]{2}([0-9]{3}){1,4}$",
-      "description": "ID aus dem Leistungskatalog (Leika)"
-    },
-    "other-identifiers": {
+    "otherIdentifiers": {
       "type": "array",
       "description": "Weitere Identifikatioren. Die ID wird in `content` abgelegt, zusätzlich sollten die Schema-Attribute zur Spezifikation des Gültigkeitsraumes verwendet werden.",
       "items": {
         "$ref": "../common/identifier.json"
       }
+    },
+    "leikaId": {
+      "type": "string",
+      "pattern": "^[0-9]{2}([0-9]{3}){1,4}$",
+      "description": "ID aus dem Leistungskatalog (Leika)"
     }
   },
   "required": [

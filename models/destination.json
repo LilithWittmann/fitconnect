@@ -4,14 +4,14 @@
     {
       "type": "object",
       "properties": {
-        "destination-id": {
+        "destinationId": {
           "description": "Vom Zustelldienst für dieses Ziel vergebene ID. Wird beim Anlegen eines neuen Ziels leer gelassen.",
           "pattern": "^[-_.A-Za-z0-9]+$",
           "type": "string"
         }
       },
       "required": [
-        "destination-id"
+        "destinationId"
       ]
     },
     {
@@ -22,26 +22,26 @@
   "x-examples": {
     "example-1": {
       "destination-id": "83578",
-      "organization": {
-        "organization-name": "Gewerbeamt Musterhausen"
+      "public-organization": {
+        "organizationName": "Gewerbeamt Musterhausen"
       },
-      "technical-contact": [
+      "technicalContact": [
         {
-          "first-name": "Werner",
-          "last-name": "Mustermann",
+          "firstName": "Werner",
+          "lastName": "Mustermann",
           "contact": {
             "telephone": [
               {
                 "number": "+49 89 32168-42",
                 "mobile": false,
-                "type": "work"
+                "description": "Dienstliches Festnetz"
               }
             ]
           }
         }
       ],
       "callback": {
-        "callback-url": "https://www.example.com/callback"
+        "callbackURI": "https://www.example.com/callback"
       }
     }
   }

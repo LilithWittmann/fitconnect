@@ -3,31 +3,7 @@
   "type": "object",
   "description": "Kontaktdaten des Antragstellers",
   "properties": {
-    "electronic-adresses": {
-      "type": "array",
-      "description": "Elektronische Kontaktmöglkichkeiten, z.B. E-Mail",
-      "items": {
-        "type": "object",
-        "description": "",
-        "properties": {
-          "channel-type": {
-            "type": "string",
-            "enum": [
-              "Service-Account-Mailbox",
-              "De-Mail",
-              "E-Mail",
-              "Fax"
-            ],
-            "description": "Art der Kommunikationsmöglichkeit"
-          },
-          "address": {
-            "type": "string",
-            "description": "Kommunikationsadresse"
-          }
-        }
-      }
-    },
-    "physical-adress": {
+    "physicalAddress": {
       "oneOf": [
         {
           "$ref": "../common/address-national.json"
@@ -43,6 +19,30 @@
       "description": "Liste der Telefonnummern, außer Fax",
       "items": {
         "$ref": "../common/phone.json"
+      }
+    },
+    "electronicAddresses": {
+      "type": "array",
+      "description": "Elektronische Kontaktmöglkichkeiten, z.B. E-Mail",
+      "items": {
+        "type": "object",
+        "description": "",
+        "properties": {
+          "channelType": {
+            "type": "string",
+            "enum": [
+              "Service-Account-Mailbox",
+              "De-Mail",
+              "E-Mail",
+              "Fax"
+            ],
+            "description": "Art der Kommunikationsmöglichkeit"
+          },
+          "address": {
+            "type": "string",
+            "description": "Kommunikationsadresse"
+          }
+        }
       }
     }
   }
