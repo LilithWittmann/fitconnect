@@ -1,20 +1,38 @@
 {
   "title": "Individual",
   "type": "object",
+  "description": "Natürliche Person",
+  "x-examples": {
+    "example-1": {
+      "formOfAddress": "Herr",
+      "academicTitle": "Dr.",
+      "firstName": "Werner",
+      "lastName": "Mustermann",
+      "contact": {
+        "telephone": [
+          {
+            "number": "+49 89 32168-42",
+            "mobile": false,
+            "description": "Dienstliche Telefonnummer"
+          }
+        ]
+      }
+    }
+  },
   "properties": {
-    "form-of-address": {
+    "formOfAddress": {
       "type": "string",
       "description": "Anrede der Person wie \"Herr\" oder \"Frau\""
     },
-    "academic-title": {
+    "academicTitle": {
       "type": "string",
       "description": "Titel der Person wie \"Dr.\" oder \"Prof.\""
     },
-    "first-name": {
+    "firstName": {
       "type": "string",
       "description": "Vorname der Person"
     },
-    "last-name": {
+    "lastName": {
       "type": "string",
       "description": "Nachname der Person"
     },
@@ -60,24 +78,6 @@
         "telefax": {
           "$ref": "../common/phone.json#/properties/number"
         }
-      }
-    }
-  },
-  "description": "Natürliche Person",
-  "x-examples": {
-    "example-1": {
-      "form-of-address": "Herr",
-      "academic-title": "Dr.",
-      "first-name": "Werner",
-      "last-name": "Mustermann",
-      "contact": {
-        "telephone": [
-          {
-            "number": "+49 89 32168-42",
-            "mobile": false,
-            "type": "work"
-          }
-        ]
       }
     }
   }

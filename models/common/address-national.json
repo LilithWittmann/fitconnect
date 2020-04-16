@@ -4,8 +4,8 @@
   "x-examples": {
     "example-1": {
       "street": "Kurzer Weg",
-      "house-number": "7",
-      "postal-code": "12345",
+      "houseNumber": 7,
+      "postalCode": "12345",
       "city": "Ankh-Morpork"
     }
   },
@@ -18,7 +18,7 @@
           "description": "Straße",
           "maxLength": 55
         },
-        "house-number": {
+        "houseNumber": {
           "type": [
             "string",
             "integer"
@@ -28,13 +28,13 @@
           "pattern": "^[1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?$",
           "minimum": 1
         },
-        "house-number-suffix": {
+        "houseNumberSuffix": {
           "type": "string",
           "description": "Hausnummerzusatz",
           "maxLength": 2,
           "pattern": "^[\\p{L}0-9. ]*$"
         },
-        "postal-code": {
+        "postalCode": {
           "type": "string",
           "description": "Postleitzahl",
           "minLength": 5,
@@ -46,25 +46,25 @@
           "description": "Ort",
           "maxLength": 50
         },
-        "address-supplement": {
+        "addressSupplement": {
           "type": "string",
           "description": "Adresszusatz"
         }
       },
       "required": [
         "street",
-        "postal-code",
+        "postalCode",
         "city"
       ]
     },
     {
       "additionalProperties": false,
       "properties": {
-        "post-office-box": {
+        "postOfficeBox": {
           "type": "string",
           "description": "Postfach"
         },
-        "postal-code": {
+        "postalCode": {
           "type": "string",
           "description": "Postleitzahl",
           "minLength": 5,
@@ -78,7 +78,7 @@
         }
       },
       "required": [
-        "postal-code",
+        "postalCode",
         "city"
       ]
     }
