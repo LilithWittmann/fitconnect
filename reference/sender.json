@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Application Sender API",
-    "version": "0.4",
+    "version": "DEV",
     "description": "API vom Onlineantragsdienst zum Zustelldienst",
     "contact": {
       "name": "FITKO",
@@ -20,7 +20,7 @@
     }
   ],
   "paths": {
-    "/{sourceId}/{destinationId}/{applicationId}/upload-status": {
+    "/{sourceId}/{destinationId}/{applicationId}": {
       "parameters": [
         {
           "schema": {
@@ -47,260 +47,19 @@
           "required": true
         }
       ],
-      "get": {
-        "summary": "Get Application Upload Status",
+      "post": {
+        "summary": "Send Application",
+        "operationId": "commit-application",
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "object",
-                      "properties": {
-                        "status": {
-                          "type": "string",
-                          "enum": [
-                            "missing",
-                            "partial",
-                            "complete"
-                          ]
-                        },
-                        "length": {
-                          "type": "integer",
-                          "minimum": 0
-                        }
-                      },
-                      "required": [
-                        "status",
-                        "length"
-                      ]
-                    },
-                    "docs": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "docId": {
-                            "type": "string",
-                            "pattern": "^[-_.A-Za-z0-9]+$",
-                            "description": "Id des Dokuments. Diese muss nur innerhalb des Antrags (Application) eindeutig sein. Es wird daher empfohlen, die IDs fortlaufend (1, 2 etc.) zu vergeben."
-                          },
-                          "status": {
-                            "type": "string",
-                            "enum": [
-                              "missing",
-                              "partial",
-                              "complete"
-                            ]
-                          },
-                          "length": {
-                            "type": "integer",
-                            "minimum": 0
-                          }
-                        },
-                        "required": [
-                          "docId",
-                          "status",
-                          "length"
-                        ]
-                      }
-                    }
-                  }
+                  "$ref": "../models/status-overview.json"
                 }
               }
             }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "410": {
-            "description": "Gone",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          }
-        },
-        "operationId": "get-application-upload-status",
-        "description": "Abfrage des Übermittlungsstatus. Listet alle Unterresourcen (data und docs) mit Übermittlungsstatus auf.",
-        "tags": [
-          "Transfer related Information"
-        ],
-        "security": [
-          {
-            "API Key": [
-              "{sourceId}:application:apply",
-              "{sourceId}:source:manage"
-            ]
-          }
-        ]
-      }
-    },
-    "/{sourceId}/{applicationId}/status": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "sourceId",
-          "in": "path",
-          "required": true
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "applicationId",
-          "in": "path",
-          "required": true
-        }
-      ],
-      "get": {
-        "summary": "Get Status",
-        "tags": [
-          "status"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "current": {
-                      "$ref": "../models/status-overview.json"
-                    },
-                    "history": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "../models/status-overview.json"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          }
-        },
-        "operationId": "get-application-status",
-        "description": "Ruft den aktuellen Status der Übermittlung sowie einer Übersicht der bisherigen Übertragungshistorie ab.",
-        "security": [
-          {
-            "API Key": [
-              "{sourceId}:status:read",
-              "{sourceId}:source:manage"
-            ]
-          }
-        ]
-      }
-    },
-    "/{sourceId}/{destinationId}/{applicationId}/data": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "sourceId",
-          "in": "path",
-          "required": true
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "destinationId",
-          "in": "path",
-          "required": true
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "applicationId",
-          "in": "path",
-          "required": true
-        }
-      ],
-      "put": {
-        "summary": "Add Application Data",
-        "operationId": "add-application-data",
-        "responses": {
-          "202": {
-            "description": "Accepted"
           },
           "400": {
             "description": "Bad Request",
@@ -353,187 +112,18 @@
             }
           }
         },
-        "description": "Datensatz übertragen",
+        "description": "Übertragung abschließen, Antrag absenden",
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
-              "schema": {
-                "properties": {},
-                "type": "object"
-              },
-              "examples": {
-                "example-1": {
-                  "value": {
-                    "F99000001": "string",
-                    "G99000001": {
-                      "F99000002": "string",
-                      "F99000003": 42
-                    },
-                    "G99000002": [
-                      {
-                        "F99000004": true,
-                        "G99000001": {
-                          "F99000002": "string",
-                          "F99000003": 17
-                        }
-                      },
-                      {
-                        "F99000004": true,
-                        "G99000001": {
-                          "F99000002": "string",
-                          "F99000003": 24
-                        }
-                      }
-                    ]
-                  }
-                }
-              }
-            },
-            "application/xml": {
               "schema": {
                 "type": "object",
                 "properties": {}
               }
             }
           },
-          "description": "JSON oder XML Daten"
-        },
-        "tags": [
-          "Application Transfer"
-        ],
-        "security": [
-          {
-            "API Key": [
-              "{sourceId}:application:apply",
-              "{sourceId}:source:manage"
-            ]
-          }
-        ]
-      }
-    },
-    "/{sourceId}/{destinationId}/{applicationId}/docs/{docId}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "sourceId",
-          "in": "path",
-          "required": true
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "destinationId",
-          "in": "path",
-          "required": true
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "applicationId",
-          "in": "path",
-          "required": true
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "docId",
-          "in": "path",
-          "required": true
-        }
-      ],
-      "put": {
-        "summary": "Add Application Document",
-        "operationId": "add-application-doc",
-        "responses": {
-          "202": {
-            "description": "Accepted"
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Acceptable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "410": {
-            "description": "Gone",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "413": {
-            "description": "Request Entity Too Large",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "415": {
-            "description": "Unsupported Media Type",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          }
-        },
-        "description": "Lädt ein Antragsformuar oder einen Anhang hoch, um ihn dem Antrag hinzuzufügen.",
-        "requestBody": {
-          "content": {
-            "*/*": {
-              "schema": {
-                "type": "string",
-                "format": "binary"
-              }
-            }
-          }
+          "description": ""
         },
         "tags": [
           "Application Transfer"
@@ -868,7 +458,144 @@
         ]
       }
     },
-    "/{sourceId}/{destinationId}/{applicationId}": {
+    "/{sourceId}/{destinationId}/{applicationId}/docs/{docId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "sourceId",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "destinationId",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "applicationId",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "docId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "put": {
+        "summary": "Add Application Document",
+        "operationId": "add-application-doc",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Acceptable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Gone",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Request Entity Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Lädt ein Antragsformuar oder einen Anhang hoch, um ihn dem Antrag hinzuzufügen.",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Application Transfer"
+        ],
+        "security": [
+          {
+            "API Key": [
+              "{sourceId}:application:apply",
+              "{sourceId}:source:manage"
+            ]
+          }
+        ]
+      }
+    },
+    "/{sourceId}/{destinationId}/{applicationId}/data": {
       "parameters": [
         {
           "schema": {
@@ -895,19 +622,12 @@
           "required": true
         }
       ],
-      "post": {
-        "summary": "Send Application",
-        "operationId": "commit-application",
+      "put": {
+        "summary": "Add Application Data",
+        "operationId": "add-application-data",
         "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/status-overview.json"
-                }
-              }
-            }
+          "202": {
+            "description": "Accepted"
           },
           "400": {
             "description": "Bad Request",
@@ -960,21 +680,301 @@
             }
           }
         },
-        "description": "Übertragung abschließen, Antrag absenden",
-        "parameters": [],
+        "description": "Datensatz übertragen",
         "requestBody": {
           "content": {
             "application/json": {
+              "schema": {
+                "properties": {},
+                "type": "object"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "F99000001": "string",
+                    "G99000001": {
+                      "F99000002": "string",
+                      "F99000003": 42
+                    },
+                    "G99000002": [
+                      {
+                        "F99000004": true,
+                        "G99000001": {
+                          "F99000002": "string",
+                          "F99000003": 17
+                        }
+                      },
+                      {
+                        "F99000004": true,
+                        "G99000001": {
+                          "F99000002": "string",
+                          "F99000003": 24
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "application/xml": {
               "schema": {
                 "type": "object",
                 "properties": {}
               }
             }
           },
-          "description": ""
+          "description": "JSON oder XML Daten"
         },
         "tags": [
           "Application Transfer"
+        ],
+        "security": [
+          {
+            "API Key": [
+              "{sourceId}:application:apply",
+              "{sourceId}:source:manage"
+            ]
+          }
+        ]
+      }
+    },
+    "/{sourceId}/{applicationId}/status": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "sourceId",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "applicationId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get Status",
+        "tags": [
+          "status"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "current": {
+                      "$ref": "../models/status-overview.json"
+                    },
+                    "history": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "../models/status-overview.json"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-application-status",
+        "description": "Ruft den aktuellen Status der Übermittlung sowie einer Übersicht der bisherigen Übertragungshistorie ab.",
+        "security": [
+          {
+            "API Key": [
+              "{sourceId}:status:read",
+              "{sourceId}:source:manage"
+            ]
+          }
+        ]
+      }
+    },
+    "/{sourceId}/{destinationId}/{applicationId}/upload-status": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "sourceId",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "destinationId",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "applicationId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get Application Upload Status",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "missing",
+                            "partial",
+                            "complete"
+                          ]
+                        },
+                        "length": {
+                          "type": "integer",
+                          "minimum": 0
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "length"
+                      ]
+                    },
+                    "docs": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "docId": {
+                            "type": "string",
+                            "pattern": "^[-_.A-Za-z0-9]+$",
+                            "description": "Id des Dokuments. Diese muss nur innerhalb des Antrags (Application) eindeutig sein. Es wird daher empfohlen, die IDs fortlaufend (1, 2 etc.) zu vergeben."
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "missing",
+                              "partial",
+                              "complete"
+                            ]
+                          },
+                          "length": {
+                            "type": "integer",
+                            "minimum": 0
+                          }
+                        },
+                        "required": [
+                          "docId",
+                          "status",
+                          "length"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Gone",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-application-upload-status",
+        "description": "Abfrage des Übermittlungsstatus. Listet alle Unterresourcen (data und docs) mit Übermittlungsstatus auf.",
+        "tags": [
+          "Transfer related Information"
         ],
         "security": [
           {
@@ -1006,10 +1006,10 @@
           "clientCredentials": {
             "tokenUrl": "beispieltokenURL.de",
             "scopes": {
-              "{sourceId}:application:apply": "Dieser Zugriffsbereich erlaubt es Anträge anzulegen, diesen zu aktualisieren und abzusenden.",
-              "{sourceId}:status:read": "Dieser Zufriffsbereich erlaubt es auf Statusmitteilungen zu einem übersendeten Antrag abzurufen.",
+              "{sourceId}:source:manage": "Dieser Zufriffsbereich erlaubt es alle Endpunkte einer ",
               "{sourceId}:destination-info:read": "Dieser Zufriffsbereich erlaubt es Informationen von existierenden Destinationsabzurufen",
-              "{sourceId}:source:manage": "Dieser Zufriffsbereich erlaubt es alle Endpunkte einer "
+              "{sourceId}:status:read": "Dieser Zufriffsbereich erlaubt es auf Statusmitteilungen zu einem übersendeten Antrag abzurufen.",
+              "{sourceId}:application:apply": "Dieser Zugriffsbereich erlaubt es Anträge anzulegen, diesen zu aktualisieren und abzusenden."
             },
             "refreshUrl": "beispielrefreshURL.de"
           }
