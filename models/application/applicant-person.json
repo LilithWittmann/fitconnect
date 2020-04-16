@@ -19,5 +19,63 @@
     "contactInfo": {
       "$ref": "./applicant-contact-info.json"
     }
+  },
+  "x-examples": {
+    "example-1": {
+      "identifier": [
+        {
+          "id": "918",
+          "schemeName": "Antragsportal",
+          "schemeId": "urn:com:example:antragsportal:user"
+        }
+      ],
+      "contactInfo": {
+        "physicalAddress": {
+          "street": "Kurzer Weg",
+          "houseNumber": 7,
+          "postalCode": "12345",
+          "city": "string",
+          "addressSupplement": "string"
+        },
+        "telephone": [
+          {
+            "number": "+49 89 32168-42",
+            "mobile": true,
+            "description": "string"
+          }
+        ],
+        "electronicAddresses": [
+          {
+            "channelType": "Service-Account-Mailbox",
+            "address": "string"
+          }
+        ]
+      },
+      "identityInfo": {
+        "gender": "m",
+        "nationality": "string",
+        "familyName": "string",
+        "givenName": "string",
+        "birthName": "string",
+        "doctoralDegrees": "string",
+        "artisticName": "string",
+        "dateOfBirth": "2020-04-16",
+        "placeOfBirth": "string",
+        "placeOfResidence": {
+          "street": "string",
+          "houseNumber": null,
+          "houseNumberSuffix": "st",
+          "postalCode": "strin",
+          "city": "string",
+          "addressSupplement": "string"
+        }
+      },
+      "authentificationInfo": {
+        "timestamp": "2020-04-16T06:50:39Z",
+        "authentificationToken": {},
+        "authentificationMethod": "string",
+        "assuranceLevel": "low"
+      }
+    }
   }
 }

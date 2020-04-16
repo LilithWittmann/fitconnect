@@ -21,22 +21,25 @@
   "description": "Metadaten zu einem Antrag.",
   "x-examples": {
     "example-1": {
-      "application-id": "7236",
-      "additional-reference-info": {
+      "applicationId": "7236",
+      "additionalReferenceInfo": {
         "subject": "Anmeldung eines Gewerbes in Musterstadt",
-        "case-id": "DF/8923"
+        "caseId": "DF/8923"
       },
-      "content-structure": {
+      "contentStructure": {
         "data": {
-          "schema-id": "742",
-          "mime-type": "json"
+          "size": 9438,
+          "schema": {
+            "mimeType": "json",
+            "schemaSource": "none"
+          }
         },
         "docs": [
           {
-            "doc-id": "1",
+            "docId": "1",
             "purpose": "form",
             "size": 39273,
-            "mime": "application/pdf",
+            "mimeType": "application/pdf",
             "filename": "antrag.pdf",
             "description": "Das Antragsformular",
             "lang": {
@@ -49,10 +52,10 @@
             }
           },
           {
-            "doc-id": "2",
+            "docId": "2",
             "purpose": "attachment",
             "size": 894834874,
-            "mime": "image/jpeg",
+            "mimeType": "image/jpeg",
             "filename": "scan.jpg",
             "description": "Scan der Bescheinigung",
             "hash": {
@@ -62,11 +65,11 @@
           }
         ]
       },
-      "public-service-type": {
+      "publicServiceType": {
         "name": "Gewerbeanmeldung",
         "description": "Eine Gewerbeanmeldung ist immer dann notwendig, wenn Sie einen stehenden Gewerbebetrieb beginnen.",
-        "leika-id": "99050012104000",
-        "other-identifiers": [
+        "leikaId": "99050012104000",
+        "otherIdentifiers": [
           {
             "id": "8664844",
             "schemeURI": "service.niedersachsen.de",
@@ -81,28 +84,59 @@
       },
       "applicants": [
         {
-          "person": {
-            "form-of-address": "Herr",
-            "academic-title": "Dr.",
-            "first-name": "Werner",
-            "last-name": "Mustermann"
-          },
-          "identification": {
-            "authentication": {
-              "assurance-level": "high",
-              "authentification-method": "eID",
-              "timestamp": "2020-03-03T12:38:23Z"
-            },
-            "authenticated-data": {
-              "family-name": "MUSTERMANN",
-              "given-name": "WERNER",
-              "date-of-birth": "13091970",
-              "place-of-resicence": {
-                "street": "KURZER WEG 7",
-                "postal-code": "12345",
-                "city": "ANKH-MORPORK"
-              }
+          "identifier": [
+            {
+              "id": "918",
+              "schemeName": "Antragsportal",
+              "schemeId": "urn:com:example:antragsportal:user"
             }
+          ],
+          "contactInfo": {
+            "physicalAddress": {
+              "street": "Kurzer Weg",
+              "houseNumber": 7,
+              "postalCode": "12345",
+              "city": "string",
+              "addressSupplement": "string"
+            },
+            "telephone": [
+              {
+                "number": "+49 89 32168-42",
+                "mobile": true,
+                "description": "string"
+              }
+            ],
+            "electronicAddresses": [
+              {
+                "channelType": "Service-Account-Mailbox",
+                "address": "string"
+              }
+            ]
+          },
+          "identityInfo": {
+            "gender": "m",
+            "nationality": "string",
+            "familyName": "string",
+            "givenName": "string",
+            "birthName": "string",
+            "doctoralDegrees": "string",
+            "artisticName": "string",
+            "dateOfBirth": "2020-04-16",
+            "placeOfBirth": "string",
+            "placeOfResidence": {
+              "street": "string",
+              "houseNumber": null,
+              "houseNumberSuffix": "st",
+              "postalCode": "strin",
+              "city": "string",
+              "addressSupplement": "string"
+            }
+          },
+          "authentificationInfo": {
+            "timestamp": "2020-04-16T06:50:39Z",
+            "authentificationToken": {},
+            "authentificationMethod": "string",
+            "assuranceLevel": "low"
           }
         }
       ],
