@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Application Subscriber API",
-    "version": "0.3",
+    "version": "0.4",
     "description": "API vom Fachverfahren zum Zustelldienst",
     "contact": {
       "name": "FITKO",
@@ -20,8 +20,16 @@
     }
   ],
   "paths": {
-    "/{subscriberId}/destinations": {
+    "/{subscriberId}/destinations/{destinationId}": {
       "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "destinationId",
+          "in": "path",
+          "required": true
+        },
         {
           "schema": {
             "type": "string"
@@ -32,7 +40,289 @@
         }
       ],
       "get": {
-        "summary": "List Destinations",
+        "summary": "Get Destination",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/destination.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "destination-id": "83578",
+                      "public-organization": {
+                        "organizationName": "Gewerbeamt Musterhausen"
+                      },
+                      "technicalContact": [
+                        {
+                          "firstName": "Werner",
+                          "lastName": "Mustermann",
+                          "contact": {
+                            "telephone": [
+                              {
+                                "number": "+49 89 32168-42",
+                                "mobile": false,
+                                "description": "Dienstliches Festnetz"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "callback": {
+                        "callbackURI": "https://www.example.com/callback"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-destination",
+        "description": "Übertragungsziel abfragen",
+        "tags": [
+          "Destination Management"
+        ],
+        "security": [
+          {
+            "API Key": [
+              "{subscriberId}:destination:read",
+              "{subscriberId}:destination:manage",
+              "{subscriberId}:manage",
+              "{subscriberId}:destination:{destinationId}:read"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "summary": "Update Destination",
+        "operationId": "update-destination",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Übertragungsziel aktualisieren",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/destination.json"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "destination-id": "83578",
+                    "public-organization": {
+                      "organizationName": "Gewerbeamt Musterhausen"
+                    },
+                    "technicalContact": [
+                      {
+                        "firstName": "Werner",
+                        "lastName": "Mustermann",
+                        "contact": {
+                          "telephone": [
+                            {
+                              "number": "+49 89 32168-42",
+                              "mobile": false,
+                              "description": "Dienstliches Festnetz"
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "callback": {
+                      "callbackURI": "https://www.example.com/callback"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Destination Management"
+        ],
+        "security": [
+          {
+            "API Key": [
+              "{subscriberId}:manage",
+              "{subscriberId}:destination:update",
+              "{subscriberId}:destination:manage",
+              "{subscriberId}:destination:{destinationId}:update"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Delete Destination",
+        "operationId": "delete-destination",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Übertragungsziel löschen",
+        "tags": [
+          "Destination Management"
+        ],
+        "security": [
+          {
+            "API Key": [
+              "{subscriberId}:manage",
+              "{subscriberId}:destination:manage",
+              "{subscriberId}:destination:delete",
+              "{subscriberId}:destination:{destinationId}:delete"
+            ]
+          }
+        ]
+      }
+    },
+    "/{subscriberId}/destinations/{destinationId}/applications": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "subscriberId",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "destinationId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "List Applications",
+        "operationId": "list-applications",
         "responses": {
           "200": {
             "description": "OK",
@@ -41,34 +331,142 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "../models/destination.json"
+                    "$ref": "../models/application/metadata.json"
                   }
                 },
                 "examples": {
                   "example-1": {
+                    "value": []
+                  },
+                  "example-2": {
                     "value": [
                       {
-                        "destination-id": "83578",
-                        "public-organization": {
-                          "organizationName": "Gewerbeamt Musterhausen"
+                        "applicationId": "7236",
+                        "additionalReferenceInfo": {
+                          "subject": "Anmeldung eines Gewerbes in Musterstadt",
+                          "caseId": "DF/8923"
                         },
-                        "technicalContact": [
+                        "contentStructure": {
+                          "data": {
+                            "size": 9438,
+                            "schema": {
+                              "mimeType": "json",
+                              "schemaSource": "none"
+                            }
+                          },
+                          "docs": [
+                            {
+                              "docId": "1",
+                              "purpose": "form",
+                              "size": 39273,
+                              "mimeType": "application/pdf",
+                              "filename": "antrag.pdf",
+                              "description": "Das Antragsformular",
+                              "lang": {
+                                "lang": "de",
+                                "region": "DE"
+                              },
+                              "hash": {
+                                "algorithm": "SHA-256",
+                                "digest": "03ba204e50d126e4674c005e04d82e84c21366780af1f43bd54a37816b6ab340"
+                              }
+                            },
+                            {
+                              "docId": "2",
+                              "purpose": "attachment",
+                              "size": 894834874,
+                              "mimeType": "image/jpeg",
+                              "filename": "scan.jpg",
+                              "description": "Scan der Bescheinigung",
+                              "hash": {
+                                "algorithm": "SHA-256",
+                                "digest": "e1762f14d9924e37b32f1c81dfd256410af462f5136415c96877efa8c80345d0"
+                              }
+                            }
+                          ]
+                        },
+                        "publicServiceType": {
+                          "name": "Gewerbeanmeldung",
+                          "description": "Eine Gewerbeanmeldung ist immer dann notwendig, wenn Sie einen stehenden Gewerbebetrieb beginnen.",
+                          "leikaId": "99050012104000",
+                          "otherIdentifiers": [
+                            {
+                              "id": "8664844",
+                              "schemeURI": "service.niedersachsen.de",
+                              "schemeName": "Serviceportal Niedersachsen"
+                            },
+                            {
+                              "id": "354824",
+                              "schemeURI": "buerger.thueringen.de",
+                              "schemeName": "Zuständigkeitsfinder Thüringen"
+                            }
+                          ]
+                        },
+                        "applicants": [
                           {
-                            "firstName": "Werner",
-                            "lastName": "Mustermann",
-                            "contact": {
+                            "identifier": [
+                              {
+                                "id": "918",
+                                "schemeName": "Antragsportal",
+                                "schemeId": "urn:com:example:antragsportal:user"
+                              }
+                            ],
+                            "contactInfo": {
+                              "physicalAddress": {
+                                "street": "Kurzer Weg",
+                                "houseNumber": 7,
+                                "postalCode": "12345",
+                                "city": "string",
+                                "addressSupplement": "string"
+                              },
                               "telephone": [
                                 {
                                   "number": "+49 89 32168-42",
-                                  "mobile": false,
-                                  "description": "Dienstliches Festnetz"
+                                  "mobile": true,
+                                  "description": "string"
+                                }
+                              ],
+                              "electronicAddresses": [
+                                {
+                                  "channelType": "Service-Account-Mailbox",
+                                  "address": "string"
                                 }
                               ]
+                            },
+                            "identityInfo": {
+                              "gender": "m",
+                              "nationality": "string",
+                              "familyName": "string",
+                              "givenName": "string",
+                              "birthName": "string",
+                              "doctoralDegrees": "string",
+                              "artisticName": "string",
+                              "dateOfBirth": "2020-04-16",
+                              "placeOfBirth": "string",
+                              "placeOfResidence": {
+                                "street": "string",
+                                "houseNumber": null,
+                                "houseNumberSuffix": "st",
+                                "postalCode": "strin",
+                                "city": "string",
+                                "addressSupplement": "string"
+                              }
+                            },
+                            "authentificationInfo": {
+                              "timestamp": "2020-04-16T06:50:39Z",
+                              "authentificationToken": {},
+                              "authentificationMethod": "string",
+                              "assuranceLevel": "low"
                             }
                           }
                         ],
-                        "callback": {
-                          "callbackURI": "https://www.example.com/callback"
+                        "payment-info": {
+                          "reference": "TP/93/GDP",
+                          "usage": "Gewerbeanmeldung",
+                          "amount": 17.3,
+                          "timestamp": "2020-03-03T12:38:23Z",
+                          "status": "success",
+                          "transaction": "1f77c5f9b759db9cdce59988b24974d465c7be5e462a6185485559ff6e2dea82"
                         }
                       }
                     ]
@@ -106,223 +504,6 @@
                 }
               }
             }
-          }
-        },
-        "operationId": "list-destinations",
-        "description": "Ruft die Liste aller Destinations dieses Accounts auf.",
-        "tags": [
-          "Destination Management"
-        ],
-        "security": [
-          {
-            "API Key": [
-              "{subscriberId}:destination:read",
-              "{subscriberId}:manage",
-              "{subscriberId}:destination:manage"
-            ]
-          }
-        ]
-      },
-      "post": {
-        "summary": "Create Destination",
-        "operationId": "create-destination",
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "destinationId": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "destinationId"
-                  ]
-                },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "destinationId": "e15fc92e-c286-424b-9802-39c6b6bc441d"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          }
-        },
-        "description": "Legt eine neue Destination an.",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "../models/destination-no-id.json"
-              },
-              "examples": {
-                "example-1": {
-                  "value": {
-                    "public-organization": {
-                      "organizationName": "Gewerbeamt Musterhausen"
-                    },
-                    "technicalContact": [
-                      {
-                        "firstName": "Werner",
-                        "lastName": "Mustermann",
-                        "contact": {
-                          "telephone": [
-                            {
-                              "number": "+49 89 32168-42",
-                              "mobile": false,
-                              "description": "Dienstliches Festnetz"
-                            }
-                          ]
-                        }
-                      }
-                    ],
-                    "callback": {
-                      "callbackURI": "https://www.example.com/callback"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "description": "Anzulegende Destination"
-        },
-        "tags": [
-          "Destination Management"
-        ],
-        "security": [
-          {
-            "API Key": [
-              "{subscriberId}:manage",
-              "{subscriberId}:destination:manage",
-              "{subscriberId}:destination:create"
-            ]
-          }
-        ]
-      }
-    },
-    "/{subscriberId}/destinations/{destinationId}/applications/{applicationId}/data": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "subscriberId",
-          "in": "path",
-          "required": true
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "destinationId",
-          "in": "path",
-          "required": true
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "applicationId",
-          "in": "path",
-          "required": true
-        }
-      ],
-      "get": {
-        "summary": "Get Application Data",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {}
-                },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "F99000001": "Eins",
-                      "G99000001": {
-                        "F99000002": "Zwei",
-                        "F99000003": "Drei"
-                      }
-                    }
-                  }
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "object",
-                  "properties": {}
-                },
-                "examples": {}
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
           },
           "404": {
             "description": "Not Found",
@@ -335,114 +516,7 @@
             }
           }
         },
-        "operationId": "get-application-data",
-        "description": "Ruft die Fachdaten der Application ab.\n\nBeispiele:\n#### JSON\n```json\n{\n    \"F99000001\": \"Eins\",\n    \"G99000001\": {\n        \"F99000002\": \"Zwei\",\n        \"F99000003\": \"Drei\"\n    }\n}\n```\n\n#### XML\n```xml\n<S99000001>\n  <F99000001>Eins</F99000001>\n  <G99000001>\n    <F99000002>Zwei</F99000002>\n    <F99000003>Drei</F99000003>\n  </G99000001>\n</S99000001>\n```",
-        "tags": [
-          "Application Retrieval"
-        ],
-        "security": [
-          {
-            "API Key": [
-              "{subscriberId}:manage",
-              "{subscriberId}:application:receive",
-              "{subscriberId}:destination:{destinationId}:application:receive"
-            ]
-          }
-        ]
-      }
-    },
-    "/{subscriberId}/destinations/{destinationId}/applications/{applicationId}/docs/{docId}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "subscriberId",
-          "in": "path",
-          "required": true
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "destinationId",
-          "in": "path",
-          "required": true
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "applicationId",
-          "in": "path",
-          "required": true
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "docId",
-          "in": "path",
-          "required": true
-        }
-      ],
-      "get": {
-        "summary": "Get Application Document",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "string",
-                  "format": "binary"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          }
-        },
-        "operationId": "get-application-document",
-        "description": "Ruf ein Dokument (Formular oder Anlage) der Application ab.",
+        "description": "Ruft die Liste der wartenden Applications ab.",
         "tags": [
           "Application Retrieval"
         ],
@@ -775,7 +849,7 @@
         ]
       }
     },
-    "/{subscriberId}/destinations/{destinationId}/applications": {
+    "/{subscriberId}/destinations/{destinationId}/applications/{applicationId}/docs/{docId}": {
       "parameters": [
         {
           "schema": {
@@ -792,11 +866,224 @@
           "name": "destinationId",
           "in": "path",
           "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "applicationId",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "docId",
+          "in": "path",
+          "required": true
         }
       ],
       "get": {
-        "summary": "List Applications",
-        "operationId": "list-applications",
+        "summary": "Get Application Document",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-application-document",
+        "description": "Ruf ein Dokument (Formular oder Anlage) der Application ab.",
+        "tags": [
+          "Application Retrieval"
+        ],
+        "security": [
+          {
+            "API Key": [
+              "{subscriberId}:manage",
+              "{subscriberId}:application:receive",
+              "{subscriberId}:destination:{destinationId}:application:receive"
+            ]
+          }
+        ]
+      }
+    },
+    "/{subscriberId}/destinations/{destinationId}/applications/{applicationId}/data": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "subscriberId",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "destinationId",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "applicationId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get Application Data",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "F99000001": "Eins",
+                      "G99000001": {
+                        "F99000002": "Zwei",
+                        "F99000003": "Drei"
+                      }
+                    }
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-application-data",
+        "description": "Ruft die Fachdaten der Application ab.\n\nBeispiele:\n#### JSON\n```json\n{\n    \"F99000001\": \"Eins\",\n    \"G99000001\": {\n        \"F99000002\": \"Zwei\",\n        \"F99000003\": \"Drei\"\n    }\n}\n```\n\n#### XML\n```xml\n<S99000001>\n  <F99000001>Eins</F99000001>\n  <G99000001>\n    <F99000002>Zwei</F99000002>\n    <F99000003>Drei</F99000003>\n  </G99000001>\n</S99000001>\n```",
+        "tags": [
+          "Application Retrieval"
+        ],
+        "security": [
+          {
+            "API Key": [
+              "{subscriberId}:manage",
+              "{subscriberId}:application:receive",
+              "{subscriberId}:destination:{destinationId}:application:receive"
+            ]
+          }
+        ]
+      }
+    },
+    "/{subscriberId}/destinations": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "subscriberId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "List Destinations",
         "responses": {
           "200": {
             "description": "OK",
@@ -805,142 +1092,34 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "../models/application/metadata.json"
+                    "$ref": "../models/destination.json"
                   }
                 },
                 "examples": {
                   "example-1": {
-                    "value": []
-                  },
-                  "example-2": {
                     "value": [
                       {
-                        "applicationId": "7236",
-                        "additionalReferenceInfo": {
-                          "subject": "Anmeldung eines Gewerbes in Musterstadt",
-                          "caseId": "DF/8923"
+                        "destination-id": "83578",
+                        "public-organization": {
+                          "organizationName": "Gewerbeamt Musterhausen"
                         },
-                        "contentStructure": {
-                          "data": {
-                            "size": 9438,
-                            "schema": {
-                              "mimeType": "json",
-                              "schemaSource": "none"
-                            }
-                          },
-                          "docs": [
-                            {
-                              "docId": "1",
-                              "purpose": "form",
-                              "size": 39273,
-                              "mimeType": "application/pdf",
-                              "filename": "antrag.pdf",
-                              "description": "Das Antragsformular",
-                              "lang": {
-                                "lang": "de",
-                                "region": "DE"
-                              },
-                              "hash": {
-                                "algorithm": "SHA-256",
-                                "digest": "03ba204e50d126e4674c005e04d82e84c21366780af1f43bd54a37816b6ab340"
-                              }
-                            },
-                            {
-                              "docId": "2",
-                              "purpose": "attachment",
-                              "size": 894834874,
-                              "mimeType": "image/jpeg",
-                              "filename": "scan.jpg",
-                              "description": "Scan der Bescheinigung",
-                              "hash": {
-                                "algorithm": "SHA-256",
-                                "digest": "e1762f14d9924e37b32f1c81dfd256410af462f5136415c96877efa8c80345d0"
-                              }
-                            }
-                          ]
-                        },
-                        "publicServiceType": {
-                          "name": "Gewerbeanmeldung",
-                          "description": "Eine Gewerbeanmeldung ist immer dann notwendig, wenn Sie einen stehenden Gewerbebetrieb beginnen.",
-                          "leikaId": "99050012104000",
-                          "otherIdentifiers": [
-                            {
-                              "id": "8664844",
-                              "schemeURI": "service.niedersachsen.de",
-                              "schemeName": "Serviceportal Niedersachsen"
-                            },
-                            {
-                              "id": "354824",
-                              "schemeURI": "buerger.thueringen.de",
-                              "schemeName": "Zuständigkeitsfinder Thüringen"
-                            }
-                          ]
-                        },
-                        "applicants": [
+                        "technicalContact": [
                           {
-                            "identifier": [
-                              {
-                                "id": "918",
-                                "schemeName": "Antragsportal",
-                                "schemeId": "urn:com:example:antragsportal:user"
-                              }
-                            ],
-                            "contactInfo": {
-                              "physicalAddress": {
-                                "street": "Kurzer Weg",
-                                "houseNumber": 7,
-                                "postalCode": "12345",
-                                "city": "string",
-                                "addressSupplement": "string"
-                              },
+                            "firstName": "Werner",
+                            "lastName": "Mustermann",
+                            "contact": {
                               "telephone": [
                                 {
                                   "number": "+49 89 32168-42",
-                                  "mobile": true,
-                                  "description": "string"
-                                }
-                              ],
-                              "electronicAddresses": [
-                                {
-                                  "channelType": "Service-Account-Mailbox",
-                                  "address": "string"
+                                  "mobile": false,
+                                  "description": "Dienstliches Festnetz"
                                 }
                               ]
-                            },
-                            "identityInfo": {
-                              "gender": "m",
-                              "nationality": "string",
-                              "familyName": "string",
-                              "givenName": "string",
-                              "birthName": "string",
-                              "doctoralDegrees": "string",
-                              "artisticName": "string",
-                              "dateOfBirth": "2020-04-16",
-                              "placeOfBirth": "string",
-                              "placeOfResidence": {
-                                "street": "string",
-                                "houseNumber": null,
-                                "houseNumberSuffix": "st",
-                                "postalCode": "strin",
-                                "city": "string",
-                                "addressSupplement": "string"
-                              }
-                            },
-                            "authentificationInfo": {
-                              "timestamp": "2020-04-16T06:50:39Z",
-                              "authentificationToken": {},
-                              "authentificationMethod": "string",
-                              "assuranceLevel": "low"
                             }
                           }
                         ],
-                        "payment-info": {
-                          "reference": "TP/93/GDP",
-                          "usage": "Gewerbeanmeldung",
-                          "amount": 17.3,
-                          "timestamp": "2020-03-03T12:38:23Z",
-                          "status": "success",
-                          "transaction": "1f77c5f9b759db9cdce59988b24974d465c7be5e462a6185485559ff6e2dea82"
+                        "callback": {
+                          "callbackURI": "https://www.example.com/callback"
                         }
                       }
                     ]
@@ -978,87 +1157,46 @@
                 }
               }
             }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
           }
         },
-        "description": "Ruft die Liste der wartenden Applications ab.",
+        "operationId": "list-destinations",
+        "description": "Ruft die Liste aller Destinations dieses Accounts auf.",
         "tags": [
-          "Application Retrieval"
+          "Destination Management"
         ],
         "security": [
           {
             "API Key": [
+              "{subscriberId}:destination:read",
               "{subscriberId}:manage",
-              "{subscriberId}:application:receive",
-              "{subscriberId}:destination:{destinationId}:application:receive"
+              "{subscriberId}:destination:manage"
             ]
           }
         ]
-      }
-    },
-    "/{subscriberId}/destinations/{destinationId}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "destinationId",
-          "in": "path",
-          "required": true
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "subscriberId",
-          "in": "path",
-          "required": true
-        }
-      ],
-      "get": {
-        "summary": "Get Destination",
+      },
+      "post": {
+        "summary": "Create Destination",
+        "operationId": "create-destination",
         "responses": {
-          "200": {
-            "description": "OK",
+          "201": {
+            "description": "Created",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/destination.json"
+                  "type": "object",
+                  "properties": {
+                    "destinationId": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "destinationId"
+                  ]
                 },
                 "examples": {
                   "example-1": {
                     "value": {
-                      "destination-id": "83578",
-                      "public-organization": {
-                        "organizationName": "Gewerbeamt Musterhausen"
-                      },
-                      "technicalContact": [
-                        {
-                          "firstName": "Werner",
-                          "lastName": "Mustermann",
-                          "contact": {
-                            "telephone": [
-                              {
-                                "number": "+49 89 32168-42",
-                                "mobile": false,
-                                "description": "Dienstliches Festnetz"
-                              }
-                            ]
-                          }
-                        }
-                      ],
-                      "callback": {
-                        "callbackURI": "https://www.example.com/callback"
-                      }
+                      "destinationId": "e15fc92e-c286-424b-9802-39c6b6bc441d"
                     }
                   }
                 }
@@ -1094,93 +1232,18 @@
                 }
               }
             }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
           }
         },
-        "operationId": "get-destination",
-        "description": "Übertragungsziel abfragen",
-        "tags": [
-          "Destination Management"
-        ],
-        "security": [
-          {
-            "API Key": [
-              "{subscriberId}:destination:read",
-              "{subscriberId}:destination:manage",
-              "{subscriberId}:manage",
-              "{subscriberId}:destination:{destinationId}:read"
-            ]
-          }
-        ]
-      },
-      "put": {
-        "summary": "Update Destination",
-        "operationId": "update-destination",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          }
-        },
-        "description": "Übertragungsziel aktualisieren",
+        "description": "Legt eine neue Destination an.",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "../models/destination.json"
+                "$ref": "../models/destination-no-id.json"
               },
               "examples": {
                 "example-1": {
                   "value": {
-                    "destination-id": "83578",
                     "public-organization": {
                       "organizationName": "Gewerbeamt Musterhausen"
                     },
@@ -1206,7 +1269,8 @@
                 }
               }
             }
-          }
+          },
+          "description": "Anzulegende Destination"
         },
         "tags": [
           "Destination Management"
@@ -1215,72 +1279,8 @@
           {
             "API Key": [
               "{subscriberId}:manage",
-              "{subscriberId}:destination:update",
               "{subscriberId}:destination:manage",
-              "{subscriberId}:destination:{destinationId}:update"
-            ]
-          }
-        ]
-      },
-      "delete": {
-        "summary": "Delete Destination",
-        "operationId": "delete-destination",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          }
-        },
-        "description": "Übertragungsziel löschen",
-        "tags": [
-          "Destination Management"
-        ],
-        "security": [
-          {
-            "API Key": [
-              "{subscriberId}:manage",
-              "{subscriberId}:destination:manage",
-              "{subscriberId}:destination:delete",
-              "{subscriberId}:destination:{destinationId}:delete"
+              "{subscriberId}:destination:create"
             ]
           }
         ]
@@ -1304,17 +1304,17 @@
             "tokenUrl": "",
             "refreshUrl": "",
             "scopes": {
-              "{subscriberId}:destination:manage": "Dieser Zugriffsbereich alle Destination Endpunkte eines Subscriber genutzt werden.",
-              "{subscriberId}:destination:update": "Dieser Zugriffsbereich erlaubt es, bestehende Destinations zu verändern.",
-              "{subscriberId}:destination:create": "Der Zugriffsbereich erlaubt Destinations neu anzulegen und zu verändern.",
-              "{subscriberId}:destination:read": "Dieser Zugriffsbereich erlaubt bei allen Destination-Informationen ein lesender Zugriff.",
-              "{subscriberId}:destination:{destinationId}:read": "Mit diesem Zugriffsbereich wird ein lesender Zugriff auf eine spezifische Destination ermöglicht.",
-              "{subscriberId}:application:receive": "Dieser Zugriffsbereich erlaubt es, Anträge für allen Destinations abzuholen.",
-              "{subscriberId}:destination:{destinationId}:update": "Mit diesem Zugriffsbereich wird ein schreibende Zugriff auf eine spezifische Destination ermöglicht.",
-              "{subscriberId}:manage": "Dieser Zugriffsbereich die vollständige Nutzung aller Endpunkte eines Subscribers.",
-              "{subscriberId}:destination:{destinationId}:application:receive": "Dieser Zugriffsbereich erlaubt es, Anträge einer spezifischen Destination abzuholen.",
+              "{subscriberId}:destination:delete": "Dieser Zugriffsbereich erlaubt die Löschung von Destinations eines Accounts.",
               "{subscriberId}:destination:{destinationId}:delete": "Dieser Zugriffsbereich erlaubt es, eine spezifische Destination zu löschen.",
-              "{subscriberId}:destination:delete": "Dieser Zugriffsbereich erlaubt die Löschung von Destinations eines Accounts."
+              "{subscriberId}:destination:{destinationId}:application:receive": "Dieser Zugriffsbereich erlaubt es, Anträge einer spezifischen Destination abzuholen.",
+              "{subscriberId}:manage": "Dieser Zugriffsbereich die vollständige Nutzung aller Endpunkte eines Subscribers.",
+              "{subscriberId}:destination:{destinationId}:update": "Mit diesem Zugriffsbereich wird ein schreibende Zugriff auf eine spezifische Destination ermöglicht.",
+              "{subscriberId}:application:receive": "Dieser Zugriffsbereich erlaubt es, Anträge für allen Destinations abzuholen.",
+              "{subscriberId}:destination:{destinationId}:read": "Mit diesem Zugriffsbereich wird ein lesender Zugriff auf eine spezifische Destination ermöglicht.",
+              "{subscriberId}:destination:read": "Dieser Zugriffsbereich erlaubt bei allen Destination-Informationen ein lesender Zugriff.",
+              "{subscriberId}:destination:create": "Der Zugriffsbereich erlaubt Destinations neu anzulegen und zu verändern.",
+              "{subscriberId}:destination:update": "Dieser Zugriffsbereich erlaubt es, bestehende Destinations zu verändern.",
+              "{subscriberId}:destination:manage": "Dieser Zugriffsbereich alle Destination Endpunkte eines Subscriber genutzt werden."
             }
           }
         },
