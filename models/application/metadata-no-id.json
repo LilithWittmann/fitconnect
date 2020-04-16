@@ -155,20 +155,12 @@
         "data": {
           "type": "object",
           "required": [
-            "mimeType",
             "schema"
           ],
           "properties": {
             "size": {
               "type": "integer",
               "description": "Größe des Dokuments in Bytes"
-            },
-            "mimeType": {
-              "type": "string",
-              "enum": [
-                "json",
-                "xml"
-              ]
             },
             "schema": {
               "$ref": "./schema.json"
