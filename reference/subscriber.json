@@ -751,7 +751,7 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "final-delivery": {
+                  "finalDelivery": {
                     "type": "boolean",
                     "description": "Zeigt an, ob die Zustellung zum nächsten Hop (`false`) oder bis zum Endpunkt (`true`) erfolgt ist."
                   }
