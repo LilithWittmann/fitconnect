@@ -744,7 +744,7 @@
             }
           }
         },
-        "description": "Bestätigt die Abholung der Application. Über den Parameter `final-delivery` im Body wird gesteuert, wie der Folgestatus aussieht:\n\n| final-delivery | status      |\n| -------------- | ----------- |\n| `false`        | \"forwarded\" |\n| `true`         | \"delivered\" |\n\nDer Parameter `final-delivery` zeigt an, ob der Antrag noch weitergesendet wird (`false`) oder das finale Ziel erreicht hat (`true`).\n\nSofern der Wert `false` übergeben wurde, muss zu einem späteren Zeitpunkt, wenn der Antrag final zugestellt wurde, ein weiterer Aufruf mit dem Wert `true` erfolgen.",
+        "description": "Bestätigt die Abholung der Application. Über den Parameter `finalDelivery` im Body wird gesteuert, wie der Folgestatus aussieht:\n\n| final-delivery | status      |\n| -------------- | ----------- |\n| `false`        | \"forwarded\" |\n| `true`         | \"delivered\" |\n\nDer Parameter `finalDelivery` zeigt an, ob der Antrag noch weitergesendet wird (`false`) oder das finale Ziel erreicht hat (`true`).\n\nSofern der Wert `false` übergeben wurde, muss zu einem späteren Zeitpunkt, wenn der Antrag final zugestellt wurde, ein weiterer Aufruf mit dem Wert `true` erfolgen.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -755,7 +755,10 @@
                     "type": "boolean",
                     "description": "Zeigt an, ob die Zustellung zum nächsten Hop (`false`) oder bis zum Endpunkt (`true`) erfolgt ist."
                   }
-                }
+                },
+                "required": [
+                  "finalDelivery"
+                ]
               }
             }
           },
