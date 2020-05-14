@@ -71,6 +71,19 @@
                       }
                     ]
                   }
+                },
+                "example-2": {
+                  "value": {
+                    "destinationId": "123",
+                    "applications": [
+                      {
+                        "applicationId": "456"
+                      },
+                      {
+                        "applicationId": "789"
+                      }
+                    ]
+                  }
                 }
               }
             }

@@ -87,6 +87,49 @@ Im Hintergrund wird nun automatisch eine nur für ihre Behörde und diese Anwend
 
 Aus dieser Liste heraus können sie die Details der Anwendung durch Klick auf den Namen der Anwendung ansehen.
 
+![Anwendungsdetails](https://raw.githubusercontent.com/fiep-poc/assets/master/images/oauth/12_application_details.png)
 
-... TO BE CONTINUED ...
+Für die Nutzung des API sind die Angaben unter "OAuth2-Anmeldeinformationen" wichtig.
 
+Der für Sie und Ihre Anwendung gültige OAuth2 Scope wird ihnen in einer E-Mail mitgeteilt.
+
+Hier ein Beispiel einer solchen E-Mail:
+
+> Sehr geehrter Herr Mustermann,
+> 
+> Für ihren Client (Application) steht ihnen folgender Scope zur Verfügung 
+> 
+> Scope:  subscriber-c1785a90-b3e7-3022-9c70-e1714cb8e8c6:manage
+> 
+> Zusammen mit der „client_id“ und dem für uns nicht sichtbaren „client_secret“ können Sie in der Folge einen „access token“ für das API „SubscriberAPI“ abholen.
+> 
+> Die URL dafür lautet: 
+> https://oauth.fiep-poc.de/invoke/pub.apigateway.oauth2/authorize
+> 
+> Die weiteren Details zur entnehmen Sie bitte der FIT-Connect Anwenderdokumentation“.
+> 
+> Mit freundlichem Gruß
+> Ihr FIT-Connect Team.
+
+## Hinweise zum Aufruf des API mit OAuth2
+
+Um das von ihnen gewünschte API im Rahmen ihrer Anwendung aufzurufen, Gehen sie wie folgt vor:
+
+![API Zugriff](https://raw.githubusercontent.com/fiep-poc/assets/master/images/oauth/13_api_zugriff.png)
+
+Verfahrensschritte:
+
+1) Der Endbenutzer meldet sich an, die Clientanwendung sendet die Authentifizierungsanforderung an den Autorisierungsserver, um ein Zugriffstoken zu erhalten.
+
+2) Der Autorisierungsserver überprüft die Anforderung und generiert ein Zugriffstoken für den Client.
+
+3) Der Client verwendet dieses Zugriffstoken, um HTTP-Anforderungen an das API-Gateway zu senden.
+
+4) Das API-Gateway führt dann folgendes aus:
+    - Identifiziert die Anwendung anhand der client_Id.
+    - Überprüft das Token lokal oder remote, wenn es lokal nicht möglich ist.
+    - Überprüft, ob die angeforderte Ressource Teil des Bereichs im Token ist.
+
+Wurden alle Prüfschritte erfolgreich absolviert, wird die Anfrage an den Zustelldienst übergeben.
+
+Nach Bearbeitung der Anfrage im Zustelldienst wird die Antwort des Zustelldienstes an den Client zurückgesendet.
