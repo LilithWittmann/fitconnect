@@ -115,7 +115,7 @@
         ],
         "security": [
           {
-            "API Key": [
+            "OAuth 2.0": [
               "{subscriberId}:destination:read",
               "{subscriberId}:manage",
               "{subscriberId}:destination:manage"
@@ -226,7 +226,7 @@
         ],
         "security": [
           {
-            "API Key": [
+            "OAuth 2.0": [
               "{subscriberId}:manage",
               "{subscriberId}:destination:manage",
               "{subscriberId}:destination:create"
@@ -342,7 +342,7 @@
         ],
         "security": [
           {
-            "API Key": [
+            "OAuth 2.0": [
               "{subscriberId}:manage",
               "{subscriberId}:application:receive",
               "{subscriberId}:destination:{destinationId}:application:receive"
@@ -448,7 +448,7 @@
         ],
         "security": [
           {
-            "API Key": [
+            "OAuth 2.0": [
               "{subscriberId}:manage",
               "{subscriberId}:application:receive",
               "{subscriberId}:destination:{destinationId}:application:receive"
@@ -678,7 +678,7 @@
         ],
         "security": [
           {
-            "API Key": [
+            "OAuth 2.0": [
               "{subscriberId}:manage",
               "{subscriberId}:application:receive",
               "{subscriberId}:destination:{destinationId}:application:receive"
@@ -769,7 +769,7 @@
         ],
         "security": [
           {
-            "API Key": [
+            "OAuth 2.0": [
               "{subscriberId}:manage",
               "{subscriberId}:application:receive",
               "{subscriberId}:destination:{destinationId}:application:receive"
@@ -999,7 +999,7 @@
         ],
         "security": [
           {
-            "API Key": [
+            "OAuth 2.0": [
               "{subscriberId}:manage",
               "{subscriberId}:application:receive",
               "{subscriberId}:destination:{destinationId}:application:receive"
@@ -1116,7 +1116,7 @@
         ],
         "security": [
           {
-            "API Key": [
+            "OAuth 2.0": [
               "{subscriberId}:destination:read",
               "{subscriberId}:destination:manage",
               "{subscriberId}:manage",
@@ -1216,7 +1216,7 @@
         ],
         "security": [
           {
-            "API Key": [
+            "OAuth 2.0": [
               "{subscriberId}:manage",
               "{subscriberId}:destination:update",
               "{subscriberId}:destination:manage",
@@ -1279,7 +1279,7 @@
         ],
         "security": [
           {
-            "API Key": [
+            "OAuth 2.0": [
               "{subscriberId}:manage",
               "{subscriberId}:destination:manage",
               "{subscriberId}:destination:delete",
@@ -1300,11 +1300,11 @@
   ],
   "components": {
     "securitySchemes": {
-      "API Key": {
+      "OAuth 2.0": {
         "type": "oauth2",
         "flows": {
           "clientCredentials": {
-            "tokenUrl": "",
+            "tokenUrl": "https://oauth.fiep-poc.de/invoke/pub.apigateway.oauth2/getAccessToken",
             "refreshUrl": "",
             "scopes": {
               "{subscriberId}:destination:manage": "Dieser Zugriffsbereich alle Destination Endpunkte eines Subscriber genutzt werden.",

@@ -130,7 +130,7 @@
         ],
         "security": [
           {
-            "API Key": [
+            "OAuth 2.0": [
               "{sourceId}:application:apply",
               "{sourceId}:source:manage"
             ]
@@ -382,7 +382,7 @@
         ],
         "security": [
           {
-            "API Key": [
+            "OAuth 2.0": [
               "{sourceId}:application:apply",
               "{sourceId}:source:manage"
             ]
@@ -450,7 +450,7 @@
         ],
         "security": [
           {
-            "API Key": [
+            "OAuth 2.0": [
               "{sourceId}:destination-info:read",
               "{sourceId}:source:manage"
             ]
@@ -587,7 +587,7 @@
         ],
         "security": [
           {
-            "API Key": [
+            "OAuth 2.0": [
               "{sourceId}:application:apply",
               "{sourceId}:source:manage"
             ]
@@ -730,7 +730,7 @@
         ],
         "security": [
           {
-            "API Key": [
+            "OAuth 2.0": [
               "{sourceId}:application:apply",
               "{sourceId}:source:manage"
             ]
@@ -829,7 +829,7 @@
         "description": "Ruft den aktuellen Status der Übermittlung sowie einer Übersicht der bisherigen Übertragungshistorie ab.",
         "security": [
           {
-            "API Key": [
+            "OAuth 2.0": [
               "{sourceId}:status:read",
               "{sourceId}:source:manage"
             ]
@@ -978,7 +978,7 @@
         ],
         "security": [
           {
-            "API Key": [
+            "OAuth 2.0": [
               "{sourceId}:application:apply",
               "{sourceId}:source:manage"
             ]
@@ -1000,18 +1000,18 @@
   ],
   "components": {
     "securitySchemes": {
-      "API Key": {
+      "OAuth 2.0": {
         "type": "oauth2",
         "flows": {
           "clientCredentials": {
-            "tokenUrl": "beispieltokenURL.de",
+            "tokenUrl": "https://oauth.fiep-poc.de/invoke/pub.apigateway.oauth2/getAccessToken",
+            "refreshUrl": "",
             "scopes": {
               "{sourceId}:source:manage": "Dieser Zufriffsbereich erlaubt es alle Endpunkte einer ",
               "{sourceId}:destination-info:read": "Dieser Zufriffsbereich erlaubt es Informationen von existierenden Destinationsabzurufen",
               "{sourceId}:status:read": "Dieser Zufriffsbereich erlaubt es auf Statusmitteilungen zu einem übersendeten Antrag abzurufen.",
               "{sourceId}:application:apply": "Dieser Zugriffsbereich erlaubt es Anträge anzulegen, diesen zu aktualisieren und abzusenden."
-            },
-            "refreshUrl": "beispielrefreshURL.de"
+            }
           }
         },
         "description": "Dieses Authentifizierungsmethode wird genutzt, um den Zugriff auf die Produktiv API zu autorisieren. "
