@@ -1,7 +1,8 @@
 {
-  "title": "Applicant Organisation",
   "type": "object",
+  "title": "Applicant Organisation",
   "description": "Antragsteller in Form von einer Organisation, z.B. einem Unternehmen",
+  "additionalProperties": false,
   "properties": {
     "identifier": {
       "type": "array",
@@ -58,9 +59,20 @@
               "$ref": "../common/address-national.json"
             },
             {
+              "$ref": "../common/address-postbox.json"
+            },
+            {
               "$ref": "../common/address-international.json"
             }
           ],
+          "discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "national": "../common/address-national.json",
+              "postbox": "../common/address-postbox.json",
+              "international": "../common/address-international.json"
+            }
+          },
           "description": "Offizielle Adresse"
         },
         "legalRepresentatives": {
@@ -84,6 +96,15 @@
       "required": [
         "method"
       ]
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "organization"
+      ]
     }
-  }
+  },
+  "required": [
+    "type"
+  ]
 }

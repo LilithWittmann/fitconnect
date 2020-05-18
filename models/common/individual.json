@@ -40,12 +40,23 @@
       "description": "Adresse als Alternative (Choice) von nationaler und internationaler Adresse.",
       "oneOf": [
         {
-          "$ref": "../common/address-national.json"
+          "$ref": "./address-national.json"
         },
         {
-          "$ref": "../common/address-international.json"
+          "$ref": "./address-postbox.json"
+        },
+        {
+          "$ref": "./address-international.json"
         }
-      ]
+      ],
+      "discriminator": {
+        "propertyName": "type",
+        "mapping": {
+          "national": "./address-national.json",
+          "postbox": "./address-postbox.json",
+          "international": "./address-international.json"
+        }
+      }
     },
     "identifiers": {
       "type": "array",

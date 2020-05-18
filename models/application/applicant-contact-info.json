@@ -9,9 +9,20 @@
           "$ref": "../common/address-national.json"
         },
         {
+          "$ref": "../common/address-postbox.json"
+        },
+        {
           "$ref": "../common/address-international.json"
         }
       ],
+      "discriminator": {
+        "propertyName": "type",
+        "mapping": {
+          "national": "../common/address-national.json",
+          "postbox": "../common/address-postbox.json",
+          "international": "../common/address-international.json"
+        }
+      },
       "description": "Physikalische (Post-)Adresse"
     },
     "telephone": {

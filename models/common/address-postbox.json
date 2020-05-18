@@ -1,0 +1,43 @@
+{
+  "title": "Postfach Address",
+  "description": "Eine Adresse eines Postfachs.",
+  "x-examples": {
+    "example-1": {
+      "street": "Kurzer Weg",
+      "houseNumber": 7,
+      "postalCode": "12345",
+      "city": "Ankh-Morpork"
+    }
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "postOfficeBox": {
+      "type": "string",
+      "description": "Postfach"
+    },
+    "postalCode": {
+      "type": "string",
+      "description": "Postleitzahl",
+      "minLength": 5,
+      "maxLength": 5,
+      "pattern": "^([0]{1}[1-9]{1}|[1-9]{1}[0-9]{1})[0-9]{3}$"
+    },
+    "city": {
+      "type": "string",
+      "description": "Ort",
+      "maxLength": 50
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "postbox"
+      ]
+    }
+  },
+  "required": [
+    "postalCode",
+    "city",
+    "type"
+  ]
+}
