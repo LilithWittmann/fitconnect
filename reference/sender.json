@@ -15,7 +15,7 @@
   },
   "servers": [
     {
-      "url": "https://sender.fiep-poc.de",
+      "url": "https://sender.fiep-poc.de/beta5",
       "description": "Produktionsumgebung der API."
     }
   ],

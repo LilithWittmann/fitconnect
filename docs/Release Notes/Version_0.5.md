@@ -1,5 +1,11 @@
 # Nächste Version (0.5)
 
+<!-- theme: warning -->
+> ### Hinweis
+> Die Basis-URLs für diese Version sind:
+> - https://sender.fiep-poc.de/beta5/
+> - https://subscriber.fiep-poc.de/beta5/
+
 ## Dokumentation
 - Release Notes mit aufgenommen
 - Dokumentation zu OAuth integriert
@@ -7,16 +13,17 @@
 - Postman Collection & Environment integriert
 
 ## Modelle
-- CR-1: Diversen Modellen den Discriminator "type" hinzugefügt:
-  - models/application/applicant-contact-info.json
-  - models/application/applicant-contact-info.json
-  - models/application/applicant-person.json
-  - models/application/applicant.json
-  - models/common/address-international.json
-  - models/common/address-national.json
-  - models/common/address-postbox.json
-  - models/common/individual.json
-  - models/destination-no-id.json
+
+### CR-1: Diversen Modellen den Discriminator "type" hinzugefügt:
+- models/application/applicant-contact-info.json
+- models/application/applicant-contact-info.json
+- models/application/applicant-person.json
+- models/application/applicant.json
+- models/common/address-international.json
+- models/common/address-national.json
+- models/common/address-postbox.json
+- models/common/individual.json
+- models/destination-no-id.json
 
 ### Destination
 models/destination-no-id.json
@@ -37,8 +44,3 @@ models/application/document.json
 ### Acknowledge Application
 - Bugfix: Property `final-delivery` auf Camelcase umgestellt.
 - Bugfix: Angaben von `finalDelivery` in Acknowledge Application ist verpflichtend.
-
-# Geplant
-- Pfad der APIs um Versionsnummer erweitert:
-  - https://sender.fiep-poc.de/v0.5/
-  - https://subscriber.fiep-poc.de/v0.5/
