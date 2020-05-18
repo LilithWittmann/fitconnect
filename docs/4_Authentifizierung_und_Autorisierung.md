@@ -138,8 +138,8 @@ Nach Bearbeitung der Anfrage im Zustelldienst wird die Antwort des Zustelldienst
 
 Für Tests kann auch SoapUI oder jeder andere REST Client mit OAuth 2.0 Unterstützung eingesetzt werden.
 Unter diesen beiden Adressen können Sie eine Postman Collection und eine Postman Environment herunterladen:
-- Collection:	FIXME
-- Environment: FIXME
+- [Collection](https://raw.githubusercontent.com/fiep-poc/assets/master/postman/FIT-Connect.postman_collection.json)
+- [Environment](https://raw.githubusercontent.com/fiep-poc/assets/master/postman/FIT-Connect.postman_environment.json)
 
 ### API Aufruf mit Postman OAuth 2.0 Konfiguration
 
