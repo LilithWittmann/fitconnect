@@ -30,7 +30,7 @@ models/common/address-postbox.json
 
 ### Application Document
 models/application/document.json
-- Regex Pattern für SHA-256/512 Hash präzisiert: "[0-9A-F]{64,128}" -> "^[A-Fa-f0-9]{64}([A-Fa-f0-9]{64})?$"
+- Regex Pattern für SHA-256/512 Hash präzisiert: "`[0-9A-F]{64,128}`" -> "`^[A-Fa-f0-9]{64}([A-Fa-f0-9]{64})?$`"
 
 ## Application Subscriber API
 
