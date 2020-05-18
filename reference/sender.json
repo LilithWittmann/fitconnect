@@ -20,13 +20,13 @@
     }
   ],
   "paths": {
-    "/{sourceId}/{destinationId}/{applicationId}": {
+    "/{senderId}/{destinationId}/{applicationId}": {
       "parameters": [
         {
           "schema": {
             "type": "string"
           },
-          "name": "sourceId",
+          "name": "senderId",
           "in": "path",
           "required": true
         },
@@ -131,20 +131,20 @@
         "security": [
           {
             "OAuth 2.0": [
-              "{sourceId}:application:apply",
-              "{sourceId}:source:manage"
+              "{senderId}:application:apply",
+              "{senderId}:sender:manage"
             ]
           }
         ]
       }
     },
-    "/{sourceId}/{destinationId}": {
+    "/{senderId}/{destinationId}": {
       "parameters": [
         {
           "schema": {
             "type": "string"
           },
-          "name": "sourceId",
+          "name": "senderId",
           "in": "path",
           "required": true
         },
@@ -387,8 +387,8 @@
         "security": [
           {
             "OAuth 2.0": [
-              "{sourceId}:application:apply",
-              "{sourceId}:source:manage"
+              "{senderId}:application:apply",
+              "{senderId}:sender:manage"
             ]
           }
         ]
@@ -455,20 +455,20 @@
         "security": [
           {
             "OAuth 2.0": [
-              "{sourceId}:destination-info:read",
-              "{sourceId}:source:manage"
+              "{senderId}:destination-info:read",
+              "{senderId}:sender:manage"
             ]
           }
         ]
       }
     },
-    "/{sourceId}/{destinationId}/{applicationId}/docs/{docId}": {
+    "/{senderId}/{destinationId}/{applicationId}/docs/{docId}": {
       "parameters": [
         {
           "schema": {
             "type": "string"
           },
-          "name": "sourceId",
+          "name": "senderId",
           "in": "path",
           "required": true
         },
@@ -592,20 +592,20 @@
         "security": [
           {
             "OAuth 2.0": [
-              "{sourceId}:application:apply",
-              "{sourceId}:source:manage"
+              "{senderId}:application:apply",
+              "{senderId}:sender:manage"
             ]
           }
         ]
       }
     },
-    "/{sourceId}/{destinationId}/{applicationId}/data": {
+    "/{senderId}/{destinationId}/{applicationId}/data": {
       "parameters": [
         {
           "schema": {
             "type": "string"
           },
-          "name": "sourceId",
+          "name": "senderId",
           "in": "path",
           "required": true
         },
@@ -735,20 +735,20 @@
         "security": [
           {
             "OAuth 2.0": [
-              "{sourceId}:application:apply",
-              "{sourceId}:source:manage"
+              "{senderId}:application:apply",
+              "{senderId}:sender:manage"
             ]
           }
         ]
       }
     },
-    "/{sourceId}/{applicationId}/status": {
+    "/{senderId}/{applicationId}/status": {
       "parameters": [
         {
           "schema": {
             "type": "string"
           },
-          "name": "sourceId",
+          "name": "senderId",
           "in": "path",
           "required": true
         },
@@ -835,20 +835,20 @@
         "security": [
           {
             "OAuth 2.0": [
-              "{sourceId}:status:read",
-              "{sourceId}:source:manage"
+              "{senderId}:status:read",
+              "{senderId}:sender:manage"
             ]
           }
         ]
       }
     },
-    "/{sourceId}/{destinationId}/{applicationId}/upload-status": {
+    "/{senderId}/{destinationId}/{applicationId}/upload-status": {
       "parameters": [
         {
           "schema": {
             "type": "string"
           },
-          "name": "sourceId",
+          "name": "senderId",
           "in": "path",
           "required": true
         },
@@ -987,8 +987,8 @@
         "security": [
           {
             "OAuth 2.0": [
-              "{sourceId}:application:apply",
-              "{sourceId}:source:manage"
+              "{senderId}:application:apply",
+              "{senderId}:sender:manage"
             ]
           }
         ]
@@ -1015,10 +1015,10 @@
             "tokenUrl": "https://oauth.fiep-poc.de/invoke/pub.apigateway.oauth2/getAccessToken",
             "refreshUrl": "",
             "scopes": {
-              "{sourceId}:source:manage": "Dieser Zufriffsbereich erlaubt es alle Endpunkte einer ",
-              "{sourceId}:destination-info:read": "Dieser Zufriffsbereich erlaubt es Informationen von existierenden Destinationsabzurufen",
-              "{sourceId}:status:read": "Dieser Zufriffsbereich erlaubt es auf Statusmitteilungen zu einem übersendeten Antrag abzurufen.",
-              "{sourceId}:application:apply": "Dieser Zugriffsbereich erlaubt es Anträge anzulegen, diesen zu aktualisieren und abzusenden."
+              "{senderId}:sender:manage": "Dieser Zufriffsbereich erlaubt es alle Endpunkte einer ",
+              "{senderId}:destination-info:read": "Dieser Zufriffsbereich erlaubt es Informationen von existierenden Destinationsabzurufen",
+              "{senderId}:status:read": "Dieser Zufriffsbereich erlaubt es auf Statusmitteilungen zu einem übersendeten Antrag abzurufen.",
+              "{senderId}:application:apply": "Dieser Zugriffsbereich erlaubt es Anträge anzulegen, diesen zu aktualisieren und abzusenden."
             }
           }
         },

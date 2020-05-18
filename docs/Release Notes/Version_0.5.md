@@ -19,6 +19,12 @@ Die Basis-URLs für diese Version sind:
 - models/common/individual.json
 - models/destination-no-id.json
 
+### CR-3: Source in Sender ändern
+In der Dokumentation werden die Begriffe "Source" und "Sender" synonym verwendet. Um die Dokumentation klarer zu machen, wurden alle Vorkommen von "Source" in "Sender" geändert.
+
+<!-- theme: warning -->
+> **Hinweis:** Dies wirkt sich auch auf die OAuth-Scopes aus. Der Scope `{senderId}:source:manage` wurde in `{senderId}:sender:manage` geändert.
+
 ### CR-5: Zusätzliche Properties verbieten
 Wo möglich wurde `"additionalProperties": false` gesetzt um weitere Properties zu verbieten.
 
