@@ -1,137 +1,8 @@
 {
-  "title": "Application Metadata without ID",
   "type": "object",
+  "title": "Application Metadata without ID",
   "description": "Metadaten eines Antrags noch ohne ID, zum Anlegen eines neuen Antrags. Nach dem Zuweisen der `application-id` wird das Modell [Application Metadata](metadata.json) verwendet.",
-  "x-examples": {
-    "example-1": {
-      "additionalReferenceInfo": {
-        "subject": "Anmeldung eines Gewerbes in Musterstadt",
-        "caseId": "DF/8923"
-      },
-      "contentStructure": {
-        "data": {
-          "size": 9438,
-          "schema": {
-            "mimeType": "json",
-            "schemaSource": "none"
-          }
-        },
-        "docs": [
-          {
-            "docId": "1",
-            "purpose": "form",
-            "size": 39273,
-            "mimeType": "application/pdf",
-            "filename": "antrag.pdf",
-            "description": "Das Antragsformular",
-            "lang": {
-              "lang": "de",
-              "region": "DE"
-            },
-            "hash": {
-              "algorithm": "SHA-256",
-              "digest": "03ba204e50d126e4674c005e04d82e84c21366780af1f43bd54a37816b6ab340"
-            }
-          },
-          {
-            "docId": "2",
-            "purpose": "attachment",
-            "size": 894834874,
-            "mimeType": "image/jpeg",
-            "filename": "scan.jpg",
-            "description": "Scan der Bescheinigung",
-            "hash": {
-              "algorithm": "SHA-256",
-              "digest": "e1762f14d9924e37b32f1c81dfd256410af462f5136415c96877efa8c80345d0"
-            }
-          }
-        ]
-      },
-      "publicServiceType": {
-        "name": "Gewerbeanmeldung",
-        "description": "Eine Gewerbeanmeldung ist immer dann notwendig, wenn Sie einen stehenden Gewerbebetrieb beginnen.",
-        "leikaId": "99050012104000",
-        "otherIdentifiers": [
-          {
-            "id": "8664844",
-            "schemeURI": "service.niedersachsen.de",
-            "schemeName": "Serviceportal Niedersachsen"
-          },
-          {
-            "id": "354824",
-            "schemeURI": "buerger.thueringen.de",
-            "schemeName": "Zuständigkeitsfinder Thüringen"
-          }
-        ]
-      },
-      "applicants": [
-        {
-          "identifier": [
-            {
-              "id": "918",
-              "schemeName": "Antragsportal",
-              "schemeId": "urn:com:example:antragsportal:user"
-            }
-          ],
-          "contactInfo": {
-            "physicalAddress": {
-              "street": "Kurzer Weg",
-              "houseNumber": 7,
-              "postalCode": "12345",
-              "city": "string",
-              "addressSupplement": "string"
-            },
-            "telephone": [
-              {
-                "number": "+49 89 32168-42",
-                "mobile": true,
-                "description": "string"
-              }
-            ],
-            "electronicAddresses": [
-              {
-                "channelType": "Service-Account-Mailbox",
-                "address": "string"
-              }
-            ]
-          },
-          "identityInfo": {
-            "gender": "m",
-            "nationality": "string",
-            "familyName": "string",
-            "givenName": "string",
-            "birthName": "string",
-            "doctoralDegrees": "string",
-            "artisticName": "string",
-            "dateOfBirth": "2020-04-16",
-            "placeOfBirth": "string",
-            "placeOfResidence": {
-              "street": "string",
-              "houseNumber": null,
-              "houseNumberSuffix": "st",
-              "postalCode": "strin",
-              "city": "string",
-              "addressSupplement": "string"
-            }
-          },
-          "authentificationInfo": {
-            "timestamp": "2020-04-16T06:50:39Z",
-            "authentificationToken": {},
-            "authentificationMethod": "string",
-            "assuranceLevel": "low"
-          }
-        }
-      ],
-      "payment-info": {
-        "reference": "TP/93/GDP",
-        "usage": "Gewerbeanmeldung",
-        "amount": 17.3,
-        "timestamp": "2020-03-03T12:38:23Z",
-        "status": "success",
-        "transaction": "1f77c5f9b759db9cdce59988b24974d465c7be5e462a6185485559ff6e2dea82"
-      }
-    }
-  },
+  "additionalProperties": false,
   "properties": {
     "applicants": {
       "type": "array",
@@ -151,12 +22,14 @@
         "data",
         "docs"
       ],
+      "additionalProperties": false,
       "properties": {
         "data": {
           "type": "object",
           "required": [
             "schema"
           ],
+          "additionalProperties": false,
           "properties": {
             "size": {
               "type": "integer",
@@ -177,6 +50,7 @@
     },
     "additionalReferenceInfo": {
       "type": "object",
+      "additionalProperties": false,
       "properties": {
         "subject": {
           "type": "string"

@@ -133,6 +133,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "additionalProperties": false,
                   "properties": {
                     "destinationId": {
                       "type": "string"
@@ -750,6 +751,7 @@
             "application/json": {
               "schema": {
                 "type": "object",
+                "additionalProperties": false,
                 "properties": {
                   "finalDelivery": {
                     "type": "boolean",

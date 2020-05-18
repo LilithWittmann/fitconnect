@@ -1,7 +1,8 @@
 {
-  "title": "Applicant Contact Info",
   "type": "object",
+  "title": "Applicant Contact Info",
   "description": "Kontaktdaten des Antragstellers",
+  "additionalProperties": false,
   "properties": {
     "physicalAddress": {
       "oneOf": [
@@ -15,6 +16,7 @@
           "$ref": "../common/address-international.json"
         }
       ],
+      "description": "Physikalische (Post-)Adresse",
       "discriminator": {
         "propertyName": "type",
         "mapping": {
@@ -22,8 +24,7 @@
           "postbox": "../common/address-postbox.json",
           "international": "../common/address-international.json"
         }
-      },
-      "description": "Physikalische (Post-)Adresse"
+      }
     },
     "telephone": {
       "type": "array",
@@ -38,6 +39,7 @@
       "items": {
         "type": "object",
         "description": "",
+        "additionalProperties": false,
         "properties": {
           "channelType": {
             "type": "string",

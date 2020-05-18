@@ -1,24 +1,8 @@
 {
-  "title": "Individual",
   "type": "object",
+  "title": "Individual",
   "description": "Natürliche Person",
-  "x-examples": {
-    "example-1": {
-      "formOfAddress": "Herr",
-      "academicTitle": "Dr.",
-      "firstName": "Werner",
-      "lastName": "Mustermann",
-      "contact": {
-        "telephone": [
-          {
-            "number": "+49 89 32168-42",
-            "mobile": false,
-            "description": "Dienstliche Telefonnummer"
-          }
-        ]
-      }
-    }
-  },
+  "additionalProperties": false,
   "properties": {
     "formOfAddress": {
       "type": "string",
@@ -66,8 +50,9 @@
       }
     },
     "contact": {
-      "description": "Kontaktmöglichkeiten einer Person (natürliche Person oder Organisation)",
       "type": "object",
+      "description": "Kontaktmöglichkeiten einer Person (natürliche Person oder Organisation)",
+      "additionalProperties": false,
       "properties": {
         "telephone": {
           "type": "array",

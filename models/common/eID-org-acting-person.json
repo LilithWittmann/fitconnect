@@ -1,6 +1,7 @@
 {
-  "title": "Identity Information without Address",
   "type": "object",
+  "title": "Identity Information without Address",
+  "additionalProperties": false,
   "properties": {
     "placeOfBirth": {
       "type": "string",

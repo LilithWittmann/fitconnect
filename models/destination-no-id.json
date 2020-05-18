@@ -1,32 +1,8 @@
 {
-  "title": "Destination without ID",
   "type": "object",
+  "title": "Destination without ID",
   "description": "Daten eines technischen Übergabepunkts (Ziel der Übertragung - z.B. ein Fachverfahren) noch ohne ID, zum Anlegen eines neuen Übergabepunkts. Nach dem Zuweisen der `destination-id` wird das Modell [Destination](destination.json) verwendet.",
-  "x-examples": {
-    "example-1": {
-      "public-organization": {
-        "organizationName": "Gewerbeamt Musterhausen"
-      },
-      "technicalContact": [
-        {
-          "firstName": "Werner",
-          "lastName": "Mustermann",
-          "contact": {
-            "telephone": [
-              {
-                "number": "+49 89 32168-42",
-                "mobile": false,
-                "description": "Dienstliches Festnetz"
-              }
-            ]
-          }
-        }
-      ],
-      "callback": {
-        "callbackURI": "https://www.example.com/callback"
-      }
-    }
-  },
+  "additionalProperties": false,
   "properties": {
     "publicOrganization": {
       "type": "object",
@@ -51,8 +27,8 @@
             "propertyName": "type",
             "mapping": {
               "national": "./common/address-national.json",
-              "postbox": "./common/address-postbox.json",
-              "international": "./common/address-international.json"
+              "international": "./common/address-international.json",
+              "postbox": "./common/address-postbox.json"
             }
           }
         },

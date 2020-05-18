@@ -167,11 +167,15 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "additionalProperties": false,
                   "properties": {
                     "applicationId": {
                       "type": "string"
                     }
-                  }
+                  },
+                  "required": [
+                    "applicationId"
+                  ]
                 },
                 "examples": {
                   "example-1": {
@@ -769,6 +773,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "additionalProperties": false,
                   "properties": {
                     "current": {
                       "$ref": "../models/status-overview.json"
@@ -873,9 +878,11 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "additionalProperties": false,
                   "properties": {
                     "data": {
                       "type": "object",
+                      "additionalProperties": false,
                       "properties": {
                         "status": {
                           "type": "string",
@@ -899,6 +906,7 @@
                       "type": "array",
                       "items": {
                         "type": "object",
+                        "additionalProperties": false,
                         "properties": {
                           "docId": {
                             "type": "string",

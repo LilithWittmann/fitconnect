@@ -1,18 +1,12 @@
 # Nächste Version (0.5)
 
-<!-- theme: warning -->
-> ### Hinweis
-> Die Basis-URLs für diese Version sind:
-> - https://sender.fiep-poc.de/beta5/
-> - https://subscriber.fiep-poc.de/beta5/
+## Übergreifende Änderungen
 
-## Dokumentation
-- Release Notes mit aufgenommen
-- Dokumentation zu OAuth integriert
-- Token URL eingetragen
-- Postman Collection & Environment integriert
-
-## Modelle
+### Basis-URLs
+Die Basis-URLs werden ab sofort mit jeder neuen Version geändert, damit ein paralleler Betrieb mehrerer API-Versionen möglich ist.
+Die Basis-URLs für diese Version sind:
+- https://sender.fiep-poc.de/beta5/
+- https://subscriber.fiep-poc.de/beta5/
 
 ### CR-1: Diversen Modellen den Discriminator "type" hinzugefügt:
 - models/application/applicant-contact-info.json
@@ -24,6 +18,17 @@
 - models/common/address-postbox.json
 - models/common/individual.json
 - models/destination-no-id.json
+
+### CR-5: Zusätzliche Properties verbieten
+Wo möglich wurde `"additionalProperties": false` gesetzt um weitere Properties zu verbieten.
+
+## Dokumentation
+- Release Notes mit aufgenommen
+- Dokumentation zu OAuth integriert
+- Token URL eingetragen
+- Postman Collection & Environment integriert
+
+## Modelle
 
 ### Destination
 models/destination-no-id.json

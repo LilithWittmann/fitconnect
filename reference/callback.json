@@ -44,6 +44,7 @@
             "application/json": {
               "schema": {
                 "type": "object",
+                "additionalProperties": false,
                 "properties": {
                   "destinationId": {
                     "type": "string"
@@ -52,14 +53,22 @@
                     "type": "array",
                     "items": {
                       "type": "object",
+                      "additionalProperties": false,
                       "properties": {
                         "applicationId": {
                           "type": "string"
                         }
-                      }
+                      },
+                      "required": [
+                        "applicationId"
+                      ]
                     }
                   }
-                }
+                },
+                "required": [
+                  "destinationId",
+                  "applications"
+                ]
               },
               "examples": {
                 "example-1": {

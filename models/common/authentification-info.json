@@ -1,6 +1,7 @@
 {
-  "title": "authentification-info",
   "type": "object",
+  "title": "Authentifikation",
+  "additionalProperties": false,
   "properties": {
     "assuranceLevel": {
       "type": "string",
@@ -24,5 +25,6 @@
   "required": [
     "assuranceLevel",
     "authentificationMethod"
-  ]
+  ],
+  "description": "Informationen über die Authentifikation der Person."
 }

@@ -1,11 +1,13 @@
 {
-  "title": "Error Body",
   "type": "array",
+  "title": "Error Body",
   "description": "Der Inhalt (Body) von HTTP Responses bei Fehlern.",
+  "minItems": 1,
   "items": {
-    "title": "Error",
     "type": "object",
+    "title": "Error",
     "description": "Rückmeldung zu einer nicht erfolgreichen Operation",
+    "additionalProperties": false,
     "properties": {
       "code": {
         "type": "integer",
