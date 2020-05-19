@@ -191,6 +191,14 @@ wget --quiet --output-document - \
    'https://oauth.fiep-poc.de/invoke/pub.apigateway.oauth2/getAccessToken?grant_type=client_credentials&client_id=c1bbee16-fae1-4dc1-b0c6-b75a02b359b0&client_secret=91e7f6dd-5567-456f-a8be-aac10237c4c8&scope=subscriber-c94ae37e-dcc5-345e-a530-8651bdfa5f2c:manage'
 ```
 
+Alternativ kann der Request auch per POST durchgeführt werden:
+
+```bash
+wget --quiet --output-document - \
+  --post-data 'grant_type=client_credentials&client_id=c1bbee16-fae1-4dc1-b0c6-b75a02b359b0&client_secret=91e7f6dd-5567-456f-a8be-aac10237c4c8&scope=subscriber-c94ae37e-dcc5-345e-a530-8651bdfa5f2c:manage' \
+  'https://oauth.fiep-poc.de/invoke/pub.apigateway.oauth2/getAccessToken'
+```
+
 Die Antwort sieht in etwa wie folgt aus:
 
 ```json
