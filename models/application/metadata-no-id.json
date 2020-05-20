@@ -2,68 +2,6 @@
   "type": "object",
   "title": "Application Metadata without ID",
   "description": "Metadaten eines Antrags noch ohne ID, zum Anlegen eines neuen Antrags. Nach dem Zuweisen der `application-id` wird das Modell [Application Metadata](metadata.json) verwendet.",
-  "additionalProperties": false,
-  "properties": {
-    "applicants": {
-      "type": "array",
-      "items": {
-        "$ref": "./applicant.json"
-      }
-    },
-    "paymentInfo": {
-      "$ref": "./payment-info.json"
-    },
-    "publicServiceType": {
-      "$ref": "./public-service-type.json"
-    },
-    "contentStructure": {
-      "type": "object",
-      "required": [
-        "data",
-        "docs"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "data": {
-          "type": "object",
-          "required": [
-            "schema"
-          ],
-          "additionalProperties": false,
-          "properties": {
-            "size": {
-              "type": "integer",
-              "description": "Größe des Dokuments in Bytes"
-            },
-            "schema": {
-              "$ref": "./schema.json"
-            }
-          }
-        },
-        "docs": {
-          "type": "array",
-          "items": {
-            "$ref": "./document.json"
-          }
-        }
-      }
-    },
-    "additionalReferenceInfo": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "subject": {
-          "type": "string"
-        },
-        "caseId": {
-          "type": "string"
-        }
-      }
-    }
-  },
-  "required": [
-    "contentStructure"
-  ],
   "x-examples": {
     "example-1": {
       "additionalReferenceInfo": {
@@ -165,5 +103,66 @@
         "transaction": "1f77c5f9b759db9cdce59988b24974d465c7be5e462a6185485559ff6e2dea82"
       }
     }
-  }
+  },
+  "properties": {
+    "applicants": {
+      "type": "array",
+      "items": {
+        "$ref": "./applicant.json"
+      }
+    },
+    "paymentInfo": {
+      "$ref": "./payment-info.json"
+    },
+    "publicServiceType": {
+      "$ref": "./public-service-type.json"
+    },
+    "contentStructure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "data",
+        "docs"
+      ],
+      "properties": {
+        "data": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "schema"
+          ],
+          "properties": {
+            "size": {
+              "type": "integer",
+              "description": "Größe des Dokuments in Bytes"
+            },
+            "schema": {
+              "$ref": "./schema.json"
+            }
+          }
+        },
+        "docs": {
+          "type": "array",
+          "items": {
+            "$ref": "./document.json"
+          }
+        }
+      }
+    },
+    "additionalReferenceInfo": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "subject": {
+          "type": "string"
+        },
+        "caseId": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": [
+    "contentStructure"
+  ]
 }

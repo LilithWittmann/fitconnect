@@ -2,7 +2,6 @@
   "type": "object",
   "title": "Destination without ID",
   "description": "Daten eines technischen Übergabepunkts (Ziel der Übertragung - z.B. ein Fachverfahren) noch ohne ID, zum Anlegen eines neuen Übergabepunkts. Nach dem Zuweisen der `destination-id` wird das Modell [Destination](destination.json) verwendet.",
-  "additionalProperties": false,
   "properties": {
     "publicOrganization": {
       "type": "object",

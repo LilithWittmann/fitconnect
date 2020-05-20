@@ -26,7 +26,8 @@ In der Dokumentation werden die Begriffe "Source" und "Sender" synonym verwendet
 > **Hinweis:** Dies wirkt sich auch auf die OAuth-Scopes aus. Der Scope `{senderId}:source:manage` wurde in `{senderId}:sender:manage` geändert.
 
 ### CR-5: Zusätzliche Properties verbieten
-Wo möglich wurde `"additionalProperties": false` gesetzt um weitere Properties zu verbieten.
+- Wo möglich wurde `"additionalProperties": false` gesetzt um weitere Properties zu verbieten.
+- Bei den Metadaten und der Destination ohne ID musste `"additionalProperties": false` wieder entfernt werden da sonst keine Ableitung mit `allOf` möglich ist.
 
 ## Dokumentation
 - Release Notes mit aufgenommen
