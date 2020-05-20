@@ -72,5 +72,23 @@
     "purpose",
     "size",
     "mimeType"
-  ]
+  ],
+  "x-examples": {
+    "example-1": {
+      "docId": "1",
+      "purpose": "form",
+      "size": 13046,
+      "mimeType": "application/pdf",
+      "filename": "test.pdf",
+      "description": "Das Antragsformular",
+      "lang": {
+        "lang": "de",
+        "region": "DE"
+      },
+      "hash": {
+        "algorithm": "SHA-256",
+        "digest": "bf37d894fdf9aeade63975ed648d49c3e8a7a773923597d2418915f54cd7c3b9"
+      }
+    }
+  }
 }

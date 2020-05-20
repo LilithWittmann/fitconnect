@@ -3,6 +3,29 @@
   "title": "Applicant Contact Info",
   "description": "Kontaktdaten des Antragstellers",
   "additionalProperties": false,
+  "x-examples": {
+    "example-1": {
+      "electronicAdresses": [
+        {
+          "channelType": "Service-Account-Mailbox",
+          "address": "3b0c9c8c-0801-45f0-a331-2abfc9db78d0"
+        }
+      ],
+      "physicalAdress": {
+        "street": "Kurzer Weg",
+        "houseNumber": "7",
+        "postalCode": "12345",
+        "city": "Ankh-Morpork"
+      },
+      "telephone": [
+        {
+          "number": "+49 89 32168-42",
+          "mobile": true,
+          "description": "work"
+        }
+      ]
+    }
+  },
   "properties": {
     "physicalAddress": {
       "oneOf": [
