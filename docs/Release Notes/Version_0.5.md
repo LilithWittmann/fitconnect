@@ -39,6 +39,9 @@ Wo möglich wurde `"additionalProperties": false` gesetzt um weitere Properties 
 ### Destination
 models/destination-no-id.json
 
+### eID
+- eID-org-acting-person.json aufgelöst und in eID-natural-person.json integriert.
+
 ### Postfachadresse
 models/common/address-national.json
 models/common/address-postbox.json

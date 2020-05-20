@@ -1,17 +1,53 @@
 {
   "title": "Identity Information with Address",
   "description": "",
-  "allOf": [
-    {
-      "$ref": "./eID-org-acting-person.json"
+  "type": "object",
+  "properties": {
+    "placeOfBirth": {
+      "type": "string",
+      "description": "Geburtsort"
     },
-    {
-      "type": "object",
-      "properties": {
-        "placeOfResidence": {
-          "$ref": "./address-national.json"
-        }
-      }
+    "dateOfBirth": {
+      "type": "string",
+      "format": "date",
+      "description": "Geburtsdatum"
+    },
+    "gender": {
+      "type": "string",
+      "enum": [
+        "m",
+        "w",
+        "x",
+        "d"
+      ],
+      "description": "Geschlecht (m=männlich, w=weiblich, x=keine Angabe, d=divers)"
+    },
+    "nationality": {
+      "type": "string",
+      "description": "Nationalität"
+    },
+    "artisticName": {
+      "type": "string",
+      "description": "Künstler- oder Ordensname"
+    },
+    "doctoralDegrees": {
+      "type": "string",
+      "description": "Akademischer Titel, z.B. \"Dr.\" oder \"Prof.\""
+    },
+    "birthName": {
+      "type": "string",
+      "description": "Geburtsname"
+    },
+    "givenName": {
+      "type": "string",
+      "description": "Vorname(n)"
+    },
+    "familyName": {
+      "type": "string",
+      "description": "Familienname"
+    },
+    "placeOfResidence": {
+      "$ref": "./address-national.json"
     }
-  ]
+  }
 }
