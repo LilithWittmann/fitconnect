@@ -1013,7 +1013,7 @@
         "flows": {
           "clientCredentials": {
             "tokenUrl": "https://oauth.fiep-poc.de/invoke/pub.apigateway.oauth2/getAccessToken",
-            "refreshUrl": "",
+            "refreshUrl": "https://oauth.fiep-poc.de/invoke/pub.oauth/refreshAccessToken",
             "scopes": {
               "{senderId}:sender:manage": "Dieser Zufriffsbereich erlaubt es alle Endpunkte einer ",
               "{senderId}:destination-info:read": "Dieser Zufriffsbereich erlaubt es Informationen von existierenden Destinationsabzurufen",

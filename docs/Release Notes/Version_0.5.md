@@ -31,7 +31,7 @@ Wo möglich wurde `"additionalProperties": false` gesetzt um weitere Properties 
 ## Dokumentation
 - Release Notes mit aufgenommen
 - Dokumentation zu OAuth integriert
-- Token URL eingetragen
+- Token- und Refresh-URL eingetragen
 - Postman Collection & Environment integriert
 
 ## Modelle
