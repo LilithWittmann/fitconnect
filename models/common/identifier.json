@@ -41,5 +41,12 @@
   },
   "required": [
     "id"
-  ]
+  ],
+  "x-examples": {
+    "example-1": {
+      "id": "8664844",
+      "schemeId": "service.niedersachsen.de",
+      "schemeName": "Serviceportal Niedersachsen"
+    }
+  }
 }

@@ -94,5 +94,61 @@
         "callbackURI"
       ]
     }
+  },
+  "x-examples": {
+    "example-1": {
+      "publicOrganization": {
+        "organizationName": "Gewerbeamt Musterstadt",
+        "address": {
+          "type": "national",
+          "street": "Kurzer Weg",
+          "houseNumber": "7",
+          "postalCode": "12345",
+          "city": "Ankh-Morpork"
+        },
+        "contact": {
+          "telephone": [
+            {
+              "number": "+49 89 32168-0",
+              "mobile": false,
+              "description": "work"
+            }
+          ],
+          "email": "behoerde@example.com"
+        }
+      },
+      "technicalContact": [
+        {
+          "formOfAddress": "Herr",
+          "academicTitle": "Dr.",
+          "firstName": "Kunibert",
+          "lastName": "Vonundzu",
+          "contact": {
+            "telephone": [
+              {
+                "number": "+49 89 32168-42",
+                "mobile": false,
+                "description": "work"
+              },
+              {
+                "number": "+49 123 456789",
+                "mobile": true,
+                "description": "work"
+              }
+            ],
+            "email": "kunibert.vonundzu@example.com"
+          }
+        }
+      ],
+      "schemas": [
+        {
+          "mimeType": "json",
+          "schemaSource": "none"
+        }
+      ],
+      "callback": {
+        "callbackURI": "http://127.0.0.1:4010/voluptas"
+      }
+    }
   }
 }

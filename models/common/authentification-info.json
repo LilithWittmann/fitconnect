@@ -26,5 +26,12 @@
     "assuranceLevel",
     "authentificationMethod"
   ],
-  "description": "Informationen über die Authentifikation der Person."
+  "description": "Informationen über die Authentifikation der Person.",
+  "x-examples": {
+    "example-1": {
+      "assuranceLevel": "high",
+      "authentificationMethod": "eID",
+      "timestamp": "2020-03-03T12:38:23Z"
+    }
+  }
 }

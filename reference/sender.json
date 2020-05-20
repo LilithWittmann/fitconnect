@@ -57,6 +57,15 @@
               "application/json": {
                 "schema": {
                   "$ref": "../models/status-overview.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "code": "queued",
+                      "timestamp": "2020-05-20T08:31:01.135842+02:00",
+                      "number": 2
+                    }
+                  }
                 }
               }
             }
@@ -180,7 +189,7 @@
                 "examples": {
                   "example-1": {
                     "value": {
-                      "applicationId": "45bb5b95-d853-4fc5-b45d-10aa9e15287a"
+                      "applicationId": "0c508e3f-2353-4206-9a1e-34b2e864d5a8"
                     }
                   }
                 }
@@ -253,7 +262,6 @@
                     },
                     "contentStructure": {
                       "data": {
-                        "size": 9438,
                         "schema": {
                           "mimeType": "json",
                           "schemaSource": "none"
@@ -263,9 +271,9 @@
                         {
                           "docId": "1",
                           "purpose": "form",
-                          "size": 39273,
+                          "size": 13046,
                           "mimeType": "application/pdf",
-                          "filename": "antrag.pdf",
+                          "filename": "test.pdf",
                           "description": "Das Antragsformular",
                           "lang": {
                             "lang": "de",
@@ -273,19 +281,7 @@
                           },
                           "hash": {
                             "algorithm": "SHA-256",
-                            "digest": "03ba204e50d126e4674c005e04d82e84c21366780af1f43bd54a37816b6ab340"
-                          }
-                        },
-                        {
-                          "docId": "2",
-                          "purpose": "attachment",
-                          "size": 894834874,
-                          "mimeType": "image/jpeg",
-                          "filename": "scan.jpg",
-                          "description": "Scan der Bescheinigung",
-                          "hash": {
-                            "algorithm": "SHA-256",
-                            "digest": "e1762f14d9924e37b32f1c81dfd256410af462f5136415c96877efa8c80345d0"
+                            "digest": "bf37d894fdf9aeade63975ed648d49c3e8a7a773923597d2418915f54cd7c3b9"
                           }
                         }
                       ]
@@ -297,75 +293,61 @@
                       "otherIdentifiers": [
                         {
                           "id": "8664844",
-                          "schemeURI": "service.niedersachsen.de",
+                          "schemeId": "service.niedersachsen.de",
                           "schemeName": "Serviceportal Niedersachsen"
                         },
                         {
                           "id": "354824",
-                          "schemeURI": "buerger.thueringen.de",
+                          "schemeId": "buerger.thueringen.de",
                           "schemeName": "Zuständigkeitsfinder Thüringen"
                         }
                       ]
                     },
                     "applicants": [
                       {
-                        "identifier": [
-                          {
-                            "id": "918",
-                            "schemeName": "Antragsportal",
-                            "schemeId": "urn:com:example:antragsportal:user"
-                          }
-                        ],
-                        "contactInfo": {
-                          "physicalAddress": {
-                            "street": "Kurzer Weg",
-                            "houseNumber": 7,
+                        "type": "person",
+                        "authentificationInfo": {
+                          "assuranceLevel": "high",
+                          "authentificationMethod": "eID",
+                          "timestamp": "2020-03-03T12:38:23Z"
+                        },
+                        "identityInfo": {
+                          "dateOfBirth": "1970-09-13",
+                          "gender": "m",
+                          "givenName": "WERNER",
+                          "familyName": "MUSTERMANN",
+                          "placeOfResidence": {
+                            "type": "national",
+                            "street": "KURZER WEG 7",
                             "postalCode": "12345",
-                            "city": "string",
-                            "addressSupplement": "string"
+                            "city": "ANKH-MORPORK"
+                          }
+                        },
+                        "contactInfo": {
+                          "electronicAddresses": [
+                            {
+                              "channelType": "Service-Account-Mailbox",
+                              "address": "3b0c9c8c-0801-45f0-a331-2abfc9db78d0"
+                            }
+                          ],
+                          "physicalAddress": {
+                            "type": "national",
+                            "street": "Kurzer Weg",
+                            "houseNumber": "7",
+                            "postalCode": "12345",
+                            "city": "Ankh-Morpork"
                           },
                           "telephone": [
                             {
                               "number": "+49 89 32168-42",
                               "mobile": true,
-                              "description": "string"
-                            }
-                          ],
-                          "electronicAddresses": [
-                            {
-                              "channelType": "Service-Account-Mailbox",
-                              "address": "string"
+                              "description": "work"
                             }
                           ]
-                        },
-                        "identityInfo": {
-                          "gender": "m",
-                          "nationality": "string",
-                          "familyName": "string",
-                          "givenName": "string",
-                          "birthName": "string",
-                          "doctoralDegrees": "string",
-                          "artisticName": "string",
-                          "dateOfBirth": "2020-04-16",
-                          "placeOfBirth": "string",
-                          "placeOfResidence": {
-                            "street": "string",
-                            "houseNumber": null,
-                            "houseNumberSuffix": "st",
-                            "postalCode": "strin",
-                            "city": "string",
-                            "addressSupplement": "string"
-                          }
-                        },
-                        "authentificationInfo": {
-                          "timestamp": "2020-04-16T06:50:39Z",
-                          "authentificationToken": {},
-                          "authentificationMethod": "string",
-                          "assuranceLevel": "low"
                         }
                       }
                     ],
-                    "payment-info": {
+                    "paymentInfo": {
                       "reference": "TP/93/GDP",
                       "usage": "Gewerbeanmeldung",
                       "amount": 17.3,
@@ -403,6 +385,65 @@
               "application/json": {
                 "schema": {
                   "$ref": "../models/destination.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "publicOrganization": {
+                        "organizationName": "Gewerbeamt Musterstadt",
+                        "address": {
+                          "type": "national",
+                          "street": "Kurzer Weg",
+                          "houseNumber": "7",
+                          "postalCode": "12345",
+                          "city": "Ankh-Morpork"
+                        },
+                        "contact": {
+                          "telephone": [
+                            {
+                              "number": "+49 89 32168-0",
+                              "mobile": false,
+                              "description": "work"
+                            }
+                          ],
+                          "email": "behoerde@example.com"
+                        }
+                      },
+                      "technicalContact": [
+                        {
+                          "formOfAddress": "Herr",
+                          "academicTitle": "Dr.",
+                          "firstName": "Kunibert",
+                          "lastName": "Vonundzu",
+                          "contact": {
+                            "telephone": [
+                              {
+                                "number": "+49 89 32168-42",
+                                "mobile": false,
+                                "description": "work"
+                              },
+                              {
+                                "number": "+49 123 456789",
+                                "mobile": true,
+                                "description": "work"
+                              }
+                            ],
+                            "email": "kunibert.vonundzu@example.com"
+                          }
+                        }
+                      ],
+                      "schemas": [
+                        {
+                          "mimeType": "json",
+                          "schemaSource": "none"
+                        }
+                      ],
+                      "callback": {
+                        "callbackURI": "http://127.0.0.1:4010/voluptas"
+                      },
+                      "destinationId": "7881dba9-4055-4854-8b6d-11ea5b7f3047"
+                    }
+                  }
                 }
               }
             }
@@ -785,6 +826,24 @@
                       }
                     }
                   }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "current": {
+                        "code": "queued",
+                        "timestamp": "2020-05-20T08:31:01+02:00",
+                        "number": 2
+                      },
+                      "history": [
+                        {
+                          "code": "incomplete",
+                          "timestamp": "2020-05-20T08:30:08+02:00",
+                          "number": 1
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -932,6 +991,23 @@
                           "length"
                         ]
                       }
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "data": {
+                        "status": "complete",
+                        "length": 0
+                      },
+                      "docs": [
+                        {
+                          "status": "complete",
+                          "docId": "1",
+                          "length": 13046
+                        }
+                      ]
                     }
                   }
                 }

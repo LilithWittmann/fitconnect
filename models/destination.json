@@ -21,28 +21,59 @@
   "description": "Beschreibung eines technischen Übergabepunkts",
   "x-examples": {
     "example-1": {
-      "destination-id": "83578",
-      "public-organization": {
-        "organizationName": "Gewerbeamt Musterhausen"
+      "publicOrganization": {
+        "organizationName": "Gewerbeamt Musterstadt",
+        "address": {
+          "type": "national",
+          "street": "Kurzer Weg",
+          "houseNumber": "7",
+          "postalCode": "12345",
+          "city": "Ankh-Morpork"
+        },
+        "contact": {
+          "telephone": [
+            {
+              "number": "+49 89 32168-0",
+              "mobile": false,
+              "description": "work"
+            }
+          ],
+          "email": "behoerde@example.com"
+        }
       },
       "technicalContact": [
         {
-          "firstName": "Werner",
-          "lastName": "Mustermann",
+          "formOfAddress": "Herr",
+          "academicTitle": "Dr.",
+          "firstName": "Kunibert",
+          "lastName": "Vonundzu",
           "contact": {
             "telephone": [
               {
                 "number": "+49 89 32168-42",
                 "mobile": false,
-                "description": "Dienstliches Festnetz"
+                "description": "work"
+              },
+              {
+                "number": "+49 123 456789",
+                "mobile": true,
+                "description": "work"
               }
-            ]
+            ],
+            "email": "kunibert.vonundzu@example.com"
           }
         }
       ],
+      "schemas": [
+        {
+          "mimeType": "json",
+          "schemaSource": "none"
+        }
+      ],
       "callback": {
-        "callbackURI": "https://www.example.com/callback"
-      }
+        "callbackURI": "http://127.0.0.1:4010/voluptas"
+      },
+      "destinationId": "7881dba9-4055-4854-8b6d-11ea5b7f3047"
     }
   }
 }

@@ -3,8 +3,9 @@
   "description": "Eine nationale (deutsche) Adresse, bestehend aus Straße, Hausnummer, PLZ und Ort.",
   "x-examples": {
     "example-1": {
+      "type": "national",
       "street": "Kurzer Weg",
-      "houseNumber": 7,
+      "houseNumber": "7",
       "postalCode": "12345",
       "city": "Ankh-Morpork"
     }

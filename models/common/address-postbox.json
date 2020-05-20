@@ -3,8 +3,8 @@
   "description": "Eine Adresse eines Postfachs.",
   "x-examples": {
     "example-1": {
-      "street": "Kurzer Weg",
-      "houseNumber": 7,
+      "type": "postbox",
+      "postOfficeBox": "987",
       "postalCode": "12345",
       "city": "Ankh-Morpork"
     }

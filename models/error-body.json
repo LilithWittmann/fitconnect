@@ -26,5 +26,13 @@
       "code",
       "msg"
     ]
+  },
+  "x-examples": {
+    "example-1": [
+      {
+        "code": 400,
+        "msg": "Document with id 1 already exists for application : 0c508e3f-2353-4206-9a1e-34b2e864d5a8"
+      }
+    ]
   }
 }

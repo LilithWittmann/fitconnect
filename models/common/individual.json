@@ -76,5 +76,28 @@
         }
       }
     }
+  },
+  "x-examples": {
+    "example-1": {
+      "formOfAddress": "Herr",
+      "academicTitle": "Dr.",
+      "firstName": "Kunibert",
+      "lastName": "Vonundzu",
+      "contact": {
+        "telephone": [
+          {
+            "number": "+49 89 32168-42",
+            "mobile": false,
+            "description": "work"
+          },
+          {
+            "number": "+49 123 456789",
+            "mobile": true,
+            "description": "work"
+          }
+        ],
+        "email": "kunibert.vonundzu@example.com"
+      }
+    }
   }
 }
