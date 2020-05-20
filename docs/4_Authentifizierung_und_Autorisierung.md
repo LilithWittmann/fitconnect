@@ -183,6 +183,20 @@ Folgende Query Parameter sind dabei mitzugeben:
 - client_secret:	91e7f6dd-5567-456f-a8be-aac10237c4c8 (Beispiel)
 - scope: subscriber-c94ae37e-dcc5-345e-a530-8651bdfa5f2c:manage (Beispiel)
 
+<!-- theme: warning -->
+> **Hinweis zu den Token:**
+> Für den Zugriff auf die beiden APIs sind zwei unterschiedliche Scopes erforderlich. Diese enthalten beide Ihre Anwender-ID und könnten beispielsweise wie folgt aussehen:
+> - Für die Application Subscriber API: **subscriber-**c94ae37e-dcc5-345e-a530-8651bdfa5f2c:manage
+> - Für die Application Sender API: **sender-**c94ae37e-dcc5-345e-a530-8651bdfa5f2c:manage
+> 
+> Sie können beim holen des Access Token das richtige Scope einsetzen oder ein Token für beide Scopes/APIs beziehen. Dazu schreiben Sie beide Scopes mit einem Leerzeichen dazwischen hintereinander:
+> 
+> `subscriber-c94ae37e-dcc5-345e-a530-8651bdfa5f2c:manage sender-c94ae37e-dcc5-345e-a530-8651bdfa5f2c:manage`
+> 
+> ![Zwei Scopes](https://raw.githubusercontent.com/fiep-poc/assets/master/images/oauth/18_zwei_scopes.png)
+> 
+> Bitte beachten Sie, dass Sie statt "c94ae37e-dcc5-345e-a530-8651bdfa5f2c" Ihre Anwender-ID einsetzen müssen.
+
 Ein Aufruf mit dem Werkzeug "wget" sieht z.B. wie folgt aus:
 
 ```bash
