@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Application Subscriber API",
-    "version": "0.5",
+    "version": "0.6",
     "description": "API vom Fachverfahren zum Zustelldienst",
     "contact": {
       "name": "FITKO",
@@ -15,7 +15,7 @@
   },
   "servers": [
     {
-      "url": "https://subscriber.fiep-poc.de/beta5",
+      "url": "https://subscriber.fiep-poc.de/beta6",
       "description": "Produktionsumgebung der API."
     }
   ],
