@@ -167,7 +167,7 @@ wget --quiet --output-document - \
   --timeout=0 \
   --header 'Accept: application/json' \
   --header 'Authorization: Bearer 5eadf042ef434913a5724d5e5ce38bc0' \
-   'https://subscriber.fiep-poc.de/subscriber-c94ae37e-dcc5-345e-a530-8651bdfa5f2c/destinations'
+   'https://subscriber.fiep-poc.de/beta5/subscriber-c94ae37e-dcc5-345e-a530-8651bdfa5f2c/destinations'
 ```
 
 ### Manueller OAuth 2.0 Fluss
@@ -231,5 +231,5 @@ Hier wieder ein Beispiel mit dem Tool "wget":
 wget --quiet --output-document - \
   --method GET \
   --header 'Authorization: Bearer 0bd226153b394d209a9d57bd7a42ee70' \
-   'https://subscriber.fiep-poc.de/subscriber-c94ae37e-dcc5-345e-a530-8651bdfa5f2c/destinations'
+   'https://subscriber.fiep-poc.de/beta5/subscriber-c94ae37e-dcc5-345e-a530-8651bdfa5f2c/destinations'
 ```

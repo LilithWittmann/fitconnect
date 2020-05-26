@@ -1,4 +1,4 @@
-# Nächste Version (0.5)
+# Version 0.5
 
 ## Übergreifende Änderungen
 
