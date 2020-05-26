@@ -1,7 +1,8 @@
 {
-  "title": "Applicant Person",
   "type": "object",
+  "title": "Applicant Person",
   "description": "Antragstellerdaten für eine natürliche Person",
+  "additionalProperties": false,
   "properties": {
     "identifier": {
       "type": "array",
@@ -18,63 +19,57 @@
     },
     "contactInfo": {
       "$ref": "./applicant-contact-info.json"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "person"
+      ]
     }
   },
+  "required": [
+    "type"
+  ],
   "x-examples": {
     "example-1": {
-      "identifier": [
-        {
-          "id": "918",
-          "schemeName": "Antragsportal",
-          "schemeId": "urn:com:example:antragsportal:user"
-        }
-      ],
-      "contactInfo": {
-        "physicalAddress": {
-          "street": "Kurzer Weg",
-          "houseNumber": 7,
+      "type": "person",
+      "authentificationInfo": {
+        "assuranceLevel": "high",
+        "authentificationMethod": "eID",
+        "timestamp": "2020-03-03T12:38:23Z"
+      },
+      "identityInfo": {
+        "dateOfBirth": "1970-09-13",
+        "gender": "m",
+        "givenName": "WERNER",
+        "familyName": "MUSTERMANN",
+        "placeOfResidence": {
+          "type": "national",
+          "street": "KURZER WEG 7",
           "postalCode": "12345",
-          "city": "string",
-          "addressSupplement": "string"
+          "city": "ANKH-MORPORK"
+        }
+      },
+      "contactInfo": {
+        "electronicAdresses": [
+          {
+            "channelType": "Service-Account-Mailbox",
+            "address": "3b0c9c8c-0801-45f0-a331-2abfc9db78d0"
+          }
+        ],
+        "physicalAdress": {
+          "street": "Kurzer Weg",
+          "houseNumber": "7",
+          "postalCode": "12345",
+          "city": "Ankh-Morpork"
         },
         "telephone": [
           {
             "number": "+49 89 32168-42",
             "mobile": true,
-            "description": "string"
-          }
-        ],
-        "electronicAddresses": [
-          {
-            "channelType": "Service-Account-Mailbox",
-            "address": "string"
+            "description": "work"
           }
         ]
-      },
-      "identityInfo": {
-        "gender": "m",
-        "nationality": "string",
-        "familyName": "string",
-        "givenName": "string",
-        "birthName": "string",
-        "doctoralDegrees": "string",
-        "artisticName": "string",
-        "dateOfBirth": "2020-04-16",
-        "placeOfBirth": "string",
-        "placeOfResidence": {
-          "street": "string",
-          "houseNumber": null,
-          "houseNumberSuffix": "st",
-          "postalCode": "strin",
-          "city": "string",
-          "addressSupplement": "string"
-        }
-      },
-      "authentificationInfo": {
-        "timestamp": "2020-04-16T06:50:39Z",
-        "authentificationToken": {},
-        "authentificationMethod": "string",
-        "assuranceLevel": "low"
       }
     }
   }

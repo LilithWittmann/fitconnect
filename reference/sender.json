@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Application Sender API",
-    "version": "0.4",
+    "version": "DEV",
     "description": "API vom Onlineantragsdienst zum Zustelldienst",
     "contact": {
       "name": "FITKO",
@@ -15,18 +15,18 @@
   },
   "servers": [
     {
-      "url": "https://sender.fiep-poc.de",
+      "url": "https://sender.fiep-poc.de/beta5",
       "description": "Produktionsumgebung der API."
     }
   ],
   "paths": {
-    "/{sourceId}/{destinationId}/{applicationId}/upload-status": {
+    "/{senderId}/{destinationId}/{applicationId}": {
       "parameters": [
         {
           "schema": {
             "type": "string"
           },
-          "name": "sourceId",
+          "name": "senderId",
           "in": "path",
           "required": true
         },
@@ -47,66 +47,23 @@
           "required": true
         }
       ],
-      "get": {
-        "summary": "Get Application Upload Status",
+      "post": {
+        "summary": "Send Application",
+        "operationId": "commit-application",
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "object",
-                      "properties": {
-                        "status": {
-                          "type": "string",
-                          "enum": [
-                            "missing",
-                            "partial",
-                            "complete"
-                          ]
-                        },
-                        "length": {
-                          "type": "integer",
-                          "minimum": 0
-                        }
-                      },
-                      "required": [
-                        "status",
-                        "length"
-                      ]
-                    },
-                    "docs": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "docId": {
-                            "type": "string",
-                            "pattern": "^[-_.A-Za-z0-9]+$",
-                            "description": "Id des Dokuments. Diese muss nur innerhalb des Antrags (Application) eindeutig sein. Es wird daher empfohlen, die IDs fortlaufend (1, 2 etc.) zu vergeben."
-                          },
-                          "status": {
-                            "type": "string",
-                            "enum": [
-                              "missing",
-                              "partial",
-                              "complete"
-                            ]
-                          },
-                          "length": {
-                            "type": "integer",
-                            "minimum": 0
-                          }
-                        },
-                        "required": [
-                          "docId",
-                          "status",
-                          "length"
-                        ]
-                      }
+                  "$ref": "../models/status-overview.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "code": "queued",
+                      "timestamp": "2020-05-20T08:31:01.135842+02:00",
+                      "number": 2
                     }
                   }
                 }
@@ -152,30 +109,51 @@
                 }
               }
             }
+          },
+          "413": {
+            "description": "Request Entity Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
           }
         },
-        "operationId": "get-application-upload-status",
-        "description": "Abfrage des Übermittlungsstatus. Listet alle Unterresourcen (data und docs) mit Übermittlungsstatus auf.",
+        "description": "Übertragung abschließen, Antrag absenden",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          },
+          "description": ""
+        },
         "tags": [
-          "Transfer related Information"
+          "Application Transfer"
         ],
         "security": [
           {
-            "API Key": [
-              "{sourceId}:application:apply",
-              "{sourceId}:source:manage"
+            "OAuth 2.0": [
+              "{senderId}:application:apply",
+              "{senderId}:sender:manage"
             ]
           }
         ]
       }
     },
-    "/{sourceId}/{applicationId}/status": {
+    "/{senderId}/{destinationId}": {
       "parameters": [
         {
           "schema": {
             "type": "string"
           },
-          "name": "sourceId",
+          "name": "senderId",
           "in": "path",
           "required": true
         },
@@ -183,32 +161,287 @@
           "schema": {
             "type": "string"
           },
-          "name": "applicationId",
+          "name": "destinationId",
           "in": "path",
           "required": true
         }
       ],
-      "get": {
-        "summary": "Get Status",
+      "post": {
+        "summary": "Create Application",
+        "operationId": "create-application",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "applicationId": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "applicationId"
+                  ]
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "applicationId": "0c508e3f-2353-4206-9a1e-34b2e864d5a8"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Request Entity Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/application/metadata-no-id.json"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "additionalReferenceInfo": {
+                      "subject": "Anmeldung eines Gewerbes in Musterstadt",
+                      "caseId": "DF/8923"
+                    },
+                    "contentStructure": {
+                      "data": {
+                        "schema": {
+                          "mimeType": "json",
+                          "schemaSource": "none"
+                        }
+                      },
+                      "docs": [
+                        {
+                          "docId": "1",
+                          "purpose": "form",
+                          "size": 13046,
+                          "mimeType": "application/pdf",
+                          "filename": "test.pdf",
+                          "description": "Das Antragsformular",
+                          "lang": {
+                            "lang": "de",
+                            "region": "DE"
+                          },
+                          "hash": {
+                            "algorithm": "SHA-256",
+                            "digest": "bf37d894fdf9aeade63975ed648d49c3e8a7a773923597d2418915f54cd7c3b9"
+                          }
+                        }
+                      ]
+                    },
+                    "publicServiceType": {
+                      "name": "Gewerbeanmeldung",
+                      "description": "Eine Gewerbeanmeldung ist immer dann notwendig, wenn Sie einen stehenden Gewerbebetrieb beginnen.",
+                      "leikaId": "99050012104000",
+                      "otherIdentifiers": [
+                        {
+                          "id": "8664844",
+                          "schemeId": "service.niedersachsen.de",
+                          "schemeName": "Serviceportal Niedersachsen"
+                        },
+                        {
+                          "id": "354824",
+                          "schemeId": "buerger.thueringen.de",
+                          "schemeName": "Zuständigkeitsfinder Thüringen"
+                        }
+                      ]
+                    },
+                    "applicants": [
+                      {
+                        "type": "person",
+                        "authentificationInfo": {
+                          "assuranceLevel": "high",
+                          "authentificationMethod": "eID",
+                          "timestamp": "2020-03-03T12:38:23Z"
+                        },
+                        "identityInfo": {
+                          "dateOfBirth": "1970-09-13",
+                          "gender": "m",
+                          "givenName": "WERNER",
+                          "familyName": "MUSTERMANN",
+                          "placeOfResidence": {
+                            "type": "national",
+                            "street": "KURZER WEG 7",
+                            "postalCode": "12345",
+                            "city": "ANKH-MORPORK"
+                          }
+                        },
+                        "contactInfo": {
+                          "electronicAddresses": [
+                            {
+                              "channelType": "Service-Account-Mailbox",
+                              "address": "3b0c9c8c-0801-45f0-a331-2abfc9db78d0"
+                            }
+                          ],
+                          "physicalAddress": {
+                            "type": "national",
+                            "street": "Kurzer Weg",
+                            "houseNumber": "7",
+                            "postalCode": "12345",
+                            "city": "Ankh-Morpork"
+                          },
+                          "telephone": [
+                            {
+                              "number": "+49 89 32168-42",
+                              "mobile": true,
+                              "description": "work"
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "paymentInfo": {
+                      "reference": "TP/93/GDP",
+                      "usage": "Gewerbeanmeldung",
+                      "amount": 17.3,
+                      "timestamp": "2020-03-03T12:38:23Z",
+                      "status": "success",
+                      "transaction": "1f77c5f9b759db9cdce59988b24974d465c7be5e462a6185485559ff6e2dea82"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "description": "Metadaten des Antrags"
+        },
+        "description": "Übertragung initiieren",
         "tags": [
-          "status"
+          "Application Transfer"
         ],
+        "security": [
+          {
+            "OAuth 2.0": [
+              "{senderId}:application:apply",
+              "{senderId}:sender:manage"
+            ]
+          }
+        ]
+      },
+      "get": {
+        "summary": "Get Destination Info",
+        "operationId": "get-destination-info",
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "current": {
-                      "$ref": "../models/status-overview.json"
-                    },
-                    "history": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "../models/status-overview.json"
-                      }
+                  "$ref": "../models/destination.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "publicOrganization": {
+                        "organizationName": "Gewerbeamt Musterstadt",
+                        "address": {
+                          "type": "national",
+                          "street": "Kurzer Weg",
+                          "houseNumber": "7",
+                          "postalCode": "12345",
+                          "city": "Ankh-Morpork"
+                        },
+                        "contact": {
+                          "telephone": [
+                            {
+                              "number": "+49 89 32168-0",
+                              "mobile": false,
+                              "description": "work"
+                            }
+                          ],
+                          "email": "behoerde@example.com"
+                        }
+                      },
+                      "technicalContact": [
+                        {
+                          "formOfAddress": "Herr",
+                          "academicTitle": "Dr.",
+                          "firstName": "Kunibert",
+                          "lastName": "Vonundzu",
+                          "contact": {
+                            "telephone": [
+                              {
+                                "number": "+49 89 32168-42",
+                                "mobile": false,
+                                "description": "work"
+                              },
+                              {
+                                "number": "+49 123 456789",
+                                "mobile": true,
+                                "description": "work"
+                              }
+                            ],
+                            "email": "kunibert.vonundzu@example.com"
+                          }
+                        }
+                      ],
+                      "schemas": [
+                        {
+                          "mimeType": "json",
+                          "schemaSource": "none"
+                        }
+                      ],
+                      "callback": {
+                        "callbackURI": "http://127.0.0.1:4010/voluptas"
+                      },
+                      "destinationId": "7881dba9-4055-4854-8b6d-11ea5b7f3047"
                     }
                   }
                 }
@@ -256,25 +489,164 @@
             }
           }
         },
-        "operationId": "get-application-status",
-        "description": "Ruft den aktuellen Status der Übermittlung sowie einer Übersicht der bisherigen Übertragungshistorie ab.",
+        "description": "Ruft die Information über eine Destination ab",
+        "tags": [
+          "Transfer related Information"
+        ],
         "security": [
           {
-            "API Key": [
-              "{sourceId}:status:read",
-              "{sourceId}:source:manage"
+            "OAuth 2.0": [
+              "{senderId}:destination-info:read",
+              "{senderId}:sender:manage"
             ]
           }
         ]
       }
     },
-    "/{sourceId}/{destinationId}/{applicationId}/data": {
+    "/{senderId}/{destinationId}/{applicationId}/docs/{docId}": {
       "parameters": [
         {
           "schema": {
             "type": "string"
           },
-          "name": "sourceId",
+          "name": "senderId",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "destinationId",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "applicationId",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "docId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "put": {
+        "summary": "Add Application Document",
+        "operationId": "add-application-doc",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Acceptable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Gone",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Request Entity Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Lädt ein Antragsformuar oder einen Anhang hoch, um ihn dem Antrag hinzuzufügen.",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Application Transfer"
+        ],
+        "security": [
+          {
+            "OAuth 2.0": [
+              "{senderId}:application:apply",
+              "{senderId}:sender:manage"
+            ]
+          }
+        ]
+      }
+    },
+    "/{senderId}/{destinationId}/{applicationId}/data": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "senderId",
           "in": "path",
           "required": true
         },
@@ -403,29 +775,21 @@
         ],
         "security": [
           {
-            "API Key": [
-              "{sourceId}:application:apply",
-              "{sourceId}:source:manage"
+            "OAuth 2.0": [
+              "{senderId}:application:apply",
+              "{senderId}:sender:manage"
             ]
           }
         ]
       }
     },
-    "/{sourceId}/{destinationId}/{applicationId}/docs/{docId}": {
+    "/{senderId}/{applicationId}/status": {
       "parameters": [
         {
           "schema": {
             "type": "string"
           },
-          "name": "sourceId",
-          "in": "path",
-          "required": true
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "destinationId",
+          "name": "senderId",
           "in": "path",
           "required": true
         },
@@ -436,379 +800,50 @@
           "name": "applicationId",
           "in": "path",
           "required": true
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "docId",
-          "in": "path",
-          "required": true
         }
       ],
-      "put": {
-        "summary": "Add Application Document",
-        "operationId": "add-application-doc",
-        "responses": {
-          "202": {
-            "description": "Accepted"
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Acceptable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "410": {
-            "description": "Gone",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "413": {
-            "description": "Request Entity Too Large",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "415": {
-            "description": "Unsupported Media Type",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          }
-        },
-        "description": "Lädt ein Antragsformuar oder einen Anhang hoch, um ihn dem Antrag hinzuzufügen.",
-        "requestBody": {
-          "content": {
-            "*/*": {
-              "schema": {
-                "type": "string",
-                "format": "binary"
-              }
-            }
-          }
-        },
-        "tags": [
-          "Application Transfer"
-        ],
-        "security": [
-          {
-            "API Key": [
-              "{sourceId}:application:apply",
-              "{sourceId}:source:manage"
-            ]
-          }
-        ]
-      }
-    },
-    "/{sourceId}/{destinationId}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "sourceId",
-          "in": "path",
-          "required": true
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "destinationId",
-          "in": "path",
-          "required": true
-        }
-      ],
-      "post": {
-        "summary": "Create Application",
-        "operationId": "create-application",
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "applicationId": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "applicationId": "45bb5b95-d853-4fc5-b45d-10aa9e15287a"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "406": {
-            "description": "Not Acceptable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "413": {
-            "description": "Request Entity Too Large",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "../models/application/metadata-no-id.json"
-              },
-              "examples": {
-                "example-1": {
-                  "value": {
-                    "additionalReferenceInfo": {
-                      "subject": "Anmeldung eines Gewerbes in Musterstadt",
-                      "caseId": "DF/8923"
-                    },
-                    "contentStructure": {
-                      "data": {
-                        "size": 9438,
-                        "schema": {
-                          "mimeType": "json",
-                          "schemaSource": "none"
-                        }
-                      },
-                      "docs": [
-                        {
-                          "docId": "1",
-                          "purpose": "form",
-                          "size": 39273,
-                          "mimeType": "application/pdf",
-                          "filename": "antrag.pdf",
-                          "description": "Das Antragsformular",
-                          "lang": {
-                            "lang": "de",
-                            "region": "DE"
-                          },
-                          "hash": {
-                            "algorithm": "SHA-256",
-                            "digest": "03ba204e50d126e4674c005e04d82e84c21366780af1f43bd54a37816b6ab340"
-                          }
-                        },
-                        {
-                          "docId": "2",
-                          "purpose": "attachment",
-                          "size": 894834874,
-                          "mimeType": "image/jpeg",
-                          "filename": "scan.jpg",
-                          "description": "Scan der Bescheinigung",
-                          "hash": {
-                            "algorithm": "SHA-256",
-                            "digest": "e1762f14d9924e37b32f1c81dfd256410af462f5136415c96877efa8c80345d0"
-                          }
-                        }
-                      ]
-                    },
-                    "publicServiceType": {
-                      "name": "Gewerbeanmeldung",
-                      "description": "Eine Gewerbeanmeldung ist immer dann notwendig, wenn Sie einen stehenden Gewerbebetrieb beginnen.",
-                      "leikaId": "99050012104000",
-                      "otherIdentifiers": [
-                        {
-                          "id": "8664844",
-                          "schemeURI": "service.niedersachsen.de",
-                          "schemeName": "Serviceportal Niedersachsen"
-                        },
-                        {
-                          "id": "354824",
-                          "schemeURI": "buerger.thueringen.de",
-                          "schemeName": "Zuständigkeitsfinder Thüringen"
-                        }
-                      ]
-                    },
-                    "applicants": [
-                      {
-                        "identifier": [
-                          {
-                            "id": "918",
-                            "schemeName": "Antragsportal",
-                            "schemeId": "urn:com:example:antragsportal:user"
-                          }
-                        ],
-                        "contactInfo": {
-                          "physicalAddress": {
-                            "street": "Kurzer Weg",
-                            "houseNumber": 7,
-                            "postalCode": "12345",
-                            "city": "string",
-                            "addressSupplement": "string"
-                          },
-                          "telephone": [
-                            {
-                              "number": "+49 89 32168-42",
-                              "mobile": true,
-                              "description": "string"
-                            }
-                          ],
-                          "electronicAddresses": [
-                            {
-                              "channelType": "Service-Account-Mailbox",
-                              "address": "string"
-                            }
-                          ]
-                        },
-                        "identityInfo": {
-                          "gender": "m",
-                          "nationality": "string",
-                          "familyName": "string",
-                          "givenName": "string",
-                          "birthName": "string",
-                          "doctoralDegrees": "string",
-                          "artisticName": "string",
-                          "dateOfBirth": "2020-04-16",
-                          "placeOfBirth": "string",
-                          "placeOfResidence": {
-                            "street": "string",
-                            "houseNumber": null,
-                            "houseNumberSuffix": "st",
-                            "postalCode": "strin",
-                            "city": "string",
-                            "addressSupplement": "string"
-                          }
-                        },
-                        "authentificationInfo": {
-                          "timestamp": "2020-04-16T06:50:39Z",
-                          "authentificationToken": {},
-                          "authentificationMethod": "string",
-                          "assuranceLevel": "low"
-                        }
-                      }
-                    ],
-                    "payment-info": {
-                      "reference": "TP/93/GDP",
-                      "usage": "Gewerbeanmeldung",
-                      "amount": 17.3,
-                      "timestamp": "2020-03-03T12:38:23Z",
-                      "status": "success",
-                      "transaction": "1f77c5f9b759db9cdce59988b24974d465c7be5e462a6185485559ff6e2dea82"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "description": "Metadaten des Antrags"
-        },
-        "description": "Übertragung initiieren",
-        "tags": [
-          "Application Transfer"
-        ],
-        "security": [
-          {
-            "API Key": [
-              "{sourceId}:application:apply",
-              "{sourceId}:source:manage"
-            ]
-          }
-        ]
-      },
       "get": {
-        "summary": "Get Destination Info",
-        "operationId": "get-destination-info",
+        "summary": "Get Status",
+        "tags": [
+          "status"
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/destination.json"
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "current": {
+                      "$ref": "../models/status-overview.json"
+                    },
+                    "history": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "../models/status-overview.json"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "current": {
+                        "code": "queued",
+                        "timestamp": "2020-05-20T08:31:01+02:00",
+                        "number": 2
+                      },
+                      "history": [
+                        {
+                          "code": "incomplete",
+                          "timestamp": "2020-05-20T08:30:08+02:00",
+                          "number": 1
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -854,27 +889,25 @@
             }
           }
         },
-        "description": "Ruft die Information über eine Destination ab",
-        "tags": [
-          "Transfer related Information"
-        ],
+        "operationId": "get-application-status",
+        "description": "Ruft den aktuellen Status der Übermittlung sowie einer Übersicht der bisherigen Übertragungshistorie ab.",
         "security": [
           {
-            "API Key": [
-              "{sourceId}:destination-info:read",
-              "{sourceId}:source:manage"
+            "OAuth 2.0": [
+              "{senderId}:status:read",
+              "{senderId}:sender:manage"
             ]
           }
         ]
       }
     },
-    "/{sourceId}/{destinationId}/{applicationId}": {
+    "/{senderId}/{destinationId}/{applicationId}/upload-status": {
       "parameters": [
         {
           "schema": {
             "type": "string"
           },
-          "name": "sourceId",
+          "name": "senderId",
           "in": "path",
           "required": true
         },
@@ -895,16 +928,88 @@
           "required": true
         }
       ],
-      "post": {
-        "summary": "Send Application",
-        "operationId": "commit-application",
+      "get": {
+        "summary": "Get Application Upload Status",
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/status-overview.json"
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "missing",
+                            "partial",
+                            "complete"
+                          ]
+                        },
+                        "length": {
+                          "type": "integer",
+                          "minimum": 0
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "length"
+                      ]
+                    },
+                    "docs": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "docId": {
+                            "type": "string",
+                            "pattern": "^[-_.A-Za-z0-9]+$",
+                            "description": "Id des Dokuments. Diese muss nur innerhalb des Antrags (Application) eindeutig sein. Es wird daher empfohlen, die IDs fortlaufend (1, 2 etc.) zu vergeben."
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "missing",
+                              "partial",
+                              "complete"
+                            ]
+                          },
+                          "length": {
+                            "type": "integer",
+                            "minimum": 0
+                          }
+                        },
+                        "required": [
+                          "docId",
+                          "status",
+                          "length"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "data": {
+                        "status": "complete",
+                        "length": 0
+                      },
+                      "docs": [
+                        {
+                          "status": "complete",
+                          "docId": "1",
+                          "length": 13046
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -948,39 +1053,18 @@
                 }
               }
             }
-          },
-          "413": {
-            "description": "Request Entity Too Large",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
           }
         },
-        "description": "Übertragung abschließen, Antrag absenden",
-        "parameters": [],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {}
-              }
-            }
-          },
-          "description": ""
-        },
+        "operationId": "get-application-upload-status",
+        "description": "Abfrage des Übermittlungsstatus. Listet alle Unterresourcen (data und docs) mit Übermittlungsstatus auf.",
         "tags": [
-          "Application Transfer"
+          "Transfer related Information"
         ],
         "security": [
           {
-            "API Key": [
-              "{sourceId}:application:apply",
-              "{sourceId}:source:manage"
+            "OAuth 2.0": [
+              "{senderId}:application:apply",
+              "{senderId}:sender:manage"
             ]
           }
         ]
@@ -1000,18 +1084,18 @@
   ],
   "components": {
     "securitySchemes": {
-      "API Key": {
+      "OAuth 2.0": {
         "type": "oauth2",
         "flows": {
           "clientCredentials": {
-            "tokenUrl": "beispieltokenURL.de",
+            "tokenUrl": "https://oauth.fiep-poc.de/invoke/pub.apigateway.oauth2/getAccessToken",
+            "refreshUrl": "https://oauth.fiep-poc.de/invoke/pub.oauth/refreshAccessToken",
             "scopes": {
-              "{sourceId}:application:apply": "Dieser Zugriffsbereich erlaubt es Anträge anzulegen, diesen zu aktualisieren und abzusenden.",
-              "{sourceId}:status:read": "Dieser Zufriffsbereich erlaubt es auf Statusmitteilungen zu einem übersendeten Antrag abzurufen.",
-              "{sourceId}:destination-info:read": "Dieser Zufriffsbereich erlaubt es Informationen von existierenden Destinationsabzurufen",
-              "{sourceId}:source:manage": "Dieser Zufriffsbereich erlaubt es alle Endpunkte einer "
-            },
-            "refreshUrl": "beispielrefreshURL.de"
+              "{senderId}:sender:manage": "Dieser Zufriffsbereich erlaubt es alle Endpunkte einer ",
+              "{senderId}:destination-info:read": "Dieser Zufriffsbereich erlaubt es Informationen von existierenden Destinationsabzurufen",
+              "{senderId}:status:read": "Dieser Zufriffsbereich erlaubt es auf Statusmitteilungen zu einem übersendeten Antrag abzurufen.",
+              "{senderId}:application:apply": "Dieser Zugriffsbereich erlaubt es Anträge anzulegen, diesen zu aktualisieren und abzusenden."
+            }
           }
         },
         "description": "Dieses Authentifizierungsmethode wird genutzt, um den Zugriff auf die Produktiv API zu autorisieren. "

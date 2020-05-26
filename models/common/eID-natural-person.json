@@ -1,17 +1,67 @@
 {
-  "title": "Identity Information with Address",
-  "description": "",
-  "allOf": [
-    {
-      "$ref": "./eID-org-acting-person.json"
-    },
-    {
-      "type": "object",
-      "properties": {
-        "placeOfResidence": {
-          "$ref": "./address-national.json"
-        }
+  "title": "Identity Information",
+  "description": "Informationen aus dem eID Funktion des Personalausweises",
+  "type": "object",
+  "x-examples": {
+    "example-1": {
+      "dateOfBirth": "1970-09-13",
+      "gender": "m",
+      "givenName": "WERNER",
+      "familyName": "MUSTERMANN",
+      "placeOfResidence": {
+        "type": "national",
+        "street": "KURZER WEG 7",
+        "postalCode": "12345",
+        "city": "ANKH-MORPORK"
       }
     }
-  ]
+  },
+  "properties": {
+    "placeOfBirth": {
+      "type": "string",
+      "description": "Geburtsort"
+    },
+    "dateOfBirth": {
+      "type": "string",
+      "format": "date",
+      "description": "Geburtsdatum"
+    },
+    "gender": {
+      "type": "string",
+      "enum": [
+        "m",
+        "w",
+        "x",
+        "d"
+      ],
+      "description": "Geschlecht (m=männlich, w=weiblich, x=keine Angabe, d=divers)"
+    },
+    "nationality": {
+      "type": "string",
+      "description": "Nationalität"
+    },
+    "artisticName": {
+      "type": "string",
+      "description": "Künstler- oder Ordensname"
+    },
+    "doctoralDegrees": {
+      "type": "string",
+      "description": "Akademischer Titel, z.B. \"Dr.\" oder \"Prof.\""
+    },
+    "birthName": {
+      "type": "string",
+      "description": "Geburtsname"
+    },
+    "givenName": {
+      "type": "string",
+      "description": "Vorname(n)"
+    },
+    "familyName": {
+      "type": "string",
+      "description": "Familienname"
+    },
+    "placeOfResidence": {
+      "$ref": "./address-national.json"
+    }
+  }
 }

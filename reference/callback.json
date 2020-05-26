@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Notification Callback",
-    "version": "0.4",
+    "version": "DEV",
     "contact": {
       "name": "FITKO",
       "url": "https://www.fitko.de/"
@@ -44,6 +44,7 @@
             "application/json": {
               "schema": {
                 "type": "object",
+                "additionalProperties": false,
                 "properties": {
                   "destinationId": {
                     "type": "string"
@@ -52,14 +53,22 @@
                     "type": "array",
                     "items": {
                       "type": "object",
+                      "additionalProperties": false,
                       "properties": {
                         "applicationId": {
                           "type": "string"
                         }
-                      }
+                      },
+                      "required": [
+                        "applicationId"
+                      ]
                     }
                   }
-                }
+                },
+                "required": [
+                  "destinationId",
+                  "applications"
+                ]
               },
               "examples": {
                 "example-1": {
@@ -68,6 +77,19 @@
                     "applications": [
                       {
                         "applicationId": "98472"
+                      }
+                    ]
+                  }
+                },
+                "example-2": {
+                  "value": {
+                    "destinationId": "123",
+                    "applications": [
+                      {
+                        "applicationId": "456"
+                      },
+                      {
+                        "applicationId": "789"
                       }
                     ]
                   }

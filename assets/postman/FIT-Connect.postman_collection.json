@@ -1,0 +1,1795 @@
+{
+	"info": {
+		"_postman_id": "aabcbd18-6782-49fb-8a37-5f3feb9857c2",
+		"name": "FIT-Connect",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SenderAPI",
+			"item": [
+				{
+					"name": "Application Transfer",
+					"item": [
+						{
+							"name": "Create Application",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "8d9e68fe-65d7-49b4-b638-e88d598b726d",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "f54c8eae-9e73-4ca1-a02a-a061091db619",
+										"exec": [
+											"pm.test(\"response must be 200 and has a body\", function () {",
+											"     // assert that the status code is 200",
+											"     pm.response.to.have.status(200);",
+											"     // assert that the response has a valid JSON body",
+											"     pm.response.to.be.withBody;",
+											"     pm.response.to.have.jsonBody(\"applicationId\");",
+											"});",
+											"",
+											"// extract body",
+											"var jsonData = JSON.parse(responseBody);",
+											"// set application-id",
+											"pm.collectionVariables.set('application_id', jsonData['applicationId']);",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"additionalReferenceInfo\": {\n        \"subject\": \"Anmeldung eines Gewerbes in Musterstadt\",\n        \"caseId\": \"DF/8923\"\n    },\n    \"contentStructure\": {\n        \"data\": {\n            \"schema\": {\n                \"mimeType\": \"json\",\n                \"schemaSource\": \"none\"\n            }\n        },\n        \"docs\": [\n            {\n                \"docId\": \"1\",\n                \"purpose\": \"form\",\n                \"size\": 13046,\n                \"mimeType\": \"application/pdf\",\n                \"filename\": \"test.pdf\",\n                \"description\": \"Das Antragsformular\",\n                \"lang\": {\n                    \"lang\": \"de\",\n                    \"region\": \"DE\"\n                },\n                \"hash\": {\n                    \"algorithm\": \"SHA-256\",\n                    \"digest\": \"bf37d894fdf9aeade63975ed648d49c3e8a7a773923597d2418915f54cd7c3b9\"\n                }\n            }\n        ]\n    },\n    \"publicServiceType\": {\n        \"name\": \"Gewerbeanmeldung\",\n        \"description\": \"Eine Gewerbeanmeldung ist immer dann notwendig, wenn Sie einen stehenden Gewerbebetrieb beginnen.\",\n        \"leikaId\": \"99050012104000\",\n        \"otherIdentifiers\": [\n            {\n                \"id\": \"8664844\",\n                \"schemeId\": \"service.niedersachsen.de\",\n                \"schemeName\": \"Serviceportal Niedersachsen\"\n            },\n            {\n                \"id\": \"354824\",\n                \"schemeId\": \"buerger.thueringen.de\",\n                \"schemeName\": \"Zuständigkeitsfinder Thüringen\"\n            }\n        ]\n    },\n    \"applicants\": [\n        {\n        \t\"type\": \"person\",\n            \"authentificationInfo\": {\n                \"assuranceLevel\": \"high\",\n                \"authentificationMethod\": \"eID\",\n                \"timestamp\": \"2020-03-03T12:38:23Z\"\n            },\n            \"identityInfo\": {\n                \"dateOfBirth\": \"1970-09-13\",\n                \"gender\": \"m\",\n                \"givenName\": \"WERNER\",\n                \"familyName\": \"MUSTERMANN\",\n                \"placeOfResidence\": {\n                \t\"type\": \"national\",\n                    \"street\": \"KURZER WEG 7\",\n                    \"postalCode\": \"12345\",\n                    \"city\": \"ANKH-MORPORK\"\n                }\n            },\n            \"contactInfo\": {\n                \"electronicAddresses\": [\n                    {\n                        \"channelType\": \"Service-Account-Mailbox\",\n                        \"address\": \"3b0c9c8c-0801-45f0-a331-2abfc9db78d0\"\n                    }\n                ],\n                \"physicalAddress\": {\n                \t\"type\": \"national\",\n                    \"street\": \"Kurzer Weg\",\n                    \"houseNumber\": \"7\",\n                    \"postalCode\": \"12345\",\n                    \"city\": \"Ankh-Morpork\"\n                },\n                \"telephone\": [\n                    {\n                        \"number\": \"+49 89 32168-42\",\n                        \"mobile\": true,\n                        \"description\": \"work\"\n                    }\n                ]\n            }\n        }\n    ],\n    \"paymentInfo\": {\n        \"reference\": \"TP/93/GDP\",\n        \"usage\": \"Gewerbeanmeldung\",\n        \"amount\": 17.3,\n        \"timestamp\": \"2020-03-03T12:38:23Z\",\n        \"status\": \"success\",\n        \"transaction\": \"1f77c5f9b759db9cdce59988b24974d465c7be5e462a6185485559ff6e2dea82\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{sender_url}}{{sender_id}}/{{destination_id}}",
+									"host": [
+										"{{sender_url}}{{sender_id}}"
+									],
+									"path": [
+										"{{destination_id}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Create Application",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"additionalReferenceInfo\": {\n        \"subject\": \"Anmeldung eines Gewerbes in Musterstadt\",\n        \"caseId\": \"DF/8923\"\n    },\n    \"contentStructure\": {\n        \"data\": {\n            \"schema\": {\n                \"mimeType\": \"json\",\n                \"schemaSource\": \"none\"\n            }\n        },\n        \"docs\": [\n            {\n                \"docId\": \"1\",\n                \"purpose\": \"form\",\n                \"size\": 13046,\n                \"mimeType\": \"application/pdf\",\n                \"filename\": \"test.pdf\",\n                \"description\": \"Das Antragsformular\",\n                \"lang\": {\n                    \"lang\": \"de\",\n                    \"region\": \"DE\"\n                },\n                \"hash\": {\n                    \"algorithm\": \"SHA-256\",\n                    \"digest\": \"bf37d894fdf9aeade63975ed648d49c3e8a7a773923597d2418915f54cd7c3b9\"\n                }\n            }\n        ]\n    },\n    \"publicServiceType\": {\n        \"name\": \"Gewerbeanmeldung\",\n        \"description\": \"Eine Gewerbeanmeldung ist immer dann notwendig, wenn Sie einen stehenden Gewerbebetrieb beginnen.\",\n        \"leikaId\": \"99050012104000\",\n        \"otherIdentifiers\": [\n            {\n                \"id\": \"8664844\",\n                \"schemeId\": \"service.niedersachsen.de\",\n                \"schemeName\": \"Serviceportal Niedersachsen\"\n            },\n            {\n                \"id\": \"354824\",\n                \"schemeId\": \"buerger.thueringen.de\",\n                \"schemeName\": \"Zuständigkeitsfinder Thüringen\"\n            }\n        ]\n    },\n    \"applicants\": [\n        {\n        \t\"type\": \"person\",\n            \"authentificationInfo\": {\n                \"assuranceLevel\": \"high\",\n                \"authentificationMethod\": \"eID\",\n                \"timestamp\": \"2020-03-03T12:38:23Z\"\n            },\n            \"identityInfo\": {\n                \"dateOfBirth\": \"1970-09-13\",\n                \"gender\": \"m\",\n                \"givenName\": \"WERNER\",\n                \"familyName\": \"MUSTERMANN\",\n                \"placeOfResidence\": {\n                \t\"type\": \"national\",\n                    \"street\": \"KURZER WEG 7\",\n                    \"postalCode\": \"12345\",\n                    \"city\": \"ANKH-MORPORK\"\n                }\n            },\n            \"contactInfo\": {\n                \"electronicAddresses\": [\n                    {\n                        \"channelType\": \"Service-Account-Mailbox\",\n                        \"address\": \"3b0c9c8c-0801-45f0-a331-2abfc9db78d0\"\n                    }\n                ],\n                \"physicalAddress\": {\n                \t\"type\": \"national\",\n                    \"street\": \"Kurzer Weg\",\n                    \"houseNumber\": \"7\",\n                    \"postalCode\": \"12345\",\n                    \"city\": \"Ankh-Morpork\"\n                },\n                \"telephone\": [\n                    {\n                        \"number\": \"+49 89 32168-42\",\n                        \"mobile\": true,\n                        \"description\": \"work\"\n                    }\n                ]\n            }\n        }\n    ],\n    \"paymentInfo\": {\n        \"reference\": \"TP/93/GDP\",\n        \"usage\": \"Gewerbeanmeldung\",\n        \"amount\": 17.3,\n        \"timestamp\": \"2020-03-03T12:38:23Z\",\n        \"status\": \"success\",\n        \"transaction\": \"1f77c5f9b759db9cdce59988b24974d465c7be5e462a6185485559ff6e2dea82\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{sender_url}}{{sender_id}}/{{destination_id}}",
+											"host": [
+												"{{sender_url}}{{sender_id}}"
+											],
+											"path": [
+												"{{destination_id}}"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "*"
+										},
+										{
+											"key": "content-type",
+											"value": "application/json"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 20 May 2020 06:30:08 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "56"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"applicationId\": \"0c508e3f-2353-4206-9a1e-34b2e864d5a8\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Add Applicaiton Data",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c110688c-44b0-4b0d-a997-8f5f432ba340",
+										"exec": [
+											"pm.test(\"response must be 202 Accepted and without body\", function () {",
+											"     // assert that the status code is 200",
+											"     pm.response.to.have.status(202); ",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"F99000001\": \"string\",\n    \"G99000001\": {\n        \"F99000002\": \"string\",\n        \"F99000003\": 42\n    },\n    \"G99000002\": [\n        {\n            \"F99000004\": true,\n            \"G99000001\": {\n                \"F99000002\": \"string\",\n                \"F99000003\": 17\n            }\n        },\n        {\n            \"F99000004\": true,\n            \"G99000001\": {\n                \"F99000002\": \"string\",\n                \"F99000003\": 24\n            }\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{sender_url}}{{sender_id}}/{{destination_id}}/{{application_id}}/data",
+									"host": [
+										"{{sender_url}}{{sender_id}}"
+									],
+									"path": [
+										"{{destination_id}}",
+										"{{application_id}}",
+										"data"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Add Applicaiton Data",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"F99000001\": \"string\",\n    \"G99000001\": {\n        \"F99000002\": \"string\",\n        \"F99000003\": 42\n    },\n    \"G99000002\": [\n        {\n            \"F99000004\": true,\n            \"G99000001\": {\n                \"F99000002\": \"string\",\n                \"F99000003\": 17\n            }\n        },\n        {\n            \"F99000004\": true,\n            \"G99000001\": {\n                \"F99000002\": \"string\",\n                \"F99000003\": 24\n            }\n        }\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{sender_url}}{{sender_id}}/{{destination_id}}/{{application_id}}/data",
+											"host": [
+												"{{sender_url}}{{sender_id}}"
+											],
+											"path": [
+												"{{destination_id}}",
+												"{{application_id}}",
+												"data"
+											]
+										}
+									},
+									"status": "Accepted",
+									"code": 202,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "*"
+										},
+										{
+											"key": "content-length",
+											"value": "0"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 20 May 2020 06:30:24 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Add Application Document",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "726f1b84-acd9-4bc7-a0cc-78e4d788e5ea",
+										"exec": [
+											"pm.test(\"response must be 202 Accepted and without body\", function () {",
+											"     // assert that the status code is 200",
+											"     pm.response.to.have.status(202);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "file",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "file",
+									"file": {
+										"src": "test.pdf"
+									},
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{sender_url2}}{{sender_id}}/{{destination_id}}/{{application_id}}/docs/{{doc_id}}",
+									"host": [
+										"{{sender_url2}}{{sender_id}}"
+									],
+									"path": [
+										"{{destination_id}}",
+										"{{application_id}}",
+										"docs",
+										"{{doc_id}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Add Application Document",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "file",
+												"value": "",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "file",
+											"file": {
+												"src": "test.pdf"
+											},
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{sender_url2}}{{sender_id}}/{{destination_id}}/{{application_id}}/docs/{{doc_id}}",
+											"host": [
+												"{{sender_url2}}{{sender_id}}"
+											],
+											"path": [
+												"{{destination_id}}",
+												"{{application_id}}",
+												"docs",
+												"{{doc_id}}"
+											]
+										}
+									},
+									"status": "Accepted",
+									"code": 202,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Content-Length",
+											"value": "0"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 20 May 2020 06:30:50 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Send Application",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c839dbc4-8af9-49ff-940d-95f496a40a5a",
+										"exec": [
+											"pm.test(\"response must be 200 and have a body\", function () {",
+											"     // assert that the status code is 200",
+											"     pm.response.to.have.status(200); ",
+											"     // assert that the response has a valid JSON body",
+											"     pm.response.to.be.withBody;",
+											"});",
+											"",
+											"// extract body",
+											"var jsonData = JSON.parse(responseBody);",
+											"// set application-id",
+											"pm.test(\"Application current status should be Queued\", function(){",
+											"    // assert that application current status is \"queued\"",
+											"    pm.expect(jsonData.code).to.equal(\"queued\");",
+											"})",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{sender_url}}{{sender_id}}/{{destination_id}}/{{application_id}}",
+									"host": [
+										"{{sender_url}}{{sender_id}}"
+									],
+									"path": [
+										"{{destination_id}}",
+										"{{application_id}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Send Application",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{sender_url}}{{sender_id}}/{{destination_id}}/{{application_id}}",
+											"host": [
+												"{{sender_url}}{{sender_id}}"
+											],
+											"path": [
+												"{{destination_id}}",
+												"{{application_id}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "*"
+										},
+										{
+											"key": "content-type",
+											"value": "application/json"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 20 May 2020 06:31:01 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "75"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": \"queued\",\n    \"timestamp\": \"2020-05-20T08:31:01.135842+02:00\",\n    \"number\": 2\n}"
+								}
+							]
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Transfer Related Information",
+					"item": [
+						{
+							"name": "Get Application Upload Status",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c110688c-44b0-4b0d-a997-8f5f432ba340",
+										"exec": [
+											"pm.test(\"response must be 202 Accepted and without body\", function () {",
+											"     // assert that the status code is 200",
+											"     pm.response.to.have.status(202);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sender_url}}{{sender_id}}/{{destination_id}}/{{application_id}}/upload-status",
+									"host": [
+										"{{sender_url}}{{sender_id}}"
+									],
+									"path": [
+										"{{destination_id}}",
+										"{{application_id}}",
+										"upload-status"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get Application Upload Status",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{sender_url}}{{sender_id}}/{{destination_id}}/{{application_id}}/upload-status",
+											"host": [
+												"{{sender_url}}{{sender_id}}"
+											],
+											"path": [
+												"{{destination_id}}",
+												"{{application_id}}",
+												"upload-status"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "*"
+										},
+										{
+											"key": "content-type",
+											"value": "application/json"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 20 May 2020 06:31:16 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "99"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"status\": \"complete\",\n        \"length\": 0\n    },\n    \"docs\": [\n        {\n            \"status\": \"complete\",\n            \"docId\": \"1\",\n            \"length\": 13046\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Get Destination Info",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c110688c-44b0-4b0d-a997-8f5f432ba340",
+										"exec": [
+											"pm.test(\"response must be 202 Accepted and without body\", function () {",
+											"     // assert that the status code is 200",
+											"     pm.response.to.have.status(202); ",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sender_url}}{{sender_id}}/{{destination_id}}",
+									"host": [
+										"{{sender_url}}{{sender_id}}"
+									],
+									"path": [
+										"{{destination_id}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get Destination (Sender)",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{sender_url}}{{sender_id}}/{{destination_id}}",
+											"host": [
+												"{{sender_url}}{{sender_id}}"
+											],
+											"path": [
+												"{{destination_id}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "*"
+										},
+										{
+											"key": "content-type",
+											"value": "application/json"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 20 May 2020 06:35:18 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "778"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"publicOrganization\": {\n        \"organizationName\": \"Gewerbeamt Musterstadt\",\n        \"address\": {\n            \"type\": \"national\",\n            \"street\": \"Kurzer Weg\",\n            \"houseNumber\": \"7\",\n            \"postalCode\": \"12345\",\n            \"city\": \"Ankh-Morpork\"\n        },\n        \"contact\": {\n            \"telephone\": [\n                {\n                    \"number\": \"+49 89 32168-0\",\n                    \"mobile\": false,\n                    \"description\": \"work\"\n                }\n            ],\n            \"email\": \"behoerde@example.com\"\n        }\n    },\n    \"technicalContact\": [\n        {\n            \"formOfAddress\": \"Herr\",\n            \"academicTitle\": \"Dr.\",\n            \"firstName\": \"Kunibert\",\n            \"lastName\": \"Vonundzu\",\n            \"contact\": {\n                \"telephone\": [\n                    {\n                        \"number\": \"+49 89 32168-42\",\n                        \"mobile\": false,\n                        \"description\": \"work\"\n                    },\n                    {\n                        \"number\": \"+49 123 456789\",\n                        \"mobile\": true,\n                        \"description\": \"work\"\n                    }\n                ],\n                \"email\": \"kunibert.vonundzu@example.com\"\n            }\n        }\n    ],\n    \"schemas\": [\n        {\n            \"mimeType\": \"json\",\n            \"schemaSource\": \"none\"\n        }\n    ],\n    \"callback\": {\n        \"callbackURI\": \"http://127.0.0.1:4010/voluptas\"\n    },\n    \"destinationId\": \"7881dba9-4055-4854-8b6d-11ea5b7f3047\"\n}"
+								}
+							]
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Status",
+					"item": [
+						{
+							"name": "Get Status",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c839dbc4-8af9-49ff-940d-95f496a40a5a",
+										"exec": [
+											"pm.test(\"response must be 200 and have a body\", function () {",
+											"     // assert that the status code is 200",
+											"     pm.response.to.have.status(200); ",
+											"     // assert that the response has a valid JSON body",
+											"     pm.response.to.be.withBody;",
+											"});",
+											"",
+											"// extract body",
+											"var jsonData = JSON.parse(responseBody);",
+											"// set application-id",
+											"pm.test(\"Application current status should be Queued\", function(){",
+											"    // assert that application current status is \"queued\"",
+											"    pm.expect(jsonData.code).to.equal(\"queued\");",
+											"})",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sender_url}}{{sender_id}}/{{application_id}}/status",
+									"host": [
+										"{{sender_url}}{{sender_id}}"
+									],
+									"path": [
+										"{{application_id}}",
+										"status"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get Status",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{sender_url}}{{sender_id}}/{{application_id}}/status",
+											"host": [
+												"{{sender_url}}{{sender_id}}"
+											],
+											"path": [
+												"{{application_id}}",
+												"status"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "*"
+										},
+										{
+											"key": "content-type",
+											"value": "application/json"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 20 May 2020 06:31:41 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "165"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"current\": {\n        \"code\": \"queued\",\n        \"timestamp\": \"2020-05-20T08:31:01+02:00\",\n        \"number\": 2\n    },\n    \"history\": [\n        {\n            \"code\": \"incomplete\",\n            \"timestamp\": \"2020-05-20T08:30:08+02:00\",\n            \"number\": 1\n        }\n    ]\n}"
+								}
+							]
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "SubscriberAPI",
+			"item": [
+				{
+					"name": "Destination Management",
+					"item": [
+						{
+							"name": "Create Destination",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5b7682e2-fdec-491d-ac53-915809a7062a",
+										"exec": [
+											"pm.test(\"response must be 200 and have a body\", function () {",
+											"     // assert that the status code is 200",
+											"     pm.response.to.have.status(200); ",
+											"     // assert that the response has a valid JSON body",
+											"     pm.response.to.be.withBody;",
+											"     pm.response.to.have.jsonBody(\"destinationId\"); ",
+											"});",
+											"",
+											"// extract body",
+											"var jsonData = JSON.parse(responseBody);",
+											"// set application-id",
+											"pm.collectionVariables.set('destination_id', jsonData['destinationId']);",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"publicOrganization\": {\n        \"organizationName\": \"Gewerbeamt Musterstadt\",\n        \"address\": {\n        \t\"type\": \"national\",\n            \"street\": \"Kurzer Weg\",\n            \"houseNumber\": \"7\",\n            \"postalCode\": \"12345\",\n            \"city\": \"Ankh-Morpork\"\n        },\n        \"contact\": {\n            \"telephone\": [\n            \t{\n                \t\"number\": \"+49 89 32168-0\",\n                \t\"mobile\": false,\n                \t\"description\": \"work\"\n            \t}\n            ],\n            \"email\": \"behoerde@example.com\"\n        }\n    },\n    \"technicalContact\": [\n    \t{\n\t        \"formOfAddress\": \"Herr\",\n\t        \"academicTitle\": \"Dr.\",\n\t        \"firstName\": \"Kunibert\",\n\t        \"lastName\": \"Vonundzu\",\n\t        \"contact\": {\n\t            \"telephone\": [\n\t                {\n\t                    \"number\": \"+49 89 32168-42\",\n\t                    \"mobile\": false,\n\t                    \"description\": \"work\"\n\t                },\n\t                {\n\t                    \"number\": \"+49 123 456789\",\n\t                    \"mobile\": true,\n\t                    \"description\": \"work\"\n\t                }\n\t            ],\n\t            \"email\": \"kunibert.vonundzu@example.com\"\n\t        }\n    \t}\n    ],\n    \"schemas\": [\n        {\n            \"mimeType\": \"json\",\n            \"schemaSource\": \"none\"\n        }\n    ],\n    \"callback\": {\n        \"callbackURI\": \"http://127.0.0.1:4010/voluptas\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{subscriber_url}}{{subscriber_id}}/destinations",
+									"host": [
+										"{{subscriber_url}}{{subscriber_id}}"
+									],
+									"path": [
+										"destinations"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Create Destination",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"publicOrganization\": {\n        \"organizationName\": \"Gewerbeamt Musterstadt\",\n        \"address\": {\n        \t\"type\": \"national\",\n            \"street\": \"Kurzer Weg\",\n            \"houseNumber\": \"7\",\n            \"postalCode\": \"12345\",\n            \"city\": \"Ankh-Morpork\"\n        },\n        \"contact\": {\n            \"telephone\": [\n            \t{\n                \t\"number\": \"+49 89 32168-0\",\n                \t\"mobile\": false,\n                \t\"description\": \"work\"\n            \t}\n            ],\n            \"email\": \"behoerde@example.com\"\n        }\n    },\n    \"technicalContact\": [\n    \t{\n\t        \"formOfAddress\": \"Herr\",\n\t        \"academicTitle\": \"Dr.\",\n\t        \"firstName\": \"Kunibert\",\n\t        \"lastName\": \"Vonundzu\",\n\t        \"contact\": {\n\t            \"telephone\": [\n\t                {\n\t                    \"number\": \"+49 89 32168-42\",\n\t                    \"mobile\": false,\n\t                    \"description\": \"work\"\n\t                },\n\t                {\n\t                    \"number\": \"+49 123 456789\",\n\t                    \"mobile\": true,\n\t                    \"description\": \"work\"\n\t                }\n\t            ],\n\t            \"email\": \"kunibert.vonundzu@example.com\"\n\t        }\n    \t}\n    ],\n    \"schemas\": [\n        {\n            \"mimeType\": \"json\",\n            \"schemaSource\": \"none\"\n        }\n    ],\n    \"callback\": {\n        \"callbackURI\": \"http://127.0.0.1:4010/voluptas\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{subscriber_url}}{{subscriber_id}}/destinations",
+											"host": [
+												"{{subscriber_url}}{{subscriber_id}}"
+											],
+											"path": [
+												"destinations"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "*"
+										},
+										{
+											"key": "content-type",
+											"value": "application/json"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 20 May 2020 06:16:27 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "56"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"destinationId\": \"7881dba9-4055-4854-8b6d-11ea5b7f3047\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Get Destination",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{subscriber_url}}{{subscriber_id}}/destinations/{{destination_id}}",
+									"host": [
+										"{{subscriber_url}}{{subscriber_id}}"
+									],
+									"path": [
+										"destinations",
+										"{{destination_id}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get Destination",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{subscriber_url}}{{subscriber_id}}/destinations/{{destination_id}}",
+											"host": [
+												"{{subscriber_url}}{{subscriber_id}}"
+											],
+											"path": [
+												"destinations",
+												"{{destination_id}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "*"
+										},
+										{
+											"key": "content-type",
+											"value": "application/json"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 20 May 2020 06:38:22 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "778"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"publicOrganization\": {\n        \"organizationName\": \"Gewerbeamt Musterstadt\",\n        \"address\": {\n            \"type\": \"national\",\n            \"street\": \"Kurzer Weg\",\n            \"houseNumber\": \"7\",\n            \"postalCode\": \"12345\",\n            \"city\": \"Ankh-Morpork\"\n        },\n        \"contact\": {\n            \"telephone\": [\n                {\n                    \"number\": \"+49 89 32168-0\",\n                    \"mobile\": false,\n                    \"description\": \"work\"\n                }\n            ],\n            \"email\": \"behoerde@example.com\"\n        }\n    },\n    \"technicalContact\": [\n        {\n            \"formOfAddress\": \"Herr\",\n            \"academicTitle\": \"Dr.\",\n            \"firstName\": \"Kunibert\",\n            \"lastName\": \"Vonundzu\",\n            \"contact\": {\n                \"telephone\": [\n                    {\n                        \"number\": \"+49 89 32168-42\",\n                        \"mobile\": false,\n                        \"description\": \"work\"\n                    },\n                    {\n                        \"number\": \"+49 123 456789\",\n                        \"mobile\": true,\n                        \"description\": \"work\"\n                    }\n                ],\n                \"email\": \"kunibert.vonundzu@example.com\"\n            }\n        }\n    ],\n    \"schemas\": [\n        {\n            \"mimeType\": \"json\",\n            \"schemaSource\": \"none\"\n        }\n    ],\n    \"callback\": {\n        \"callbackURI\": \"http://127.0.0.1:4010/voluptas\"\n    },\n    \"destinationId\": \"7881dba9-4055-4854-8b6d-11ea5b7f3047\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Update Destination",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5b7682e2-fdec-491d-ac53-915809a7062a",
+										"exec": [
+											"pm.test(\"response must be 200 and have a body\", function () {",
+											"     // assert that the status code is 200",
+											"     pm.response.to.have.status(200); ",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"destinationId\": \"{{destination_id}}\",\n    \"publicOrganization\": {\n        \"organizationName\": \"Gewerbeamt Ankh-Morpork\",\n        \"address\": {\n        \t\"type\": \"national\",\n            \"street\": \"Kurzer Weg\",\n            \"houseNumber\": \"7\",\n            \"postalCode\": \"12345\",\n            \"city\": \"Ankh-Morpork\"\n        },\n        \"contact\": {\n            \"telephone\": [\n            \t{\n\t                \"number\": \"+49 89 32168-0\",\n\t                \"mobile\": false,\n\t                \"description\": \"work\"\n\t            }\n\t        ],\n            \"email\": \"behoerde@example.com\"\n        }\n    },\n    \"technicalContact\": [\n    \t{\n\t        \"formOfAddress\": \"Herr\",\n\t        \"academicTitle\": \"Dr.\",\n\t        \"firstName\": \"Kunibert\",\n\t        \"lastName\": \"Vonundzu\",\n\t        \"contact\": {\n\t            \"telephone\": [\n\t                {\n\t                    \"number\": \"+49 89 32168-42\",\n\t                    \"mobile\": false,\n\t                    \"description\": \"work\"\n\t                },\n\t                {\n\t                    \"number\": \"+49 123 456789\",\n\t                    \"mobile\": true,\n\t                    \"description\": \"work\"\n\t                }\n\t            ],\n\t            \"email\": \"kunibert.vonundzu@example.com\"\n\t        }\n    \t}\n    ],\n    \"schemas\": [\n        {\n            \"mimeType\": \"json\",\n            \"schemaSource\": \"none\"\n        }\n    ],\n    \"callback\": {\n        \"callbackURI\": \"http://127.0.0.1:4010/voluptas\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{subscriber_url}}{{subscriber_id}}/destinations/{{destination_id}}",
+									"host": [
+										"{{subscriber_url}}{{subscriber_id}}"
+									],
+									"path": [
+										"destinations",
+										"{{destination_id}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Update Destination",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"destinationId\": \"{{destination_id}}\",\n    \"publicOrganization\": {\n        \"organizationName\": \"Gewerbeamt Ankh-Morpork\",\n        \"address\": {\n        \t\"type\": \"national\",\n            \"street\": \"Kurzer Weg\",\n            \"houseNumber\": \"7\",\n            \"postalCode\": \"12345\",\n            \"city\": \"Ankh-Morpork\"\n        },\n        \"contact\": {\n            \"telephone\": [\n            \t{\n\t                \"number\": \"+49 89 32168-0\",\n\t                \"mobile\": false,\n\t                \"description\": \"work\"\n\t            }\n\t        ],\n            \"email\": \"behoerde@example.com\"\n        }\n    },\n    \"technicalContact\": [\n    \t{\n\t        \"formOfAddress\": \"Herr\",\n\t        \"academicTitle\": \"Dr.\",\n\t        \"firstName\": \"Kunibert\",\n\t        \"lastName\": \"Vonundzu\",\n\t        \"contact\": {\n\t            \"telephone\": [\n\t                {\n\t                    \"number\": \"+49 89 32168-42\",\n\t                    \"mobile\": false,\n\t                    \"description\": \"work\"\n\t                },\n\t                {\n\t                    \"number\": \"+49 123 456789\",\n\t                    \"mobile\": true,\n\t                    \"description\": \"work\"\n\t                }\n\t            ],\n\t            \"email\": \"kunibert.vonundzu@example.com\"\n\t        }\n    \t}\n    ],\n    \"schemas\": [\n        {\n            \"mimeType\": \"json\",\n            \"schemaSource\": \"none\"\n        }\n    ],\n    \"callback\": {\n        \"callbackURI\": \"http://127.0.0.1:4010/voluptas\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{subscriber_url}}{{subscriber_id}}/destinations/{{destination_id}}",
+											"host": [
+												"{{subscriber_url}}{{subscriber_id}}"
+											],
+											"path": [
+												"destinations",
+												"{{destination_id}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "*"
+										},
+										{
+											"key": "content-length",
+											"value": "0"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 20 May 2020 06:39:35 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Delete Destination",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{subscriber_url}}{{subscriber_id}}/destinations/{{destination_id}}",
+									"host": [
+										"{{subscriber_url}}{{subscriber_id}}"
+									],
+									"path": [
+										"destinations",
+										"{{destination_id}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Delete Destination",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{subscriber_url}}{{subscriber_id}}/destinations/{{destination_id}}",
+											"host": [
+												"{{subscriber_url}}{{subscriber_id}}"
+											],
+											"path": [
+												"destinations",
+												"{{destination_id}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "*"
+										},
+										{
+											"key": "content-length",
+											"value": "0"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 20 May 2020 06:39:51 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "List Destinations",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{subscriber_url}}{{subscriber_id}}/destinations",
+									"host": [
+										"{{subscriber_url}}{{subscriber_id}}"
+									],
+									"path": [
+										"destinations"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "List Destinations",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{subscriber_url}}{{subscriber_id}}/destinations",
+											"host": [
+												"{{subscriber_url}}{{subscriber_id}}"
+											],
+											"path": [
+												"destinations"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "*"
+										},
+										{
+											"key": "content-type",
+											"value": "application/json"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 20 May 2020 06:38:04 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1559"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"publicOrganization\": {\n            \"organizationName\": \"Gewerbeamt Musterstadt\",\n            \"address\": {\n                \"type\": \"national\",\n                \"street\": \"Kurzer Weg\",\n                \"houseNumber\": \"7\",\n                \"postalCode\": \"12345\",\n                \"city\": \"Ankh-Morpork\"\n            },\n            \"contact\": {\n                \"telephone\": [\n                    {\n                        \"number\": \"+49 89 32168-0\",\n                        \"mobile\": false,\n                        \"description\": \"work\"\n                    }\n                ],\n                \"email\": \"behoerde@example.com\"\n            }\n        },\n        \"technicalContact\": [\n            {\n                \"formOfAddress\": \"Herr\",\n                \"academicTitle\": \"Dr.\",\n                \"firstName\": \"Kunibert\",\n                \"lastName\": \"Vonundzu\",\n                \"contact\": {\n                    \"telephone\": [\n                        {\n                            \"number\": \"+49 89 32168-42\",\n                            \"mobile\": false,\n                            \"description\": \"work\"\n                        },\n                        {\n                            \"number\": \"+49 123 456789\",\n                            \"mobile\": true,\n                            \"description\": \"work\"\n                        }\n                    ],\n                    \"email\": \"kunibert.vonundzu@example.com\"\n                }\n            }\n        ],\n        \"schemas\": [\n            {\n                \"mimeType\": \"json\",\n                \"schemaSource\": \"none\"\n            }\n        ],\n        \"callback\": {\n            \"callbackURI\": \"http://127.0.0.1:4010/voluptas\"\n        },\n        \"destinationId\": \"0ddf3ab5-dd89-4e04-9ecd-b2c50b0b4efd\"\n    },\n    {\n        \"publicOrganization\": {\n            \"organizationName\": \"Gewerbeamt Musterstadt\",\n            \"address\": {\n                \"type\": \"national\",\n                \"street\": \"Kurzer Weg\",\n                \"houseNumber\": \"7\",\n                \"postalCode\": \"12345\",\n                \"city\": \"Ankh-Morpork\"\n            },\n            \"contact\": {\n                \"telephone\": [\n                    {\n                        \"number\": \"+49 89 32168-0\",\n                        \"mobile\": false,\n                        \"description\": \"work\"\n                    }\n                ],\n                \"email\": \"behoerde@example.com\"\n            }\n        },\n        \"technicalContact\": [\n            {\n                \"formOfAddress\": \"Herr\",\n                \"academicTitle\": \"Dr.\",\n                \"firstName\": \"Kunibert\",\n                \"lastName\": \"Vonundzu\",\n                \"contact\": {\n                    \"telephone\": [\n                        {\n                            \"number\": \"+49 89 32168-42\",\n                            \"mobile\": false,\n                            \"description\": \"work\"\n                        },\n                        {\n                            \"number\": \"+49 123 456789\",\n                            \"mobile\": true,\n                            \"description\": \"work\"\n                        }\n                    ],\n                    \"email\": \"kunibert.vonundzu@example.com\"\n                }\n            }\n        ],\n        \"schemas\": [\n            {\n                \"mimeType\": \"json\",\n                \"schemaSource\": \"none\"\n            }\n        ],\n        \"callback\": {\n            \"callbackURI\": \"http://127.0.0.1:4010/voluptas\"\n        },\n        \"destinationId\": \"7881dba9-4055-4854-8b6d-11ea5b7f3047\"\n    }\n]"
+								}
+							]
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Application Retrieval",
+					"item": [
+						{
+							"name": "List Applications",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0d082c8d-1593-4789-babc-b8c04e277f8d",
+										"exec": [
+											"pm.test(\"response must be 200 Ok and has a body\", function () {",
+											"     // assert that the status code is 200",
+											"     pm.response.to.have.status(200); ",
+											"     // assert that the response has a valid JSON body",
+											"     pm.response.to.be.withBody;",
+											"});",
+											"",
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Content-Type header is present\", function () {",
+											"    pm.expect(jsonData[0], pm.collectionVariables.get(\"application_id\"));",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{subscriber_url}}{{subscriber_id}}/destinations/{{destination_id}}/applications",
+									"host": [
+										"{{subscriber_url}}{{subscriber_id}}"
+									],
+									"path": [
+										"destinations",
+										"{{destination_id}}",
+										"applications"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "List Applications",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{subscriber_url}}{{subscriber_id}}/destinations/{{destination_id}}/applications",
+											"host": [
+												"{{subscriber_url}}{{subscriber_id}}"
+											],
+											"path": [
+												"destinations",
+												"{{destination_id}}",
+												"applications"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "*"
+										},
+										{
+											"key": "content-type",
+											"value": "application/json"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 20 May 2020 06:36:19 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1831"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"additionalReferenceInfo\": {\n            \"subject\": \"Anmeldung eines Gewerbes in Musterstadt\",\n            \"caseId\": \"DF/8923\"\n        },\n        \"contentStructure\": {\n            \"data\": {\n                \"schema\": {\n                    \"mimeType\": \"json\",\n                    \"schemaSource\": \"none\"\n                }\n            },\n            \"docs\": [\n                {\n                    \"docId\": \"1\",\n                    \"purpose\": \"form\",\n                    \"size\": 13046,\n                    \"mimeType\": \"application/pdf\",\n                    \"filename\": \"test.pdf\",\n                    \"description\": \"Das Antragsformular\",\n                    \"lang\": {\n                        \"lang\": \"de\",\n                        \"region\": \"DE\"\n                    },\n                    \"hash\": {\n                        \"algorithm\": \"SHA-256\",\n                        \"digest\": \"bf37d894fdf9aeade63975ed648d49c3e8a7a773923597d2418915f54cd7c3b9\"\n                    }\n                }\n            ]\n        },\n        \"publicServiceType\": {\n            \"name\": \"Gewerbeanmeldung\",\n            \"description\": \"Eine Gewerbeanmeldung ist immer dann notwendig, wenn Sie einen stehenden Gewerbebetrieb beginnen.\",\n            \"leikaId\": \"99050012104000\",\n            \"otherIdentifiers\": [\n                {\n                    \"id\": \"8664844\",\n                    \"schemeId\": \"service.niedersachsen.de\",\n                    \"schemeName\": \"Serviceportal Niedersachsen\"\n                },\n                {\n                    \"id\": \"354824\",\n                    \"schemeId\": \"buerger.thueringen.de\",\n                    \"schemeName\": \"Zuständigkeitsfinder Thüringen\"\n                }\n            ]\n        },\n        \"applicants\": [\n            {\n                \"type\": \"person\",\n                \"authentificationInfo\": {\n                    \"assuranceLevel\": \"high\",\n                    \"authentificationMethod\": \"eID\",\n                    \"timestamp\": \"2020-03-03T12:38:23Z\"\n                },\n                \"identityInfo\": {\n                    \"dateOfBirth\": \"1970-09-13\",\n                    \"gender\": \"m\",\n                    \"givenName\": \"WERNER\",\n                    \"familyName\": \"MUSTERMANN\",\n                    \"placeOfResidence\": {\n                        \"type\": \"national\",\n                        \"street\": \"KURZER WEG 7\",\n                        \"postalCode\": \"12345\",\n                        \"city\": \"ANKH-MORPORK\"\n                    }\n                },\n                \"contactInfo\": {\n                    \"electronicAddresses\": [\n                        {\n                            \"channelType\": \"Service-Account-Mailbox\",\n                            \"address\": \"3b0c9c8c-0801-45f0-a331-2abfc9db78d0\"\n                        }\n                    ],\n                    \"physicalAddress\": {\n                        \"type\": \"national\",\n                        \"street\": \"Kurzer Weg\",\n                        \"houseNumber\": \"7\",\n                        \"postalCode\": \"12345\",\n                        \"city\": \"Ankh-Morpork\"\n                    },\n                    \"telephone\": [\n                        {\n                            \"number\": \"+49 89 32168-42\",\n                            \"mobile\": true,\n                            \"description\": \"work\"\n                        }\n                    ]\n                }\n            }\n        ],\n        \"paymentInfo\": {\n            \"reference\": \"TP/93/GDP\",\n            \"usage\": \"Gewerbeanmeldung\",\n            \"amount\": 17.3,\n            \"timestamp\": \"2020-03-03T12:38:23Z\",\n            \"status\": \"success\",\n            \"transaction\": \"1f77c5f9b759db9cdce59988b24974d465c7be5e462a6185485559ff6e2dea82\"\n        },\n        \"applicationId\": \"0c508e3f-2353-4206-9a1e-34b2e864d5a8\"\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "Get Application Metadata",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "79511f73-464f-40a7-90c6-2b5176473cce",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "bafba620-d3a3-45c3-b3b9-1afabc26885d",
+										"exec": [
+											"pm.test(\"response must be 200 Ok and has a body\", function () {",
+											"     // assert that the status code is 200",
+											"     pm.response.to.have.status(200); ",
+											"     // assert that the response has a valid JSON body",
+											"     pm.response.to.be.withBody;",
+											"});",
+											"",
+											"// extract body",
+											"var jsonData = pm.response.json();",
+											"",
+											"// todo extend tests."
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{subscriber_url}}{{subscriber_id}}/destinations/{{destination_id}}/applications/{{application_id}}",
+									"host": [
+										"{{subscriber_url}}{{subscriber_id}}"
+									],
+									"path": [
+										"destinations",
+										"{{destination_id}}",
+										"applications",
+										"{{application_id}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get Application Metadata",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{subscriber_url}}{{subscriber_id}}/destinations/{{destination_id}}/applications/{{application_id}}",
+											"host": [
+												"{{subscriber_url}}{{subscriber_id}}"
+											],
+											"path": [
+												"destinations",
+												"{{destination_id}}",
+												"applications",
+												"{{application_id}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "*"
+										},
+										{
+											"key": "content-type",
+											"value": "application/json"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 20 May 2020 06:36:36 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1829"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"additionalReferenceInfo\": {\n        \"subject\": \"Anmeldung eines Gewerbes in Musterstadt\",\n        \"caseId\": \"DF/8923\"\n    },\n    \"contentStructure\": {\n        \"data\": {\n            \"schema\": {\n                \"mimeType\": \"json\",\n                \"schemaSource\": \"none\"\n            }\n        },\n        \"docs\": [\n            {\n                \"docId\": \"1\",\n                \"purpose\": \"form\",\n                \"size\": 13046,\n                \"mimeType\": \"application/pdf\",\n                \"filename\": \"test.pdf\",\n                \"description\": \"Das Antragsformular\",\n                \"lang\": {\n                    \"lang\": \"de\",\n                    \"region\": \"DE\"\n                },\n                \"hash\": {\n                    \"algorithm\": \"SHA-256\",\n                    \"digest\": \"bf37d894fdf9aeade63975ed648d49c3e8a7a773923597d2418915f54cd7c3b9\"\n                }\n            }\n        ]\n    },\n    \"publicServiceType\": {\n        \"name\": \"Gewerbeanmeldung\",\n        \"description\": \"Eine Gewerbeanmeldung ist immer dann notwendig, wenn Sie einen stehenden Gewerbebetrieb beginnen.\",\n        \"leikaId\": \"99050012104000\",\n        \"otherIdentifiers\": [\n            {\n                \"id\": \"8664844\",\n                \"schemeId\": \"service.niedersachsen.de\",\n                \"schemeName\": \"Serviceportal Niedersachsen\"\n            },\n            {\n                \"id\": \"354824\",\n                \"schemeId\": \"buerger.thueringen.de\",\n                \"schemeName\": \"Zuständigkeitsfinder Thüringen\"\n            }\n        ]\n    },\n    \"applicants\": [\n        {\n            \"type\": \"person\",\n            \"authentificationInfo\": {\n                \"assuranceLevel\": \"high\",\n                \"authentificationMethod\": \"eID\",\n                \"timestamp\": \"2020-03-03T12:38:23Z\"\n            },\n            \"identityInfo\": {\n                \"dateOfBirth\": \"1970-09-13\",\n                \"gender\": \"m\",\n                \"givenName\": \"WERNER\",\n                \"familyName\": \"MUSTERMANN\",\n                \"placeOfResidence\": {\n                    \"type\": \"national\",\n                    \"street\": \"KURZER WEG 7\",\n                    \"postalCode\": \"12345\",\n                    \"city\": \"ANKH-MORPORK\"\n                }\n            },\n            \"contactInfo\": {\n                \"electronicAddresses\": [\n                    {\n                        \"channelType\": \"Service-Account-Mailbox\",\n                        \"address\": \"3b0c9c8c-0801-45f0-a331-2abfc9db78d0\"\n                    }\n                ],\n                \"physicalAddress\": {\n                    \"type\": \"national\",\n                    \"street\": \"Kurzer Weg\",\n                    \"houseNumber\": \"7\",\n                    \"postalCode\": \"12345\",\n                    \"city\": \"Ankh-Morpork\"\n                },\n                \"telephone\": [\n                    {\n                        \"number\": \"+49 89 32168-42\",\n                        \"mobile\": true,\n                        \"description\": \"work\"\n                    }\n                ]\n            }\n        }\n    ],\n    \"paymentInfo\": {\n        \"reference\": \"TP/93/GDP\",\n        \"usage\": \"Gewerbeanmeldung\",\n        \"amount\": 17.3,\n        \"timestamp\": \"2020-03-03T12:38:23Z\",\n        \"status\": \"success\",\n        \"transaction\": \"1f77c5f9b759db9cdce59988b24974d465c7be5e462a6185485559ff6e2dea82\"\n    },\n    \"applicationId\": \"0c508e3f-2353-4206-9a1e-34b2e864d5a8\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Get Application Data",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ba8692bc-106f-41f6-b484-5a36f655d691",
+										"exec": [
+											"pm.test(\"response must be 200 Ok and has a body\", function () {",
+											"     // assert that the status code is 200",
+											"     pm.response.to.have.status(200); ",
+											"     // assert that the response has a valid JSON body",
+											"     pm.response.to.be.withBody;",
+											"});",
+											"",
+											"// extract body",
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"correct application-id\", function () {",
+											"     // assert that application-id is correct",
+											"    pm.expect(jsonData['application-id']).to.eql(pm.collectionVariables.get(\"application_id\"));",
+											"});",
+											"",
+											"// todo extend tests."
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{subscriber_url}}{{subscriber_id}}/destinations/{{destination_id}}/applications/{{application_id}}/data",
+									"host": [
+										"{{subscriber_url}}{{subscriber_id}}"
+									],
+									"path": [
+										"destinations",
+										"{{destination_id}}",
+										"applications",
+										"{{application_id}}",
+										"data"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get Application Data",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{subscriber_url}}{{subscriber_id}}/destinations/{{destination_id}}/applications/{{application_id}}/data",
+											"host": [
+												"{{subscriber_url}}{{subscriber_id}}"
+											],
+											"path": [
+												"destinations",
+												"{{destination_id}}",
+												"applications",
+												"{{application_id}}",
+												"data"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "*"
+										},
+										{
+											"key": "content-type",
+											"value": "application/json"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 20 May 2020 06:37:17 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "224"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"F99000001\": \"string\",\n    \"G99000001\": {\n        \"F99000002\": \"string\",\n        \"F99000003\": 42\n    },\n    \"G99000002\": [\n        {\n            \"F99000004\": true,\n            \"G99000001\": {\n                \"F99000002\": \"string\",\n                \"F99000003\": 17\n            }\n        },\n        {\n            \"F99000004\": true,\n            \"G99000001\": {\n                \"F99000002\": \"string\",\n                \"F99000003\": 24\n            }\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Get Application Document",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "eb502bfa-b763-4f16-b76f-c0c8ef5e0228",
+										"exec": [
+											"pm.test(\"response must be 200 Ok and has a body\", function () {",
+											"     // assert that the status code is 200",
+											"     pm.response.to.have.status(200); ",
+											"     // assert that the response has a valid JSON body",
+											"     pm.response.to.be.withBody;",
+											"});",
+											"",
+											"pm.test(\"Content-Type header is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"pm.test(\"Content-Type header is application/octet-stream\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"   pm.response.to.be.header(\"Content-Type\",\"application/octet-stream\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{subscriber_url}}{{subscriber_id}}/destinations/{{destination_id}}/applications/{{application_id}}/docs/{{doc_id}}",
+									"host": [
+										"{{subscriber_url}}{{subscriber_id}}"
+									],
+									"path": [
+										"destinations",
+										"{{destination_id}}",
+										"applications",
+										"{{application_id}}",
+										"docs",
+										"{{doc_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Acknowledge Application",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "13f5e55a-6984-4505-bbae-61a229d5d571",
+										"exec": [
+											"pm.test(\"response must be 200 Ok and has a body\", function () {",
+											"     // assert that the status code is 200",
+											"     pm.response.to.have.status(200); ",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"finalDelivery\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{subscriber_url}}{{subscriber_id}}/destinations/{{destination_id}}/applications/{{application_id}}",
+									"host": [
+										"{{subscriber_url}}{{subscriber_id}}"
+									],
+									"path": [
+										"destinations",
+										"{{destination_id}}",
+										"applications",
+										"{{application_id}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Acknowledge Application",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"finalDelivery\": false\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{subscriber_url}}{{subscriber_id}}/destinations/{{destination_id}}/applications/{{application_id}}",
+											"host": [
+												"{{subscriber_url}}{{subscriber_id}}"
+											],
+											"path": [
+												"destinations",
+												"{{destination_id}}",
+												"applications",
+												"{{application_id}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "*"
+										},
+										{
+											"key": "content-length",
+											"value": "0"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 20 May 2020 06:37:50 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "accessToken",
+				"value": "710a318d7c924956bc8c6b9cb8383c4f",
+				"type": "string"
+			},
+			{
+				"key": "tokenType",
+				"value": "Bearer",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "0e99dc85-2204-4578-8167-86b21566527a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "462d5817-f944-4c28-85a8-170e20d9f7b7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "60480d32-ccd5-46f1-8c6f-d4dfc20cf0c4",
+			"key": "doc_id",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"id": "720753c3-65d9-4c05-8250-1ef8588a805b",
+			"key": "destination_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "32a06035-f6f4-4ab1-b1f5-bc661fbba111",
+			"key": "application_id",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,24 +1,8 @@
 {
-  "title": "Individual",
   "type": "object",
+  "title": "Individual",
   "description": "Natürliche Person",
-  "x-examples": {
-    "example-1": {
-      "formOfAddress": "Herr",
-      "academicTitle": "Dr.",
-      "firstName": "Werner",
-      "lastName": "Mustermann",
-      "contact": {
-        "telephone": [
-          {
-            "number": "+49 89 32168-42",
-            "mobile": false,
-            "description": "Dienstliche Telefonnummer"
-          }
-        ]
-      }
-    }
-  },
+  "additionalProperties": false,
   "properties": {
     "formOfAddress": {
       "type": "string",
@@ -40,12 +24,23 @@
       "description": "Adresse als Alternative (Choice) von nationaler und internationaler Adresse.",
       "oneOf": [
         {
-          "$ref": "../common/address-national.json"
+          "$ref": "./address-national.json"
         },
         {
-          "$ref": "../common/address-international.json"
+          "$ref": "./address-postbox.json"
+        },
+        {
+          "$ref": "./address-international.json"
         }
-      ]
+      ],
+      "discriminator": {
+        "propertyName": "type",
+        "mapping": {
+          "national": "./address-national.json",
+          "postbox": "./address-postbox.json",
+          "international": "./address-international.json"
+        }
+      }
     },
     "identifiers": {
       "type": "array",
@@ -55,8 +50,9 @@
       }
     },
     "contact": {
-      "description": "Kontaktmöglichkeiten einer Person (natürliche Person oder Organisation)",
       "type": "object",
+      "description": "Kontaktmöglichkeiten einer Person (natürliche Person oder Organisation)",
+      "additionalProperties": false,
       "properties": {
         "telephone": {
           "type": "array",
@@ -78,6 +74,29 @@
         "telefax": {
           "$ref": "../common/phone.json#/properties/number"
         }
+      }
+    }
+  },
+  "x-examples": {
+    "example-1": {
+      "formOfAddress": "Herr",
+      "academicTitle": "Dr.",
+      "firstName": "Kunibert",
+      "lastName": "Vonundzu",
+      "contact": {
+        "telephone": [
+          {
+            "number": "+49 89 32168-42",
+            "mobile": false,
+            "description": "work"
+          },
+          {
+            "number": "+49 123 456789",
+            "mobile": true,
+            "description": "work"
+          }
+        ],
+        "email": "kunibert.vonundzu@example.com"
       }
     }
   }

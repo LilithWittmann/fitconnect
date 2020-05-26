@@ -1,6 +1,6 @@
 {
-  "title": "Application Metadata without ID",
   "type": "object",
+  "title": "Application Metadata without ID",
   "description": "Metadaten eines Antrags noch ohne ID, zum Anlegen eines neuen Antrags. Nach dem Zuweisen der `application-id` wird das Modell [Application Metadata](metadata.json) verwendet.",
   "x-examples": {
     "example-1": {
@@ -10,7 +10,6 @@
       },
       "contentStructure": {
         "data": {
-          "size": 9438,
           "schema": {
             "mimeType": "json",
             "schemaSource": "none"
@@ -20,9 +19,9 @@
           {
             "docId": "1",
             "purpose": "form",
-            "size": 39273,
+            "size": 13046,
             "mimeType": "application/pdf",
-            "filename": "antrag.pdf",
+            "filename": "test.pdf",
             "description": "Das Antragsformular",
             "lang": {
               "lang": "de",
@@ -30,19 +29,7 @@
             },
             "hash": {
               "algorithm": "SHA-256",
-              "digest": "03ba204e50d126e4674c005e04d82e84c21366780af1f43bd54a37816b6ab340"
-            }
-          },
-          {
-            "docId": "2",
-            "purpose": "attachment",
-            "size": 894834874,
-            "mimeType": "image/jpeg",
-            "filename": "scan.jpg",
-            "description": "Scan der Bescheinigung",
-            "hash": {
-              "algorithm": "SHA-256",
-              "digest": "e1762f14d9924e37b32f1c81dfd256410af462f5136415c96877efa8c80345d0"
+              "digest": "bf37d894fdf9aeade63975ed648d49c3e8a7a773923597d2418915f54cd7c3b9"
             }
           }
         ]
@@ -54,75 +41,60 @@
         "otherIdentifiers": [
           {
             "id": "8664844",
-            "schemeURI": "service.niedersachsen.de",
+            "schemeID": "service.niedersachsen.de",
             "schemeName": "Serviceportal Niedersachsen"
           },
           {
             "id": "354824",
-            "schemeURI": "buerger.thueringen.de",
+            "schemeID": "buerger.thueringen.de",
             "schemeName": "Zuständigkeitsfinder Thüringen"
           }
         ]
       },
       "applicants": [
         {
-          "identifier": [
-            {
-              "id": "918",
-              "schemeName": "Antragsportal",
-              "schemeId": "urn:com:example:antragsportal:user"
-            }
-          ],
-          "contactInfo": {
-            "physicalAddress": {
-              "street": "Kurzer Weg",
-              "houseNumber": 7,
+          "type": "person",
+          "authentificationInfo": {
+            "assuranceLevel": "high",
+            "authentificationMethod": "eID",
+            "timestamp": "2020-03-03T12:38:23Z"
+          },
+          "identityInfo": {
+            "dateOfBirth": "1970-09-13",
+            "gender": "m",
+            "givenName": "WERNER",
+            "familyName": "MUSTERMANN",
+            "placeOfResidence": {
+              "type": "national",
+              "street": "KURZER WEG 7",
               "postalCode": "12345",
-              "city": "string",
-              "addressSupplement": "string"
+              "city": "ANKH-MORPORK"
+            }
+          },
+          "contactInfo": {
+            "electronicAdresses": [
+              {
+                "channelType": "Service-Account-Mailbox",
+                "address": "3b0c9c8c-0801-45f0-a331-2abfc9db78d0"
+              }
+            ],
+            "physicalAdress": {
+              "street": "Kurzer Weg",
+              "houseNumber": "7",
+              "postalCode": "12345",
+              "city": "Ankh-Morpork"
             },
             "telephone": [
               {
                 "number": "+49 89 32168-42",
                 "mobile": true,
-                "description": "string"
-              }
-            ],
-            "electronicAddresses": [
-              {
-                "channelType": "Service-Account-Mailbox",
-                "address": "string"
+                "description": "work"
               }
             ]
-          },
-          "identityInfo": {
-            "gender": "m",
-            "nationality": "string",
-            "familyName": "string",
-            "givenName": "string",
-            "birthName": "string",
-            "doctoralDegrees": "string",
-            "artisticName": "string",
-            "dateOfBirth": "2020-04-16",
-            "placeOfBirth": "string",
-            "placeOfResidence": {
-              "street": "string",
-              "houseNumber": null,
-              "houseNumberSuffix": "st",
-              "postalCode": "strin",
-              "city": "string",
-              "addressSupplement": "string"
-            }
-          },
-          "authentificationInfo": {
-            "timestamp": "2020-04-16T06:50:39Z",
-            "authentificationToken": {},
-            "authentificationMethod": "string",
-            "assuranceLevel": "low"
           }
         }
       ],
-      "payment-info": {
+      "paymentInfo": {
         "reference": "TP/93/GDP",
         "usage": "Gewerbeanmeldung",
         "amount": 17.3,
@@ -147,6 +119,7 @@
     },
     "contentStructure": {
       "type": "object",
+      "additionalProperties": false,
       "required": [
         "data",
         "docs"
@@ -154,6 +127,7 @@
       "properties": {
         "data": {
           "type": "object",
+          "additionalProperties": false,
           "required": [
             "schema"
           ],
@@ -177,6 +151,7 @@
     },
     "additionalReferenceInfo": {
       "type": "object",
+      "additionalProperties": false,
       "properties": {
         "subject": {
           "type": "string"

@@ -1,4 +1,6 @@
 {
+  "title": "Applicant",
+  "description": "Ein Antragsteller, entweder eine Organisation oder eine natürliche Person",
   "oneOf": [
     {
       "$ref": "./applicant-person.json"
@@ -7,6 +9,11 @@
       "$ref": "./applicant-organization.json"
     }
   ],
-  "title": "Applicant",
-  "description": "Ein Antragsteller, entweder eine Organisation oder eine natürliche Person"
+  "discriminator": {
+    "propertyName": "type",
+    "mapping": {
+      "person": "./applicant-person.json",
+      "organization": "./applicant-organization.json"
+    }
+  }
 }

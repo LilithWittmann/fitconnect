@@ -29,5 +29,12 @@
     "code",
     "timestamp",
     "number"
-  ]
+  ],
+  "x-examples": {
+    "example-1": {
+      "code": "queued",
+      "timestamp": "2020-05-20T08:31:01+02:00",
+      "number": 2
+    }
+  }
 }

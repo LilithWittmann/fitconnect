@@ -1,7 +1,8 @@
 {
-  "title": "Applicant Organisation",
   "type": "object",
+  "title": "Applicant Organisation",
   "description": "Antragsteller in Form von einer Organisation, z.B. einem Unternehmen",
+  "additionalProperties": false,
   "properties": {
     "identifier": {
       "type": "array",
@@ -18,6 +19,7 @@
       "description": "Im Namen der Organisation auftretende natürliche Personen, wie z.B. Geschäftsführer, Vorstände oder Prokuristen",
       "items": {
         "type": "object",
+        "additionalProperties": false,
         "properties": {
           "identityInfo": {
             "$ref": "../common/eID-natural-person.json"
@@ -31,6 +33,7 @@
     "organizationInfo": {
       "type": "object",
       "description": "Informationen über die Organisation",
+      "additionalProperties": false,
       "properties": {
         "legalName": {
           "type": "string",
@@ -58,10 +61,21 @@
               "$ref": "../common/address-national.json"
             },
             {
+              "$ref": "../common/address-postbox.json"
+            },
+            {
               "$ref": "../common/address-international.json"
             }
           ],
-          "description": "Offizielle Adresse"
+          "description": "Offizielle Adresse",
+          "discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "national": "../common/address-national.json",
+              "postbox": "../common/address-postbox.json",
+              "international": "../common/address-international.json"
+            }
+          }
         },
         "legalRepresentatives": {
           "type": "array",
@@ -75,6 +89,7 @@
     "orgValidation": {
       "type": "object",
       "description": "Informationen, ob diese Organisation vom sendenden System identifiziert wurde",
+      "additionalProperties": false,
       "properties": {
         "method": {
           "type": "string",
@@ -84,6 +99,15 @@
       "required": [
         "method"
       ]
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "organization"
+      ]
     }
-  }
+  },
+  "required": [
+    "type"
+  ]
 }

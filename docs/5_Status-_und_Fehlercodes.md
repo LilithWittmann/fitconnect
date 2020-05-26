@@ -34,11 +34,9 @@ Bei durch den API-Client verursachte Fehler (HTTP Statusklasse 4XX), liefert die
 
 Eine Error Mitteilung enthält folgende Angaben:
 
-    code: Standardisierter Fehlercode
-
-    msg: Textuelle Fehlermeldung
-
-    ref: Referenz auf fehlerhafte Stelle
+- `code`: Standardisierter Fehlercode
+- `msg`: Textuelle Fehlermeldung
+- `ref`: Referenz auf fehlerhafte Stelle
 
 ### Liste der Fehlercodes
 

@@ -1,32 +1,7 @@
 {
-  "title": "Destination without ID",
   "type": "object",
+  "title": "Destination without ID",
   "description": "Daten eines technischen Übergabepunkts (Ziel der Übertragung - z.B. ein Fachverfahren) noch ohne ID, zum Anlegen eines neuen Übergabepunkts. Nach dem Zuweisen der `destination-id` wird das Modell [Destination](destination.json) verwendet.",
-  "x-examples": {
-    "example-1": {
-      "public-organization": {
-        "organizationName": "Gewerbeamt Musterhausen"
-      },
-      "technicalContact": [
-        {
-          "firstName": "Werner",
-          "lastName": "Mustermann",
-          "contact": {
-            "telephone": [
-              {
-                "number": "+49 89 32168-42",
-                "mobile": false,
-                "description": "Dienstliches Festnetz"
-              }
-            ]
-          }
-        }
-      ],
-      "callback": {
-        "callbackURI": "https://www.example.com/callback"
-      }
-    }
-  },
   "properties": {
     "publicOrganization": {
       "type": "object",
@@ -41,9 +16,20 @@
               "$ref": "./common/address-national.json"
             },
             {
+              "$ref": "./common/address-postbox.json"
+            },
+            {
               "$ref": "./common/address-international.json"
             }
-          ]
+          ],
+          "discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "national": "./common/address-national.json",
+              "international": "./common/address-international.json",
+              "postbox": "./common/address-postbox.json"
+            }
+          }
         },
         "identifiers": {
           "type": "array",
@@ -107,6 +93,62 @@
       "required": [
         "callbackURI"
       ]
+    }
+  },
+  "x-examples": {
+    "example-1": {
+      "publicOrganization": {
+        "organizationName": "Gewerbeamt Musterstadt",
+        "address": {
+          "type": "national",
+          "street": "Kurzer Weg",
+          "houseNumber": "7",
+          "postalCode": "12345",
+          "city": "Ankh-Morpork"
+        },
+        "contact": {
+          "telephone": [
+            {
+              "number": "+49 89 32168-0",
+              "mobile": false,
+              "description": "work"
+            }
+          ],
+          "email": "behoerde@example.com"
+        }
+      },
+      "technicalContact": [
+        {
+          "formOfAddress": "Herr",
+          "academicTitle": "Dr.",
+          "firstName": "Kunibert",
+          "lastName": "Vonundzu",
+          "contact": {
+            "telephone": [
+              {
+                "number": "+49 89 32168-42",
+                "mobile": false,
+                "description": "work"
+              },
+              {
+                "number": "+49 123 456789",
+                "mobile": true,
+                "description": "work"
+              }
+            ],
+            "email": "kunibert.vonundzu@example.com"
+          }
+        }
+      ],
+      "schemas": [
+        {
+          "mimeType": "json",
+          "schemaSource": "none"
+        }
+      ],
+      "callback": {
+        "callbackURI": "http://127.0.0.1:4010/voluptas"
+      }
     }
   }
 }

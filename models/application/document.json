@@ -1,37 +1,8 @@
 {
-  "title": "Application Document",
   "type": "object",
+  "title": "Application Document",
   "description": "Ein im Antrag (Application) enthaltenes Dokument (z.B. Antragsformular oder hochgeladene Anlage)",
-  "x-examples": {
-    "example-1": {
-      "docId": "1",
-      "purpose": "form",
-      "size": 39273,
-      "mimeType": "application/pdf",
-      "filename": "antrag.pdf",
-      "description": "Das Antragsformular",
-      "lang": {
-        "lang": "de",
-        "region": "DE"
-      },
-      "hash": {
-        "algorithm": "SHA-256",
-        "digest": "03ba204e50d126e4674c005e04d82e84c21366780af1f43bd54a37816b6ab340"
-      }
-    },
-    "example-2": {
-      "docId": "2",
-      "purpose": "attachment",
-      "size": 894834874,
-      "mimeType": "image/jpeg",
-      "filename": "scan.jpg",
-      "description": "Scan der Bescheinigung",
-      "hash": {
-        "algorithm": "SHA-256",
-        "digest": "e1762f14d9924e37b32f1c81dfd256410af462f5136415c96877efa8c80345d0"
-      }
-    }
-  },
+  "additionalProperties": false,
   "properties": {
     "purpose": {
       "type": "string",
@@ -73,7 +44,7 @@
         "digest": {
           "type": "string",
           "description": "Prüfsumme, hexadezimal codiert",
-          "pattern": "[0-9A-F]{64,128}"
+          "pattern": "^[A-Fa-f0-9]{64}([A-Fa-f0-9]{64})?$"
         }
       },
       "required": [
@@ -101,5 +72,23 @@
     "purpose",
     "size",
     "mimeType"
-  ]
+  ],
+  "x-examples": {
+    "example-1": {
+      "docId": "1",
+      "purpose": "form",
+      "size": 13046,
+      "mimeType": "application/pdf",
+      "filename": "test.pdf",
+      "description": "Das Antragsformular",
+      "lang": {
+        "lang": "de",
+        "region": "DE"
+      },
+      "hash": {
+        "algorithm": "SHA-256",
+        "digest": "bf37d894fdf9aeade63975ed648d49c3e8a7a773923597d2418915f54cd7c3b9"
+      }
+    }
+  }
 }
