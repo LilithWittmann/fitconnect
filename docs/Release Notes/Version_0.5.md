@@ -32,7 +32,7 @@ In der Dokumentation werden die Begriffe "Source" und "Sender" synonym verwendet
 ## Dokumentation
 - Release Notes mit aufgenommen
 - Dokumentation zu OAuth integriert
-- Token- und Refresh-URL eingetragen
+- Token-URL eingetragen
 - Postman Collection & Environment integriert
 
 ## Modelle

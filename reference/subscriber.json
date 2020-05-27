@@ -1460,7 +1460,6 @@
         "flows": {
           "clientCredentials": {
             "tokenUrl": "https://oauth.fiep-poc.de/invoke/pub.apigateway.oauth2/getAccessToken",
-            "refreshUrl": "https://oauth.fiep-poc.de/invoke/pub.oauth/refreshAccessToken",
             "scopes": {
               "{subscriberId}:destination:manage": "Dieser Zugriffsbereich alle Destination Endpunkte eines Subscriber genutzt werden.",
               "{subscriberId}:destination:update": "Dieser Zugriffsbereich erlaubt es, bestehende Destinations zu verändern.",
