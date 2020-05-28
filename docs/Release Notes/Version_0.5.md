@@ -48,13 +48,25 @@ models/common/address-national.json
 models/common/address-postbox.json
 - Um ein doppeltes `oneOf` zu vermeiden wurde die Postfach Adresse aus der nationalen Adresse herausgelöst.
 
-## Application Sender API
-
 ### Application Document
 models/application/document.json
 - Regex Pattern für SHA-256/512 Hash präzisiert: "`[0-9A-F]{64,128}`" -> "`^[A-Fa-f0-9]{64}([A-Fa-f0-9]{64})?$`"
 
+## Application Sender API
+
+### Add Application Data
+- Im Erfolgsfall enthält der Body `{"result":"success"}`
+
+### Add Application Document
+- Im Erfolgsfall enthält der Body `{"result":"success"}`
+
 ## Application Subscriber API
+
+### Update Destination
+- Im Erfolgsfall enthält der Body `{"result":"success"}`
+
+### Delete Destination
+- Im Erfolgsfall enthält der Body `{"result":"success"}`
 
 ### Acknowledge Application
 - Bugfix: Property `final-delivery` auf Camelcase umgestellt.
