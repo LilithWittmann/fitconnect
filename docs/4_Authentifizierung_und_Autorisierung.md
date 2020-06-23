@@ -1,4 +1,4 @@
-# Authentifizierung und Autorisierung
+# Registrierung und Client-Verwaltung
 
 ## Anwender Registrierung
 
