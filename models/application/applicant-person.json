@@ -51,13 +51,14 @@
         }
       },
       "contactInfo": {
-        "electronicAdresses": [
+        "electronicAddresses": [
           {
             "channelType": "Service-Account-Mailbox",
             "address": "3b0c9c8c-0801-45f0-a331-2abfc9db78d0"
           }
         ],
-        "physicalAdress": {
+        "physicalAddress": {
+          "type": "national",
           "street": "Kurzer Weg",
           "houseNumber": "7",
           "postalCode": "12345",
