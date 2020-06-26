@@ -100,18 +100,8 @@
               }
             }
           },
-          "410": {
-            "description": "Gone",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "413": {
-            "description": "Request Entity Too Large",
+          "404": {
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -226,15 +216,8 @@
               }
             }
           },
-          "406": {
-            "description": "Not Acceptable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
+          "404": {
+            "description": "Not Found"
           },
           "413": {
             "description": "Request Entity Too Large",
@@ -448,16 +431,6 @@
               }
             }
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
           "401": {
             "description": "Unauthorized",
             "content": {
@@ -595,37 +568,7 @@
             }
           },
           "404": {
-            "description": "Not Acceptable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "410": {
-            "description": "Gone",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "413": {
-            "description": "Request Entity Too Large",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "415": {
-            "description": "Unsupported Media Type",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -742,8 +685,8 @@
               }
             }
           },
-          "410": {
-            "description": "Gone",
+          "404": {
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -752,8 +695,8 @@
               }
             }
           },
-          "413": {
-            "description": "Request Entity Too Large",
+          "415": {
+            "description": "Unsupported Media Type",
             "content": {
               "application/json": {
                 "schema": {
@@ -882,16 +825,6 @@
                       ]
                     }
                   }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
                 }
               }
             }
@@ -1052,16 +985,6 @@
               }
             }
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
           "401": {
             "description": "Unauthorized",
             "content": {
@@ -1082,8 +1005,8 @@
               }
             }
           },
-          "410": {
-            "description": "Gone",
+          "404": {
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {

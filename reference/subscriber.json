@@ -192,6 +192,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
           }
         },
         "operationId": "list-destinations",
@@ -832,16 +842,6 @@
           },
           "404": {
             "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "417": {
-            "description": "Expectation Failed",
             "content": {
               "application/json": {
                 "schema": {
