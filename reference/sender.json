@@ -125,7 +125,7 @@
         ],
         "security": [
           {
-            "OAuth 2.0": [
+            "OAuth20": [
               "{senderId}:application:apply",
               "{senderId}:sender:manage"
             ]
@@ -347,7 +347,7 @@
         ],
         "security": [
           {
-            "OAuth 2.0": [
+            "OAuth20": [
               "{senderId}:application:apply",
               "{senderId}:sender:manage"
             ]
@@ -464,7 +464,7 @@
         ],
         "security": [
           {
-            "OAuth 2.0": [
+            "OAuth20": [
               "{senderId}:destination-info:read",
               "{senderId}:sender:manage"
             ]
@@ -590,7 +590,7 @@
         ],
         "security": [
           {
-            "OAuth 2.0": [
+            "OAuth20": [
               "{senderId}:application:apply",
               "{senderId}:sender:manage"
             ]
@@ -752,7 +752,7 @@
         ],
         "security": [
           {
-            "OAuth 2.0": [
+            "OAuth20": [
               "{senderId}:application:apply",
               "{senderId}:sender:manage"
             ]
@@ -860,7 +860,7 @@
         "description": "Ruft den aktuellen Status der Übermittlung sowie einer Übersicht der bisherigen Übertragungshistorie ab.",
         "security": [
           {
-            "OAuth 2.0": [
+            "OAuth20": [
               "{senderId}:status:read",
               "{senderId}:sender:manage"
             ]
@@ -1019,7 +1019,7 @@
         ],
         "security": [
           {
-            "OAuth 2.0": [
+            "OAuth20": [
               "{senderId}:application:apply",
               "{senderId}:sender:manage"
             ]

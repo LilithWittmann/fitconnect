@@ -211,7 +211,7 @@
         ],
         "security": [
           {
-            "OAuth 2.0": [
+            "OAuth20": [
               "{subscriberId}:destination:read",
               "{subscriberId}:manage",
               "{subscriberId}:destination:manage"
@@ -354,7 +354,7 @@
         ],
         "security": [
           {
-            "OAuth 2.0": [
+            "OAuth20": [
               "{subscriberId}:manage",
               "{subscriberId}:destination:manage",
               "{subscriberId}:destination:create"
@@ -486,7 +486,7 @@
         ],
         "security": [
           {
-            "OAuth 2.0": [
+            "OAuth20": [
               "{subscriberId}:manage",
               "{subscriberId}:application:receive",
               "{subscriberId}:destination:{destinationId}:application:receive"
@@ -592,7 +592,7 @@
         ],
         "security": [
           {
-            "OAuth 2.0": [
+            "OAuth20": [
               "{subscriberId}:manage",
               "{subscriberId}:application:receive",
               "{subscriberId}:destination:{destinationId}:application:receive"
@@ -795,7 +795,7 @@
         ],
         "security": [
           {
-            "OAuth 2.0": [
+            "OAuth20": [
               "{subscriberId}:manage",
               "{subscriberId}:application:receive",
               "{subscriberId}:destination:{destinationId}:application:receive"
@@ -889,7 +889,7 @@
         ],
         "security": [
           {
-            "OAuth 2.0": [
+            "OAuth20": [
               "{subscriberId}:manage",
               "{subscriberId}:application:receive",
               "{subscriberId}:destination:{destinationId}:application:receive"
@@ -1092,7 +1092,7 @@
         ],
         "security": [
           {
-            "OAuth 2.0": [
+            "OAuth20": [
               "{subscriberId}:manage",
               "{subscriberId}:application:receive",
               "{subscriberId}:destination:{destinationId}:application:receive"
@@ -1240,7 +1240,7 @@
         ],
         "security": [
           {
-            "OAuth 2.0": [
+            "OAuth20": [
               "{subscriberId}:destination:read",
               "{subscriberId}:destination:manage",
               "{subscriberId}:manage",
@@ -1390,7 +1390,7 @@
         ],
         "security": [
           {
-            "OAuth 2.0": [
+            "OAuth20": [
               "{subscriberId}:manage",
               "{subscriberId}:destination:update",
               "{subscriberId}:destination:manage",
@@ -1472,7 +1472,7 @@
         ],
         "security": [
           {
-            "OAuth 2.0": [
+            "OAuth20": [
               "{subscriberId}:manage",
               "{subscriberId}:destination:manage",
               "{subscriberId}:destination:delete",
