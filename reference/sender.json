@@ -1041,7 +1041,7 @@
   ],
   "components": {
     "securitySchemes": {
-      "OAuth 2.0": {
+      "OAuth20": {
         "type": "oauth2",
         "flows": {
           "clientCredentials": {
