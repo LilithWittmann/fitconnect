@@ -32,7 +32,7 @@
       "type": "string",
       "description": "Hausnummerzusatz",
       "maxLength": 2,
-      "pattern": "^[\\p{L}0-9. ]*$"
+      "pattern": "^[A-Za-z0-9. ]*$"
     },
     "postalCode": {
       "type": "string",
