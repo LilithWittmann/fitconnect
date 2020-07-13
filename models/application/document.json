@@ -3,6 +3,24 @@
   "title": "Application Document",
   "description": "Ein im Antrag (Application) enthaltenes Dokument (z.B. Antragsformular oder hochgeladene Anlage)",
   "additionalProperties": false,
+  "x-examples": {
+    "example-1": {
+      "docId": "1",
+      "purpose": "form",
+      "size": 13046,
+      "mimeType": "application/pdf",
+      "filename": "test.pdf",
+      "description": "Das Antragsformular",
+      "lang": {
+        "lang": "de",
+        "region": "DE"
+      },
+      "hash": {
+        "algorithm": "SHA-256",
+        "digest": "bf37d894fdf9aeade63975ed648d49c3e8a7a773923597d2418915f54cd7c3b9"
+      }
+    }
+  },
   "properties": {
     "purpose": {
       "type": "string",
@@ -29,28 +47,7 @@
       "$ref": "../common/language.json"
     },
     "hash": {
-      "type": "object",
-      "description": "Prüfsumme über den Inhalt des Dokuments zur Absicherung auf dem Transportweg",
-      "additionalProperties": false,
-      "properties": {
-        "algorithm": {
-          "type": "string",
-          "description": "Verwendeter Algorithmus",
-          "enum": [
-            "SHA-256",
-            "SHA-512"
-          ]
-        },
-        "digest": {
-          "type": "string",
-          "description": "Prüfsumme, hexadezimal codiert",
-          "pattern": "^[A-Fa-f0-9]{64}([A-Fa-f0-9]{64})?$"
-        }
-      },
-      "required": [
-        "algorithm",
-        "digest"
-      ]
+      "$ref": "../common/hash.json"
     },
     "signature": {
       "pattern": {
@@ -72,23 +69,5 @@
     "purpose",
     "size",
     "mimeType"
-  ],
-  "x-examples": {
-    "example-1": {
-      "docId": "1",
-      "purpose": "form",
-      "size": 13046,
-      "mimeType": "application/pdf",
-      "filename": "test.pdf",
-      "description": "Das Antragsformular",
-      "lang": {
-        "lang": "de",
-        "region": "DE"
-      },
-      "hash": {
-        "algorithm": "SHA-256",
-        "digest": "bf37d894fdf9aeade63975ed648d49c3e8a7a773923597d2418915f54cd7c3b9"
-      }
-    }
-  }
+  ]
 }

@@ -1,0 +1,25 @@
+{
+  "title": "hash",
+      "type": "object",
+      "description": "Prüfsumme über den Inhalt des Dokuments zur Absicherung auf dem Transportweg",
+      "additionalProperties": false,
+      "properties": {
+        "algorithm": {
+          "type": "string",
+          "description": "Verwendeter Algorithmus",
+          "enum": [
+            "SHA-256",
+            "SHA-512"
+          ]
+        },
+        "digest": {
+          "type": "string",
+          "description": "Prüfsumme, hexadezimal codiert",
+          "pattern": "^[A-Fa-f0-9]{64}([A-Fa-f0-9]{64})?$"
+        }
+      },
+      "required": [
+        "algorithm",
+        "digest"
+      ]
+}
