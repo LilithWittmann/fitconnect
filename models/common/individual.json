@@ -3,12 +3,35 @@
   "title": "Individual",
   "description": "Natürliche Person",
   "additionalProperties": false,
+  "x-examples": {
+    "example-1": {
+      "formOfAddress": "Herr",
+      "doctoralDegrees": "Dr.",
+      "firstName": "Kunibert",
+      "lastName": "Vonundzu",
+      "contact": {
+        "telephone": [
+          {
+            "number": "+49 89 32168-42",
+            "mobile": false,
+            "description": "work"
+          },
+          {
+            "number": "+49 123 456789",
+            "mobile": true,
+            "description": "work"
+          }
+        ],
+        "email": "kunibert.vonundzu@example.com"
+      }
+    }
+  },
   "properties": {
     "formOfAddress": {
       "type": "string",
       "description": "Anrede der Person wie \"Herr\" oder \"Frau\""
     },
-    "academicTitle": {
+    "doctoralDegrees": {
       "type": "string",
       "description": "Titel der Person wie \"Dr.\" oder \"Prof.\""
     },
@@ -74,29 +97,6 @@
         "telefax": {
           "$ref": "../common/phone.json#/properties/number"
         }
-      }
-    }
-  },
-  "x-examples": {
-    "example-1": {
-      "formOfAddress": "Herr",
-      "academicTitle": "Dr.",
-      "firstName": "Kunibert",
-      "lastName": "Vonundzu",
-      "contact": {
-        "telephone": [
-          {
-            "number": "+49 89 32168-42",
-            "mobile": false,
-            "description": "work"
-          },
-          {
-            "number": "+49 123 456789",
-            "mobile": true,
-            "description": "work"
-          }
-        ],
-        "email": "kunibert.vonundzu@example.com"
       }
     }
   }
