@@ -121,7 +121,6 @@
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "data",
         "docs"
       ],
       "properties": {
