@@ -10,7 +10,7 @@
       "firstName": "Kunibert",
       "lastName": "Vonundzu",
       "contact": {
-        "telephone": [
+        "telephones": [
           {
             "number": "+49 89 32168-42",
             "mobile": false,
@@ -77,7 +77,7 @@
       "description": "Kontaktmöglichkeiten einer Person (natürliche Person oder Organisation)",
       "additionalProperties": false,
       "properties": {
-        "telephone": {
+        "telephones": {
           "type": "array",
           "description": "Liste der Telefonnummern, außer Fax",
           "items": {

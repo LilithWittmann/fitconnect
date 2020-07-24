@@ -101,7 +101,7 @@
               "postalCode": "12345",
               "city": "Ankh-Morpork"
             },
-            "telephone": [
+            "telephones": [
               {
                 "number": "+49 89 32168-42",
                 "mobile": true,

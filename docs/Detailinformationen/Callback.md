@@ -17,7 +17,7 @@ Beim [anlegen](../reference/subscriber.json/paths/~1{subscriber-id}~1destination
       "first-name": "Werner",
       "last-name": "Mustermann",
       "contact": {
-        "telephone": [
+        "telephones": [
           {
             "number": "+49 89 32168-42",
             "mobile": false,

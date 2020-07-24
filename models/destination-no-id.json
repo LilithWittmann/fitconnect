@@ -42,7 +42,7 @@
           "description": "Kontaktmöglichkeiten der Behörde",
           "type": "object",
           "properties": {
-            "telephone": {
+            "telephones": {
               "type": "array",
               "description": "Liste der Telefonnummern, außer Fax",
               "items": {
@@ -107,7 +107,7 @@
           "city": "Ankh-Morpork"
         },
         "contact": {
-          "telephone": [
+          "telephones": [
             {
               "number": "+49 89 32168-0",
               "mobile": false,
@@ -124,7 +124,7 @@
           "firstName": "Kunibert",
           "lastName": "Vonundzu",
           "contact": {
-            "telephone": [
+            "telephones": [
               {
                 "number": "+49 89 32168-42",
                 "mobile": false,

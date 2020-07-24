@@ -58,7 +58,7 @@
                             "city": "Ankh-Morpork"
                           },
                           "contact": {
-                            "telephone": [
+                            "telephones": [
                               {
                                 "number": "+49 89 32168-0",
                                 "mobile": false,
@@ -75,7 +75,7 @@
                             "firstName": "Kunibert",
                             "lastName": "Vonundzu",
                             "contact": {
-                              "telephone": [
+                              "telephones": [
                                 {
                                   "number": "+49 89 32168-42",
                                   "mobile": false,
@@ -113,7 +113,7 @@
                             "city": "Ankh-Morpork"
                           },
                           "contact": {
-                            "telephone": [
+                            "telephones": [
                               {
                                 "number": "+49 89 32168-0",
                                 "mobile": false,
@@ -130,7 +130,7 @@
                             "firstName": "Kunibert",
                             "lastName": "Vonundzu",
                             "contact": {
-                              "telephone": [
+                              "telephones": [
                                 {
                                   "number": "+49 89 32168-42",
                                   "mobile": false,
@@ -300,7 +300,7 @@
                         "city": "Ankh-Morpork"
                       },
                       "contact": {
-                        "telephone": [
+                        "telephones": [
                           {
                             "number": "+49 89 32168-0",
                             "mobile": false,
@@ -317,7 +317,7 @@
                         "firstName": "Kunibert",
                         "lastName": "Vonundzu",
                         "contact": {
-                          "telephone": [
+                          "telephones": [
                             {
                               "number": "+49 89 32168-42",
                               "mobile": false,
@@ -722,7 +722,7 @@
                               "postalCode": "12345",
                               "city": "Ankh-Morpork"
                             },
-                            "telephone": [
+                            "telephones": [
                               {
                                 "number": "+49 89 32168-42",
                                 "mobile": true,
@@ -1019,7 +1019,7 @@
                                 "postalCode": "12345",
                                 "city": "Ankh-Morpork"
                               },
-                              "telephone": [
+                              "telephones": [
                                 {
                                   "number": "+49 89 32168-42",
                                   "mobile": true,
@@ -1143,7 +1143,7 @@
                           "city": "Ankh-Morpork"
                         },
                         "contact": {
-                          "telephone": [
+                          "telephones": [
                             {
                               "number": "+49 89 32168-0",
                               "mobile": false,
@@ -1160,7 +1160,7 @@
                           "firstName": "Kunibert",
                           "lastName": "Vonundzu",
                           "contact": {
-                            "telephone": [
+                            "telephones": [
                               {
                                 "number": "+49 89 32168-42",
                                 "mobile": false,
@@ -1337,7 +1337,7 @@
                         "city": "Ankh-Morpork"
                       },
                       "contact": {
-                        "telephone": [
+                        "telephones": [
                           {
                             "number": "+49 89 32168-0",
                             "mobile": false,
@@ -1354,7 +1354,7 @@
                         "firstName": "Kunibert",
                         "lastName": "Vonundzu",
                         "contact": {
-                          "telephone": [
+                          "telephones": [
                             {
                               "number": "+49 89 32168-42",
                               "mobile": false,
