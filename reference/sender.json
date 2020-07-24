@@ -20,7 +20,7 @@
     }
   ],
   "paths": {
-    "/{senderId}/{destinationId}/{applicationId}": {
+    "/{senderId}/destinations/{destinationId}/applications/{applicationId}": {
       "parameters": [
         {
           "schema": {
@@ -115,8 +115,7 @@
         "parameters": [],
         "requestBody": {
           "content": {
-            "application/json": {
-            }
+            "application/json": {}
           },
           "description": ""
         },
@@ -133,7 +132,7 @@
         ]
       }
     },
-    "/{senderId}/{destinationId}": {
+    "/{senderId}/destinations/{destinationId}": {
       "parameters": [
         {
           "schema": {
@@ -472,7 +471,7 @@
         ]
       }
     },
-    "/{senderId}/{destinationId}/{applicationId}/docs/{docId}": {
+    "/{senderId}/destinations/{destinationId}/applications/{applicationId}/docs/{docId}": {
       "parameters": [
         {
           "schema": {
@@ -598,7 +597,7 @@
         ]
       }
     },
-    "/{senderId}/{destinationId}/{applicationId}/data": {
+    "/{senderId}/destinations/{destinationId}/applications/{applicationId}/data": {
       "parameters": [
         {
           "schema": {
@@ -760,7 +759,7 @@
         ]
       }
     },
-    "/{senderId}/{applicationId}/status": {
+    "/{senderId}/applications/{applicationId}/status": {
       "parameters": [
         {
           "schema": {
@@ -868,7 +867,7 @@
         ]
       }
     },
-    "/{senderId}/{destinationId}/{applicationId}/upload-status": {
+    "/{senderId}/destinations/{destinationId}/applications/{applicationId}/upload-status": {
       "parameters": [
         {
           "schema": {
