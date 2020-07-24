@@ -759,7 +759,7 @@
         ]
       }
     },
-    "/{senderId}/applications/{applicationId}/status": {
+    "/{senderId}/destinations/{destinationId}/applications/{applicationId}/status": {
       "parameters": [
         {
           "schema": {
@@ -774,6 +774,14 @@
             "type": "string"
           },
           "name": "applicationId",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "destinationId",
           "in": "path",
           "required": true
         }
