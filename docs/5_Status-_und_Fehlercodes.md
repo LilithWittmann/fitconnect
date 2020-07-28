@@ -94,7 +94,7 @@ Eine Error Mitteilung enthält folgende Angaben:
 | 404 Not Found | 204  | Die Application wurde nicht gefunden.                            | (keine)  | die Application-ID nicht zur Source-ID passt                   |
 | 404 Not Found | 205  | Die Application wurde nicht gefunden.                            | (keine)  | die Application-ID nicht zur Destination-ID passt              |
 | 404 Not Found | 206  | Die Destination wurde nicht gefunden.                            | (keine)  | keine Destination mit der Destination-ID existiert             |
-
+| 404 Not Found | 207  | Die Application wurde nicht gefunden.                            | (keine)  | die Application-ID nicht zur Destination-ID passt              |
 
 #### Destination Management
 
