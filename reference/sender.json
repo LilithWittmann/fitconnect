@@ -151,208 +151,6 @@
           "required": true
         }
       ],
-      "post": {
-        "summary": "Create Application",
-        "operationId": "create-application",
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": false,
-                  "properties": {
-                    "applicationId": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "applicationId"
-                  ]
-                },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "applicationId": "0c508e3f-2353-4206-9a1e-34b2e864d5a8"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "413": {
-            "description": "Request Entity Too Large",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "../models/application/metadata-no-id.json"
-              },
-              "examples": {
-                "example-1": {
-                  "value": {
-                    "additionalReferenceInfo": {
-                      "subject": "Anmeldung eines Gewerbes in Musterstadt",
-                      "caseId": "DF/8923"
-                    },
-                    "contentStructure": {
-                      "data": {
-                        "schema": {
-                          "mimeType": "json",
-                          "schemaSource": "none"
-                        }
-                      },
-                      "docs": [
-                        {
-                          "docId": "1",
-                          "purpose": "form",
-                          "size": 13046,
-                          "mimeType": "application/pdf",
-                          "filename": "test.pdf",
-                          "description": "Das Antragsformular",
-                          "lang": {
-                            "lang": "de",
-                            "region": "DE"
-                          },
-                          "hash": {
-                            "algorithm": "SHA-256",
-                            "digest": "bf37d894fdf9aeade63975ed648d49c3e8a7a773923597d2418915f54cd7c3b9"
-                          }
-                        }
-                      ]
-                    },
-                    "publicServiceType": {
-                      "name": "Gewerbeanmeldung",
-                      "description": "Eine Gewerbeanmeldung ist immer dann notwendig, wenn Sie einen stehenden Gewerbebetrieb beginnen.",
-                      "leikaId": "99050012104000",
-                      "otherIdentifiers": [
-                        {
-                          "id": "8664844",
-                          "schemeId": "service.niedersachsen.de",
-                          "schemeName": "Serviceportal Niedersachsen"
-                        },
-                        {
-                          "id": "354824",
-                          "schemeId": "buerger.thueringen.de",
-                          "schemeName": "Zuständigkeitsfinder Thüringen"
-                        }
-                      ]
-                    },
-                    "applicants": [
-                      {
-                        "type": "person",
-                        "authentificationInfo": {
-                          "assuranceLevel": "high",
-                          "authentificationMethod": "eID",
-                          "timestamp": "2020-03-03T12:38:23Z"
-                        },
-                        "identityInfo": {
-                          "dateOfBirth": "1970-09-13",
-                          "gender": "m",
-                          "givenName": "WERNER",
-                          "familyName": "MUSTERMANN",
-                          "placeOfResidence": {
-                            "type": "national",
-                            "street": "KURZER WEG 7",
-                            "postalCode": "12345",
-                            "city": "ANKH-MORPORK"
-                          }
-                        },
-                        "contactInfo": {
-                          "electronicAddresses": [
-                            {
-                              "channelType": "Service-Account-Mailbox",
-                              "address": "3b0c9c8c-0801-45f0-a331-2abfc9db78d0"
-                            }
-                          ],
-                          "physicalAddress": {
-                            "type": "national",
-                            "street": "Kurzer Weg",
-                            "houseNumber": "7",
-                            "postalCode": "12345",
-                            "city": "Ankh-Morpork"
-                          },
-                          "telephones": [
-                            {
-                              "number": "+49 89 32168-42",
-                              "mobile": true,
-                              "description": "work"
-                            }
-                          ]
-                        }
-                      }
-                    ],
-                    "paymentInfo": {
-                      "reference": "TP/93/GDP",
-                      "usage": "Gewerbeanmeldung",
-                      "amount": 17.3,
-                      "timestamp": "2020-03-03T12:38:23Z",
-                      "status": "success",
-                      "transaction": "1f77c5f9b759db9cdce59988b24974d465c7be5e462a6185485559ff6e2dea82"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "description": "Metadaten des Antrags"
-        },
-        "description": "Übertragung initiieren",
-        "tags": [
-          "Application Transfer"
-        ],
-        "security": [
-          {
-            "OAuth20": [
-              "{senderId}:application:apply",
-              "{senderId}:sender:manage"
-            ]
-          }
-        ]
-      },
       "get": {
         "summary": "Get Destination Info",
         "operationId": "get-destination-info",
@@ -1023,6 +821,228 @@
         "description": "Abfrage des Übermittlungsstatus. Listet alle Unterresourcen (data und docs) mit Übermittlungsstatus auf.",
         "tags": [
           "Transfer related Information"
+        ],
+        "security": [
+          {
+            "OAuth20": [
+              "{senderId}:application:apply",
+              "{senderId}:sender:manage"
+            ]
+          }
+        ]
+      }
+    },
+    "/{senderId}/destinations/{destinationId}/applications": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "senderId",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "destinationId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "post": {
+        "summary": "Create Application",
+        "operationId": "create-application",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "applicationId": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "applicationId"
+                  ]
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "applicationId": "0c508e3f-2353-4206-9a1e-34b2e864d5a8"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "413": {
+            "description": "Request Entity Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/application/metadata-no-id.json"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "additionalReferenceInfo": {
+                      "subject": "Anmeldung eines Gewerbes in Musterstadt",
+                      "caseId": "DF/8923"
+                    },
+                    "contentStructure": {
+                      "data": {
+                        "schema": {
+                          "mimeType": "json",
+                          "schemaSource": "none"
+                        }
+                      },
+                      "docs": [
+                        {
+                          "docId": "1",
+                          "purpose": "form",
+                          "size": 13046,
+                          "mimeType": "application/pdf",
+                          "filename": "test.pdf",
+                          "description": "Das Antragsformular",
+                          "lang": {
+                            "lang": "de",
+                            "region": "DE"
+                          },
+                          "hash": {
+                            "algorithm": "SHA-256",
+                            "digest": "bf37d894fdf9aeade63975ed648d49c3e8a7a773923597d2418915f54cd7c3b9"
+                          }
+                        }
+                      ]
+                    },
+                    "publicServiceType": {
+                      "name": "Gewerbeanmeldung",
+                      "description": "Eine Gewerbeanmeldung ist immer dann notwendig, wenn Sie einen stehenden Gewerbebetrieb beginnen.",
+                      "leikaId": "99050012104000",
+                      "otherIdentifiers": [
+                        {
+                          "id": "8664844",
+                          "schemeId": "service.niedersachsen.de",
+                          "schemeName": "Serviceportal Niedersachsen"
+                        },
+                        {
+                          "id": "354824",
+                          "schemeId": "buerger.thueringen.de",
+                          "schemeName": "Zuständigkeitsfinder Thüringen"
+                        }
+                      ]
+                    },
+                    "applicants": [
+                      {
+                        "type": "person",
+                        "authentificationInfo": {
+                          "assuranceLevel": "high",
+                          "authentificationMethod": "eID",
+                          "timestamp": "2020-03-03T12:38:23Z"
+                        },
+                        "identityInfo": {
+                          "dateOfBirth": "1970-09-13",
+                          "gender": "m",
+                          "givenName": "WERNER",
+                          "familyName": "MUSTERMANN",
+                          "placeOfResidence": {
+                            "type": "national",
+                            "street": "KURZER WEG 7",
+                            "postalCode": "12345",
+                            "city": "ANKH-MORPORK"
+                          }
+                        },
+                        "contactInfo": {
+                          "electronicAddresses": [
+                            {
+                              "channelType": "Service-Account-Mailbox",
+                              "address": "3b0c9c8c-0801-45f0-a331-2abfc9db78d0"
+                            }
+                          ],
+                          "physicalAddress": {
+                            "type": "national",
+                            "street": "Kurzer Weg",
+                            "houseNumber": "7",
+                            "postalCode": "12345",
+                            "city": "Ankh-Morpork"
+                          },
+                          "telephones": [
+                            {
+                              "number": "+49 89 32168-42",
+                              "mobile": true,
+                              "description": "work"
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "paymentInfo": {
+                      "reference": "TP/93/GDP",
+                      "usage": "Gewerbeanmeldung",
+                      "amount": 17.3,
+                      "timestamp": "2020-03-03T12:38:23Z",
+                      "status": "success",
+                      "transaction": "1f77c5f9b759db9cdce59988b24974d465c7be5e462a6185485559ff6e2dea82"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "description": "Metadaten des Antrags"
+        },
+        "description": "Übertragung initiieren",
+        "tags": [
+          "Application Transfer"
         ],
         "security": [
           {
