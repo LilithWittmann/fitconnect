@@ -1,14 +1,14 @@
-# Anwendungsfälle
+# Durch die XFall API unterstützte Anwendungsfälle
 
-## Überblick über die Anwendungsfälle
+## Gesamtüberblick der Anwendungsfälle und beteiligten Fachsysteme
 
 ![Application_Transfer](https://raw.githubusercontent.com/fiep-poc/assets/master/images/use_case_documentation/use_case_diagramm.png "Use Case Diagramm der XFall APIs")
 
-## Anwendungsfälle für den Sender
+## Anwendungsfälle für antragssendende Systeme (Sender)
 
 ### Antrag bei einem Zustellpunkt abgeben
 
-**Vorbedingung:** Es muss zuvor die `destination-id` eines gültigen Zustellpunkts ermittelt worden sein. Im Rahmen des PoC erfolgt die Übermittlung mittels bilateraler Absprachen und Kanäle zwischen dem Subscriber und Sender. 
+**Vorbedingung:** Es muss zuvor die `destination-id` eines gültigen Zustellpunkts ermittelt worden sein. Im Rahmen des PoC erfolgt die Übermittlung mittels bilateraler Absprachen und Kanäle zwischen dem Subscriber und Sender. Zukünftig soll diese Ermittlung über die API eines Zuständigskeitsfinders für die gewünschte Verwaltungsleistung und den Ortsbezug erfolgen, wenn die `destination-id` in den dortigen Zuständigkeitsinformation durch die zuständige Stelle hinterlegt wurde.
 
 **Ziel:** Alle Bestandteile des Antrags werden in den Abholbereich des addressierten Zustellpunkts übergeben und liegen dort zur Abholung durch den Subscriber bereit.
 
@@ -24,7 +24,7 @@
 
 **Beschreibung:** Der Sender fragt per GET über die `application-id` den `status` der Antrags ab. Als Antwort bekommt dieser den aktuellen Status sowie die Statushistorie übersendet. Diese Statusübergänge sind über standardisierte Codes (`incomplete`, `queued`, `forwarded`, `delivered`) definiert.
 
-## Anwendungsfälle für den Subscriber
+## Anwendungsfälle für antragsempfangende Systeme (Subscriber)
 
 ### Zustellpunkt einrichten
 
