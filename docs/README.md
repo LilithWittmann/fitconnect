@@ -14,13 +14,13 @@ Bei der Entwicklung der XFall API wurden viele Konzepte mit Hinblick auf die neu
 
 Die XFall API besteht aus zwei getrennt nutzbaren APIs für antragsempfangende Systeme (`Application Subscriber API` sowie eine `Callback` / Webhook Funktion) und antragssendenden Systeme (`Application Sender API`). Diese beiden APIs werden durch einen zentralen Intermediär (`XFall Zustelldienst`) als Angebote angeboten.
 
-Ganz grundsätzlich ermöglicht die `Application Subscriber API` den zuständigen antragsempfangenden Stellen, innnerhalb des XFall Zustelldienstes eindeutig über eine `Destination-ID` adressierbare Zustellpunkte zu eröffnen. An diese Zuständigkeitspunkte können beliebigen antragssendene Systemen, die einen Zugriff auf die `Application Sender API` haben, Anträge senden.
+Über die `Application Subscriber API` können die zuständigen antragsempfangenden Stellen Zustellpunkte eröffnen, die über eine `destination-Id`eindeutig adressierbar sind. Mit dieser `Destination-ID` können beliebigen antragssendene Systemen, welche einen Zugriff auf die `Application Sender API` haben, Anträge an die zuständige Stelle senden.
 
-Für diese Zustellpunkte legen die zuständigen Stellen innerhalb alle fachlichen Vorgaben (Zulässige Fachstandards, Verschlüsselung, Datenformate etc.) fest, damit eine medienbruchfreie Weiterverarbeitung gewäl
+Für diese Zustellpunkte legen die zuständigen Stellen alle fachlichen Vorgaben (Zulässige Fachstandards, Verschlüsselung, Datenformate etc.) fest, damit eine medienbruchfreie Weiterverarbeitung gewährleistet ist. Damit für eine konkrete Verwaltungsleistung und den jeweiligen regionalen Antragsbezug (bspw. Ort der Antragsstellung) der korrekte Zustellpunkt ermittelt werden kann, ist langfristig vorgesehen, die `Destination-ID` jeweils bekannten Zuständigkeitsfinder zu hinterlegen über das Online-Gateway für alle Antragsdienste in Deutschland nutzbar zu machen.
 
-Damit für eine konkrete Verwaltungsleistung und den jeweiligen regionalen Antragsbezug (bspw. Ort der Antragsstellung) der korrekte Zustellpunkt
+(Abbildung einfügen)
 
-## Für wen ist die XFall API und warum sollte ich es nutzen?
+## Für wen ist die XFall API gedacht und warum sollte ich es nutzen?
 
 
 
