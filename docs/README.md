@@ -27,23 +27,23 @@ Für diese Zustellpunkte legen die zuständigen Stellen alle fachlichen Vorgaben
 Die XFall API ist für alle Hersteller, Entwickler und Verfahrensverantwortliche von antragssendenden und antragsempfangenden Systemen gedacht, mittels eine generischen, skalierbaren und offenen Ansatz ihre jeweiligen Systeme mit der Gegenseite im Rahmen der Antragsübermittlung verbinden wollen. Insbesondere folgende fachliche Szenarien sollen mit der XFall API und der unterliegenden FIT-Connect Antragsübertrachtungsarchitektur unterstützt werden:
 - **Einer für alle (EfA) Verfahren**: Länderübergreifend entwickelte Antragsverfahren für eine bestimmte Verwaltungsleistung oder ein Leistungsbündel, die entweder in verschiedenen Ländern nachnutzbar betrieben werden oder sogar länderübergreifend generischer Antragsdienst für alle zuständigen Stellen betrieben werden.
 - **Antragsgeneratoren / Antransmanagementsysysteme**: Generische Systeme zu Erstellung von lauffähigen und dirket nutzbaren Onlineantragsdiensten für bestimmte Antragsleistungen sowohl für eine zuständige Stelle, ein ganzes Land oder das ganze Bundesgebiet. 
-- **Standardsoftwarehersteller von Fachverfahren, Prozessplattformen oder Dokumentenmanagementsystemen**: Hersteller von Standardsoftware, welche von zuständigen Behörden in 
+- **Standardsoftwarehersteller von Fachverfahren, Prozessplattformen oder Dokumentenmanagementsystemen**: Hersteller von Standardsoftware, welche für Antragsbearbeitung in den zuständigen Stellen Standardsoftware
 
 Inbesondere in diesen fachlichen Szenarien stehen die Hersteller vor einer großen Herausforderungen:
 - Fachliches Routing und technische Übertragung: Es fehlt ein generischer Ansatz, um direkt nutzbare Adressierungparamenter der antragsempfangende Systeme für die jeweilige Antragsleistung und regionalen Antragsstellungskontext fachlich korrekt über alle Fachlichkeiten und Formen von zuständigen Stellen hinweg zu ermitteln. Bisherige Ansätze
 - Standardisierung der Datenübermittlung: 
 
 Für diese fachlichen Szenarien bietet die XFall API ein großen Mehrwert 
-- **Plug and Play Anbindung an die föderale Antragsübermittlung**: 
-- **Leichgewichtige APIs und Industriestandards**
-- **Flexibilität in der Antragsübermittlung**
-- **Nutzung bestehender Prozesse**
+- **Plug and Play Anbindung an die föderale Antragsübermittlung**: ...
+- **Leichgewichtige APIs und Industriestandards**: ...
+- **Flexibilität in der Antragsübermittlung**: ...
+- **Nutzung bestehender Prozesse und Strukturen**: ...
 
 ## In welchem Stand befindet sich XFall REST API und wann kann man die API nutzen?
 
 Die Entwicklung und Bereitstellung der XFall REST API erfolgt im Rahmen eines Proof of Concepts für die geplante föderale Integrations- und Entwicklungsplattform. Seit dem zweiten Quartal 2020 ist interessierten Parteien möglich, einen Zugang zur XFall API zu bekommen und eine prototypische Anbindung von Verfahren umzusetzen.
 
-Hieraus 
+Hieraus ....
 
 Die langfristige produktive Nutzung der XFall REST API hängt vom Ausgang des Proof of Concepts und der weiteren Planung der föderalen Integrations- und Entwicklungsplattform ab.
 
