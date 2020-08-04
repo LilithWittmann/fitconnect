@@ -24,7 +24,20 @@ Für diese Zustellpunkte legen die zuständigen Stellen alle fachlichen Vorgaben
 
 ## Für wen ist die XFall API gedacht und warum sollte ich es nutzen?
 
-Wie soll 
+Die XFall API ist für alle Hersteller, Entwickler und Verfahrensverantwortliche von antragssendenden und antragsempfangenden Systemen gedacht, mittels eine generischen, skalierbaren und offenen Ansatz ihre jeweiligen Systeme mit der Gegenseite im Rahmen der Antragsübermittlung verbinden wollen. Insbesondere folgende fachliche Szenarien sollen mit der XFall API und der unterliegenden FIT-Connect Antragsübertrachtungsarchitektur unterstützt werden:
+- **Einer für alle (EfA) Verfahren**: Länderübergreifend entwickelte Antragsverfahren für eine bestimmte Verwaltungsleistung oder ein Leistungsbündel, die entweder in verschiedenen Ländern nachnutzbar betrieben werden oder sogar länderübergreifend generischer Antragsdienst für alle zuständigen Stellen betrieben werden.
+- **Antragsgeneratoren / Antransmanagementsysysteme**: Generische Systeme zu Erstellung von lauffähigen und dirket nutzbaren Onlineantragsdiensten für bestimmte Antragsleistungen sowohl für eine zuständige Stelle, ein ganzes Land oder das ganze Bundesgebiet. 
+- **Standardsoftwarehersteller von Fachverfahren, Prozessplattformen oder Dokumentenmanagementsystemen**: Hersteller von Standardsoftware, welche von zuständigen Behörden in 
+
+Inbesondere in diesen fachlichen Szenarien stehen die Hersteller vor einer großen Herausforderungen:
+- Fachliches Routing und technische Übertragung: Es fehlt ein generischer Ansatz, um direkt nutzbare Adressierungparamenter der antragsempfangende Systeme für die jeweilige Antragsleistung und regionalen Antragsstellungskontext fachlich korrekt über alle Fachlichkeiten und Formen von zuständigen Stellen hinweg zu ermitteln. Bisherige Ansätze
+- Standardisierung der Datenübermittlung: 
+
+Für diese fachlichen Szenarien bietet die XFall API ein großen Mehrwert 
+- **Plug and Play Anbindung an die föderale Antragsübermittlung**: 
+- **Leichgewichtige APIs und Industriestandards**
+- **Flexibilität in der Antragsübermittlung**
+- **Nutzung bestehender Prozesse**
 
 ## In welchem Stand befindet sich XFall REST API und wann kann man die API nutzen?
 
