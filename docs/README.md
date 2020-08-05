@@ -27,17 +27,14 @@ Für diese Zustellpunkte legen die zuständigen Stellen alle fachlichen Vorgaben
 Die XFall API ist für alle Hersteller, Entwickler und Verfahrensverantwortliche von antragssendenden und antragsempfangenden Systemen gedacht, mittels eine generischen, skalierbaren und offenen Ansatz ihre jeweiligen Systeme mit der Gegenseite im Rahmen der Antragsübermittlung verbinden wollen. Insbesondere folgende Umsetzungsmodelle von Antragsdiensten und Antragsbearbeitungssoftware sollen mit der XFall API und der unterliegenden FIT-Connect Antragsübertrachtungsarchitektur adressiert werden:
 - **Einer für alle (EfA) Verfahren**: Länderübergreifend entwickelte Antragsverfahren für eine bestimmte Verwaltungsleistung oder ein Leistungsbündel, die entweder in verschiedenen Ländern nachnutzbar betrieben werden oder sogar länderübergreifend generischer Antragsdienst für alle zuständigen Stellen betrieben werden.
 - **Antragsgeneratoren / Antragsmanagementsysysteme**: Generische Systeme zu Erstellung von lauffähigen und dirket nutzbaren Onlineantragsdiensten für bestimmte Antragsleistungen sowohl für eine zuständige Stelle, ein ganzes Land oder das ganze Bundesgebiet. 
-- **Von Standardsoftwareherstellern bereitgestellte Fachverfahrenssoftware, Prozessplattformen oder Dokumentenmanagementsystemen**: Bundesweit angebotene Standardsoftware, welche für die Antragsbearbeitung in den zuständigen Stellen eingesetzt wird.
-
-Inbesondere in diesen fachlichen Szenarien stehen die Hersteller vor einer großen Herausforderungen:
-- **Fachliches Routing und technische Übertragung**: Es fehlt ein generischer Ansatz, um direkt nutzbare Adressierungparamenter der antragsempfangende Systeme für die jeweilige Antragsleistung und regionalen Antragsstellungskontext fachlich korrekt über alle Fachlichkeiten und Formen von zuständigen Stellen hinweg zu ermitteln. Bisherige Ansätze ... 
-- **Standardisierung der Datenübermittlung**: 
+- **Von Standardsoftwareherstellern bereitgestellte Fachverfahrenssoftware, Prozessplattformen oder Dokumentenmanagementsystemen**: Bundesweit angebotene und eingesetzte Standardsoftware, die von den zuständigen Stellen für die Antragsbearbeitung eingesetzt wird.
 
 Für diese fachlichen Szenarien bietet die XFall API ein großen Mehrwert 
-- **Plug and Play Anbindung an die föderale Antragsübermittlung**: ...
-- **Leichgewichtige APIs und Industriestandards**: ...
-- **Flexibilität in der Antragsübermittlung**: ...
-- **Nutzung bestehender Prozesse und Strukturen**: ...
+- **Plug and Play Anbindung an die föderale Antragsübermittlung**: Durch die zentral bereitgestellten APIs und die Nutzung der bestehenden Zuständigsfinderinfrastruktur können Antragsdienste und antragsbearbeitende Systeme direkt an die föderale Antragsübermittlung angebunden werden, ohne zusätzliche Infrastrukturen für den Transport zu beauftragen oder aufzubauen. 
+- **Leichgewichtige APIs und Industriestandards**: Die XFall API baut auf leichgewichtigen RESTful API Ansätzen auf und nutzt zudem verbreitete Industriestandards, wie bspw. OpenAPI und JSON Schema für API Spezifikation und OAuth 2.0 für die API Autorisierung, sodass keine spezialisierten Know-How und Komponenten für die Anbindung von Anwendungen erforderlich ist.
+- **Flexibilität in der Antragsübermittlung**: Die XFall API verbindet Flexibilität und Standardisierung in
+- **Nutzung bestehender Prozesse und Strukturen für die Pflege von Adressierungsinformationen**: Durch die Nutzung der XFall API können  langjährig erprobte Prozesse und Strukturen in den zuständigen Stellen zur Pflege ihrer Zuständnigskeitsinformationen beibehalten werden. Technische Adressierungsparameter der XFall API können genauso standardisiert in den vorhandenen Systemen gepflegt werden, wie heute schon Adressen, Rufnummer, E-Mail Adressen oder Anspechpartner.
+- **Machine2Machine Ready**: Dadurch, dass die XFall API und FIT-Connect Antragsinfrastruktur von Grund auf als offene API konzipiert ist, können mit der XFall API auch verwaltungsexterne Antrags- und Berichtssysteme wie Drittsoftware oder Unternehmenssysteme direkt eingebunden werden, ohne Prozesse oder Infrastrukturen anzupassen. Die erlaubt ermöglicht es zuständigen Stellen einfach un kostengünstig über weitere Zugängskanale erreichbar zu sein und damit die Attraktivität des elektronischen Kanals zu erhöhen.
 
 ## In welchem Stand befindet sich XFall REST API und wann kann man die API nutzen?
 
