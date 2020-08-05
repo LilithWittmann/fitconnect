@@ -1,6 +1,6 @@
 # Überblick über die XFall API
 
-Willkomen auf der API Dokumentation für die XFall RESTful API von FIT-Connect. Die XFall API baut auf dem bestehenden IT-Planungsrat Standard XFall auf und bietet Lösungsverantwortlichen antragssendenen und antragsempfangenden Systemen eine einfache Möglichkeit, ihre Software schnell und wirtschaftlich in länder und ebeneübergreifende Antragsprozesse zu integrieren.
+Willkomen auf der API Dokumentation für die XFall REST API von FIT-Connect. Die XFall API baut auf dem bestehenden IT-Planungsrat Standard XFall auf und bietet Lösungsverantwortlichen antragssendenen und antragsempfangenden Systemen eine einfache Möglichkeit, ihre Software schnell und wirtschaftlich in länder und ebeneübergreifende Antragsprozesse zu integrieren.
 
 ## Was ist die XFall API und was unterscheidet diese API vom bisherigen XFall Standard?
 
@@ -22,14 +22,14 @@ Für diese Zustellpunkte legen die zuständigen Stellen alle fachlichen Vorgaben
 
 ![Applicationtransfer_Architecture](https://raw.githubusercontent.com/fiep-poc/assets/master/images/api_overview/Pflege%20und%20Ermittlung%20destination-Id.jpg "Pflege und Ermittlung der destination-Id")
 
-## Für wen ist die XFall API gedacht und warum sollte ich es nutzen?
+## Für wen ist die XFall API gedacht und warum sollte ich sie nutzen?
 
 Die XFall API ist für alle Hersteller, Entwickler und Verfahrensverantwortliche von antragssendenden und antragsempfangenden Systemen gedacht, mittels eine generischen, skalierbaren und offenen Ansatz ihre jeweiligen Systeme mit der Gegenseite im Rahmen der Antragsübermittlung verbinden wollen. Insbesondere folgende Umsetzungsmodelle von Antragsdiensten und Antragsbearbeitungssoftware sollen mit der XFall API und der unterliegenden FIT-Connect Antragsübertrachtungsarchitektur unterstützt werden:
 - **Einer für alle (EfA) Verfahren**: Länderübergreifend entwickelte Antragsverfahren für eine bestimmte Verwaltungsleistung oder ein Leistungsbündel, die entweder in verschiedenen Ländern nachnutzbar betrieben werden oder sogar länderübergreifend generischer Antragsdienst für alle zuständigen Stellen betrieben werden.
 - **Antragsgeneratoren / Antragsmanagementsysysteme**: Generische Systeme zu Erstellung von lauffähigen und dirket nutzbaren Onlineantragsdiensten für bestimmte Antragsleistungen sowohl für eine zuständige Stelle, ein ganzes Land oder das ganze Bundesgebiet. 
 - **Von Standardsoftwareherstellern bereitgestellte Fachverfahrenssoftware, Prozessplattformen oder Dokumentenmanagementsystemen**: Bundesweit angebotene und eingesetzte Standardsoftware, die von den zuständigen Stellen für die Antragsbearbeitung eingesetzt wird.
 
-Für diese fachlichen Szenarien bietet die XFall API ein großen Mehrwert 
+Für diese, aber auch andere Fachsysteme bietet die XFall API für die schnelle und wirtschaftliche Realisierung medienbruchfreier digitaler Prozesse eine Reihe von Mehrwerten: 
 - **Plug and Play Anbindung an die föderale Antragsübermittlung**: Durch die zentral bereitgestellten APIs und die Nutzung der bestehenden Zuständigsfinderinfrastruktur können Antragsdienste und antragsbearbeitende Systeme im föderalen Kontext standardisierte Antragsdaten austauschen, ohne zusätzliche Infrastrukturen für den Transport zu beauftragen oder aufzubauen. 
 - **Leichgewichtige APIs und Industriestandards**: Die XFall API baut auf leichgewichtigen RESTful API Ansätzen auf und nutzt zudem verbreitete Industriestandards, wie bspw. OpenAPI und JSON Schema für API Spezifikation und OAuth 2.0 für die API Autorisierung, sodass keine spezialisierten Know-How und Komponenten für die Anbindung von Anwendungen erforderlich ist.
 - **Flexibilität in der Antragsübermittlung**: Die XFall API verbindet Flexibilität und Standardisierung. Während die XFall API eine einheitliche Metadatenstruktur festlegt, um Anträge strukturiert zu verarbeiten, können beliebige Fachstandards sowie standardspezifische Datenformate und Anhänge übertragen werden. Auch die Übertragung von Anträgen im PDF Format ist möglich, sodass auch eine standardisierte Übertragung des Antrags schon möglich ist, während sich noch die enstprechende FIM Artefakte in der Entwicklung befinden.
