@@ -24,7 +24,7 @@ Für diese Zustellpunkte legen die zuständigen Stellen alle fachlichen Vorgaben
 
 ## Für wen ist die XFall API gedacht und warum sollte ich es nutzen?
 
-Die XFall API ist für alle Hersteller, Entwickler und Verfahrensverantwortliche von antragssendenden und antragsempfangenden Systemen gedacht, mittels eine generischen, skalierbaren und offenen Ansatz ihre jeweiligen Systeme mit der Gegenseite im Rahmen der Antragsübermittlung verbinden wollen. Insbesondere folgende Umsetzungsmodelle von Antragsdiensten und Antragsbearbeitungssoftware sollen mit der XFall API und der unterliegenden FIT-Connect Antragsübertrachtungsarchitektur adressiert werden:
+Die XFall API ist für alle Hersteller, Entwickler und Verfahrensverantwortliche von antragssendenden und antragsempfangenden Systemen gedacht, mittels eine generischen, skalierbaren und offenen Ansatz ihre jeweiligen Systeme mit der Gegenseite im Rahmen der Antragsübermittlung verbinden wollen. Insbesondere folgende Umsetzungsmodelle von Antragsdiensten und Antragsbearbeitungssoftware sollen mit der XFall API und der unterliegenden FIT-Connect Antragsübertrachtungsarchitektur unterstützt werden:
 - **Einer für alle (EfA) Verfahren**: Länderübergreifend entwickelte Antragsverfahren für eine bestimmte Verwaltungsleistung oder ein Leistungsbündel, die entweder in verschiedenen Ländern nachnutzbar betrieben werden oder sogar länderübergreifend generischer Antragsdienst für alle zuständigen Stellen betrieben werden.
 - **Antragsgeneratoren / Antragsmanagementsysysteme**: Generische Systeme zu Erstellung von lauffähigen und dirket nutzbaren Onlineantragsdiensten für bestimmte Antragsleistungen sowohl für eine zuständige Stelle, ein ganzes Land oder das ganze Bundesgebiet. 
 - **Von Standardsoftwareherstellern bereitgestellte Fachverfahrenssoftware, Prozessplattformen oder Dokumentenmanagementsystemen**: Bundesweit angebotene und eingesetzte Standardsoftware, die von den zuständigen Stellen für die Antragsbearbeitung eingesetzt wird.
@@ -46,4 +46,4 @@ Die Entwicklung und Bereitstellung der XFall REST API erfolgt im Rahmen eines Pr
 
 Hieraus ergeben sich noch einige Einschränkungen der API Nutzung. So ist eine standardisierte Einbindung des Onlinegateway aktuell noch nicht möglich, sodass die `destination-Id` über eigene Zuständigkeitsfinder oder alternative Austauschmethoden an die Antragsdienste verteilt werden muss.
 
-Die langfristige produktive Nutzung der XFall REST API hängt vom Ausgang des Proof of Concepts und der weiteren Planung der föderalen Integrations- und Entwicklungsplattform ab.
+Die langfristige produktive Nutzung der XFall REST API hängt vom Ausgang des Proof of Concepts und der weiteren Planung von FIT-Connect ab.
