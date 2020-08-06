@@ -20,16 +20,8 @@
     }
   ],
   "paths": {
-    "/{senderId}/destinations/{destinationId}/applications/{applicationId}": {
+    "/destinations/{destinationId}/applications/{applicationId}": {
       "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "senderId",
-          "in": "path",
-          "required": true
-        },
         {
           "schema": {
             "type": "string"
@@ -132,16 +124,8 @@
         ]
       }
     },
-    "/{senderId}/destinations/{destinationId}": {
+    "/destinations/{destinationId}": {
       "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "senderId",
-          "in": "path",
-          "required": true
-        },
         {
           "schema": {
             "type": "string"
@@ -269,16 +253,8 @@
         ]
       }
     },
-    "/{senderId}/destinations/{destinationId}/applications/{applicationId}/docs/{docId}": {
+    "/destinations/{destinationId}/applications/{applicationId}/docs/{docId}": {
       "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "senderId",
-          "in": "path",
-          "required": true
-        },
         {
           "schema": {
             "type": "string"
@@ -395,16 +371,8 @@
         ]
       }
     },
-    "/{senderId}/destinations/{destinationId}/applications/{applicationId}/data": {
+    "/destinations/{destinationId}/applications/{applicationId}/data": {
       "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "senderId",
-          "in": "path",
-          "required": true
-        },
         {
           "schema": {
             "type": "string"
@@ -557,16 +525,8 @@
         ]
       }
     },
-    "/{senderId}/destinations/{destinationId}/applications/{applicationId}/status": {
+    "/destinations/{destinationId}/applications/{applicationId}/status": {
       "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "senderId",
-          "in": "path",
-          "required": true
-        },
         {
           "schema": {
             "type": "string"
@@ -673,16 +633,8 @@
         ]
       }
     },
-    "/{senderId}/destinations/{destinationId}/applications/{applicationId}/upload-status": {
+    "/destinations/{destinationId}/applications/{applicationId}/upload-status": {
       "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "senderId",
-          "in": "path",
-          "required": true
-        },
         {
           "schema": {
             "type": "string"
@@ -832,16 +784,8 @@
         ]
       }
     },
-    "/{senderId}/destinations/{destinationId}/applications": {
+    "/destinations/{destinationId}/applications": {
       "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "senderId",
-          "in": "path",
-          "required": true
-        },
         {
           "schema": {
             "type": "string"

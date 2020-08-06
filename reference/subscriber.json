@@ -20,17 +20,8 @@
     }
   ],
   "paths": {
-    "/{subscriberId}/destinations": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "subscriberId",
-          "in": "path",
-          "required": true
-        }
-      ],
+    "/destinations": {
+      "parameters": [],
       "get": {
         "summary": "List Destinations",
         "responses": {
@@ -363,16 +354,8 @@
         ]
       }
     },
-    "/{subscriberId}/destinations/{destinationId}/applications/{applicationId}/data": {
+    "/destinations/{destinationId}/applications/{applicationId}/data": {
       "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "subscriberId",
-          "in": "path",
-          "required": true
-        },
         {
           "schema": {
             "type": "string"
@@ -495,16 +478,8 @@
         ]
       }
     },
-    "/{subscriberId}/destinations/{destinationId}/applications/{applicationId}/docs/{docId}": {
+    "/destinations/{destinationId}/applications/{applicationId}/docs/{docId}": {
       "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "subscriberId",
-          "in": "path",
-          "required": true
-        },
         {
           "schema": {
             "type": "string"
@@ -601,16 +576,8 @@
         ]
       }
     },
-    "/{subscriberId}/destinations/{destinationId}/applications/{applicationId}": {
+    "/destinations/{destinationId}/applications/{applicationId}": {
       "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "subscriberId",
-          "in": "path",
-          "required": true
-        },
         {
           "schema": {
             "type": "string"
@@ -898,16 +865,8 @@
         ]
       }
     },
-    "/{subscriberId}/destinations/{destinationId}/applications": {
+    "/destinations/{destinationId}/applications": {
       "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "subscriberId",
-          "in": "path",
-          "required": true
-        },
         {
           "schema": {
             "type": "string"
@@ -1101,21 +1060,13 @@
         ]
       }
     },
-    "/{subscriberId}/destinations/{destinationId}": {
+    "/destinations/{destinationId}": {
       "parameters": [
         {
           "schema": {
             "type": "string"
           },
           "name": "destinationId",
-          "in": "path",
-          "required": true
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "subscriberId",
           "in": "path",
           "required": true
         }
