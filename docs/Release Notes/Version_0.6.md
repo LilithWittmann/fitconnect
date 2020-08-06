@@ -1,4 +1,4 @@
-# Nächste Version (0.6)
+# Version (0.6)
 
 ## Dokumentation
 - [Fehlercodes](../5_Status-_und_Fehlercodes.md) dokumentiert
