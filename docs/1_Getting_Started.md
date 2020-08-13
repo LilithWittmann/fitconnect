@@ -15,7 +15,7 @@
 > Für jede Anfrage an die API Endpunkte ist ein gültiger JWT-Token mit der Anfrage mitzusenden. Für nähere Informationen zum Abruf eines JWT-Token siehe ➡ [OAuth Details](./Detailinformationen/OAuth.md)
 
 > ## ⑤ API nutzen
-> Sofern Sie Zugriff auf die Quellen der Spezifikation im OpenAPI Format benötigen, finden Sie diese hier: ➡[fiep-poc-0.5.zip](https://github.com/fiep-poc/assets/raw/master/fiep-poc-0.5.zip)
+> Sofern Sie Zugriff auf die Quellen der Spezifikation im OpenAPI Format benötigen, finden Sie diese hier: ➡[FIT-Connect-PoC-v0.6.zip](https://github.com/fiep-poc/assets/raw/master/spec/FIT-Connect-PoC-v0.6.zip)
 <!-- Abschließendes Beispiel eines API Abrufs mit Token Abruf und einem Beispiel unter Nutzung des Tokens. -->
 
 ## Wie geht es weiter?
