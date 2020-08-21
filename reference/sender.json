@@ -596,7 +596,29 @@
         "parameters": [],
         "requestBody": {
           "content": {
-            "application/json": {}
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "code": {
+                    "type": "string",
+                    "enum": [
+                      "queued"
+                    ]
+                  }
+                },
+                "required": [
+                  "code"
+                ]
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "code": "queued"
+                  }
+                }
+              }
+            }
           },
           "description": ""
         },

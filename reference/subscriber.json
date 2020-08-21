@@ -1406,7 +1406,7 @@
             }
           }
         },
-        "description": "Bestätigt die Abholung der Application. Über den Parameter `finalDelivery` im Body wird gesteuert, wie der Folgestatus aussieht:\n\n| final-delivery | status      |\n| -------------- | ----------- |\n| `false`        | \"forwarded\" |\n| `true`         | \"delivered\" |\n\nDer Parameter `finalDelivery` zeigt an, ob der Antrag noch weitergesendet wird (`false`) oder das finale Ziel erreicht hat (`true`).\n\nSofern der Wert `false` übergeben wurde, muss zu einem späteren Zeitpunkt, wenn der Antrag final zugestellt wurde, ein weiterer Aufruf mit dem Wert `true` erfolgen.",
+        "description": "Bestätigt die Abholung der Application.\n\nDer Parameter `code` zeigt an, ob der Antrag noch weitergesendet wurde (`forwarded`) oder das finale Ziel erreicht hat (`delivered`).\n\nSofern der Wert `forwarded` übergeben wurde, muss zu einem späteren Zeitpunkt, wenn der Antrag final zugestellt wurde, ein weiterer Aufruf mit dem Wert `delivered` erfolgen.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1414,24 +1414,28 @@
                 "type": "object",
                 "additionalProperties": false,
                 "properties": {
-                  "finalDelivery": {
-                    "type": "boolean",
-                    "description": "Zeigt an, ob die Zustellung zum nächsten Hop (`false`) oder bis zum Endpunkt (`true`) erfolgt ist."
+                  "code": {
+                    "type": "string",
+                    "description": "Zeigt an, ob die Zustellung zum nächsten Hop (`false`) oder bis zum Endpunkt (`true`) erfolgt ist.",
+                    "enum": [
+                      "forwarded",
+                      "delivered"
+                    ]
                   }
                 },
                 "required": [
-                  "finalDelivery"
+                  "code"
                 ]
               },
               "examples": {
                 "example-1": {
                   "value": {
-                    "finalDelivery": false
+                    "code": "forwarded"
                   }
                 },
                 "example-2": {
                   "value": {
-                    "finalDelivery": true
+                    "code": "delivered"
                   }
                 }
               }
