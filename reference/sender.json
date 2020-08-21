@@ -20,110 +20,6 @@
     }
   ],
   "paths": {
-    "/destinations/{destinationId}/applications/{applicationId}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "destinationId",
-          "in": "path",
-          "required": true
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "applicationId",
-          "in": "path",
-          "required": true
-        }
-      ],
-      "post": {
-        "summary": "Send Application",
-        "operationId": "commit-application",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/status-overview.json"
-                },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "code": "queued",
-                      "timestamp": "2020-05-20T08:31:01.135842+02:00",
-                      "number": 2
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          }
-        },
-        "description": "Übertragung abschließen, Antrag absenden",
-        "parameters": [],
-        "requestBody": {
-          "content": {
-            "application/json": {}
-          },
-          "description": ""
-        },
-        "tags": [
-          "Application Transfer"
-        ],
-        "security": [
-          {
-            "OAuth20": [
-              "{senderId}:application:apply",
-              "{senderId}:sender:manage"
-            ]
-          }
-        ]
-      }
-    },
     "/destinations/{destinationId}": {
       "parameters": [
         {
@@ -627,6 +523,90 @@
           {
             "OAuth20": [
               "{senderId}:status:read",
+              "{senderId}:sender:manage"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "summary": "Send Application",
+        "operationId": "commit-application",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/status-overview.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "code": "queued",
+                      "timestamp": "2020-05-20T08:31:01.135842+02:00",
+                      "number": 2
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Übertragung abschließen, Antrag absenden",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {}
+          },
+          "description": ""
+        },
+        "tags": [
+          "Application Transfer"
+        ],
+        "security": [
+          {
+            "OAuth20": [
+              "{senderId}:application:apply",
               "{senderId}:sender:manage"
             ]
           }

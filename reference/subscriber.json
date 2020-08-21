@@ -769,100 +769,6 @@
             ]
           }
         ]
-      },
-      "post": {
-        "summary": "Acknowledge Application",
-        "operationId": "ack-application",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error-body.json"
-                }
-              }
-            }
-          }
-        },
-        "description": "Bestätigt die Abholung der Application. Über den Parameter `finalDelivery` im Body wird gesteuert, wie der Folgestatus aussieht:\n\n| final-delivery | status      |\n| -------------- | ----------- |\n| `false`        | \"forwarded\" |\n| `true`         | \"delivered\" |\n\nDer Parameter `finalDelivery` zeigt an, ob der Antrag noch weitergesendet wird (`false`) oder das finale Ziel erreicht hat (`true`).\n\nSofern der Wert `false` übergeben wurde, muss zu einem späteren Zeitpunkt, wenn der Antrag final zugestellt wurde, ein weiterer Aufruf mit dem Wert `true` erfolgen.",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "finalDelivery": {
-                    "type": "boolean",
-                    "description": "Zeigt an, ob die Zustellung zum nächsten Hop (`false`) oder bis zum Endpunkt (`true`) erfolgt ist."
-                  }
-                },
-                "required": [
-                  "finalDelivery"
-                ]
-              },
-              "examples": {
-                "example-1": {
-                  "value": {
-                    "finalDelivery": false
-                  }
-                },
-                "example-2": {
-                  "value": {
-                    "finalDelivery": true
-                  }
-                }
-              }
-            }
-          },
-          "description": "Details der Quittung"
-        },
-        "tags": [
-          "Application Retrieval"
-        ],
-        "security": [
-          {
-            "OAuth20": [
-              "{subscriberId}:manage",
-              "{subscriberId}:application:receive",
-              "{subscriberId}:destination:{destinationId}:application:receive"
-            ]
-          }
-        ]
       }
     },
     "/destinations/{destinationId}/applications": {
@@ -1428,6 +1334,120 @@
               "{subscriberId}:destination:manage",
               "{subscriberId}:destination:delete",
               "{subscriberId}:destination:{destinationId}:delete"
+            ]
+          }
+        ]
+      }
+    },
+    "/destinations/{destinationId}/applications/{applicationId}/status": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "destinationId",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "applicationId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "put": {
+        "summary": "Acknowledge Application",
+        "operationId": "ack-application",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error-body.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Bestätigt die Abholung der Application. Über den Parameter `finalDelivery` im Body wird gesteuert, wie der Folgestatus aussieht:\n\n| final-delivery | status      |\n| -------------- | ----------- |\n| `false`        | \"forwarded\" |\n| `true`         | \"delivered\" |\n\nDer Parameter `finalDelivery` zeigt an, ob der Antrag noch weitergesendet wird (`false`) oder das finale Ziel erreicht hat (`true`).\n\nSofern der Wert `false` übergeben wurde, muss zu einem späteren Zeitpunkt, wenn der Antrag final zugestellt wurde, ein weiterer Aufruf mit dem Wert `true` erfolgen.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "finalDelivery": {
+                    "type": "boolean",
+                    "description": "Zeigt an, ob die Zustellung zum nächsten Hop (`false`) oder bis zum Endpunkt (`true`) erfolgt ist."
+                  }
+                },
+                "required": [
+                  "finalDelivery"
+                ]
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "finalDelivery": false
+                  }
+                },
+                "example-2": {
+                  "value": {
+                    "finalDelivery": true
+                  }
+                }
+              }
+            }
+          },
+          "description": "Details der Quittung"
+        },
+        "tags": [
+          "Application Retrieval"
+        ],
+        "security": [
+          {
+            "OAuth20": [
+              "{subscriberId}:manage",
+              "{subscriberId}:application:receive",
+              "{subscriberId}:destination:{destinationId}:application:receive"
             ]
           }
         ]
