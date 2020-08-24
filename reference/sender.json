@@ -441,7 +441,7 @@
         }
       ],
       "get": {
-        "summary": "Get Status",
+        "summary": "Get Status History",
         "tags": [
           "status"
         ],
@@ -517,7 +517,7 @@
             }
           }
         },
-        "operationId": "get-application-status",
+        "operationId": "get-application-status-history",
         "description": "Ruft den aktuellen Status der Übermittlung sowie einer Übersicht der bisherigen Übertragungshistorie ab.",
         "security": [
           {
@@ -914,7 +914,7 @@
         }
       ],
       "get": {
-        "summary": "Get Status",
+        "summary": "Get Status (current)",
         "tags": [
           "status"
         ],
