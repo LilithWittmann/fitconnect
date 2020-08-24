@@ -1339,7 +1339,7 @@
         ]
       }
     },
-    "/destinations/{destinationId}/applications/{applicationId}/status": {
+    "/destinations/{destinationId}/applications/{applicationId}/status/current": {
       "parameters": [
         {
           "schema": {
@@ -1363,7 +1363,26 @@
         "operationId": "ack-application",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "result": {
+                      "type": "string",
+                      "enum": [
+                        "success"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad Request",
@@ -1416,7 +1435,7 @@
                 "properties": {
                   "code": {
                     "type": "string",
-                    "description": "Zeigt an, ob die Zustellung zum nächsten Hop (`false`) oder bis zum Endpunkt (`true`) erfolgt ist.",
+                    "description": "Zeigt an, ob die Zustellung zum nächsten Hop (`forwarded`) oder bis zum Endpunkt (`delivered`) erfolgt ist.",
                     "enum": [
                       "forwarded",
                       "delivered"
