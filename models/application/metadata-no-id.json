@@ -127,18 +127,14 @@
         "data": {
           "type": "object",
           "additionalProperties": false,
-          "required": [
-            "schema"
-          ],
           "properties": {
-            "size": {
-              "type": "integer",
-              "description": "Größe des Dokuments in Bytes"
-            },
             "schema": {
               "$ref": "./schema.json"
             }
-          }
+          },
+          "required": [
+            "schema"
+          ]
         },
         "docs": {
           "type": "array",
