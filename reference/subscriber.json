@@ -16,7 +16,7 @@
   "servers": [
     {
       "url": "https://subscriber-test.fiep-poc.de/beta6",
-      "description": "Produktionsumgebung der API."
+      "description": "Testsystem"
     }
   ],
   "paths": {
