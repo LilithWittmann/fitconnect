@@ -15,7 +15,7 @@
   },
   "servers": [
     {
-      "url": "https://sender.fiep-poc.de/beta6",
+      "url": "https://sender-test.fiep-poc.de/beta6",
       "description": "Produktionsumgebung der API."
     }
   ],
@@ -117,8 +117,7 @@
         "security": [
           {
             "OAuth20": [
-              "{senderId}:application:apply",
-              "{senderId}:sender:manage"
+              "destination:send"
             ]
           }
         ]
@@ -246,8 +245,7 @@
         "security": [
           {
             "OAuth20": [
-              "{senderId}:destination-info:read",
-              "{senderId}:sender:manage"
+              "destination:send"
             ]
           }
         ]
@@ -364,8 +362,7 @@
         "security": [
           {
             "OAuth20": [
-              "{senderId}:application:apply",
-              "{senderId}:sender:manage"
+              "destination:send"
             ]
           }
         ]
@@ -518,8 +515,7 @@
         "security": [
           {
             "OAuth20": [
-              "{senderId}:application:apply",
-              "{senderId}:sender:manage"
+              "destination:send"
             ]
           }
         ]
@@ -626,8 +622,7 @@
         "security": [
           {
             "OAuth20": [
-              "{senderId}:status:read",
-              "{senderId}:sender:manage"
+              "destination:send"
             ]
           }
         ]
@@ -777,8 +772,7 @@
         "security": [
           {
             "OAuth20": [
-              "{senderId}:application:apply",
-              "{senderId}:sender:manage"
+              "destination:send"
             ]
           }
         ]
@@ -991,8 +985,7 @@
         "security": [
           {
             "OAuth20": [
-              "{senderId}:application:apply",
-              "{senderId}:sender:manage"
+              "destination:send"
             ]
           }
         ]
@@ -1016,16 +1009,13 @@
         "type": "oauth2",
         "flows": {
           "clientCredentials": {
-            "tokenUrl": "https://oauth.fiep-poc.de/invoke/pub.apigateway.oauth2/getAccessToken",
+            "tokenUrl": "https://fitko.cidaas.de/token-srv/token",
             "scopes": {
-              "{senderId}:sender:manage": "Dieser Zufriffsbereich erlaubt es alle Endpunkte einer ",
-              "{senderId}:destination-info:read": "Dieser Zufriffsbereich erlaubt es Informationen von existierenden Destinationsabzurufen",
-              "{senderId}:status:read": "Dieser Zufriffsbereich erlaubt es auf Statusmitteilungen zu einem übersendeten Antrag abzurufen.",
-              "{senderId}:application:apply": "Dieser Zugriffsbereich erlaubt es Anträge anzulegen, diesen zu aktualisieren und abzusenden."
+              "destination:send": "Dieser Zufriffsbereich erlaubt es alle Endpunkte einer "
             }
           }
         },
-        "description": "Dieses Authentifizierungsmethode wird genutzt, um den Zugriff auf die Produktiv API zu autorisieren. "
+        "description": "Dieses Authentifizierungsmethode wird genutzt, um den Zugriff auf die API zu autorisieren. "
       }
     }
   }
