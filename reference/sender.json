@@ -16,7 +16,7 @@
   "servers": [
     {
       "url": "https://sender-test.fiep-poc.de/beta7",
-      "description": "Produktionsumgebung der API."
+      "description": "Testsystem"
     }
   ],
   "paths": {
