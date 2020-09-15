@@ -13,7 +13,7 @@ Um das von ihnen gewünschte API im Rahmen ihrer Anwendung aufzurufen, Gehen sie
 
 Verfahrensschritte:
 
-1) Der Endbenutzer meldet sich an, die Clientanwendung sendet die Authentifizierungsanforderung an den Autorisierungsserver, um ein Zugriffstoken zu erhalten.
+1) Die Clientanwendung sendet die Authentifizierungsanforderung an den Autorisierungsserver, um ein Zugriffstoken zu erhalten.
 
 2) Der Autorisierungsserver überprüft die Anforderung und generiert ein Zugriffstoken für den Client.
 
