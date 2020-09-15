@@ -23,13 +23,6 @@ Der Zustelldienst weist jedem übertragenen Antrag (`application`) eine global e
 #### destinationId
 Die `destinationId` ist eine vom Zustelldienst vergebene ID für einen durch den Subscriber angelegten Zustellpunkt (`destination`). Diese ID wird dem Sender über externe Systeme (bspw. Zuständigkeitsfinder) oder bilaterale Absprachen zwischen beiden Seiten mitgeteilt.
 
-### Vom API-Portal bereitgestellte IDs
-#### senderId
-Die `senderId` ist die ID des Accounts, der die Übertragung absendet. Sie wird vom genutzten Identitätssystem vergeben und muss global eindeutig sein.
-
-#### subscriberId
-Die `subscriberId` ist die ID des Accounts, der die Übertragung empfängt. Sie wird vom genutzten Identitätssystem vergeben und muss global eindeutig sein.
-
 ### Vom Sender vergebene Identifikatoren
 #### docId
 Der Sender vergibt für jedes Antragsformular und jede Anlage in einer Übertragung eine `docId`. Diese muss für alle Dokumente (PDF-Antragsformulare und beliebige Anlagen) in der Übertragung eindeutig sein. Es wird empfohlen, die IDs `1`, `2` etc. zu verwenden.
@@ -38,29 +31,29 @@ Der Sender vergibt für jedes Antragsformular und jede Anlage in einer Übertrag
 
 Mit folgenden Operationen kann der Sender eine Application übertragen und die Übertragung verwalten:
 
-- [Create Application](../reference/sender.json/paths/~1{senderId}~1{destinationId}/post) - Legt eine neue Übertragung durch Übermittlung der Metadaten an.
-- [Add Application Data](../reference/sender.json/paths/~1{senderId}~1{destinationId}~1{applicationId}~1data/put) - Fügt dem Antrag strukturierte Daten (Fachdaten) hinzu.
-- [Add Application Document](../reference/sender.json/paths/~1{senderId}~1{destinationId}~1{applicationId}~1docs~1{docId}/put) - Übermittelt ein Antragsformular oder eine Anlage.
-- [Send Application](../reference/sender.json/paths/~1{senderId}~1{destinationId}~1{applicationId}/post) - Beendet die Übertragung des Antrags und löst seinen Versand aus.
-- [Get Application Upload Status](../reference/sender.json/paths/~1{senderId}~1{destinationId}~1{applicationId}~1upload-status/get) - Ruft den Status der Uploads der Teile der Übertragung ab. Für die Fachdaten und Dokumente wird jeweils der Status und die auf dem Server vorliegende Länge in Bytes zurückgegegben.
+- [Create Application](../reference/sender.json/paths/~1destinations~1{destinationId}~1applications/post) - Legt eine neue Übertragung durch Übermittlung der Metadaten an.
+- [Add Application Data](../reference/sender.json/paths/~1destinations~1{destinationId}~1applications~1{applicationId}~1data/put) - Fügt dem Antrag strukturierte Daten (Fachdaten) hinzu.
+- [Add Application Document](../reference/sender.json/paths/~1destinations~1{destinationId}~1applications~1{applicationId}~1docs~1{docId}/put) - Übermittelt ein Antragsformular oder eine Anlage.
+- [Send Application](../reference/sender.json/paths/~1destinations~1{destinationId}~1applications~1{applicationId}/post) - Beendet die Übertragung des Antrags und löst seinen Versand aus.
+- [Get Application Upload Status](../reference/sender.json/paths/~1destinations~1{destinationId}~1applications~1{applicationId}~1upload-status/get) - Ruft den Status der Uploads der Teile der Übertragung ab. Für die Fachdaten und Dokumente wird jeweils der Status und die auf dem Server vorliegende Länge in Bytes zurückgegegben.
 
 Darüber hinaus stehen dem Sender folgende weitere Operationen zur Verfügung:
 
-- [Get Destination Info](../reference/sender.json/paths/~1{senderId}~1{destinationId}/get) - Ruft übertragungsrelevante Informationen über den Zustellpunkt (bspw. zulässige Schemata oder Datentypen) ab.
-- [Get Status](../reference/sender.json/paths/~1{senderId}~1{applicationId}~1status/get) - Ruft den Status sowie die Statushistorie der Zustellung des Antrags ab.
+- [Get Destination Info](../reference/sender.json/paths/~1destinations~1{destinationId}/get) - Ruft übertragungsrelevante Informationen über den Zustellpunkt (bspw. zulässige Schemata oder Datentypen) ab.
+- [Get Status](../reference/sender.json/paths/~1destinations~1{destinationId}~1applications~1{applicationId}~1status/get) - Ruft den Status sowie die Statushistorie der Zustellung des Antrags ab.
 
 ## Operation der Application Subscriber API
 
 Mit diesen Operationen kann der Subscriber eine oder mehrere Zustellpunkte (`Destinations`) verwalten:
-- [Create Destination](../reference/subscriber.json/paths/~1{subscriberId}~1destinations/post) - Legt ein neues Übertragungsziel (Destination) an.
-- [List Destinations](../reference/subscriber.json/paths/~1{subscriberId}~1destinations/get) - Listet alle Übertragungsziele (Destinations) eines Subscribers auf.
-- [Get Destination](../reference/subscriber.json/paths/~1{subscriberId}~1destinations~1{destinationId}/get) - Ruf die Daten eines Übertragungsziels (Destination) ab.
-- [Update Destination](../reference/subscriber.json/paths/~1{subscriberId}~1destinations~1{destinationId}/put) - Aktualisiert ein Übertragungsziel (Destination).
-- [Delete Destination](../reference/subscriber.json/paths/~1{subscriberId}~1destinations~1{destinationId}/delete) - Löscht ein Übertragungsziel (Destination).
+- [Create Destination](../reference/subscriber.json/paths/~1destinations/post) - Legt ein neues Übertragungsziel (Destination) an.
+- [List Destinations](../reference/subscriber.json/paths/~1destinations/get) - Listet alle Übertragungsziele (Destinations) eines Subscribers auf.
+- [Get Destination](../reference/subscriber.json/paths/~1destinations~1{destinationId}/get) - Ruf die Daten eines Übertragungsziels (Destination) ab.
+- [Update Destination](../reference/subscriber.json/paths/~1destinations~1{destinationId}/put) - Aktualisiert ein Übertragungsziel (Destination).
+- [Delete Destination](../reference/subscriber.json/paths/~1destinations~1{destinationId}/delete) - Löscht ein Übertragungsziel (Destination).
 
 Mit diesen Operationen wird nach wartenden Applications gesucht und diese abgeholt:
-- [List Applications](../reference/subscriber.json/paths/~1{subscriberId}~1destinations~1{destinationId}~1applications/get) - Ruft die Liste der wartenden Übertragungen (Applications) ab.
-- [Get Application Metadata](../reference/subscriber.json/paths/~1{subscriberId}~1destinations~1{destinationId}~1applications~1{applicationId}/get) - Ruft eine wartende Übertragung (Application) ab.
-- [Get Application Data](../reference/subscriber.json/paths/~1{subscriberId}~1destinations~1{destinationId}~1applications~1{applicationId}~1data/get) - Ruft die Fachdaten einer Übertragung (Application Data) ab.
-- [Get Application Document](../reference/subscriber.json/paths/~1{subscriberId}~1destinations~1{destinationId}~1applications~1{applicationId}~1docs~1{docId}/get) - Ruf ein Dokument (Formular oder Anlage) der Application ab.
-- [Acknowledge Application](../reference/subscriber.json/paths/~1{subscriberId}~1destinations~1{destinationId}~1applications~1{applicationId}/post) - Quittiert die Abholung der Übertragung.
+- [List Applications](../reference/subscriber.json/paths/~1destinations~1{destinationId}~1applications/get) - Ruft die Liste der wartenden Übertragungen (Applications) ab.
+- [Get Application Metadata](../reference/subscriber.json/paths/~1destinations~1{destinationId}~1applications~1{applicationId}/get) - Ruft eine wartende Übertragung (Application) ab.
+- [Get Application Data](../reference/subscriber.json/paths/~1destinations~1{destinationId}~1applications~1{applicationId}~1data/get) - Ruft die Fachdaten einer Übertragung (Application Data) ab.
+- [Get Application Document](../reference/subscriber.json/paths/~1destinations~1{destinationId}~1applications~1{applicationId}~1docs~1{docId}/get) - Ruf ein Dokument (Formular oder Anlage) der Application ab.
+- [Acknowledge Application](../reference/subscriber.json/paths/~1destinations~1{destinationId}~1applications~1{applicationId}/post) - Quittiert die Abholung der Übertragung.
