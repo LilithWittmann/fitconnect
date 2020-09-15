@@ -5,7 +5,7 @@ Für die aktuelle Registrierung neuer Clients von Entwicklern haben wir ein neue
 Bis dahin übersenden Sie die Registrierung neuer Clients zur Nutzung der API an den
 [FIT-Connect Service Desk](https://jira.fiep-poc.de/servicedesk/customer/portal/1). Wir werden Ihnen hierüber Ihre Clients und Ihnen die notwendigen Informationen bereitstellen.
 
-## Hinweise zum Aufruf des API mit OAuth2
+## Hinweise zum Aufruf der API mit OAuth2
 
 Um das von ihnen gewünschte API im Rahmen ihrer Anwendung aufzurufen, Gehen sie wie folgt vor:
 
