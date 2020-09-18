@@ -1,9 +1,36 @@
 # Registrierung und Client-Verwaltung
 
-Für die aktuelle Registrierung neuer Clients von Entwicklern haben wir ein neues Verfahren eingeführt. Es wird daher in Kürze hier eine neue Dokumentation zum Registierungsverfahren bereitgestellt.
+Die Anmeldung erfolgt per Mail.
 
-Bis dahin übersenden Sie die Registrierung neuer Clients zur Nutzung der API an den
-[FIT-Connect Service Desk](https://jira.fiep-poc.de/servicedesk/customer/portal/1). Wir werden Ihnen hierüber Ihre Clients und Ihnen die notwendigen Informationen bereitstellen.
+Die Mail muss an registrierung@fiep-poc.de gesendet werden.
+
+Folgende Angaben müssen in der Mail enthalten sein:
+- Name der Anwendung		(z.B. FitConnectShowCase)
+- Angaben zur Firma/Behörde
+  - Name 				(z.B. Dataport)
+  - Adresse			(z.B. Hannover)
+  - Webseite			(z.B. https://www.dataport.de)
+- AnwenderID				(z.B. 41754caf-c9b2-4f09-b8ac-f3df0d46c318)
+- Gewünschter API Bereich 		(entweder Sender oder Subscriber)
+
+Die AnwenderID kann frei gewählt werden.
+
+**Beipiel:**
+
+> **Betreff:** FIT-Connect Registrierung
+> 
+> **Mailinhalt:**
+> 
+> Wir bitten um die Registrierung einer Anwendung für FIT-Connect Beta 6
+> 
+> <pre>Name der Anwendung:         TestAnwendung
+> Angaben zur Firma/Behörde:
+>     Name Land               Sachsen
+>     Adresse                 Dresden
+>     Webseite                https://www.sachsen.de
+> AnwenderID                  41754caf-c9b2-4f09-b8ac-f3df0d46c318
+> Gewünschter API Bereich     Subscriber
+> </pre>
 
 ## Hinweise zum Aufruf der API mit OAuth2
 
@@ -27,3 +54,5 @@ Verfahrensschritte:
 Wurden alle Prüfschritte erfolgreich absolviert, wird die Anfrage an den Zustelldienst übergeben.
 
 Nach Bearbeitung der Anfrage im Zustelldienst wird die Antwort des Zustelldienstes an den Client zurückgesendet.
+
+
