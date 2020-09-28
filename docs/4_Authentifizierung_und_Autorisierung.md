@@ -1,19 +1,23 @@
 # Registrierung und Client-Verwaltung
 
-Die Anmeldung erfolgt per Mail.
+Für die Version Beta 6 ist keine Anmeldung über das FIT-Connect API Portal erforderlich.
+Die Anmeldung erfolgt einstufig durch per Mail mit der Anfrage zur Registrierung eines Client (Anwendung).
 
-Die Mail muss an registrierung@fiep-poc.de gesendet werden.
+Die Mail muss an [registrierung@fiep-poc.de](mailto:registrierung@fiep-poc.de) gesendet werden.
 
 Folgende Angaben müssen in der Mail enthalten sein:
 - Name der Anwendung		(z.B. FitConnectShowCase)
 - Angaben zur Firma/Behörde
-  - Name 				(z.B. Dataport)
-  - Adresse			(z.B. Hannover)
-  - Webseite			(z.B. https://www.dataport.de)
-- AnwenderID				(z.B. 41754caf-c9b2-4f09-b8ac-f3df0d46c318)
-- Gewünschter API Bereich 		(entweder Sender oder Subscriber)
+  - Name (z.B. Dataport)
+  - Adresse (z.B. Hannover)
+  - Webseite (z.B. https://www.dataport.de)
+- Kontaktadresse
+  - E-Mail (z.B. Harald.Mustermann@dataport.de)
+  - Telefonnummer	(z.B. +49 431 4712-4711)
+- AnwenderID (z.B. 41754caf-c9b2-4f09-b8ac-f3df0d46c318)
+- Gewünschter API Bereich (entweder Sender oder Subscriber)
 
-Die AnwenderID kann frei gewählt werden.
+Die AnwenderID kann frei gewählt werden. Sie wird automatisch vergeben, wenn sie nicht angegeben wurde.
 
 **Beipiel:**
 
@@ -25,12 +29,31 @@ Die AnwenderID kann frei gewählt werden.
 > 
 > <pre>Name der Anwendung:         TestAnwendung
 > Angaben zur Firma/Behörde:
->     Name Land               Sachsen
->     Adresse                 Dresden
->     Webseite                https://www.sachsen.de
-> AnwenderID                  41754caf-c9b2-4f09-b8ac-f3df0d46c318
-> Gewünschter API Bereich     Subscriber
+>     Name Land           Sachsen
+>     Adresse             Dresden
+>     Webseite            https://www.sachsen.de
+>     E-Mail              Harald.Mustermann@dataport.de
+>     Telefon             +49 431 4712-4711
+> AnwenderID              41754caf-c9b2-4f09-b8ac-f3df0d46c318
+> Gewünschter API Bereich Subscriber
 > </pre>
+
+Sie bekommen im Anschluss eine Rückantwort per E-Mail wie diese:
+
+> Willkommen xxx,
+> 
+> Ihre Anwendung wurde registriert.
+> 
+> Client ID:          f7d44674-05c2-4eab-xxx
+> 
+> Client Secret:   754b0b41-d891-4f63-xxx
+> 
+> AnwenderID:    2a9d33c9-a70d-446d-xxx
+> 
+> Als Scope kann für das SubscriberAPI „destination:manage“ und /oder „detsination:subscribe“ und für das SenderAPI „destination:send“ verwendet werden.
+Client ID und Client Secret benötigen Sie zur Ermittlung eines Token. Die AnwenderID wird anhand des Token automatisch ermittelt und an den Zustelldient weitergeleitet.
+> 
+> Die Url zur Token Generierung lautet: https://fitko.cidaas.de/token-srv/token
 
 ## Hinweise zum Aufruf der API mit OAuth2
 
