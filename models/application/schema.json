@@ -3,6 +3,21 @@
   "title": "Application Schema",
   "description": "Strukturinformationen zu übertragbaren oder übertragenen Daten.",
   "additionalProperties": false,
+  "x-examples": {
+    "example-1": {
+      "mimeType": "json",
+      "schemaSource": "none"
+    },
+    "example-2": {
+      "mimeType": "xml",
+      "schemaSource": "none"
+    },
+    "example-3": {
+      "mimeType": "xml",
+      "schemaSource": "fim",
+      "schemaId": "S99000001V1.0"
+    }
+  },
   "properties": {
     "schemaId": {
       "type": "string",
@@ -23,25 +38,20 @@
         "xml"
       ],
       "description": "Gibt das zulässige Format (JSON oder XML) der Fachdaten an."
+    },
+    "encoding": {
+      "type": "string",
+      "enum": [
+        "plain",
+        "base64",
+        "jwe"
+      ],
+      "description": "Übertragungscodierung:\n- `plain`: kein Encoding\n- `base64`: Inhalt base64-codieren\n- `jwe`: Inhalt mit JSON Web Encryption verschlüsseln"
     }
   },
   "required": [
     "schemaSource",
-    "mimeType"
-  ],
-  "x-examples": {
-    "example-1": {
-      "mimeType": "json",
-      "schemaSource": "none"
-    },
-    "example-2": {
-      "mimeType": "xml",
-      "schemaSource": "none"
-    },
-    "example-3": {
-      "mimeType": "xml",
-      "schemaSource": "fim",
-      "schemaId": "S99000001V1.0"
-    }
-  }
+    "mimeType",
+    "encoding"
+  ]
 }
