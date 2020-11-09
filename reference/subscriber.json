@@ -415,6 +415,18 @@
                   "properties": {}
                 },
                 "examples": {}
+              },
+              "application/jose": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9-_=.]+$",
+                  "description": "JSON Web Encryption Compact Serialization, RFC 7516"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": "eyJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiUlNBLU9BRVAtMjU2In0.nlXGAufYH36IABDy0En0LXEhGfC20IZSSchs27ADalHpRoTZKfXhc7hcMk8Y9V8yTP0jYbmrq6NtEg-QS2O5TQFD9Hluhpb631PBgKjPXHYX1Y6iUcR1sXxSUPjePi8F8PcZUZuUJLnhz6myyc9scdAq9BXG2cDJVgkfLI8eZdrqnrY24Hh32_7d5OKLFSpSDrBlqfyQuY8Wbs2h8Wy4Z4hwT1aWDO7b-SqJA181hUbNcF_rR4Mze3Fdtu-3uOIQYgLBBRmN1ZHDLk0EKNCI4B8MyDKLGPoM0ZomV5lVwVWjAMRI4CgQkIQ9rnm-Adof-GbegQL3yJSoNIWRWgzCnZBYZ638QgPllCMVW3WvEVvsgj0Hj16PbofqXTQ5S73LINfP6FZawfC0yMrYjSV_N2L0Lkp2KI3BkJcy-PcFhBnhwu2IsJGAlyDRCnXdVqig8m5yLHuSMQTpLW69LzPEskfsjhnNDR-CEBZpicjMfc-4CL6U7E7YoGc_99DzE5U5._JfqyKH23GiKsnDW.ZtMMjZ3GgcgHss8qbFRhrjl4L0kAfbco-oXICkk.VBHJ00FyDTYjOA_OYfiz5g"
+                  }
+                }
               }
             }
           },
