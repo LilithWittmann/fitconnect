@@ -1,6 +1,7 @@
 {
   "title": "JSON Web Key (JWK)",
   "type": "object",
+  "description": "JSON Web Key - RFC 7517",
   "properties": {
     "kty": {
       "type": "string",
@@ -42,7 +43,8 @@
       "description": "Algorithm"
     },
     "kid": {
-      "description": "Key ID"
+      "description": "Key ID",
+      "type": "string"
     },
     "x5u": {
       "type": "string",
@@ -65,6 +67,5 @@
   },
   "required": [
     "kty"
-  ],
-  "description": "JSON Web Key - RFC 7517"
+  ]
 }
