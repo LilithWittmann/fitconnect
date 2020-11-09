@@ -55,6 +55,17 @@
       ],
       "callback": {
         "callbackURI": "http://127.0.0.1:4010/voluptas"
+      },
+      "publicKeys": {
+        "keys": [
+          {
+            "kty": "RSA",
+            "e": "AQAB",
+            "use": "enc",
+            "kid": "d4d3bd67-420f-4b39-85d9-92dd800c57b5",
+            "n": "tD1MMLSEo9hXsFkQvebYBfVNFZ_1n7F77_EpmCFYnsiVQ5kTfc03cMV6sPdw3ZUtXz68FW5erzcpD1fk2t4ebM8qXkxeN8wwDyn2mVNQTYENIW6WimDYZGRcQxds0Zytmv4HXSjgQO7zsAcs90vFFePkIre7auNu1LKhMqrla84wQRnb_mQK26gklj_KzytWYg3WerbReaskj4gstPdAHf546jyrB1Kkiy34ePcWIZ0IkOsoSsPzsPb41B0-BAqIUI1_Y_kDV9RqgzJMIwIi-rs1B9Dpve88hJN4EkfkaRQKvGTEX3khshbrHipNimNGAS3xziXOR8ugy3MdKFnR96xhLwoYz5Jg_PDzjm9Mkc-PPBjEthvmu-8EVgXtF6Yr0uPLdrraUtPYsPiH_Ey-58TEnoWzqtx9SqoMRuA_JrVPFfWW_YuEejdmwosRdtS-nuXIiTAn8E3bOvoJpUdJZixLRArGrOrDgRrKw_660Cpi9LeGq9FCZJKVYKIR7QL1"
+          }
+        ]
       }
     }
   },
