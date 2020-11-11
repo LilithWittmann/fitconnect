@@ -1,8 +1,6 @@
 # Registrierung und Client-Verwaltung
 
-Für die aktuelle Registrierung neuer Clients von Entwicklern haben wir ein neues Verfahren eingeführt. Es wird daher in Kürze hier eine neue Dokumentation zum Registierungsverfahren bereitgestellt.
-
-Bis dahin übersenden Sie die Registrierung neuer Clients zur Nutzung der API an den
+Für die aktuelle Registrierung neuer Clients von Entwicklern haben wir ein neues Verfahren eingeführt. Übersenden Sie für die Registrierung neuer Clients zur Nutzung der APIs eine Anfrage an den
 [FIT-Connect Service Desk](https://jira.fiep-poc.de/servicedesk/customer/portal/1). Wir werden Ihnen hierüber Ihre Clients und Ihnen die notwendigen Informationen bereitstellen.
 
 ## Hinweise zum Aufruf der API mit OAuth2
@@ -27,3 +25,6 @@ Verfahrensschritte:
 Wurden alle Prüfschritte erfolgreich absolviert, wird die Anfrage an den Zustelldienst übergeben.
 
 Nach Bearbeitung der Anfrage im Zustelldienst wird die Antwort des Zustelldienstes an den Client zurückgesendet.
+
+FÜr nähere Details und Beispiele siehe:
+➡ [OAuth](./Detailinformationen/OAuth.md)
