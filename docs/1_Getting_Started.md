@@ -3,19 +3,18 @@
 <!-- theme: info -->
 
 > ## ① Account registrieren
-> Registrieren Sie sich für einen Account, um einen Zugriff auf eine API zu bekommen. Im Rahmen der Registrierung bekommen Sie durch das System eine eindeutige ID (Beispiel-ID) mitgeteilt. Aus dieser Account-ID leiten sich mit einem entsprechenden Präfix die Sender-ID (Senderpräfix_Beispiel-ID) und Subscriber-ID (Subscriberpräfix_Beispiel-ID) ab. ➡ [Anwender Registrierung](./4_Authentifizierung_und_Autorisierung.md)
+> Registrieren Sie sich für ein Zugriff, um mit Ihren Client auf die API zuzugreifen. Im Rahmen der Registrierung bekommen Sie für die gewünschte API die Client-ID und Zugriffdaten mitgeteilt. Da zum aktuellen Zeitpunkt keine Sandbox Umgebung bereitstellt, wird empfohlen, sich für beide Seiten zu registieren, um für komplexere Tests mit einem REST Client die API der Gegenseite anzusprechen (Siehe Postman Nutzung in Schritt 2). ➡ [Anwender Registrierung](./4_Authentifizierung_und_Autorisierung.md)
 
-> ## ② Client anlegen
-> Für den Zugriff auf die API fügen Sie dem Account einen Client hinzu und vergeben Sie dem Client die entsprechenden Scopes. ➡ [Client registrieren](./4_Authentifizierung_und_Autorisierung.md#client-registrierung)
+> ## ② API ausprobieren
+> In der Navigation auf linken Seite finden Sie die jeweiligen API Referenzen für die Nutzung der APIs unter den Reitern `Application Sender API` und `Application Subscriber API` 
+Für einen einfachen Einstieg zum Test der API können Sie die bereitgestellte Postman Collection nutzen und mit dem Postman REST Client die Anfragen an die API durchführen. Hiermit können Sie auch die Gegenseite (Sender oder Empfänger von Anträgen simulieren) (➡ [Testen mit Postman](./Detailinformationen/Postman.md). Nähere Informationen zu Postman siehe https://www.postman.com/) 
+Alternativ können Sie die Anfragen auch mittels eigener Anwendungen oder alternativer REST Clients durchführen.
 
-> ## ③ API ausprobieren
-> Für einen einfachen Einstieg zum Test der API können Sie folgende Postman Collection (Link auf die Collection) nutzen und mittels des Postman REST Clients die Anfragen an die API durchführen. (Für nähere Informationen zu Postman siehe https://www.postman.com/) Alternativ können Sie die Anfragen auch mittels eigener Anwendungen oder alternative REST Client durchführen. Falls Sie nur für die Sender oder Subscriber Seite entwickeln, nutzen sie den folgenden Vorschlag auf Basis Postman ➡ [Testen mit Postman](./Detailinformationen/Postman.md)
-
-> ## ④ OAuth Token abrufen
+> ## ③ OAuth Token vor der API Nutzung abrufen
 > Für jede Anfrage an die API Endpunkte ist ein gültiger JWT-Token mit der Anfrage mitzusenden. Für nähere Informationen zum Abruf eines JWT-Token siehe ➡ [OAuth Details](./Detailinformationen/OAuth.md)
 
-> ## ⑤ API nutzen
-> Sofern Sie Zugriff auf die Quellen der Spezifikation im OpenAPI Format benötigen, finden Sie diese hier: ➡[FIT-Connect-PoC-v0.6.zip](https://github.com/fiep-poc/assets/raw/master/spec/FIT-Connect-PoC-v0.6.zip)
+> ## ④ Spezifikation lokal nutzen
+> Sofern Sie einen lokalen Zugriff auf die Quellen der Spezifikation im OpenAPI Format (bspw. für Code Generatoren) benötigen, finden Sie diese hier: ➡[FIT-Connect-PoC-v0.6.zip](https://github.com/fiep-poc/assets/raw/master/spec/FIT-Connect-PoC-v0.6.zip)
 <!-- Abschließendes Beispiel eines API Abrufs mit Token Abruf und einem Beispiel unter Nutzung des Tokens. -->
 
 ## Wie geht es weiter?
