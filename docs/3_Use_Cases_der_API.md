@@ -14,7 +14,7 @@
 
 **Beschreibung:** Der Sender überträgt mittels eines POST die Metadaten des Antrags an die Sender API und legt damit den Antrag (`application`) als Ressource sowie die Fachdaten und die in den Metadaten angegebenen Anlagen als Subressourcen an. Für den Antrag bekommt der Sender eine eindeutige `application-id`in der Response mitgeteilt. Der Sender kann anschließend alle Bestandteile des Antrags an die jeweiligen Endpunkte per PUT übermitteln und die Übergabe an in den Abholbereich des Subscribers über einen abschließenden Commit initialisieren.
 
-![Application_Transfer](https://raw.githubusercontent.com/fiep-poc/assets/master/images/use_case_documentation/application_transfer.png "Ablaufbeschreibung zur Uebertragung eines Antrags")
+![Application_Transfer](https://raw.githubusercontent.com/fiep-poc/assets/master/images/use_case_documentation/application_transfer_API_V6.png "Ablaufbeschreibung zur Uebertragung eines Antrags")
 
 ### Zustellstatus des abgegebenen Antrags abrufen
 
