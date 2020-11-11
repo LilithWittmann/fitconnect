@@ -1,4 +1,4 @@
-# Durch die XFall API unterstützte Anwendungsfälle
+# Anwendungsfälle der API
 
 ## Gesamtüberblick der Anwendungsfälle und beteiligten Fachsysteme
 
