@@ -3,7 +3,7 @@
 <!-- theme: info -->
 
 > ## ① Account registrieren
-> Registrieren Sie sich für ein Zugriff, um mit Ihren Client auf die API zuzugreifen. Im Rahmen der Registrierung bekommen Sie für die gewünschte API die Client-ID und Zugriffdaten mitgeteilt. Da zum aktuellen Zeitpunkt keine Sandbox Umgebung bereitstellt, wird empfohlen, sich für beide Seiten zu registieren, um für komplexere Tests mit einem REST Client die API der Gegenseite anzusprechen (Siehe Postman Nutzung in Schritt 2). ➡ [Anwender Registrierung](./4_Authentifizierung_und_Autorisierung.md)
+> Registrieren Sie sich für ein Zugriff, um mit Ihren Client auf die API zuzugreifen. Im Rahmen der Registrierung bekommen Sie für die gewünschte API die Client-ID und Zugriffdaten mitgeteilt. Da zum aktuellen Zeitpunkt keine Sandbox Umgebung bereitstellt, wird empfohlen, sich für beide Seiten zu registieren, um für komplexere Tests mit einem REST Client die API der Gegenseite anzusprechen (Siehe Postman Nutzung in Schritt 2). ➡ [Registrierung zur API Nutzung](./4_Authentifizierung_und_Autorisierung.md)
 
 > ## ② API ausprobieren
 > In der Navigation auf linken Seite finden Sie die jeweiligen API Referenzen für die Nutzung der APIs unter den Reitern `Application Sender API` und `Application Subscriber API` 
