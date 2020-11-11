@@ -11,7 +11,7 @@
       "name": "Creative Commons Attribution Share Alike 4.0 (CC BY-SA 4.0)",
       "url": "https://creativecommons.org/licenses/by-sa/4.0/"
     },
-    "description": "Pseudo API um den Callback zu modellieren."
+    "description": "API Beschreibung der Callback API, die von Subscriber Clients zu implementieren ist, um Benachrichtigungen für vorliegende Antäge aktiv im Pushverfahren zu empfangen."
   },
   "servers": [
     {
