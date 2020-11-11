@@ -50,7 +50,7 @@
 
 **Beschreibung:** Der Subscriber kann die Metadaten aller vorliegenden Anträge mit einem Request abrufen oder die Metadaten eines spezifischen Antrags abrufen, falls die `application-id` durch eine Callback Benachtigung bereits mitgeteilt wurde. Nach dem Abruf der Metadaten besteht die Möglichkeit, die Fachdaten (`data`) sowie die  Anlagen (`document`) abzurufen. Nach dem Abruf aller gewünschten Bestandteile des Antrags, muss der vollständige Abruf durch den Subscriber bestätigt werden. Diese Bestätigung hat zur Folge, dass innerhalb einer definierten Frist der Antrag unwiederruflich gelöscht wird. 
 
-![Application_Retrieval](https://raw.githubusercontent.com/fiep-poc/assets/master/images/use_case_documentation/application_retrieval.png "Ablaufbeschreibung zum Abruf eines Antrags")
+![Application_Retrieval](https://raw.githubusercontent.com/fiep-poc/assets/master/images/use_case_documentation/application_retrieval_API_V6.png "Ablaufbeschreibung zum Abruf eines Antrags")
 
 ### Legende der verwendeten BPMN Symbole
 
