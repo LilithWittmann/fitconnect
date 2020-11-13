@@ -1,4 +1,4 @@
-# Durch die XFall API unterstützte Anwendungsfälle
+# Anwendungsfälle der API
 
 ## Gesamtüberblick der Anwendungsfälle und beteiligten Fachsysteme
 
@@ -12,9 +12,9 @@
 
 **Ziel:** Alle Bestandteile des Antrags werden in den Abholbereich des addressierten Zustellpunkts übergeben und liegen dort zur Abholung durch den Subscriber bereit.
 
-**Beschreibung:** Der Sender überträgt mittels eines POST die Metadaten des Antrags an die Sender API und legt damit den Antrag (`application`) als Ressource sowie die Fachdaten und die in den Metadaten angegebenen Anlagen als Subressourcen an. Für den Antrag bekommt der Sender eine eindeutige `application-id`in der Response mitgeteilt. Der Sender kann anschließend alle Bestandteile des Antrags an die jeweiligen Endpunkte per PUT übermitteln und die Übergabe an in den Abholbereich des Subscribers über einen abschließenden Commit initialisieren.
+**Beschreibung:** Falls die Parameter des Zustellpunkts (bspw. das zu nutzendes Fachdatenschema des Antrags) nicht bekannt sind, können diese Information über die Angabe der Destination-ID abgerufen werden. Zur Initierung der Übertragung, überträgt der Sender mittels eines POST die Metadaten des Antrags an die Sender API und legt damit den Antrag (`application`) als Ressource und die Fachdaten sowie die in den Metadaten angegebenen Anlagen als Subressourcen an. Für den Antrag bekommt der Sender eine eindeutige `application-id`in der Response mitgeteilt. Der Sender kann anschließend alle Bestandteile des Antrags an die jeweiligen Endpunkte per PUT übermitteln und die Übergabe an in den Abholbereich des Subscribers über einen abschließenden Commit initialisieren.
 
-![Application_Transfer](https://raw.githubusercontent.com/fiep-poc/assets/master/images/use_case_documentation/application_transfer.png "Ablaufbeschreibung zur Uebertragung eines Antrags")
+![Application_Transfer](https://raw.githubusercontent.com/fiep-poc/assets/master/images/use_case_documentation/application_transfer_API_V6.png "Ablaufbeschreibung zur Uebertragung eines Antrags")
 
 ### Zustellstatus des abgegebenen Antrags abrufen
 
@@ -50,7 +50,7 @@
 
 **Beschreibung:** Der Subscriber kann die Metadaten aller vorliegenden Anträge mit einem Request abrufen oder die Metadaten eines spezifischen Antrags abrufen, falls die `application-id` durch eine Callback Benachtigung bereits mitgeteilt wurde. Nach dem Abruf der Metadaten besteht die Möglichkeit, die Fachdaten (`data`) sowie die  Anlagen (`document`) abzurufen. Nach dem Abruf aller gewünschten Bestandteile des Antrags, muss der vollständige Abruf durch den Subscriber bestätigt werden. Diese Bestätigung hat zur Folge, dass innerhalb einer definierten Frist der Antrag unwiederruflich gelöscht wird. 
 
-![Application_Retrieval](https://raw.githubusercontent.com/fiep-poc/assets/master/images/use_case_documentation/application_retrieval.png "Ablaufbeschreibung zum Abruf eines Antrags")
+![Application_Retrieval](https://raw.githubusercontent.com/fiep-poc/assets/master/images/use_case_documentation/application_retrieval_API_V6.png "Ablaufbeschreibung zum Abruf eines Antrags")
 
 ### Legende der verwendeten BPMN Symbole
 

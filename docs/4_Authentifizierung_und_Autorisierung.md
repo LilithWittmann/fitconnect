@@ -78,4 +78,6 @@ Wurden alle Prüfschritte erfolgreich absolviert, wird die Anfrage an den Zustel
 
 Nach Bearbeitung der Anfrage im Zustelldienst wird die Antwort des Zustelldienstes an den Client zurückgesendet.
 
+FÜr nähere Details und Beispiele siehe:
+➡ [OAuth](./Detailinformationen/OAuth.md)
 
