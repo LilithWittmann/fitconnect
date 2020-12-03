@@ -2,7 +2,7 @@
 
 ## Architektur
 
-![FIT-Connect Architektur](https://raw.githubusercontent.com/fiep-poc/assets/2c7cc84217ea55a3004751c62ef49e80458b579a/images/encryption/Architektur_PoC_einfach_2.svg "FIT-Connect Architektur")
+![FIT-Connect Architektur](https://raw.githubusercontent.com/fiep-poc/assets/fa582b1bf765cbe5059b5f22f100923da595d6f9/images/encryption/Architektur_PoC_einfach_2.svg "FIT-Connect Architektur")
 
 Kern von FIT-Connect ist der Zustelldienst, der über die beiden APIs "Application Sender API" und "Application Subscriber API" den Absender (Sender) und Empfänger (Subscriber) eines Antrags verbindet.
 
